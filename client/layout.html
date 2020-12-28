@@ -1,0 +1,32 @@
+<template name="Layout">
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- <link rel="stylesheet" href="styles/debug.css"> -->
+		<style>
+
+		</style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    {{> Navbar}}
+    <div>
+        {{> yield}}
+    </div>
+    
+</template>
+<template name="Navbar">
+    <nav class="" style="padding: 0px 10px;">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Germonnoma</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          
+          <li><a href="">Menu</a></li>
+        </ul>
+      </div>
+    </nav>
+    <ul class="sidenav" id="mobile-nav">
+      <li><a href="">Menu</a></li>
+    </ul>
+</template>
