@@ -10,5 +10,8 @@
     "already_have_account": "Kirish",
     "welcome_message": "Germonnomaga xush kelibsiz!",
     "login_failed": "Kirishda xatolik yuz berdi",
-    "something_wrong": "Nimadir yemadi..."
+    "something_wrong": "Nimadir yemadi...",
+    "resetpassword": "Parolni o'zgartirish",
+    "back":"Orqaga qaytish",
+    "test":"test"
 }
