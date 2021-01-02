@@ -1,0 +1,11 @@
+{
+    "password": "Password",
+    "login": "Login",
+    "register_now": "Register Now",
+    "forgot_password": "Forgot Password",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "password_confirmation": "Password confirmation",
+    "register": "Register",
+    "already_have_account": "Already have an Account?"
+}

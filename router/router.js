@@ -10,9 +10,9 @@ Router.route('/', function () {
 	layoutTemplate: 'Layout'
 });
 
-Router.route('/create-account', function () {
+Router.route('/register', function () {
 	this.render('Signup');
 },{
 	name: 'Signup',
-	layoutTemplate: 'Signup'
+	layoutTemplate: 'Layout'
 });
