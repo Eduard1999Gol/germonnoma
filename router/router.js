@@ -69,3 +69,11 @@ Router.route('/register', function () {
 	name: 'register',
 	layoutTemplate: 'Layout'
 });
+
+Router.route('/resetpassword', function () {
+	this.render('ResetPassword');
+},
+{
+	name: 'reset',
+	layoutTemplate: 'Layout'
+});

@@ -44,3 +44,45 @@
     </div>
   </div>  
 </template>
+
+
+<template name="ResetPassword">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title center-align">{{_ "login"}}</span>
+            <form class="login-form">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" name="password" type="password" required>
+                  <label for="password">{{_ "password"}}</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" name="password" type="password" required>
+                  <label for="password">{{_ "password"}}</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button type="submit" class="btn-large waves-effect waves-light right-align col s12">{{_ "login"}}</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s6">
+                  <p class="left-align"><a href="/register">{{_ "register_now"}}</a></p>
+                </div>    
+                <div class="col s6">
+                  <p class="right-align"><a href="/resetpassword">{{_ "forgot_password"}}</a></p>
+                </div>     
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</template>
