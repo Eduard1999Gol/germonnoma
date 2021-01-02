@@ -1,10 +1,21 @@
 import { Meteor } from 'meteor/meteor';
+import { Email } from 'meteor/email';
 
+
+function sendEmail(to, subject, text ) {
+    Email.send({
+        to: to,
+        from: 'info@germonnoma.org',
+        subject: subject,
+        text: text
+    });
+}
+  
 Meteor.methods({
     register: function(language, first_name, last_name, email, password, type) {
         var user_exist = Meteor.users.find({'profile.email': email}).count();
         if (user_exist == 0) {
-            return Accounts.createUser({
+            var userId = Accounts.createUser({
                 email: email,
                 password: password,
                 profile:{
@@ -15,6 +26,10 @@ Meteor.methods({
                     language: language
                 }
             });
+            if (userId) {
+                return userId;
+            }
+            
         }else{
             return "This email Address is already registered";
         }

@@ -25,3 +25,5 @@ iron:router
 momentjs:moment
 accounts-password
 tap:i18n
+email
+session

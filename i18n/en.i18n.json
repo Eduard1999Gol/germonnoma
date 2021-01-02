@@ -7,5 +7,8 @@
     "last_name": "Last Name",
     "password_confirmation": "Password confirmation",
     "register": "Register",
-    "already_have_account": "Already have an Account?"
+    "already_have_account": "Already have an Account?",
+    "welcome_message": "Welcome to Germonnoma!",
+    "login_failed": "Login failed!",
+    "something_wrong": "Something went wrong..."
 }

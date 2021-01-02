@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-var M = require('./lib/materialize.js');
+import Swal from 'sweetalert2';
 
 Template.Signup.onRendered(function(){
     $('select').formSelect();
@@ -36,9 +36,19 @@ Template.Signup.events({
         if (password == event.target.password_confirmation.value) {
             Meteor.call('register', language, first_name, last_name, email, password, type, function (err, res) {
                 if (err) {
-                    alert(err);
+                    Swal.fire({
+                        icon: 'error',
+                        title: TAPi18n.__('something_wrong'),
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }else{
-                    alert(res);
+                    Swal.fire({
+                        icon: 'success',
+                        title: TAPi18n.__('welcome_message'),
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     Router.go('/');
                 }
             })

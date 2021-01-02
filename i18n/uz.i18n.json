@@ -1,0 +1,14 @@
+{
+    "password": "Parol",
+    "login": "Kirish",
+    "register_now": "Ro'yxatdan o'tish",
+    "forgot_password": "Parolni tiklash",
+    "first_name": "Ism",
+    "last_name": "Familiya",
+    "password_confirmation": "Parolni tasdiqlash",
+    "register": "Ro'yxatdan o'tish",
+    "already_have_account": "Kirish",
+    "welcome_message": "Germonnomaga xush kelibsiz!",
+    "login_failed": "Kirishda xatolik yuz berdi",
+    "something_wrong": "Nimadir yemadi..."
+}

@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 Template.Signin.onRendered(function(){
 
 });
@@ -29,9 +31,19 @@ Template.Signin.events({
         var password = event.target.password.value;
         Meteor.loginWithPassword(email, password, function (err) {
             if (err) {
-                alert('login failed');
+                Swal.fire({
+                    icon: 'error',
+                    title: TAPi18n.__('login_failed'),
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }else{
-                alert('Welcome to Germonnoma');
+                Swal.fire({
+                    icon: 'success',
+                    title: TAPi18n.__('welcome_message'),
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         });
     }
