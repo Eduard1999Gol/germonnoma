@@ -12,5 +12,6 @@
     "login_failed": "Kirishda xatolik yuz berdi",
     "something_wrong": "Nimadir yemadi...",
     "resetpassword": "Parolni o'zgartirish",
-    "back":"Orqaga qaytish"
+    "back":"Orqaga qaytish",
+    "test":"test"
 }
