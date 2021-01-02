@@ -7,15 +7,15 @@ Accounts.config({
   forbidClientAccountCreation: true,
   sendVerificationEmail: true
 });
-
+/* 
 Accounts.onCreateUser((options, user) => {
   const newUser = user;
-  if (validator.isEmail(options.email)) {
+  if (validator.isEmail(options.email) && options.profile) {
     return newUser;
   } else{
       throw new Meteor.Error('500', 'Please pass a valid email Address.')
   }
-});
+}); */
 
 Meteor.startup(() => {
 

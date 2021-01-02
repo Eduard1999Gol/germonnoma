@@ -38,7 +38,7 @@ function setLanguage() {
 /**
  * Router beforeactions
  */
-
+/* 
 Router.onBeforeAction(setLanguage, {});
 
 Router.onBeforeAction(loginNeeded, {
@@ -47,7 +47,7 @@ Router.onBeforeAction(loginNeeded, {
 		"register"
 		
 	]
-});
+}); */
 
 Router.configure({
 	layoutTemplate: 'Layout',
@@ -68,15 +68,4 @@ Router.route('/register', function () {
 {
 	name: 'register',
 	layoutTemplate: 'Layout'
-});
-
-Router.route('/verify-email/:token', function () {
-	this.render('VerifyEmail');
-},
-{
-	name: 'VerifyEmail',
-	layoutTemplate: 'Layout',
-	action: function () {
-		
-	}
 });

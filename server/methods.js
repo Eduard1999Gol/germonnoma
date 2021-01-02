@@ -14,18 +14,19 @@ function sendEmail(to, subject, text ) {
 Meteor.methods({
     register: function(language, first_name, last_name, email, password, type) {
         var user_exist = Meteor.users.find({'profile.email': email}).count();
-        if (user_exist == 0) {
-            var userId = Accounts.createUser({
+        var user = {
+            email: email,
+            password: password,
+            profile:{
+                first_name: first_name,
+                last_name: last_name,
                 email: email,
-                password: password,
-                profile:{
-                    first_name: first_name,
-                    last_name: last_name,
-                    email: email,
-                    type: type,
-                    language: language
-                }
-            });
+                type: type,
+                language: language
+            }
+        }
+        if (user_exist == 0) {
+            var userId = Accounts.createUser(user);
             if (userId) {
                 return userId;
             }
