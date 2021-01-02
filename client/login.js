@@ -16,6 +16,7 @@ Template.Signin.events({
     'click a#forgot-password':function(event){
         event.preventDefault();
         console.log(event);
+        Router.go('/resetpassword');
     },
     'submit form#login':function(event){
         event.preventDefault();
