@@ -10,5 +10,7 @@
     "already_have_account": "Haben Sie schon Konto?",
     "welcome_message": "Willkommen bei Germonnoma!",
     "login_failed": "Anmeldung fehlgeschlagen!",
-    "something_wrong": "Irgendwas ist schielfgelaufen..."
+    "something_wrong": "Irgendwas ist schielfgelaufen...",
+    "resetpassword": "Passwort zurücksetzen",
+    "back": "Zurück"
 }
