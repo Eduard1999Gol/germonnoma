@@ -45,6 +45,38 @@
   </div>  
 </template>
 
+<template name="ForgotPassword">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title center-align">{{_ "forgot_password"}}</span>
+            <form class="forgot-password">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" name="email" type="email" required>
+                  <label for="email">{{_ "Email"}}</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button type="submit" class="btn-large waves-effect waves-light right-align col s12">{{_ "send"}}</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s6">
+                  <p class="left-align"><a href="/">{{_ "back"}}</a></p>
+                </div>    
+                     
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</template>
 
 <template name="ResetPassword">
   <div class="container">
@@ -53,7 +85,7 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title center-align">{{_ "resetpassword"}}</span>
-            <form class="login-form">
+            <form class="reset-password">
               <div class="row">
                 <div class="input-field col s12">
                   <input id="password" name="password" type="password" required>
@@ -62,20 +94,14 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="password" name="password" type="password" required>
-                  <label for="password">{{_ "password_confirmation"}}</label>
+                  <input id="password_confirmation" name="password_confirmation" type="password" required>
+                  <label for="password_confirmation">{{_ "password_confirmation"}}</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
                   <button type="submit" class="btn-large waves-effect waves-light right-align col s12">{{_ "resetpassword"}}</button>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col s6">
-                  <p class="left-align"><a href="/">{{_ "back"}}</a></p>
-                </div>    
-                     
               </div>
             </form>
           </div>
