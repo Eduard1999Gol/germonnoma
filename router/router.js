@@ -69,11 +69,22 @@ Router.route('/register', function () {
 	name: 'register',
 	layoutTemplate: 'Layout'
 });
+Router.route('/forgotPassword', function () {
+	this.render('ForgotPassword');
+},
+{
+	name: 'forgotPassword',
+	layoutTemplate: 'Layout'
+});
 
-Router.route('/resetpassword', function () {
+Router.route('/resetpassword/:token', function () {
 	this.render('ResetPassword');
 },
 {
 	name: 'reset',
-	layoutTemplate: 'Layout'
+	layoutTemplate: 'Layout',
+	data: function () {
+		Session.set('passwordToken', this.params.token);
+		return this.params.token;
+	}
 });

@@ -7,15 +7,22 @@ Accounts.config({
   forbidClientAccountCreation: true,
   sendVerificationEmail: true
 });
-/* 
-Accounts.onCreateUser((options, user) => {
-  const newUser = user;
-  if (validator.isEmail(options.email) && options.profile) {
-    return newUser;
-  } else{
-      throw new Meteor.Error('500', 'Please pass a valid email Address.')
-  }
-}); */
+
+Accounts.emailTemplates.from = 'info@germonnoma.org';
+Accounts.emailTemplates.siteName = 'Germonnoma';
+
+Accounts.urls.resetPassword = function(token) {
+  return Meteor.absoluteUrl('resetpassword/' + token);
+};
+
+Accounts.emailTemplates.resetPassword.text = function(user, url) {
+  return 'Someone (hopefully you) has requested to reset your password. Please visit ' + url + ' to reset your password.'; 
+};
+
+Accounts.urls.verifyEmail = function(token) {
+  return Meteor.absoluteUrl('verifyEmail/' + token);
+};
+
 
 Meteor.startup(() => {
 
