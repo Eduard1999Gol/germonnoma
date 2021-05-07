@@ -15,8 +15,8 @@
     "jquery": "^3.5.1",
     "materialize-css": "^1.0.0",
     "meteor-node-stubs": "^1.0.1",
-    "sweetalert2": "^10.12.7",
-    "validator": "^13.5.2"
+    "sweetalert2": "^10.16.7",
+    "validator": "^13.6.0"
   },
   "meteor": {
     "mainModule": {
