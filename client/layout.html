@@ -15,5 +15,64 @@
         <h1><strong>New Amazon</strong></h1>
       </a>
     </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <button id="addItem" class="button is-black">
+            <strong>{{_ "add_item"}}</strong>
+          </button>
+          <select id="language" class="button is-black">
+            <option value="en"><strong>English</strong></option>
+            <option value="de"><strong>Deutsch</strong></option>
+          </select>
+        </div>
+      </div>
+    </div>
   </nav>
+  <div id="addItemModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content card">
+      <div class="form">
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Text input">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Text input">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Text input">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">Submit</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
 </template>

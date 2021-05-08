@@ -1,16 +1,3 @@
 {
-    "password": "Passwort",
-    "login": "Einloggen",
-    "register_now": "Jetzt Registrieren",
-    "forgot_password": "Passwort vergessen",
-    "first_name": "Vorname",
-    "last_name": "Nachname",
-    "password_confirmation": "Passwort bestätigen",
-    "register": "Registrieren",
-    "already_have_account": "Haben Sie schon Konto?",
-    "welcome_message": "Willkommen bei Germonnoma!",
-    "login_failed": "Anmeldung fehlgeschlagen!",
-    "something_wrong": "Irgendwas ist schielfgelaufen...",
-    "resetpassword": "Passwort zurücksetzen",
-    "back": "Zurück"
+    "add_item": "Artikel Erstellen"
 }
