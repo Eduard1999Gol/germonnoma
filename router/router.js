@@ -55,36 +55,5 @@ Router.configure({
 });
 
 Router.route('/', function () {
-	this.render('Login');
-},
-{
-	name: 'login',
-	layoutTemplate: 'Layout'
-});
-
-Router.route('/register', function () {
-	this.render('Signup');
-},
-{
-	name: 'register',
-	layoutTemplate: 'Layout'
-});
-Router.route('/forgotPassword', function () {
-	this.render('ForgotPassword');
-},
-{
-	name: 'forgotPassword',
-	layoutTemplate: 'Layout'
-});
-
-Router.route('/resetpassword/:token', function () {
-	this.render('ResetPassword');
-},
-{
-	name: 'reset',
-	layoutTemplate: 'Layout',
-	data: function () {
-		Session.set('passwordToken', this.params.token);
-		return this.params.token;
-	}
-});
+	this.render('Home');
+  });
