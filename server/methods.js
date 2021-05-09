@@ -35,5 +35,14 @@ Meteor.methods({
             return "This email Address is already registered";
         }
         
+    },
+    createProduct: function (product) {
+        product["created_at"] = new Date();
+        var id = Products.insert(product);
+        if (id) {
+            return id;
+        }else{
+            throw new Meteor.Error(502);
+        }
     }
 });

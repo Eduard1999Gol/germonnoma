@@ -37,3 +37,8 @@ Meteor.startup(() => {
   process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 
 });
+
+/* 
+Collections
+*/
+Products = new Mongo.Collection('products');
