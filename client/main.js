@@ -8,8 +8,8 @@ import './home.html';
 import './home.js';
 import './product.html';
 import './product.js';
-import './add_product.js';
 import './add_product.html';
+import './add_product.js';
 
 /* Collections */
 Products = new Mongo.Collection('products');
