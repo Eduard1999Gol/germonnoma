@@ -10,12 +10,12 @@
             <section  class="modal-card-body">
               <div class="columns">
                 <div class="column">
-                  <input class="input" type="text" name="product_name" placeholder="{{_ "product_name"}}" required>
+                  <input class="input" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{getProductDetails.name}}" required>
                 </div>
               </div>
               <div class="columns">
                 <div class="column">
-                  <input class="input" type="number" min="0" name="product_price" placeholder="{{_ "product_price"}}" required>
+                  <input class="input" type="number" min="0" name="product_price" value="{{getProductDetails.price}}" placeholder="{{_ "product_price"}}" required>
                 </div>
               </div>
               <div class="columns">

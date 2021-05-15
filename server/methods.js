@@ -44,5 +44,8 @@ Meteor.methods({
         }else{
             throw new Meteor.Error(502);
         }
+    },
+    deleteProduct: function (id) {
+        Products.remove({_id: id});
     }
 });

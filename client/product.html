@@ -20,15 +20,19 @@
                         <p class="is-pulled-left">{{this.price}} €</p>
                     </div>
                     <div class="column">
-                        <span class="fa fa-star half checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                       <button id="{{this._id}}" data-name="{{this.name}}" type="button" class="button is-danger delete-product" >
+                           Delete
+                       </button>
                     </div>
+                    <div class="column">
+                        <button id="{{this._id}}" type="button" class="button is-info edit-product" >
+                            Edit
+                        </button>
+                     </div>
                 </div>
               </div>
             </div>
           </div>
     </div>
+    {{> AddProduct}}
 </template>

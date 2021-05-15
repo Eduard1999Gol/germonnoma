@@ -8,12 +8,6 @@ Template.AddProduct.onRendered(function(){
 });
 
 Template.AddProduct.events({
-    'click button#addProduct': function (event) {
-        event.preventDefault();
-        $('.modal#addProductModal').addClass('is-active');
-        $('html').addClass('is-clipped');
-        
-    },
     'click .close-modal': function (event) {
         event.preventDefault();
         helper_functions.closeModal();
@@ -49,7 +43,9 @@ Template.AddProduct.events({
 });
 
 Template.AddProduct.helpers({
-    
+        'getProductDetails': function () {
+            return Products.findOne({_id: Session.get('product_id')});
+        }
 });
 
 
