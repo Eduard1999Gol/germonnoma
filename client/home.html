@@ -1,5 +1,7 @@
 <template name="Home">
-    <div class="colums">
-        {{> Product}}
+    <div class="columns is-multiline">
+        {{#each products}}
+            {{> Product}}
+        {{/each}}
     </div>
 </template>

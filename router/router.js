@@ -55,5 +55,19 @@ Router.configure({
 });
 
 Router.route('/', function () {
-	this.render('Home');
-  });
+	this.subscribe("products");
+	if (this.ready()) {
+		this.render("Home");
+	} else {
+		this.render('Loading');
+	}
+},{
+	name: "home",
+	layoutTemplate: "Layout",
+	data: function () {
+		var products = Products.find({}).fetch();
+		return {
+			products: products
+		}
+	}
+});
