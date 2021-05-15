@@ -33,36 +33,4 @@
       </div>
     </div>
   </nav>
-  <div id="addProductModal" class="modal">
-    <div class="modal-background"></div>
-    <form id="addProductForm">
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">{{_ "add_product"}}</p>
-          <button type="button" class="delete close-modal" aria-label="close"></button>
-        </header>
-        <section  class="modal-card-body">
-          <div class="columns">
-            <div class="column">
-              <input class="input" type="text" name="product_name" placeholder="{{_ "product_name"}}" required>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column">
-              <input class="input" type="number" min="0" name="product_price" placeholder="{{_ "product_price"}}" required>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column">
-              <textarea class="textarea" name="product_description" placeholder="{{_ "product_description"}}" required></textarea>
-            </div>
-          </div>
-        </section>
-        <footer class="modal-card-foot">
-          <button type="submit" class="button is-success">{{_ "save"}}</button>
-          <button type="button" class="button close-modal">{{_ "cancel"}}</button>
-        </footer>
-      </div>
-    </form>
-  </div>
 </template>
