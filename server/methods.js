@@ -57,6 +57,7 @@ Meteor.methods({
         }, 
         {
             $set: {
+                category: product.category,
                 name: product.name,
                 price: product.price,
                 description: product.description

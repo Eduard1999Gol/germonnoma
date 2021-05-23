@@ -46,6 +46,17 @@
             <section  class="modal-card-body">
               <div class="columns">
                 <div class="column">
+                  <div class="select is-fullwidth">
+                    <select name="category">
+                      {{#each getCategories}}
+                      <option value="{{this.value}}" {{selectedCategory getProductDetails.category this.value}}>{{this.display}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
                   <input class="input product_name"  id="{{this._id}}" type="text" name="product_name" placeholder="{{_ "product_name"}}"  required>
                 </div>
               </div>

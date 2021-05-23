@@ -10,6 +10,7 @@ import './product.html';
 import './product.js';
 import './add_product.html';
 import './add_product.js';
+import './global_helpers.js';
 
 
 /* Collections */

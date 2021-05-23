@@ -1,5 +1,6 @@
 import { toast } from 'bulma-toast';
 import helper_functions from './lib/helper_functions';
+import category from './product_category.js';
 
 Template.AddProduct.onCreated(function(){
 });
@@ -12,10 +13,12 @@ Template.AddProduct.events({
     'click .close-modal': function (event) {
         event.preventDefault();
         helper_functions.closeModal();
+        console.log(category);
     },
     'submit form#addProductForm':function (event) {
         event.preventDefault();
         var product = {
+            category: event.target.category.value,
             name: event.target.product_name.value,
             price: event.target.product_price.value,
             description: event.target.product_description.value
@@ -45,9 +48,8 @@ Template.AddProduct.events({
 
 
 Template.AddProduct.helpers({
-        'getProductDetails': function () {
-            return Products.findOne({_id: Session.get('product_id')});
-        }
+  
+        
 });
 
 
