@@ -4,6 +4,7 @@
     <script src="https://kit.fontawesome.com/d576f4c65a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.0.0/animate.min.css"/>
     {{> Navbar}}
     <div class="column">
       {{> yield}}
@@ -29,40 +30,9 @@
             <option value="en"><strong>English</strong></option>
             <option value="de"><strong>Deutsch</strong></option>
           </select>
+          {{> AddProduct}}
         </div>
       </div>
     </div>
   </nav>
-  <div id="addProductModal" class="modal">
-    <div class="modal-background"></div>
-    <form id="addProductForm">
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">{{_ "add_product"}}</p>
-          <button type="button" class="delete close-modal" aria-label="close"></button>
-        </header>
-        <section  class="modal-card-body">
-          <div class="columns">
-            <div class="column">
-              <input class="input" type="text" name="product_name" placeholder="{{_ "product_name"}}" required>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column">
-              <input class="input" type="number" min="0" name="product_price" placeholder="{{_ "product_price"}}" required>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column">
-              <textarea class="textarea" name="product_description" placeholder="{{_ "product_description"}}" required></textarea>
-            </div>
-          </div>
-        </section>
-        <footer class="modal-card-foot">
-          <button type="submit" class="button is-success">{{_ "save"}}</button>
-          <button type="button" class="button close-modal">{{_ "cancel"}}</button>
-        </footer>
-      </div>
-    </form>
-  </div>
 </template>
