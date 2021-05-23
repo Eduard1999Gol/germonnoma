@@ -18,6 +18,10 @@ Template.Layout.events({
         $('html').addClass('is-clipped');
         
     },
+    'click a#home': function (event) {
+        event.preventDefault();
+        Router.go('/');
+    }
 });
 
 Template.Layout.helpers({

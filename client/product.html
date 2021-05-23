@@ -2,7 +2,7 @@
     <div class=" column is-3">
         <div class="card">
             <div class="card-image">
-                <a href="">
+                <a data-id="{{this._id}}" id="" href="{{ pathFor route='productDetails' _id=this._id}}">
                     <figure class="image is-1280x900">
                         <img src="https://bulma.io/images/placeholders/128x128.png">
                       </figure>
@@ -12,29 +12,18 @@
               <div class="content">
                 <div class="columns">
                     <div class="column">
-                        <a href=""><strong><h4>{{this.name}}</h4></strong></a>
+                        <a href="{{ pathFor route='productDetails' _id=this._id}}"><strong><h4>{{this.name}}</h4></strong></a>
                     </div>
                 </div>
                 <div class="columns">
                     <div class="column">
                         <p class="is-pulled-left">{{this.price}} €</p>
                     </div>
-                    <div class="column">
-                       <button id="{{this._id}}" data-name="{{this.name}}" type="button" class="button is-danger delete-product" >
-                           {{_"delete"}}
-                       </button>
-                    </div>
-                    <div class="column">
-                        <button id="{{this._id}}" type="button" class="button is-info edit-product" >
-                            {{_"edit"}}
-                        </button>
-                     </div>
                 </div>
               </div>
             </div>
           </div>
     </div>
-    {{> AddProduct}}
     <div id="{{this._id}}" class="modal">
         <div class="modal-background"></div>
         <form id="editProductForm" data-id="{{this._id}}">

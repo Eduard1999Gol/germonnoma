@@ -3,7 +3,6 @@ import { toast } from "bulma-toast";
 Template.Product.events({
     'click button.delete-product': function (event) {
         event.preventDefault();
-        console.log(event);
         var id = event.target.id;
         var name = event.target.dataset.name;
         var prove = window.confirm(TAPi18n.__('confirm_delete_product')+" :"+ name );
@@ -43,7 +42,10 @@ Template.Product.events({
         
         
     },
-    
+    'click a#goToProduct': function (event) {
+        event.preventDefault();
+        Router.go('/productDetails', {_id: event.target.dataset.id});
+    },
     'click button.edit-product': function (event){
         event.preventDefault();
         var id = event.target.id;

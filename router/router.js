@@ -71,3 +71,33 @@ Router.route('/', function () {
 		}
 	}
 });
+
+Router.route('/products/:_id', function () {
+	this.subscribe("products");
+	if (this.ready()) {
+		this.render("ProductDetails");
+	} else {
+		this.render('Loading');
+	}
+},{
+	name: "productDetails",
+	layoutTemplate: "Layout",
+	data: function () {
+		var product = Products.findOne({_id: this.params._id});
+		return {
+			product: product
+		}
+	}
+});
+
+Router.route('/addproduct', function () {
+	this.subscribe("products");
+	if (this.ready()) {
+		this.render("AddProduct");
+	} else {
+		this.render('Loading');
+	}
+},{
+	name: "addProduct",
+	layoutTemplate: "Layout"
+});

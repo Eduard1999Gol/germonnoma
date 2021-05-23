@@ -13,7 +13,6 @@ Template.AddProduct.events({
     'click .close-modal': function (event) {
         event.preventDefault();
         helper_functions.closeModal();
-        console.log(category);
     },
     'submit form#addProductForm':function (event) {
         event.preventDefault();

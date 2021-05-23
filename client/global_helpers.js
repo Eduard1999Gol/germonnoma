@@ -15,8 +15,6 @@ Template.registerHelper("getCategories", function () {
 });
 
 Template.registerHelper("selectedCategory", function (p_category, opt_value) {
-    console.log(p_category);
-    console.log(opt_value);
     if (p_category==opt_value) {
         return "selected"
         

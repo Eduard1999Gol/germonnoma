@@ -10,6 +10,8 @@ import './product.html';
 import './product.js';
 import './add_product.html';
 import './add_product.js';
+import './product_details.html';
+import './product_details.js';
 import './global_helpers.js';
 
 
