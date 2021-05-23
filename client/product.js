@@ -47,6 +47,7 @@ Template.Product.events({
     'click button.edit-product': function (event){
         event.preventDefault();
         var id = event.target.id;
+        Session.set('product_id', id);
         var product = Products.findOne({_id: event.target.id});
         $('input.product_name#'+id)[0].value = product.name;
         $('input.product_price#'+id)[0].value = product.price;
@@ -68,7 +69,9 @@ Template.Product.events({
         var name = event.target.product_name.value;
         var price = event.target.product_price.value;
         var description = event.target.product_description.value;
+        var category = event.target.category.value;
         var product = {
+            category: category,
             name: name,
             price: price,
             description: description
@@ -101,5 +104,7 @@ Template.Product.events({
 
 
 Template.Product.helpers({
-
+    'getProductDetails': function () {
+        return Products.findOne({_id: Session.get('product_id')});
+    }
 });
