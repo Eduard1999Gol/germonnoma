@@ -7,6 +7,7 @@ Template.AddProduct.onCreated(function(){
 Template.AddProduct.onRendered(function(){
 });
 
+
 Template.AddProduct.events({
     'click .close-modal': function (event) {
         event.preventDefault();
@@ -41,6 +42,7 @@ Template.AddProduct.events({
         helper_functions.closeModal();
     }
 });
+
 
 Template.AddProduct.helpers({
         'getProductDetails': function () {

@@ -43,14 +43,35 @@ Template.Product.events({
         
         
     },
+    
     'click button.edit-product': function (event){
         event.preventDefault();
-        Session.set('product_id', event.target.id);
-        $('.modal#addProductModal').addClass('is-active');
+        $('.modal#editProduct').addClass('is-active');
         $('html').addClass('is-clipped');
-    }
+
+    },
+
+     
+    
+    'click .close-modal': function (event) {
+        
+        event.preventDefault();
+        helper_functions.closeModal();
+        console.log("pisdec");
+    },
+
+
+    'click button-editen': function(event){
+        event.preventDefault();
+        Meteor.call('updateProduct');
 
         
+        helper_functions.closeModal();
+
+    }
+     
+  
+    
 });
 
 Template.Product.helpers({

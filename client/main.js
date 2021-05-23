@@ -11,6 +11,7 @@ import './product.js';
 import './add_product.html';
 import './add_product.js';
 
+
 /* Collections */
 Products = new Mongo.Collection('products');
 
