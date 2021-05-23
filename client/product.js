@@ -13,7 +13,7 @@ Template.Product.events({
                     toast({
                         message: TAPi18n.__('product_deleted'),
                         type: 'is-success',
-                        duration: 1000,
+                        duration: 3000,
                         position: "bottom-right",
                         closeOnClick: true,
                         animate: { in: 'fadeIn', out: 'fadeOut' }
@@ -22,7 +22,7 @@ Template.Product.events({
                     toast({
                         message: TAPi18n.__('product_not_deleted'),
                         type: 'is-danger',
-                        duration: 1000,
+                        duration: 3000,
                         position: "bottom-right",
                         closeOnClick: true,
                         animate: { in: 'fadeIn', out: 'fadeOut' }
@@ -34,7 +34,7 @@ Template.Product.events({
             toast({
                 message: TAPi18n.__('product_not_deleted'),
                 type: 'is-danger',
-                duration: 1000,
+                duration: 3000,
                 position: "bottom-right",
                 closeOnClick: true,
                 animate: { in: 'fadeIn', out: 'fadeOut' }
@@ -55,9 +55,6 @@ Template.Product.events({
         $('html').addClass('is-clipped');
 
     },
-
-     
-    
     'click .close-modal': function (event) {
         
         event.preventDefault();
@@ -95,22 +92,10 @@ Template.Product.events({
                     closeOnClick: true,
                     animate: { in: 'fadeIn', out: 'fadeOut' }
                 });
-
-            }
-
-           
-            
+            }  
         }),
-        helper_functions.closeModal();
-
-
-        console.log(product);
-        console.log(id)
-        
+        helper_functions.closeModal();      
     }
-
-
-    
 });
 
 

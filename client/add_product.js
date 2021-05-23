@@ -25,7 +25,7 @@ Template.AddProduct.events({
                 toast({
                     message: TAPi18n.__('product_created'),
                     type: 'is-success',
-                    duration: 350,
+                    duration: 3000,
                     position: "bottom-right",
                     closeOnClick: true
                 });
@@ -33,7 +33,7 @@ Template.AddProduct.events({
                 toast({
                     message: TAPi18n.__('product_not_created'),
                     type: 'is-danger',
-                    duration: 350,
+                    duration: 3000,
                     position: "bottom-right",
                     closeOnClick: true
                 });
