@@ -45,7 +45,26 @@ Meteor.methods({
             throw new Meteor.Error(502);
         }
     },
+
     deleteProduct: function (id) {
         Products.remove({_id: id});
+    },
+
+    updateProduct: function (id, product) {
+        product["edited_at"] = new Date();
+        Products.update({
+            _id: id
+        }, 
+        {
+            $set: {
+                name: product.name,
+                price: product.price,
+                description: product.description
+
+            }
+        }
+        )
+
+        
     }
 });
