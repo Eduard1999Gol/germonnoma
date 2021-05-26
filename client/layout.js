@@ -12,12 +12,7 @@ Template.Layout.events({
         event.preventDefault();
         TAPi18n.setLanguage(event.target.value);
     },
-    'click button#addProduct': function (event) {
-        event.preventDefault();
-        $('.modal#addProductModal').addClass('is-active');
-        $('html').addClass('is-clipped');
-        
-    },
+   
     'click a#home': function (event) {
         event.preventDefault();
         Router.go('/');

@@ -1,3 +1,64 @@
 <template name="ProductDetails">
-    <H1>{{product.name}}</H1>
+    <h1 class="title is-1">{{product.name}}</h1>
+    <div class="notification is-info">
+        <button class="delete"></button>
+        {{product.description}}
+      </div>
+      <button class="button is-danger is-outlined delete-product">
+        <span>Delete</span>
+        <span class="icon is-small">
+          <i class="fas fa-times"></i>
+        </span>
+      </button>
+      <button id="edit_product" class="button is-link">
+        edit
+      </button>
+      <button id="returnToProducts" type="button" class="button close-modal">{{_ "    back "}}</button>
+     
+      <div id="addProductModal" class="modal">
+        <div class="modal-background"></div>
+        <form id="addProductForm">
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">{{_ "add_product"}}</p>
+              <button type="button" class="delete close-modal" aria-label="close"></button>
+            </header>
+            <section  class="modal-card-body">
+              <div class="columns">
+                <div class="column">
+                  <div class="select is-fullwidth">
+                    <select name="category">
+                      {{#each getCategories}}
+                      <option value="{{this.value}}">{{this.display}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <input class="input" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{getProductDetails.name}}" required>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <input class="input" type="number" min="0" name="product_price" value="{{getProductDetails.price}}" placeholder="{{_ "product_price"}}" required>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <textarea class="textarea" name="product_description" placeholder="{{_ "product_description"}}" required></textarea>
+                </div>
+              </div>
+            </section>
+            <footer class="modal-card-foot">
+              <button type="submit" class="button is-success">{{_ "save changes"}}</button>
+              <button type="button" class="button close-modal">{{_ "cancel"}}</button>
+            </footer>
+          </div>
+        </form>
+    </div>
+
+
+
 </template>

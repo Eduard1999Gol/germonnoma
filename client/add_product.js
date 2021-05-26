@@ -10,10 +10,11 @@ Template.AddProduct.onRendered(function(){
 
 
 Template.AddProduct.events({
-    'click .close-modal': function (event) {
+    'click button#returnToProducts': function (event) {
         event.preventDefault();
-        helper_functions.closeModal();
+        Router.go('/');
     },
+    
     'submit form#addProductForm':function (event) {
         event.preventDefault();
         var product = {
