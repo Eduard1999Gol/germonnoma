@@ -32,6 +32,7 @@ Template.AddProduct.events({
                     position: "bottom-right",
                     closeOnClick: true
                 });
+                Router.go('/');
             }else{
                 toast({
                     message: TAPi18n.__('product_not_created'),

@@ -19,10 +19,9 @@ Template.ProductDetails.events({
 
     'click button.delete-product': function (event) {
         event.preventDefault();
-        var id = event.target.id;
+        var id = event.target.dataset.id;
         var name = event.target.dataset.name;
         var prove = window.confirm(TAPi18n.__('confirm_delete_product')+" :"+ name );
-        Router.go('/');
         if (prove) {
             Meteor.call("deleteProduct", id, function (err, res) {
                 if (!err) {
@@ -34,6 +33,7 @@ Template.ProductDetails.events({
                         closeOnClick: true,
                         animate: { in: 'fadeIn', out: 'fadeOut' }
                     });
+                    Router.go('/');
                 }else{
                     toast({
                         message: TAPi18n.__('product_not_deleted'),
@@ -56,9 +56,6 @@ Template.ProductDetails.events({
                 animate: { in: 'fadeIn', out: 'fadeOut' }
             });
         }
-       
-        
-        
     },
     'click a#goToProduct': function (event) {
         event.preventDefault();

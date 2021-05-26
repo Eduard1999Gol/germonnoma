@@ -1,4 +1,7 @@
 {
-    "add_Product": "Artikel Erstellen",
-    "product_name": "Artikel Name"
+    "add_product": "Artikel Erstellen",
+    "product_name": "Artikel Name",
+    "save": "Speichern",
+    "back": "Zurück",
+    "product_created": "Artikel wurde erstellt"
 }

@@ -14,21 +14,21 @@
 
 <template name="Navbar">
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <a class="navbar-Product" id="home">
-      <i class="fas fa-fire-alt fa-3x "></i>
-    </a>
+    
     <div class="navbar-brand">
-      <a class="navbar-Product" id="home">
-        <h1><strong>New Amazon</strong></h1>
-      </a>
+      <div class="column">
+        <a class="navbar-Product" id="home">
+          <h1 class="title"><strong>New Amazon</strong></h1>
+        </a>
+      </div>
     </div>
     <div class="navbar-end">
       <div class="navbar-Product">
-        <div class="buttons">
-          <a id="addProduct" href="{{ pathFor route='addProduct'}}" class="button is-black">
-            <strong>{{_ "add_Product"}}</strong>
+        <div class="column">
+          <a id="addProduct" href="{{ pathFor route='addProduct'}}" class="button">
+            {{_ "add_product"}}
           </a>
-          <select id="language" class="button is-black">
+          <select id="language" class="button">
             <option value="en"><strong>English</strong></option>
             <option value="de"><strong>Deutsch</strong></option>
           </select>

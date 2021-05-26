@@ -1,4 +1,7 @@
 {
-    "add_Product": "Create product",
-    "product_name": "Product name"
+    "add_product": "Create product",
+    "product_name": "Product name",
+    "save": "Save",
+    "back": "Back",
+    "product_created": "Product created"
 }
