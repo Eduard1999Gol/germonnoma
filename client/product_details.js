@@ -63,18 +63,9 @@ Template.ProductDetails.events({
     },
     
     'click button.edit-product': function (event){
-        console.log(event)
-        var id = event.target.id;
-        Session.set('product_id', id);
-        var product = Products.findOne({_id: event.target.id});
-        console.log($('input.product_name'+id)[0]);
-        
-        $('input.product_name#'+id)[0].placeholder = product.name;
-        $('input.product_price#'+id)[0].placeholder = product.price;
-        $('textarea.product_description#'+id)[0].placeholder = product.description;
-        $('.modal#'+id).addClass('is-active');
-        $('html').addClass('is-clipped');
-        
+        event.preventDefault();
+        Router.go('productEdit', {_id: event.target.dataset.id});
+
 
 
     },
