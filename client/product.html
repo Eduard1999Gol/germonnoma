@@ -24,47 +24,4 @@
             </div>
           </div>
     </div>
-    <div id="{{this._id}}" class="modal">
-        <div class="modal-background"></div>
-        <form id="editProductForm" data-id="{{this._id}}">
-          <div class="modal-card">
-            <header class="modal-card-head">
-              <p class="modal-card-title">{{_ "add_product"}}</p>
-              <button type="button" class="delete close-modal" aria-label="close"></button>
-            </header>
-            <section  class="modal-card-body">
-              <div class="columns">
-                <div class="column">
-                  <div class="select is-fullwidth">
-                    <select name="category">
-                      {{#each getCategories}}
-                      <option value="{{this.value}}" {{selectedCategory getProductDetails.category this.value}}>{{this.display}}</option>
-                      {{/each}}
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="columns">
-                <div class="column">
-                  <input class="input product_name"  id="{{this._id}}" type="text" name="product_name" placeholder="{{_ "product_name"}}"  required>
-                </div>
-              </div>
-              <div class="columns">
-                <div class="column">
-                  <input class="input product_price" type="number"  id="{{this._id}}" min="0" name="product_price"  placeholder="{{_ "product_price"}}" required>
-                </div>
-              </div>
-              <div class="columns">
-                <div class="column">
-                  <textarea class="textarea product_description"  id="{{this._id}}" name="product_description" placeholder="{{_ "product_description"}}" required></textarea>
-                </div>
-              </div>
-            </section>
-            <footer class="modal-card-foot">
-              <button type="submit" class="button is-success">{{_ "save"}}</button>
-              <button type="button" class="button close-modal">{{_ "cancel"}}</button>
-            </footer>
-          </div>
-        </form>
-    </div>
 </template>

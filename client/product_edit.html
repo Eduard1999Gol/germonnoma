@@ -2,13 +2,13 @@
     <h1 class="title">{{_ "edit_product"}}</h1>
     <div class="columns">
         <div class="column">
-          <form id="addProductForm">
+          <form id="editProductForm">
             <div class="columns">
                 <div class="column">
                     <div class="select is-fullwidth is-black">
                       <select name="category">
                         {{#each getCategories}}
-                        <option value="{{this.value}}" {{isSelected this.value product.category}}>{{this.display}}</option>
+                        <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
                         {{/each}}
                       </select>
                     </div>
@@ -32,7 +32,7 @@
             <div class="columns">
               <div class="column">
                 <button id="addProductForm" type="submit" class="button is-success">{{_ "save"}}</button>
-                <button id="returnToProducts" type="button" class="button close-modal">{{_ "back"}}</button>
+                <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=product._id}}" class="button goToProduct">{{_ "cancel"}}</a>
               </div>
             </div>
           </form>

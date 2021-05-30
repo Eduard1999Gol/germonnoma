@@ -6,20 +6,14 @@ import category from './product_category.js';
 
 Template.registerHelper("getCategories", function () {
     var codes = [];
-            for(var k in category){
-                if(k){
-                    codes.push({value: k, display: category[k]});
-                }
-            }
-            return codes;
+    for (var k in category) {
+        if (k) {
+            codes.push({ value: k, display: category[k] });
+        }
+    }
+    return codes;
 });
 
-Template.registerHelper("selectedCategory", function (p_category, opt_value) {
-    if (p_category==opt_value) {
-        return "selected"
-        
-    } else {
-        return ""
-        
-    }
+Template.registerHelper("getCategoryName", function (key) {
+    return category[key]
 });
