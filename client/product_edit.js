@@ -1,12 +1,3 @@
-import { toast } from 'bulma-toast';
-import helper_functions from './lib/helper_functions';
-
-Template.ProductEditPage.onCreated(function(){
-});
-
-
-Template.ProductEditPage.onRendered(function(){
-});
 
 
 Template.ProductEditPage.events({

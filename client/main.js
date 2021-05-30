@@ -13,8 +13,8 @@ import './add_product.js';
 import './product_details.html';
 import './product_details.js';
 import './global_helpers.js';
-import './product_edit.js';
 import './product_edit.html';
+import './product_edit.js';
 
 
 
