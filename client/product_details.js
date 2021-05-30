@@ -6,7 +6,7 @@ import category from './product_category.js';
 Template.ProductDetails.events({
     'click button#edit_product': function (event) { 
         event.preventDefault();
-        console.log("jdsfjg")
+        console.log("jdsfjg");
         var id = event.target.id;
         Session.set('product_id', id);
         var product = Products.findOne({_id: event.target.id});
@@ -61,9 +61,13 @@ Template.ProductDetails.events({
         event.preventDefault();
         Router.go('/productDetails', {_id: event.target.dataset.id});
     },
+    
     'click button.edit-product': function (event){
         event.preventDefault();
-        console.log(event.target.dataset.id);
+        Router.go('productEdit', {_id: event.target.dataset.id});
+
+
+
     },
     'click .close-modal': function (event) {
         
@@ -76,8 +80,9 @@ Template.ProductDetails.events({
         Router.go('/');
 
     },    
-
+    //save edited Product
     'submit form#editProductForm': function (event) {
+        console.log("ddd")
         event.preventDefault();
         var id = event.target.dataset.id;
         var name = event.target.product_name.value;

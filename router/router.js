@@ -63,7 +63,6 @@ Router.route('/', function () {
 	}
 },{
 	name: "home",
-	layoutTemplate: "Layout",
 	data: function () {
 		var products = Products.find({}).fetch();
 		return {
@@ -81,7 +80,6 @@ Router.route('/products/:_id', function () {
 	}
 },{
 	name: "productDetails",
-	layoutTemplate: "Layout",
 	data: function () {
 		var product = Products.findOne({_id: this.params._id});
 		return {
@@ -99,5 +97,21 @@ Router.route('/addproduct', function () {
 	}
 },{
 	name: "addProduct",
-	layoutTemplate: "Layout"
+});
+
+Router.route('/products/:_id/edit_product', function () {
+	this.subscribe("publishProductId", this.params._id);
+	if (this.ready()) {
+		this.render("ProductEditPage");
+	} else {
+		this.render('Loading');
+	}
+},{
+	name: "productEdit",
+	data: function () {
+		var product = Products.findOne({_id: this.params._id});
+		return {
+			product: product
+		}
+	}
 });

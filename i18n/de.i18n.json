@@ -1,6 +1,7 @@
-{
+{  
     "add_product": "Artikel Erstellen",
     "product_name": "Artikel Name",
+    "product_price": "Arikelpreis",
     "save": "Speichern",
     "back": "Zurück",
     "product_created": "Artikel wurde erstellt"
