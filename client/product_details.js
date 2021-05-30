@@ -63,15 +63,7 @@ Template.ProductDetails.events({
     },
     'click button.edit-product': function (event){
         event.preventDefault();
-        var id = event.target.id;
-        Session.set('product_id', id);
-        var product = Products.findOne({_id: event.target.id});
-        $('input.product_name#'+id)[0].value = product.name;
-        $('input.product_price#'+id)[0].value = product.price;
-        $('textarea.product_description#'+id)[0].value = product.description;
-        $('.modal#'+id).addClass('is-active');
-        $('html').addClass('is-clipped');
-
+        console.log(event.target.dataset.id);
     },
     'click .close-modal': function (event) {
         
