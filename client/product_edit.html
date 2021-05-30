@@ -1,44 +1,65 @@
-<template name="ProductEditPage" >
+<template name="ProductEditPage">
     <h1 class="title">{{_ "edit_product"}}</h1>
     <div class="columns">
         <div class="column">
-          <form id="editProductForm">
-            <div class="columns">
-                <div class="column">
-                    <div class="select is-fullwidth is-black">
-                      <select name="category">
-                        {{#each getCategories}}
-                        <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
-                        {{/each}}
-                      </select>
+            <form id="editProductForm">
+                <div class="columns">
+                    <div class="column">
+                        <div class="select is-fullwidth is-black">
+                            <select name="category">
+                                {{#each getCategories}}
+                                <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
                     </div>
-                  </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <input class="input is-black" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{product.name}}" required>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <input class="input is-black" type="number" min="0" name="product_price" value="{{product.price}}" placeholder="{{_ "product_price"}}" required>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <textarea class="textarea is-black" name="product_description" placeholder="{{_ "product_description"}}" required>{{product.description}}</textarea>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <button id="addProductForm" type="submit" class="button is-success">{{_ "save"}}</button>
-                <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=product._id}}" class="button goToProduct">{{_ "cancel"}}</a>
-              </div>
-            </div>
-          </form>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <input class="input is-black" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{product.name}}" required>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <input class="input is-black" type="number" min="0" name="product_price"
+                            value="{{product.price}}" placeholder="{{_ " product_price"}}" required>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <textarea class="textarea is-black" name="product_description" placeholder="{{_ "product_description"}}" required>{{product.description}}</textarea>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <button id="addProductForm" type="submit" class="button is-success">{{_ "save"}}</button>
+                        <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=product._id}}"
+                            class="button goToProduct">{{_ "cancel"}}</a>
+                    </div>
+                </div>
+            </form>
         </div>
-    <div class="column">
-        Bild
+        <div class="column">
+            <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="{{product.img}}" alt="Placeholder image">
+                  </figure>
+                </div>
+              </div>
+            <div class="file">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="resume" accept="image/png, image/jpeg" >
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            {{_ "choose_picture"}}
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
     </div>
-      </div>
 </template>

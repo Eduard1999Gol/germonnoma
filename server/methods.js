@@ -67,5 +67,19 @@ Meteor.methods({
         )
 
         
+    },
+    updateImage: function (id, img) {
+        Products.update({
+            _id: id
+        }, 
+        {
+            $set: {
+                img: img,
+                edited_at: new Date()
+            }
+        }
+        );
+
+        
     }
 });
