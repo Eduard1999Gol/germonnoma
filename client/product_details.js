@@ -6,7 +6,7 @@ import category from './product_category.js';
 Template.ProductDetails.events({
     'click button#edit_product': function (event) { 
         event.preventDefault();
-        console.log("jdsfjg")
+        console.log("jdsfjg");
         var id = event.target.id;
         Session.set('product_id', id);
         var product = Products.findOne({_id: event.target.id});
@@ -61,16 +61,21 @@ Template.ProductDetails.events({
         event.preventDefault();
         Router.go('/productDetails', {_id: event.target.dataset.id});
     },
+    
     'click button.edit-product': function (event){
-        event.preventDefault();
+        console.log(event)
         var id = event.target.id;
         Session.set('product_id', id);
         var product = Products.findOne({_id: event.target.id});
-        $('input.product_name#'+id)[0].value = product.name;
-        $('input.product_price#'+id)[0].value = product.price;
-        $('textarea.product_description#'+id)[0].value = product.description;
+        console.log($('input.product_name'+id)[0]);
+        
+        $('input.product_name#'+id)[0].placeholder = product.name;
+        $('input.product_price#'+id)[0].placeholder = product.price;
+        $('textarea.product_description#'+id)[0].placeholder = product.description;
         $('.modal#'+id).addClass('is-active');
         $('html').addClass('is-clipped');
+        
+
 
     },
     'click .close-modal': function (event) {
@@ -84,8 +89,9 @@ Template.ProductDetails.events({
         Router.go('/');
 
     },    
-
+    //save edited Product
     'submit form#editProductForm': function (event) {
+        console.log("ddd")
         event.preventDefault();
         var id = event.target.dataset.id;
         var name = event.target.product_name.value;
