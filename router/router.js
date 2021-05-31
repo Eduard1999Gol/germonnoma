@@ -72,7 +72,8 @@ Router.route('/', function () {
 });
 
 Router.route('/products/:_id', function () {
-	this.subscribe("products");
+	this.subscribe("publishProductId", this.params._id);
+	this.subscribe("productImageById", this.params._id);
 	if (this.ready()) {
 		this.render("ProductDetails");
 	} else {
@@ -82,8 +83,10 @@ Router.route('/products/:_id', function () {
 	name: "productDetails",
 	data: function () {
 		var product = Products.findOne({_id: this.params._id});
+		var image = ProductImages.findOne({'meta.product_id': this.params._id});
 		return {
-			product: product
+			product: product,
+			image: image
 		}
 	}
 });
@@ -101,6 +104,7 @@ Router.route('/addproduct', function () {
 
 Router.route('/products/:_id/edit_product', function () {
 	this.subscribe("publishProductId", this.params._id);
+	this.subscribe("productImageById", this.params._id);
 	if (this.ready()) {
 		this.render("ProductEditPage");
 	} else {
@@ -110,8 +114,10 @@ Router.route('/products/:_id/edit_product', function () {
 	name: "productEdit",
 	data: function () {
 		var product = Products.findOne({_id: this.params._id});
+		var image = ProductImages.findOne({'meta.product_id': this.params._id});
 		return {
-			product: product
+			product: product,
+			image: image
 		}
 	}
 });

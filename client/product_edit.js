@@ -1,28 +1,32 @@
 import { toast } from 'bulma-toast';
 import helper_functions from './lib/helper_functions';
 import category from './product_category.js';
-var base64Img = require('base64-img');
 
 Template.ProductEditPage.events({
     'change input.file-input':function (event) {
         event.preventDefault();
-        console.log(event.target.files)
-        var url = URL.createObjectURL(event.target.files[0]).slice(5);
         var id = Template.instance().data.product._id;
-        base64Img.requestBase64(url, function(err, res, body) {
-            if (err) {
-                console.log(err);
-            } else {
-                Meteor.call('updateImage', id, body, function (err, res) {
-                    if (!err) {
-                        alert('image uploaded');
-                    } else {
-                        alert('image not uploaded')
+        Meteor.call('removeImage', id, function(err, res){
+            if(!err){
+                const upload = ProductImages.insert({
+                    file: event.target.files[0],
+                    chunkSize: 'dynamic',
+                    meta: {
+                        product_id: id
                     }
-                })
+                  }, false);
+                  upload.on('end', function (error, fileObj) {
+                    if (error) {
+                      return error;
+                    } else {
+                      return true;
+                    }
+                  });
+                  upload.start();
+            }else{
+                console.log(err);
             }
-        });
-        
+        })
     },
 
     "submit form#editProductForm": function (event) {

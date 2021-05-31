@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo';
+import { FilesCollection } from 'meteor/ostrio:files';
 
 /* Pages */
 import '../router/router.js';
@@ -21,4 +22,5 @@ import './product_edit.js';
 
 /* Collections */
 Products = new Mongo.Collection('products');
+ProductImages = new FilesCollection({ collectionName: 'ProductImages'});
 

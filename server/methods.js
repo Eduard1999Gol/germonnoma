@@ -61,25 +61,20 @@ Meteor.methods({
                 name: product.name,
                 price: product.price,
                 description: product.description
-
             }
-        }
-        )
-
-        
+        });
     },
-    updateImage: function (id, img) {
+    removeImage: function (id) {
+        ProductImages.remove({
+            'meta.product_id': id
+        });
         Products.update({
             _id: id
         }, 
         {
             $set: {
-                img: img,
-                edited_at: new Date()
+                "image_link": "https://bulma.io/images/placeholders/1280x960.png"
             }
-        }
-        );
-
-        
+        });
     }
 });
