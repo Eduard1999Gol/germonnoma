@@ -23,6 +23,7 @@ Template.AddProduct.events({
             price: event.target.product_price.value,
             description: event.target.product_description.value
         }
+        console.log(product)
         Meteor.call('createProduct', product, function (err, res) {
             if (!err) {
                 toast({
@@ -44,7 +45,32 @@ Template.AddProduct.events({
             }
         });
         helper_functions.closeModal();
-    }
+    },
+    'change input.file-input':function (event) {
+        event.preventDefault();
+        var id = Template.instance().data.product._id;
+        Meteor.call('createImage', id, function(err, res){
+            if(!err){
+                const upload = ProductImages.insert({
+                    file: event.target.files[0],
+                    chunkSize: 'dynamic',
+                    meta: {
+                        product_id: id
+                    }
+                  }, false);
+                  upload.on('end', function (error, fileObj) {
+                    if (error) {
+                      return error;
+                    } else {
+                      return true;
+                    }
+                  });
+                  upload.start();
+            }else{
+                console.log(err);
+            }
+        })
+    },
 });
 
 

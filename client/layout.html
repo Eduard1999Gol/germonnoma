@@ -1,4 +1,4 @@
-<template name="Layout">
+<template name="Layout" class="background has-background-info">
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/d576f4c65a.js" crossorigin="anonymous"></script>
@@ -12,13 +12,14 @@
 </template>
 
 
-<template name="Navbar">
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    
+<template name="Navbar" >
+  <section class="hero is-link">
+    <div class="hero-body"> 
+  <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <div class="column">
         <a class="navbar-Product" id="home">
-          <h1 class="title"><strong>New Amazon</strong></h1>
+          <h1 class="title is-1"><strong>New Amazon</strong></h1>
         </a>
       </div>
     </div>
@@ -37,4 +38,7 @@
       </div>
     </div>
   </nav>
+</div>
+</section>
 </template>
+

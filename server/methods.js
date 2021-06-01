@@ -76,5 +76,14 @@ Meteor.methods({
                 "image_link": "https://bulma.io/images/placeholders/1280x960.png"
             }
         });
-    }
+    },
+    createImage: function (image) {
+        image["created_at"] = new Date();
+        var id = ProductImages.insert(image);
+        if (id) {
+            return id;
+        }else{
+            throw new Meteor.Error(502);
+        }
+    },
 });
