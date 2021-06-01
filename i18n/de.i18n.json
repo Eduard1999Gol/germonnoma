@@ -4,5 +4,14 @@
     "product_price": "Arikelpreis",
     "save": "Speichern",
     "back": "Zurück",
-    "product_created": "Artikel wurde erstellt"
+    "product_created": "Artikel wurde erstellt",
+    "new_amazon": "Neue Amazon",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "cancel": "Abbrechen",
+    "choose_picture": "Bild auswählen",
+    "edit_product": "Artikel bearbeiten",
+    "price": "Preis",
+    "description": "Beschreibung",
+    "category": "Kategorie"
 }

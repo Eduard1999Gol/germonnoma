@@ -3,5 +3,15 @@
     "product_name": "Product name",
     "save": "Save",
     "back": "Back",
-    "product_created": "Product created"
+    "product_created": "Product created",
+    "new_amazon": "New Amazon",
+    "delete": "Delete",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "choose_picture": "Choose a picture",
+    "edit_product": "Edit product",
+    "price": "Price",
+    "description": "Description",
+    "category": "Category"
+
 }

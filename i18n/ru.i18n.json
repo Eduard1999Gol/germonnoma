@@ -4,5 +4,14 @@
     "product_price": "Цена продукта",
     "save": "Сохранить",
     "back": "Назад",
-    "product_created": "Ваш продукт добавлен"
+    "product_created": "Ваш продукт добавлен",
+    "new_amazon": "Новый Амазон",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "cancel": "Отменить",
+    "choose_picture": "Выбрать фото",
+    "edit_product": "Редактировать продукт",
+    "price": "Цена",
+    "description": "Описание",
+    "category": "Категория"
 }
