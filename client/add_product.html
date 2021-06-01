@@ -29,33 +29,31 @@
           </div>
           <div class="columns">
             <div class="column">
+              <div class="file">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="resume" accept="image/png, image/jpeg" required>
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            {{_ "choose_picture"}}
+                        </span>
+                    </span>
+                </label>
+            </div>
+            </div>
+            <div class="column">
+              <span class="tag is-large">{{selectedFile}}</span>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
               <button id="addProductForm" type="submit" class="button is-success">{{_ "save"}}</button>
               <button id="returnToProducts" type="button" class="button close-modal">{{_ "back"}}</button>
             </div>
           </div>
         </form>
       </div>
-      <div class="column">
-        <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="{{product.image_link}}" alt="Placeholder image">
-              </figure>
-            </div>
-          </div>
-        <div class="file">
-            <label class="file-label">
-                <input class="file-input" type="file" name="resume" accept="image/png, image/jpeg" >
-                <span class="file-cta">
-                    <span class="file-icon">
-                        <i class="fas fa-upload"></i>
-                    </span>
-                    <span class="file-label">
-                        {{_ "choose_picture"}}
-                    </span>
-                </span>
-            </label>
-        </div>
-    </div>
     </div>
 </template>
