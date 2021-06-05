@@ -76,5 +76,5 @@ Meteor.methods({
                 "image_link": "https://bulma.io/images/placeholders/1280x960.png"
             }
         });
-    }
+    },
 });

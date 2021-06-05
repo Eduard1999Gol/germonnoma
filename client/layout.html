@@ -1,10 +1,12 @@
-<template name="Layout">
+<template name="Layout" class="background has-background-info">
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/d576f4c65a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.0.0/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     {{> Navbar}}
     <div class="column">
       {{> yield}}
@@ -13,28 +15,28 @@
 
 
 <template name="Navbar">
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    
-    <div class="navbar-brand">
-      <div class="column">
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">  
+    <div class="navbar-brand">  
+      <div class="column">    
         <a class="navbar-Product" id="home">
-          <h1 class="title"><strong>{{_ "new_amazon"}}</strong></h1>
+          <span class="material-icons md-dark">
+            home_work
+            </span>
         </a>
       </div>
     </div>
     <div class="navbar-end">
       <div class="navbar-Product">
         <div class="column">
-          <a id="addProduct" href="{{ pathFor route='addProduct'}}" class="button">
-            {{_ "add_product"}}
-          </a>
-          <select id="language" class="button">
-            <option value="en"><strong>English</strong></option>
-            <option value="de"><strong>Deutsch</strong></option>
-            <option value="ru"><strong>Русский</strong></option>
+          {{> CreateButton}}
+          <select id="language" class="button is-small is-rounded">
+            <option value="en"><strong>EN</strong></option>
+            <option value="de"><strong>DE</strong></option>
+            <option value="ru"><strong>RU</strong></option>
           </select>
         </div>
       </div>
     </div>
   </nav>
 </template>
+

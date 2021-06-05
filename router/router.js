@@ -56,6 +56,7 @@ Router.configure({
 
 Router.route('/', function () {
 	this.subscribe("products");
+	this.subscribe("productImages");
 	if (this.ready()) {
 		this.render("Home");
 	} else {
@@ -64,9 +65,15 @@ Router.route('/', function () {
 },{
 	name: "home",
 	data: function () {
-		var products = Products.find({}).fetch();
+		var arr = [];
+		var products = Products.find({}).fetch()
+		products.forEach(product => {
+			var image = ProductImages.findOne({"meta.product_id": product._id}).link();
+			product["image"] = image;
+			arr.push(product);
+		});
 		return {
-			products: products
+			products: arr
 		}
 	}
 });
@@ -83,10 +90,10 @@ Router.route('/products/:_id', function () {
 	name: "productDetails",
 	data: function () {
 		var product = Products.findOne({_id: this.params._id});
-		var image = ProductImages.findOne({'meta.product_id': this.params._id});
+		var image = ProductImages.findOne({"meta.product_id": product._id}).link();
+		product["image"] = image;
 		return {
-			product: product,
-			image: image
+			product: product
 		}
 	}
 });
@@ -114,10 +121,10 @@ Router.route('/products/:_id/edit_product', function () {
 	name: "productEdit",
 	data: function () {
 		var product = Products.findOne({_id: this.params._id});
-		var image = ProductImages.findOne({'meta.product_id': this.params._id});
+		var image = ProductImages.findOne({"meta.product_id": product._id}).link();
+		product["image"] = image;
 		return {
-			product: product,
-			image: image
+			product: product
 		}
-	}
+	}	
 });
