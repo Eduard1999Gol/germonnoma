@@ -12,33 +12,36 @@
 </template>
 
 
-<template name="Navbar" >
-  <section class="hero is-link">
-    <div class="hero-body"> 
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <div class="column">
-        <a class="navbar-Product" id="home">
-          <h1 class="title is-1"><strong>New Amazon</strong></h1>
-        </a>
-      </div>
-    </div>
-    <div class="navbar-end">
-      <div class="navbar-Product">
-        <div class="column">
-          <a id="addProduct" href="{{ pathFor route='addProduct'}}" class="button">
-            {{_ "add_product"}}
-          </a>
-          <select id="language" class="button">
-            <option value="en"><strong>English</strong></option>
-            <option value="de"><strong>Deutsch</strong></option>
-            <option value="ru"><strong>Русский</strong></option>
-          </select>
-        </div>
-      </div>
-    </div>
+<template name="Navbar" role="navigation" aria-label="main navigation">
+  
+  <nav class="level">
+    <h4 class="level-item has-text-centered">
+      <a id="addProduct" href="{{ pathFor route='addProduct'}}" class="button is-primary is-light">
+        {{_ "add_product"}}
+      </a>
+     
+    </h4>
+    <h4 class="level-item has-text-centered">
+      <a class="link is-info"><strong>Menu</strong></a>
+    </h4>
+      <a class="navbar-Product" id="home">
+        <h1 class="title is-size-1"><strong>New Amazon</strong></h1>
+      </a>
+
+    <h4 class="level-item has-text-centered">
+      <a class="Home link is-info"><strong>Home</strong></a>
+    </h4>
+    <h4 class="level-item has-text-centered">
+      <select id="language" class="button is-primary is-light">language
+        <option value="en"><strong>English</strong></option>
+        <option value="de"><strong>Deutsch</strong></option>
+        <option value="ru"><strong>Русский</strong></option>
+      </select>
+      
+      
+    </h4>
+  
   </nav>
-</div>
-</section>
+
 </template>
 

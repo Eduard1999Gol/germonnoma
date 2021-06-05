@@ -2,7 +2,16 @@
     "add_product": "Добавить продукт",
     "product_name": "Название продукта",
     "product_price": "Цена продукта",
+    "choose_picture": "добавить фото товара",
     "save": "Сохранить",
     "back": "Назад",
-    "product_created": "Ваш продукт добавлен"
+    "product_created": "Ваш продукт добавлен",
+    "edit": "редактировать",
+    "delete": "удалить",
+    "description": "Описание",
+    "price": "Цена",
+    "name": "Продукт",
+    "category": "Категория",
+    "product_description": "Добавьте описание"
+
 }

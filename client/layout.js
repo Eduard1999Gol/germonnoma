@@ -13,6 +13,11 @@ Template.Layout.events({
         TAPi18n.setLanguage(event.target.value);
     },
    
+    'click a.Home': function (event) {
+        event.preventDefault();
+        Router.go('/');
+    },
+
     'click a#home': function (event) {
         event.preventDefault();
         Router.go('/');

@@ -2,7 +2,17 @@
     "add_product": "Artikel Erstellen",
     "product_name": "Artikel Name",
     "product_price": "Arikelpreis",
+    "choose_picture": "Bilder hochladen",
+    "product_description": "Beschreib das Produkt",
     "save": "Speichern",
     "back": "Zurück",
-    "product_created": "Artikel wurde erstellt"
+    "product_created": "Artikel wurde erstellt",
+    "edit": "bearbeiten",
+    "delete": "delete",
+    "description": "Beschreibung",
+    "price": "Preis",
+    "name": "Produktname",
+    "category": "Kategorie"
+
+
 }
