@@ -13,6 +13,15 @@
     "name": "Продукт",
     "category": "Категория",
     "product_description": "Добавьте описание",
-    "electronics": "Электроника"
+    "electronics": "Электроника",
 
+    "new_amazon": "Новый Амазон",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "cancel": "Отменить",
+    "choose_picture": "Выбрать фото",
+    "edit_product": "Редактировать продукт",
+    "price": "Цена",
+    "description": "Описание",
+    "category": "Категория"
 }

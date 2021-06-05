@@ -13,6 +13,15 @@
     "price": "Preis",
     "name": "Produktname",
     "category": "Kategorie",
-    "electronics": "Elektronik"
+    "electronics": "Elektronik",
 
+    "new_amazon": "Neue Amazon",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "cancel": "Abbrechen",
+    "choose_picture": "Bild auswählen",
+    "edit_product": "Artikel bearbeiten",
+    "price": "Preis",
+    "description": "Beschreibung",
+    "category": "Kategorie"
 }

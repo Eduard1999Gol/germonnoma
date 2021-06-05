@@ -12,5 +12,15 @@
     "price": "Price",
     "name": "Name",
     "category": "Categorie",
-    "electronics": "Elektronics"
+    "electronics": "Elektronics",
+    "new_amazon": "New Amazon",
+    "delete": "Delete",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "choose_picture": "Choose a picture",
+    "edit_product": "Edit product",
+    "price": "Price",
+    "description": "Description",
+    "category": "Category"
+
 }
