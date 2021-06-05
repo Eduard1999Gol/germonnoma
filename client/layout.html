@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.0.0/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     {{> Navbar}}
     <div class="column">
       {{> yield}}
@@ -12,36 +14,29 @@
 </template>
 
 
-<template name="Navbar" role="navigation" aria-label="main navigation">
-  
-  <nav class="level">
-    <h4 class="level-item has-text-centered">
-      <a id="addProduct" href="{{ pathFor route='addProduct'}}" class="button is-primary is-light">
-        {{_ "add_product"}}
-      </a>
-     
-    </h4>
-    <h4 class="level-item has-text-centered">
-      <a class="link is-info"><strong>Menu</strong></a>
-    </h4>
-      <a class="navbar-Product" id="home">
-        <h1 class="title is-size-1"><strong>New Amazon</strong></h1>
-      </a>
-
-    <h4 class="level-item has-text-centered">
-      <a class="Home link is-info"><strong>Home</strong></a>
-    </h4>
-    <h4 class="level-item has-text-centered">
-      <select id="language" class="button is-primary is-light">language
-        <option value="en"><strong>English</strong></option>
-        <option value="de"><strong>Deutsch</strong></option>
-        <option value="ru"><strong>Русский</strong></option>
-      </select>
-      
-      
-    </h4>
-  
+<template name="Navbar">
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">  
+    <div class="navbar-brand">  
+      <div class="column">    
+        <a class="navbar-Product" id="home">
+          <span class="material-icons md-dark">
+            home_work
+            </span>
+        </a>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-Product">
+        <div class="column">
+          {{> CreateButton}}
+          <select id="language" class="button is-small is-rounded">
+            <option value="en"><strong>EN</strong></option>
+            <option value="de"><strong>DE</strong></option>
+            <option value="ru"><strong>RU</strong></option>
+          </select>
+        </div>
+      </div>
+    </div>
   </nav>
-
 </template>
 

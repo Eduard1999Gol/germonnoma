@@ -12,6 +12,7 @@
     "price": "Цена",
     "name": "Продукт",
     "category": "Категория",
-    "product_description": "Добавьте описание"
+    "product_description": "Добавьте описание",
+    "electronics": "Электроника"
 
 }

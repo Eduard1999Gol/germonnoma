@@ -24,7 +24,6 @@ Template.AddProduct.events({
             price: event.target.product_price.value,
             description: event.target.product_description.value
         }
-        console.log(event);
         Meteor.call('createProduct', product, function (err, res) {
             if (!err) {
                 console.log(res); //erstmal erstellen wir product und von Methode als res bekommen wir erstellte product id

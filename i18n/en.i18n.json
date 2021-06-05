@@ -11,5 +11,6 @@
     "description": "Description",
     "price": "Price",
     "name": "Name",
-    "category": "Categorie"
+    "category": "Categorie",
+    "electronics": "Elektronics"
 }

@@ -42,17 +42,4 @@ Meteor.startup(() => {
 Collections
 */
 Products = new Mongo.Collection('products');
-ProductImages = new FilesCollection({ collectionName: 'ProductImages', onAfterUpload(file){
-  var img = ProductImages.findOne({path: file.path}).link();
-  if (img) {
-    Products.update({
-      _id: file.meta.product_id
-    }, 
-    {
-        $set: {
-            "image_link": img
-        }
-    });
-  }
-  }
-});
+ProductImages = new FilesCollection({ collectionName: 'ProductImages'});

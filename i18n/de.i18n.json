@@ -12,7 +12,7 @@
     "description": "Beschreibung",
     "price": "Preis",
     "name": "Produktname",
-    "category": "Kategorie"
-
+    "category": "Kategorie",
+    "electronics": "Elektronik"
 
 }

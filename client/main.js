@@ -16,6 +16,8 @@ import './product_details.js';
 import './global_helpers.js';
 import './product_edit.html';
 import './product_edit.js';
+import './button_create_product.html';
+import './button_create_product.js';
 
 
 
