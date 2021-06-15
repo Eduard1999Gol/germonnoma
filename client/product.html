@@ -1,27 +1,16 @@
-<template name="Product">
-    <div class=" column is-3">
-        <div class="card">
-            <div class="card-image">
-                <a data-id="{{this._id}}" id="" href="{{ pathFor route='productDetails' _id=this._id}}">
-                    <figure class="image is-1280x900">
-                        <img src="{{this.image}}">
-                      </figure>
-                </a>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <div class="columns">
-                    <div class="column">
-                        <a href="{{ pathFor route='productDetails' _id=this._id}}"><strong><h4>{{this.name}}</h4></strong></a>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <p class="is-pulled-left">{{this.price}} €</p>
-                    </div>
-                </div>
-              </div> 
-            </div>
-          </div>
-    </div>
+<template name="Product"> 
+    <div class="col-1">
+    <div class="card" style="width: 18rem;">
+         <a data-id="{{this._id}}" href="{{ pathFor route='productDetails' _id=this._id}}">
+            <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+         </a>
+        <div class="card-body">
+          <h5 class="card-title"><strong> {{this.name}} </strong></h5>
+          <h5 class="card-title">{{this.price}} €</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a  class="btn btn-primary" href="{{ pathFor route='productDetails' _id=this._id}}">Go to Product</a>
+        </div>
+      </div>   
+    </div> 
+
 </template>
