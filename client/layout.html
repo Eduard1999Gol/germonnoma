@@ -4,7 +4,8 @@
     <script src="https://kit.fontawesome.com/d576f4c65a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="./lib/boostrap.min.css"/>
+    <script src="./lib/boostrap.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     {{> Navbar}}
@@ -16,54 +17,16 @@
 </template>
 
 
-<template name="Navbar">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="navbar-toggler-icon"></i>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="#">Irgendwas</a>
-        </li>
-      </ul>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-    <div class="column">
-      <button class="button btn-dark" > {{> CreateButton}}</button>
-  
-      <select id="language" class="button btn-dark">
-        <option value="en"><strong>EN</strong></option>
-        <option value="de"><strong>DE</strong></option>
-        <option value="ru"><strong>RU</strong></option>
-      </select>
-    </div>
+<template name="Navbar" >
+  <nav class="navbar navbar-expand-lg bg-dark text-info" style=" min-height: 70px;">
+    
+        <select id="language" class="button btn-dark">
+          <option value="en"><strong>EN</strong></option>
+          <option value="de"><strong>DE</strong></option>
+          <option value="ru"><strong>RU</strong></option>
+        </select>
+      
   </nav>
-  <nav class="navbar navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <h1 class="text-white"><strong>Find your Product</strong></h1>
-    <div class="navbar-end">
-      <div class="navbar-Product">
-        <a class="navbar-Product" id="home">
-          <i class="material-icons" style="color: cornsilk; font-size: 35px;">
-            home
-          </i>
-        </a>
-
-      </div>
-    </div>
-  </nav>
-
+ 
 </template>
 
