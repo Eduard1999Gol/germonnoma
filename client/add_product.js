@@ -1,9 +1,11 @@
 import { toast } from 'bulma-toast';
 import helper_functions from './lib/helper_functions';
 import category from './product_category.js';
+import { ReactiveVar } from 'meteor/reactive-var'
 
 Template.AddProduct.onCreated(function(){
     Session.set('selectedFile', "");
+    this.newProduct = new ReactiveVar('test');
 });
 
 Template.AddProduct.onRendered(function(){
@@ -18,6 +20,7 @@ Template.AddProduct.events({
     
     'submit form#addProductForm':function (event) {
         event.preventDefault();
+        var template =  Template.instance();
         var product = {
             category: event.target.category.value,
             name: event.target.product_name.value,
@@ -25,8 +28,7 @@ Template.AddProduct.events({
             description: event.target.product_description.value
         }
         Meteor.call('createProduct', product, function (err, res) {
-            if (!err) {
-                console.log(res); //erstmal erstellen wir product und von Methode als res bekommen wir erstellte product id
+            if (!err) {//erstmal erstellen wir product und von Methode als res bekommen wir erstellte product id
                 /* wenn ich id habe dann kann ich direkt meine Image in ProductImage collection hochladen und danach toast zeigen */
                 const upload = ProductImages.insert({
                     file: event.target.resume.files[0],
@@ -43,6 +45,9 @@ Template.AddProduct.events({
                     }
                     });
                     upload.start();
+                    var prod = Products.findOne({_id: res});
+                    template.newProduct.set(prod)
+                    //
                 toast({
                     message: TAPi18n.__('product_created'),
                     type: 'is-success',
@@ -50,7 +55,7 @@ Template.AddProduct.events({
                     position: "bottom-right",
                     closeOnClick: true
                 });
-                Router.go('/');
+                //Router.go('/');
             }else{
                 toast({
                     message: TAPi18n.__('product_not_created'),
@@ -75,6 +80,17 @@ Template.AddProduct.helpers({
           return Session.get('selectedFile');
       } else {
         return "choose_picture";
+      }
+  },
+
+  'getNewProduct': function () {
+      if (Template.instance().newProduct.get()) {
+        var product = Template.instance().newProduct.get();
+        var image = ProductImages.findOne({"meta.product_id": product._id}).link();
+		product["image"] = image;
+        return product;
+      } else {
+          return {};
       }
   }
         

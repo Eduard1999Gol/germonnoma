@@ -1,10 +1,10 @@
 <template name="ProductEditPage">
     <h1 class="title">{{_ "edit_product"}}</h1>
-    <div class="columns">
-        <div class="column">
+    <div class="container">
+        <div class="col">
             <form id="editProductForm">
-                <div class="columns">
-                    <div class="column">
+                <div class="container">
+                    <div class="col">
                         <div class="select is-fullwidth is-black">
                             <select name="category">
                                 {{#each getCategories}}
@@ -14,24 +14,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="columns">
-                    <div class="column">
+                <div class="container">
+                    <div class="col">
                         <input class="input is-black" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{product.name}}" required>
                     </div>
                 </div>
-                <div class="columns">
-                    <div class="column">
+                <div class="container">
+                    <div class="col">
                         <input class="input is-black" type="number" min="0" name="product_price"
                             value="{{product.price}}" placeholder="{{_ " product_price"}}" required>
                     </div>
                 </div>
-                <div class="columns">
-                    <div class="column">
+                <div class="container">
+                    <div class="col">
                         <textarea class="textarea is-black" name="product_description" placeholder="{{_ "product_description"}}" required>{{product.description}}</textarea>
                     </div>
                 </div>
-                <div class="columns">
-                    <div class="column">
+                <div class="container">
+                    <div class="col">
                         <button id="addProductForm" type="submit" class="button is-success">{{_ "save"}}</button>
                         <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=product._id}}"
                             class="button goToProduct">{{_ "cancel"}}</a>
@@ -39,11 +39,11 @@
                 </div>
             </form>
         </div>
-        <div class="column">
+        <div class="col">
             <div class="card">
                 <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img src="{{product.image}}" alt="Placeholder image">
+                  <figure class="image ">
+                    <img src="{{product.image}}" alt="Placeholder image" style="width:400px;height:300px;">
                   </figure>
                 </div>
               </div>
@@ -62,4 +62,9 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        {{#with getNewProduct}}
+        {{> Product}}
+        {{/with}}
+      </div>
 </template>

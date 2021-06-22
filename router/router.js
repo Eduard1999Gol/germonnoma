@@ -100,6 +100,7 @@ Router.route('/products/:_id', function () {
 
 Router.route('/addproduct', function () {
 	this.subscribe("products");
+	this.subscribe("productImages");
 	if (this.ready()) {
 		this.render("AddProduct");
 	} else {

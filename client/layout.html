@@ -9,24 +9,33 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     {{> Navbar}}
-    <div class="container">
-      <div class="row align-items-start">
-      {{> yield}}
-    </div> 
+    <div class="container mr-0 pt-3">
+        {{> yield}}
     </div>
 </template>
 
 
 <template name="Navbar" >
-  <nav class="navbar navbar-expand-lg bg-dark text-info" style=" min-height: 70px;">
-    
-        <select id="language" class="button btn-dark">
-          <option value="en"><strong>EN</strong></option>
-          <option value="de"><strong>DE</strong></option>
-          <option value="ru"><strong>RU</strong></option>
-        </select>
-      
+
+  <nav class="navbar navbar-light bg-dark">
+    <a href="#" id="Home" class="navbar-brand text-light">Web-Shop</a>
+    {{> CreateButton}}
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <form class="form-inline">
+          <select class="form-select" id="language">
+            <option value="en"><strong>EN</strong></option>
+            <option value="de"><strong>DE</strong></option>
+            <option value="ru"><strong>RU</strong></option>
+          </select>
+        </form>
+      </li>
+     
+    </ul>
   </nav>
+
+    
+  
  
 </template>
 

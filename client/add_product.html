@@ -49,11 +49,16 @@
           </div>
           <div class="columns">
             <div class="column">
-              <button id="addProductForm" type="submit" class="button is-success">{{_ "save"}}</button>
+              <button id="addProductForm" type="submit" class="btn-success">{{_ "save"}}</button>
               <button id="returnToProducts" type="button" class="button close-modal">{{_ "back"}}</button>
             </div>
           </div>
         </form>
       </div>
+    </div>
+    <div class="row">
+      {{#with getNewProduct}}
+      {{> Product}}
+      {{/with}}
     </div>
 </template>
