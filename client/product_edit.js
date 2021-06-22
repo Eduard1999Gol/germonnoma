@@ -43,6 +43,7 @@ Template.ProductEditPage.events({
             price: event.target.product_price.value,
             description: event.target.product_description.value
         }
+        console.log(product);
         var id = Template.instance().data.product._id;
         Meteor.call('updateProduct', id, product, function (err, res) {
             if (!err) {
@@ -77,14 +78,13 @@ Template.ProductEditPage.events({
 
 Template.ProductEditPage.helpers({
     "isSelected": function (cat) {
-        var cat2 = Template.instance().data.product.category;
-
-        if (cat == cat2) {
-
-            return "selected";
-
-        } else {
-            return "";
+        if (Template.instance().data.product) {
+            var cat2 = Template.instance().data.product.category;
+            if (cat == cat2) {
+                return "selected";
+            } else {
+                return "";
+            }
         }
     },
     'selectedFile':function () {
@@ -98,8 +98,10 @@ Template.ProductEditPage.helpers({
     'getNewProduct': function () {
         if (Template.instance().newProduct.get()) {
           var product = Template.instance().newProduct.get();
-          var image = ProductImages.findOne({"meta.product_id": product._id}).link();
-          product["image"] = image;
+          if (product) {
+            var image = ProductImages.findOne({"meta.product_id": product._id}).link();
+            product["image"] = image;
+          }
           return product;
         } else {
             return {};

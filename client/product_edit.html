@@ -1,6 +1,6 @@
 <template name="ProductEditPage">
     <h1 class="title">{{_ "edit_product"}}</h1>
-    <div class="container">
+    <div class="row">
         <div class="col">
             <form id="editProductForm">
                 <div class="container">
@@ -47,23 +47,15 @@
                   </figure>
                 </div>
               </div>
-            <div class="file">
+              <div class="file">
                 <label class="file-label">
                     <input class="file-input" type="file" name="resume" accept="image/png, image/jpeg" >
-                    <span class="file-cta">
-                        <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                            {{_ "choose_picture"}}
-                        </span>
-                    </span>
                 </label>
             </div>
         </div>
     </div>
     <div class="row">
-        {{#with getNewProduct}}
+        {{#with product}}
         {{> Product}}
         {{/with}}
       </div>

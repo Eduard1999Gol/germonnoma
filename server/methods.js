@@ -52,7 +52,7 @@ Meteor.methods({
 
     updateProduct: function (id, product) {
         product["edited_at"] = new Date();
-        Products.update({
+        return Products.update({
             _id: id
         }, 
         {

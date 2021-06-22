@@ -122,8 +122,12 @@ Router.route('/products/:_id/edit_product', function () {
 	name: "productEdit",
 	data: function () {
 		var product = Products.findOne({_id: this.params._id});
-		var image = ProductImages.findOne({"meta.product_id": product._id}).link();
-		product["image"] = image;
+		if (product) {
+			var image = ProductImages.findOne({"meta.product_id": product._id})
+		}
+		if (image) {
+			product["image"] = image.link();
+		}
 		return {
 			product: product
 		}
