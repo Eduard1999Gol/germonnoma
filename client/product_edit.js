@@ -1,6 +1,8 @@
-import { toast } from 'bulma-toast';
+
+
 import helper_functions from './lib/helper_functions';
 import category from './product_category.js';
+
 
 Template.ProductEditPage.onCreated(function(){
     Session.set('selectedFile', "");
@@ -36,30 +38,28 @@ Template.ProductEditPage.events({
     },
 
     "submit form#editProductForm": function (event) {
-        event.preventDefault();
+        event.preventDefault();  
         var product = {
             category: event.target.category.value,
             name: event.target.product_name.value,
             price: event.target.product_price.value,
             description: event.target.product_description.value
         }
+        //product
         console.log(product);
         var id = Template.instance().data.product._id;
         Meteor.call('updateProduct', id, product, function (err, res) {
             if (!err) {
-                console.log(res);  //krieg da undefinde
-              
-                toast({
-                    message: TAPi18n.__('product_edeted'),
-                    type: 'is-success',
-                    duration: 3000,
-                    position: "bottom-right",
-                    closeOnClick: true,
-                    animate: { in: 'fadeIn', out: 'fadeOut' }
-                });
-                //7var prod = Products.findOne({_id: res});
-                //console.log(prod);
-            } else {
+                var option = {
+                    animation: true,
+                    delay: 2000
+
+                }
+               
+                   
+            }
+                  
+             else {
                 toast({
                     message: TAPi18n.__('product_not_edeted'),
                     type: 'is-danger',
