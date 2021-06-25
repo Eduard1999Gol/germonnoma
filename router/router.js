@@ -66,11 +66,14 @@ Router.route('/', function () {
 	name: "home",
 	data: function () {
 		var arr = [];
-		var products = Products.find({}).fetch()
+		var products = Products.find({}).fetch();
 		products.forEach(product => {
-			var image = ProductImages.findOne({"meta.product_id": product._id}).link();
-			product["image"] = image;
-			arr.push(product);
+			var image = ProductImages.findOne({"meta.product_id": product._id});
+			if (image) {
+				product["image"] = image.link();
+				arr.push(product)
+			}
+			;
 		});
 		return {
 			products: arr
