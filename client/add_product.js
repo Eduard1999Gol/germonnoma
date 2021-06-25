@@ -20,7 +20,6 @@ Template.AddProduct.events({
     
     'submit form#addProductForm':function (event) {
         event.preventDefault();
-        console.log(event);
         var template =  Template.instance();
         var product = {
             category: event.target.product_category.value,

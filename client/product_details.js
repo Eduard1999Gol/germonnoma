@@ -6,7 +6,6 @@ import category from './product_category.js';
 Template.ProductDetails.events({
     'click button#edit_product': function (event) { 
         event.preventDefault();
-        console.log("jdsfjg");
         var id = event.target.id;
         Session.set('product_id', id);
         var product = Products.findOne({_id: event.target.id});
@@ -82,7 +81,6 @@ Template.ProductDetails.events({
     },    
     //save edited Product
     'submit form#editProductForm': function (event) {
-        console.log("ddd")
         event.preventDefault();
         var id = event.target.dataset.id;
         var name = event.target.product_name.value;

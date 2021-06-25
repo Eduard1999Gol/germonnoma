@@ -46,7 +46,6 @@ Template.ProductEditPage.events({
             description: event.target.product_description.value
         }
         //product
-        console.log(product);
         var id = Template.instance().data.product._id;
         Meteor.call('updateProduct', id, product, function (err, res) {
             if (!err) {
