@@ -2,7 +2,7 @@
   <form id="addProductForm">
     <h1 class="title is-1">{{_ "add_product"}}</h1>
     <div class="select is-fullwidth">
-      <select name="category" class="form-select mb-3" aria-label=".form-select-lg example">
+      <select name="product_category" class="form-select mb-3" aria-label=".form-select-lg example">
         {{#each getCategories}}
         <option value="{{this.value}}">{{this.display}}</option>
         {{/each}}
@@ -10,10 +10,10 @@
     </div>
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Name</label>
-      <input  class="form-control"  placeholder="{{_ "product_name"}}"  value="{{getProductDetails.name}}" required>
+      <input class="form-control" name="product_name" placeholder="{{_ "product_name"}}" required>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label" >Prise</label>
+      <label for="exampleFormControlInput1" class="form-label">Prise</label>
       <input class="input form-control" type="number" min="0" name="product_price" value="{{getProductDetails.price}}" placeholder="{{_ "product_price"}}" required  >
     </div>
     <div class="mb-6">
@@ -22,7 +22,7 @@
     </div>
     <div class="file is-primary">
       <label class="file-label">
-          <input class="file-input" type="file" name="resume" accept="image/png, image/jpeg" required>
+          <input class="file-input" type="file" name="product_image" accept="image/png, image/jpeg" required>
           <span class="file-cta">
               <span class="file-icon">
                   <i class="fas fa-upload"></i>
@@ -32,7 +32,6 @@
               </span>
           </span>
       </label>
-     
   </div>
   <button id="addProductForm" type="submit" class="btn-success">{{_ "save"}}</button>
   <button id="returnToProducts" type="button" class="button close-modal">{{_ "back"}}</button>

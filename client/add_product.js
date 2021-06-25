@@ -20,18 +20,18 @@ Template.AddProduct.events({
     
     'submit form#addProductForm':function (event) {
         event.preventDefault();
+        console.log(event);
         var template =  Template.instance();
         var product = {
-            category: event.target.category.value,
+            category: event.target.product_category.value,
             name: event.target.product_name.value,
             price: event.target.product_price.value,
             description: event.target.product_description.value
         }
         Meteor.call('createProduct', product, function (err, res) {
-            if (!err) {//erstmal erstellen wir product und von Methode als res bekommen wir erstellte product id
-                /* wenn ich id habe dann kann ich direkt meine Image in ProductImage collection hochladen und danach toast zeigen */
+            if (!err) {
                 const upload = ProductImages.insert({
-                    file: event.target.resume.files[0],
+                    file: event.target.product_image.files[0],
                     chunkSize: 'dynamic',
                     meta: {
                         product_id: res //hier benutze ich product id
@@ -86,9 +86,12 @@ Template.AddProduct.helpers({
   'getNewProduct': function () {
       if (Template.instance().newProduct.get()) {
         var product = Template.instance().newProduct.get();
-        var image = ProductImages.findOne({"meta.product_id": product._id}).link();
-		product["image"] = image;
-        return product;
+        var image = ProductImages.findOne({"meta.product_id": product._id});
+        if (image) {
+            product["image"] = image.link();
+            return product;
+        }
+		
       } else {
           return {};
       }
