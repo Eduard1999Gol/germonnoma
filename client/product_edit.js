@@ -6,7 +6,12 @@ import category from './product_category.js';
 
 Template.ProductEditPage.onCreated(function(){
     Session.set('selectedFile', "");
-    this.newProduct = new ReactiveVar('test');
+    var product = Template.instance().data.product;
+    console.log(product);
+    this.newProduct = new ReactiveVar({
+        name: product.name,
+        price: product.price
+    });
 });
 
 

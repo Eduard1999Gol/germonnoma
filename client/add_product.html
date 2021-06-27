@@ -1,8 +1,8 @@
 <template name="AddProduct">
-  <form id="addProductForm">
     <h1 class="title is-1">{{_ "add_product"}}</h1>
     <div class="select is-fullwidth">
-      <select name="product_category" class="form-select mb-3" aria-label=".form-select-lg example">
+      <label for="exampleFormControlInput1" class="form-label">Choose Category</label>
+      <select name="product_category" id="product_category_select" class="form-select mb-3" aria-label=".form-select-lg example">
         {{#each getCategories}}
         <option value="{{this.value}}">{{this.display}}</option>
         {{/each}}
@@ -10,19 +10,19 @@
     </div>
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Name</label>
-      <input class="form-control" name="product_name" placeholder="{{_ "product_name"}}" required>
+      <input name="product_name" id="product_name_input" class="form-control"  placeholder="{{_ "product_name"}}"  value="{{getProductDetails.name}}" required>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Prise</label>
-      <input class="input form-control" type="number" min="0" name="product_price" value="{{getProductDetails.price}}" placeholder="{{_ "product_price"}}" required  >
+      <label for="exampleFormControlInput1" class="form-label" >Prise</label>
+      <input class="input form-control" id="product_price_input" type="number" min="0" name="product_price" value="{{getProductDetails.price}}" placeholder="{{_ "product_price"}}" required >
     </div>
     <div class="mb-6">
-      <label for="exampleFormControlTextarea1" class="form-label">Product Description</label>
-      <textarea class="textarea form-control" name="product_description" placeholder="{{_ "product_description"}}"  id="exampleFormControlTextarea1" rows="3" required></textarea>
+      <label for="exampleFormControlTextarea1"  class="form-label">Product Description</label>
+      <textarea class="textarea form-control" name="product_description" placeholder="{{_ "product_description"}}"  id="product_description_textarea" rows="3" required></textarea>
     </div>
     <div class="file is-primary">
       <label class="file-label">
-          <input class="file-input" type="file" name="product_image" accept="image/png, image/jpeg" required>
+          <input class="file-input"  type="file" name="product_image" accept="image/png, image/jpeg" required>
           <span class="file-cta">
               <span class="file-icon">
                   <i class="fas fa-upload"></i>
@@ -33,14 +33,15 @@
           </span>
       </label>
   </div>
-  <button id="addProductForm" type="submit" class="btn-success">{{_ "save"}}</button>
-  <button id="returnToProducts" type="button" class="button close-modal">{{_ "back"}}</button>
-  <div class="row">
+  <div >
+    <div class="my-2">
+      <button id="addProductForm" type="button" class="btn-success padding-5">{{_ "save"}}</button>
+      <button id="returnToProducts" type="button" class="button close-modal ">{{_ "back"}}</button>
+    </div>
+  </div>
+  <div class="row"> 
     {{#with getNewProduct}}
     {{> Product}}
     {{/with}}
   </div>
-    
-    </form>
- 
 </template>

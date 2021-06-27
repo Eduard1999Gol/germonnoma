@@ -36,7 +36,7 @@ Meteor.methods({
         }
         
     },
-    createProduct: function (product) {
+    createProduct(product) {
         product["created_at"] = new Date();
         var id = Products.insert(product);
         if (id) {

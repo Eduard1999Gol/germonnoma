@@ -83,6 +83,7 @@ Router.route('/', function () {
 
 Router.route('/products/:_id', function () {
 	this.subscribe("publishProductId", this.params._id);
+	console.log(this)
 	this.subscribe("productImageById", this.params._id);
 	if (this.ready()) {
 		this.render("ProductDetails");
