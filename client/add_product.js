@@ -10,7 +10,7 @@ Template.AddProduct.onCreated(function(){
         name: "",
         price: "",
         description: "",
-        image: "/images/lego.jpeg"
+        image: "https://bulma.io/images/placeholders/1280x960.png"
     });
 
     this.newProductImage = new ReactiveVar();
