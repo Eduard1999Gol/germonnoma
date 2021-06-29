@@ -1,7 +1,6 @@
 <template name="AddProduct">
-  <div class="text-white">
     <div class="row">
-      <div class="col">
+      <div class="col text-white">
         <h1 class="title is-1">{{_ "add_product"}}</h1>
         <div class="select is-fullwidth">
           <label for="exampleFormControlInput1" class="form-label">Choose Category</label>
@@ -42,28 +41,11 @@
           <button id="returnToProducts" type="button" class="button close-modal ">{{_ "back"}}</button>
         </div>
       </div>
-        
       </div>
-
-      <div class="col">
-        
-          {{#with getNewProduct}}
-          {{> Product}}
-          {{/with}}
-        
+      <div class="col-4">
+        {{#with getNewProduct}}
+        {{> Product}}
+        {{/with}}
       </div>
     </div>
-  </div>
-
-  <div class="col">
-        
-    {{#with getNewProduct}}
-    {{> Product}}
-    {{/with}}
-  
-</div>
-      
-    
-    
- 
 </template>
