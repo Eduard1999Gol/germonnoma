@@ -2,20 +2,78 @@
 
 import helper_functions from './lib/helper_functions';
 import category from './product_category.js';
-
+import { ReactiveVar } from 'meteor/reactive-var'
 
 Template.ProductEditPage.onCreated(function(){
     Session.set('selectedFile', "");
     var product = Template.instance().data.product;
     console.log(product);
     this.newProduct = new ReactiveVar({
-        name: product.name,
-        price: product.price
+        name: ""
     });
+    this.newProductImage = new ReactiveVar();
+
 });
 
 
+
+
 Template.ProductEditPage.events({
+    'change textarea#product_description_textarea': function (event) {
+        event.preventDefault();
+        var product = Template.instance().newProduct.get();
+        Template.instance().newProduct.set({
+            category: product.category,
+            name: product.name,
+            price: product.price,
+            description: event.currentTarget.value,
+            image: "/images/lego.jpeg"
+        });
+                
+    },
+
+    'change select#product_category_select': function (event) {
+        event.preventDefault();
+    
+        var product = Template.instance().newProduct.get();
+        Template.instance().newProduct.set({
+            category: event.currentTarget.value,
+            name: product.name,
+            price: product.price,
+            description: product.description,
+            image: "/images/lego.jpeg"
+        });
+                
+    },
+      ///////////////////  change name   ///////////////////////////////
+    'keyup input#product_name_input': function (event) {
+        event.preventDefault();
+        console.log(event.currentTarget.value);
+        var product = Template.instance().newProduct.get();
+        Template.instance().newProduct.set({
+            category: product.category,
+            name: event.currentTarget.value,
+            price: product.price,
+            description: product.description,
+            image: "/images/lego.jpeg"
+        });
+        
+                
+    },
+
+    'keyup input#product_price_input': function (event) {
+        event.preventDefault();
+        var product = Template.instance().newProduct.get();
+        Template.instance().newProduct.set({
+            category: product.category,
+            name: product.name,
+            price: event.currentTarget.value,
+            description: product.description,
+            image: "/images/lego.jpeg"
+        })
+    },
+
+
     'change input.file-input':function (event) {
         event.preventDefault();
         var id = Template.instance().data.product._id;
@@ -111,6 +169,11 @@ Template.ProductEditPage.helpers({
             return {};
         }
     },
+
+    'getNewProduct': function () {
+        return Template.instance().newProduct.get();
+      }
+          
 
 });
 
