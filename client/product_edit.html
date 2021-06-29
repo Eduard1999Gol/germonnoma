@@ -1,35 +1,33 @@
 <template name="ProductEditPage">
     <div class="text-white">
         <h1 class="title">{{_ "edit_product"}}</h1>
-        <div class="row">
-            <div class="col">
-                <form id="editProductForm">
-                    <div class="select is-fullwidth is-black">
-                        <select name="category">
-                            {{#each getCategories}}
-                            <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
-                            {{/each}}
-                        </select>
-                    </div>
-    
-                    <input id="product_name_input" class="input is-black" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{product.name}}" required>
+        <div class="select is-fullwidth is-black">
+            <select name="category">
+                {{#each getCategories}}
+                <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <input id="product_name_input" class="input is-black" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{product.name}}" required>
                         
                     
-                    <input class="input is-black" type="number" min="0" name="product_price"
-                        value="{{product.price}}" placeholder="{{_ " product_price"}}" required>
-           
-           
-                    <textarea id="product_description_textarea" class="textarea is-black" name="product_description" placeholder="{{_ "product_description"}}" required>{{product.description}}</textarea>
-            
-          <div>
+        <input class="input is-black" type="number" min="0" name="product_price" value="{{product.price}}" placeholder="{{_ " product_price"}}" required>
+        <textarea id="product_description_textarea" class="textarea is-black" name="product_description" placeholder="{{_ "product_description"}}" required>{{product.description}}</textarea>  
+        <div>
             <button id="addProductForm" type="submit" class="btn-success">{{_ "save"}}</button>
                     
             <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=product._id}}"
                 class="button goToProduct">{{_ "cancel"}}</a> 
     
-          </div>
-                </form>
-            </div>
+        </div>
+              
+                  
+    
+                    
+           
+                   
+            
+        
             <div class="col">
                 <div class="card">
                     <div class="card-image">
