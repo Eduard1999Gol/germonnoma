@@ -9,7 +9,8 @@ Template.ProductEditPage.onCreated(function(){
     var product = Template.instance().data.product;
     console.log(product);
     this.newProduct = new ReactiveVar({
-        name: ""
+        name: "",
+        price: ""
     });
     this.newProductImage = new ReactiveVar();
 
@@ -170,7 +171,7 @@ Template.ProductEditPage.helpers({
         }
     },
 
-    'getNewProduct': function () {
+    'product': function () {
         return Template.instance().newProduct.get();
       }
           
