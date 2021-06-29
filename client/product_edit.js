@@ -6,11 +6,13 @@ import { ReactiveVar } from 'meteor/reactive-var'
 
 Template.ProductEditPage.onCreated(function(){
     Session.set('selectedFile', "");
-    var product = Template.instance().data.product;
+    var product = Template.instance();
     console.log(product);
     this.newProduct = new ReactiveVar({
-        name: "",
-        price: ""
+        name: Template.instance().data.product.name,
+        price: Template.instance().data.product.price,
+        description: Template.instance().data.product.description,
+        image: Template.instance().data.product.image
     });
     this.newProductImage = new ReactiveVar();
 
@@ -28,7 +30,7 @@ Template.ProductEditPage.events({
             name: product.name,
             price: product.price,
             description: event.currentTarget.value,
-            image: "/images/lego.jpeg"
+            image: ""
         });
                 
     },
@@ -42,21 +44,20 @@ Template.ProductEditPage.events({
             name: product.name,
             price: product.price,
             description: product.description,
-            image: "/images/lego.jpeg"
+            image: ""
         });
                 
     },
       ///////////////////  change name   ///////////////////////////////
     'keyup input#product_name_input': function (event) {
         event.preventDefault();
-        console.log(event.currentTarget.value);
         var product = Template.instance().newProduct.get();
         Template.instance().newProduct.set({
             category: product.category,
             name: event.currentTarget.value,
             price: product.price,
             description: product.description,
-            image: "/images/lego.jpeg"
+            image: ""
         });
         
                 
@@ -70,7 +71,7 @@ Template.ProductEditPage.events({
             name: product.name,
             price: event.currentTarget.value,
             description: product.description,
-            image: "/images/lego.jpeg"
+            image: ""
         })
     },
 
@@ -101,14 +102,17 @@ Template.ProductEditPage.events({
         })
     },
 
-    "submit form#editProductForm": function (event) {
+    "click button#editProductForm": function (event) {
         event.preventDefault();  
+        var template =  Template.instance();
+        var newProduct = template.newProduct.get();
         var product = {
-            category: event.target.category.value,
-            name: event.target.product_name.value,
-            price: event.target.product_price.value,
-            description: event.target.product_description.value
+            category: template.newProduct.get().category,
+            name: template.newProduct.get().name,
+            price: template.newProduct.get().price,
+            description: template.newProduct.get().description
         }
+        console.log(product);
         //product
         var id = Template.instance().data.product._id;
         Meteor.call('updateProduct', id, product, function (err, res) {

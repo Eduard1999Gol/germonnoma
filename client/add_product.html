@@ -30,14 +30,14 @@
       <div >
         <div class="my-2">
           <button id="addProductForm" type="button" class="btn-success padding-5">{{_ "save"}}</button>
-          <button id="returnToProducts" type="button" class="button close-modal ">{{_ "back"}}</button>
+          <button id="returnToProducts" type="button" class="button close-modal is-rounded">{{_ "back"}}</button>
         </div>
       </div>
       </div>
-      <div class="col-4">
-        {{#with getNewProduct}}
-        {{> Product}}
-        {{/with}}
+      <div class="col-4 my-5">
+          {{#with getNewProduct}}
+          {{> Product}}
+          {{/with}}
       </div>
     </div>
 </template>
