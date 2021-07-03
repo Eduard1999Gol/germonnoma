@@ -10,7 +10,7 @@ Template.AddProduct.onCreated(function(){
         name: "",
         price: "",
         description: "",
-        image: "/images/lego.jpeg"
+        image: "https://bulma.io/images/placeholders/480x480.png"
     });
 
     this.newProductImage = new ReactiveVar();
@@ -35,7 +35,7 @@ Template.AddProduct.events({
             name: product.name,
             price: product.price,
             description: event.currentTarget.value,
-            image: "/images/lego.jpeg"
+            image: "https://bulma.io/images/placeholders/480x480.png"
         });
                 
     },
@@ -48,7 +48,7 @@ Template.AddProduct.events({
             name: product.name,
             price: product.price,
             description: product.description,
-            image: "/images/lego.jpeg"
+            image: "https://bulma.io/images/placeholders/480x480.png"
         });
                 
     },
@@ -61,7 +61,7 @@ Template.AddProduct.events({
             name: event.currentTarget.value,
             price: product.price,
             description: product.description,
-            image: "/images/lego.jpeg"
+            image: "https://bulma.io/images/placeholders/480x480.png"
         });
        
     },
@@ -74,7 +74,7 @@ Template.AddProduct.events({
             name: product.name,
             price: event.currentTarget.value,
             description: product.description,
-            image: "/images/lego.jpeg"
+            image: "https://bulma.io/images/placeholders/480x480.png"
         })
     },
 

@@ -1,19 +1,15 @@
 <template name="Product"> 
-  
  <div class="pt-3" >
     <div class="card shadow rounded mr-0" >
       <div class="f-flex">
+        <p>irgendwas</p>
         <a data-id="{{this._id}}" href="{{ pathFor route='productDetails' _id=this._id}}" >
-          <img src="{{this.image}}" class="card-img-top" style="width:304px;height:250px;">
+          <img src="{{this.image}}" class="card-img-top" >
           </a>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{this.name}} {{this.price}} €</h5>
+        <h5 class="card-title">{{this.name}} {{this.price}}  € </h5>
       </div>
     </div>
  </div>
- 
-
-
-    
 </template>

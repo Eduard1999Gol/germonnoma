@@ -30,25 +30,23 @@ Template.ProductEditPage.events({
             name: product.name,
             price: product.price,
             description: event.currentTarget.value,
-            image: ""
+            image:  Template.instance().data.product.image
         });
                 
     },
 
     'change select#product_category_select': function (event) {
         event.preventDefault();
-    
         var product = Template.instance().newProduct.get();
         Template.instance().newProduct.set({
             category: event.currentTarget.value,
             name: product.name,
             price: product.price,
             description: product.description,
-            image: ""
+            image: Template.instance().data.product.image
         });
                 
     },
-      ///////////////////  change name   ///////////////////////////////
     'keyup input#product_name_input': function (event) {
         event.preventDefault();
         var product = Template.instance().newProduct.get();
@@ -57,7 +55,7 @@ Template.ProductEditPage.events({
             name: event.currentTarget.value,
             price: product.price,
             description: product.description,
-            image: ""
+            image: Template.instance().data.product.image
         });
         
                 
@@ -71,7 +69,7 @@ Template.ProductEditPage.events({
             name: product.name,
             price: event.currentTarget.value,
             description: product.description,
-            image: ""
+            image: Template.instance().data.product.image
         })
     },
 
@@ -112,8 +110,6 @@ Template.ProductEditPage.events({
             price: template.newProduct.get().price,
             description: template.newProduct.get().description
         }
-        console.log(product);
-        //product
         var id = Template.instance().data.product._id;
         Meteor.call('updateProduct', id, product, function (err, res) {
             if (!err) {
@@ -122,7 +118,7 @@ Template.ProductEditPage.events({
                     delay: 2000
 
                 }
-               
+            Router.go('/');   
                    
             }
                   
