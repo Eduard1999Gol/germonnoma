@@ -4,7 +4,7 @@
                 <div class="text-white">
                 <h1 class="title">{{_ "edit_product"}}</h1>
                 <div class="select is-fullwidth ">
-                <select name="category"  class="form-select mb-3" aria-label=".form-select-lg example"> 
+                <select name="category" id="product_category_select"  class="form-select mb-3" aria-label=".form-select-lg example"> 
                 {{#each getCategories}}
                 <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
                 {{/each}}

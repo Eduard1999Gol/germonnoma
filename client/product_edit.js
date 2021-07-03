@@ -38,6 +38,7 @@ Template.ProductEditPage.events({
     'change select#product_category_select': function (event) {
         event.preventDefault();
         var product = Template.instance().newProduct.get();
+        console.log(event.currentTarget.value)
         Template.instance().newProduct.set({
             category: event.currentTarget.value,
             name: product.name,
