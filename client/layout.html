@@ -12,6 +12,9 @@
     <div class="container mr-0 pt-3">
         {{> yield}}
     </div>
+    {{#with getAlert}}
+    {{> Alert}}
+    {{/with}}
 </template>
 
 

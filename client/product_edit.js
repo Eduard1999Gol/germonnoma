@@ -1,25 +1,18 @@
-
-
-import helper_functions from './lib/helper_functions';
-import category from './product_category.js';
 import { ReactiveVar } from 'meteor/reactive-var'
 
 Template.ProductEditPage.onCreated(function(){
     Session.set('selectedFile', "");
     var product = Template.instance();
-    console.log(product);
     this.newProduct = new ReactiveVar({
         name: Template.instance().data.product.name,
         price: Template.instance().data.product.price,
         description: Template.instance().data.product.description,
         image: Template.instance().data.product.image
     });
+    console.log(this.newProduct)
+
     this.newProductImage = new ReactiveVar();
-
 });
-
-
-
 
 Template.ProductEditPage.events({
     'change textarea#product_description_textarea': function (event) {
