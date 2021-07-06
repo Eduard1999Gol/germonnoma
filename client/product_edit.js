@@ -109,26 +109,34 @@ Template.ProductEditPage.events({
             if (!err) {
                 var option = {
                     animation: true,
-                    delay: 2000
+                    delay: 3000
+                };
+                
+                
+                toast = $('#epicToast');
+                var toastElement = new bootstrap.Toast(toast, option);
+                toastElement.show()
 
-                }
-            Router.go('/');   
-                   
             }
-                  
              else {
-                toast({
-                    message: TAPi18n.__('product_not_edeted'),
-                    type: 'is-danger',
-                    duration: 3000,
-                    position: "bottom-right",
-                    closeOnClick: true,
-                    animate: { in: 'fadeIn', out: 'fadeOut' }
-                });
+                var option = {
+                    animation: true,
+                    delay: 3000
+                };
+                
+                toast = $('#epicToast');
+                toast[0].className = "toast align-items-center text-white bg-danger m-4"
+                var toastElement = new bootstrap.Toast(toast, option);
+                toastElement.show()
+                
             }
 
         })
-    }
+    },
+    'click a#returnToProducts': function (event) {
+        event.preventDefault();
+        Router.go('/');
+    },
 
 });
 
