@@ -66,11 +66,14 @@ Router.route('/', function () {
 	name: "home",
 	data: function () {
 		var arr = [];
-		var products = Products.find({}).fetch()
+		var products = Products.find({}).fetch();
 		products.forEach(product => {
-			var image = ProductImages.findOne({"meta.product_id": product._id}).link();
-			product["image"] = image;
-			arr.push(product);
+			var image = ProductImages.findOne({"meta.product_id": product._id});
+			if (image) {
+				product["image"] = image.link();
+				arr.push(product)
+			}
+			;
 		});
 		return {
 			products: arr
@@ -80,6 +83,7 @@ Router.route('/', function () {
 
 Router.route('/products/:_id', function () {
 	this.subscribe("publishProductId", this.params._id);
+	console.log(this)
 	this.subscribe("productImageById", this.params._id);
 	if (this.ready()) {
 		this.render("ProductDetails");
@@ -100,6 +104,7 @@ Router.route('/products/:_id', function () {
 
 Router.route('/addproduct', function () {
 	this.subscribe("products");
+	this.subscribe("productImages");
 	if (this.ready()) {
 		this.render("AddProduct");
 	} else {
@@ -121,8 +126,12 @@ Router.route('/products/:_id/edit_product', function () {
 	name: "productEdit",
 	data: function () {
 		var product = Products.findOne({_id: this.params._id});
-		var image = ProductImages.findOne({"meta.product_id": product._id}).link();
-		product["image"] = image;
+		if (product) {
+			var image = ProductImages.findOne({"meta.product_id": product._id})
+		}
+		if (image) {
+			product["image"] = image.link();
+		}
 		return {
 			product: product
 		}

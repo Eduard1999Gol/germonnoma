@@ -1,65 +1,63 @@
 <template name="ProductEditPage">
-    <h1 class="title">{{_ "edit_product"}}</h1>
-    <div class="columns">
-        <div class="column">
-            <form id="editProductForm">
-                <div class="columns">
-                    <div class="column">
-                        <div class="select is-fullwidth is-black">
-                            <select name="category">
-                                {{#each getCategories}}
-                                <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
-                                {{/each}}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <input class="input is-black" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{product.name}}" required>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <input class="input is-black" type="number" min="0" name="product_price"
-                            value="{{product.price}}" placeholder="{{_ " product_price"}}" required>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <textarea class="textarea is-black" name="product_description" placeholder="{{_ "product_description"}}" required>{{product.description}}</textarea>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <button id="addProductForm" type="submit" class="button is-success">{{_ "save"}}</button>
-                        <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=product._id}}"
-                            class="button goToProduct">{{_ "cancel"}}</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="column">
-            <div class="card">
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img src="{{product.image}}" alt="Placeholder image">
-                  </figure>
-                </div>
-              </div>
-            <div class="file">
-                <label class="file-label">
-                    <input class="file-input" type="file" name="resume" accept="image/png, image/jpeg" >
-                    <span class="file-cta">
-                        <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                            {{_ "choose_picture"}}
-                        </span>
-                    </span>
-                </label>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <div class="row">
+            <div class="col">
+                <div class="text-white">
+                <h1 class="title">{{_ "edit_product"}}</h1>
+                <div class="select is-fullwidth ">
+                <select name="category" id="product_category_select"  class="form-select mb-3" aria-label=".form-select-lg example"> 
+                {{#each getCategories}}
+                <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
+                {{/each}}
+               </select>
             </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input id="product_name_input" class="form-control" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{product.name}}" aria-label=".form-select-lg example" required>
         </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Price</label>
+            <input id="product_price_input" class="form-control" type="text" name="product_name" placeholder="{{_ "product_price"}}" value="{{product.price}}" aria-label=".form-select-lg example" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Description</label>
+            <textarea id="product_description_textarea" class="textarea form-control" name="product_description" placeholder="{{_ "product_description"}}" required>{{product.description}}</textarea>
+        </div>
+        <div class="card" >
+            <div class="card-image">
+              <figure class="image ">
+                <img src="{{product.image}}" alt="Placeholder image" style="width:400px;height:300px;" >
+              </figure>
+            </div>
+          </div>
+          <div class="file my-1" >
+            <label class="file-label">
+                <input class="file-input" type="file" name="resume" accept="image/png, image/jpeg" >
+            </label>
+        </div>
+        <button  class="btn btn-success" id="editProductForm" type="button" >{{_ "save"}}</button>
+        <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=product._id}}" class="goToProduct btn btn-secondary">{{_ "cancel"}}</a> 
+            </div>
+        </div>    
+        <div class="col">
+            <div class="row" style="width:350px;height:350px;" >
+                <h4 class="text-white">Prewiew</h4>
+                {{#with product}}
+                {{> Product}}
+                {{/with}}
+            </div>
+        </div>    
     </div>
+    <div class="toast align-items-center text-white bg-success m-4" id="epicToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 40px; right: 0;">
+        <div class="d-flex">
+          <div class="toast-body" id="toastText">
+            Product was changed
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+
 </template>

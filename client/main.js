@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import { FilesCollection } from 'meteor/ostrio:files';
 
+import "./main.css";
+
 /* Pages */
 import '../router/router.js';
 import './layout.html';

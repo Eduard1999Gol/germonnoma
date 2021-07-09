@@ -4,24 +4,13 @@ import category from './product_category.js';
 
 
 Template.ProductDetails.events({
-    'click button#edit_product': function (event) { 
-        event.preventDefault();
-        console.log("jdsfjg");
-        var id = event.target.id;
-        Session.set('product_id', id);
-        var product = Products.findOne({_id: event.target.id});
-        $('input.product_name#'+id)[0].value = product.name;
-        $('input.product_price#'+id)[0].value = product.price;
-        $('textarea.product_description#'+id)[0].value = product.description;
-        $('.modal').addClass('is-active');
-        $('html').addClass('is-clipped');
-    },
+   
 
-    'click button.delete-product': function (event) {
+    'click button#delete-product': function (event) {
         event.preventDefault();
         var id = event.target.dataset.id;
         var name = event.target.dataset.name;
-        var prove = window.confirm(TAPi18n.__('Are you really sure to delete the product  0')+ name + "?" );
+        var prove = window.confirm(TAPi18n.__('Are you really sure to delete the product  ')+ name + "?" );
         if (prove) {
             Meteor.call("deleteProduct", id, function (err, res) {
                 if (!err) {
@@ -57,32 +46,21 @@ Template.ProductDetails.events({
             });
         }
     },
-    'click a#goToProduct': function (event) {
-        event.preventDefault();
-        Router.go('/productDetails', {_id: event.target.dataset.id});
-    },
     
-    'click button.edit-product': function (event){
+    'click button#editPage': function (event){
         event.preventDefault();
         Router.go('productEdit', {_id: event.target.dataset.id});
-
-
-
     },
-    'click .close-modal': function (event) {
-        
-        event.preventDefault();
-        helper_functions.closeModal();
-        
-    },
-    'click button#returnToProducts': function (event) {
+
+    'click button#return': function (event){
         event.preventDefault();
         Router.go('/');
-
-    },    
+        
+    },
+  
+   
     //save edited Product
     'submit form#editProductForm': function (event) {
-        console.log("ddd")
         event.preventDefault();
         var id = event.target.dataset.id;
         var name = event.target.product_name.value;

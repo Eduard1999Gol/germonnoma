@@ -36,7 +36,7 @@ Meteor.methods({
         }
         
     },
-    createProduct: function (product) {
+    createProduct(product) {
         product["created_at"] = new Date();
         var id = Products.insert(product);
         if (id) {
@@ -52,7 +52,7 @@ Meteor.methods({
 
     updateProduct: function (id, product) {
         product["edited_at"] = new Date();
-        Products.update({
+        return Products.update({
             _id: id
         }, 
         {

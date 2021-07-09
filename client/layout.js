@@ -18,7 +18,7 @@ Template.Layout.events({
         Router.go('/');
     },
 
-    'click a#home': function (event) {
+    'click a#Home': function (event) {
         event.preventDefault();
         Router.go('/');
     }
