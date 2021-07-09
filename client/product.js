@@ -8,6 +8,19 @@ Template.Product.onCreated(function(){
 });
 
 Template.Product.events({
+    'click button.deselect-product': function (event) {
+        event.preventDefault();
+        var id = event.currentTarget.dataset.id;
+        Meteor.call("selectedProduct", id, false)
+        
+    },
+
+    'click button.select-product': function (event) {
+        event.preventDefault();
+        var id = event.currentTarget.dataset.id;
+        Meteor.call("selectedProduct", id, true)
+        
+    },
 
     'click a#goToProduct': function (event) {
         event.preventDefault();

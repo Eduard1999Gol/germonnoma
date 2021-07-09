@@ -11,10 +11,16 @@
           <div class="col ">
             <h5 class="card-title">{{this.name}}     {{this.price}}  € </h5>
           </div>
-          <div class="col-2" >
-            <a href="#" class="icon">
-              <i class="material-icons text-light">check_circle</i>
-            </a>
+          <div class="col-3" >
+            {{#if this.selected}}
+            <button class="btn btn-sm bg-danger text-light deselect-product" data-id="{{this._id}}">
+              <i class="material-icons">cancel</i>
+            </button>
+            {{else}}
+            <button class="btn btn-sm bg-success text-light select-product" data-id="{{this._id}}">
+              <i class="material-icons">check</i>
+            </button>
+            {{/if}}
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { ReactiveVar } from 'meteor/reactive-var'
+import Toast from './lib/costumFunctions/toast';
 
 Template.ProductEditPage.onCreated(function(){
     Session.set('selectedFile', "");
@@ -107,27 +108,19 @@ Template.ProductEditPage.events({
         var id = Template.instance().data.product._id;
         Meteor.call('updateProduct', id, product, function (err, res) {
             if (!err) {
-                var option = {
-                    animation: true,
-                    delay: 3000
-                };
-                
-                
-                toast = $('#epicToast');
-                var toastElement = new bootstrap.Toast(toast, option);
-                toastElement.show()
+                Toast({
+                    text: "Product is edited", 
+                    duration: 3000, 
+                    color: "success"
+                });
 
             }
              else {
-                var option = {
-                    animation: true,
-                    delay: 3000
-                };
-                
-                toast = $('#epicToast');
-                toast[0].className = "toast align-items-center text-white bg-danger m-4"
-                var toastElement = new bootstrap.Toast(toast, option);
-                toastElement.show()
+                Toast({
+                    text: "Product is not edited", 
+                    duration: 3000, 
+                    color: "danger"
+                });
                 
             }
 

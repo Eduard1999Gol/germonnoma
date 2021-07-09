@@ -38,6 +38,7 @@ Meteor.methods({
     },
     createProduct(product) {
         product["created_at"] = new Date();
+        product["selected"] = false;
         var id = Products.insert(product);
         if (id) {
             return id;
@@ -64,6 +65,17 @@ Meteor.methods({
             }
         });
     },
+    selectedProduct: function (id, selected) {
+        return Products.update({
+            _id: id
+        }, 
+        {
+            $set: {
+                selected: selected
+            }
+        });
+    },
+
     removeImage: function (id) {
         ProductImages.remove({
             'meta.product_id': id

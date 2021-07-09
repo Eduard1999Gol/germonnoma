@@ -1,5 +1,3 @@
-import { toast } from 'bulma-toast';
-import helper_functions from './lib/helper_functions';
 import category from './product_category.js';
 
 
@@ -16,4 +14,8 @@ Template.registerHelper("getCategories", function () {
 
 Template.registerHelper("getCategoryName", function (key) {
     return category[key]
+});
+
+Template.registerHelper("getToastText", function () {
+    return Session.get("toastText");
 });

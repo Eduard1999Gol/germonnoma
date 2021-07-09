@@ -66,7 +66,9 @@ Router.route('/', function () {
 	name: "home",
 	data: function () {
 		var arr = [];
-		var products = Products.find({}).fetch();
+		var arr2 = [];
+		var products = Products.find({selected: false}).fetch();
+		var selected_products = Products.find({selected: true}).fetch();
 		products.forEach(product => {
 			var image = ProductImages.findOne({"meta.product_id": product._id});
 			if (image) {
@@ -75,8 +77,17 @@ Router.route('/', function () {
 			}
 			;
 		});
+		selected_products.forEach(product => {
+			var image = ProductImages.findOne({"meta.product_id": product._id});
+			if (image) {
+				product["image"] = image.link();
+				arr2.push(product)
+			}
+			;
+		});
 		return {
-			products: arr
+			products: arr,
+			selected_products: arr2
 		}
 	}
 });
