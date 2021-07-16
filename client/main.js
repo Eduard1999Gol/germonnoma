@@ -22,8 +22,7 @@ import './button_create_product.html';
 import './button_create_product.js';
 import './modal_login.html';
 import './register.html';
-
-
+import './modal_login.js';
 
 
 /* Collections */
