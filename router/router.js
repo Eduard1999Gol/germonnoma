@@ -114,7 +114,7 @@ Router.route('/products/:_id', function () {
 });
 
 Router.route('/addproduct', function () {
-	this.subscribe("products");
+	this.subscribe("product");
 	this.subscribe("productImages");
 	if (this.ready()) {
 		this.render("AddProduct");
@@ -124,6 +124,21 @@ Router.route('/addproduct', function () {
 },{
 	name: "addProduct",
 });
+
+Router.route('/register', function () {
+	this.subscribe("users");
+	if (this.ready()) {
+		this.render("Register");
+	} else {
+		this.render('Loading');
+	}
+},{
+	name: "register",
+});
+
+
+
+
 
 Router.route('/products/:_id/edit_product', function () {
 	this.subscribe("publishProductId", this.params._id);

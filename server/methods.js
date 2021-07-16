@@ -65,6 +65,7 @@ Meteor.methods({
             }
         });
     },
+    
     selectedProduct: function (id, selected) {
         return Products.update({
             _id: id
