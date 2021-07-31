@@ -8,23 +8,28 @@ Template.Register.onRendered(function(){
 
 if(Meteor.isClient){
     Template.Register.events({
-        'submit form': function (event) {
+        'submit form#register': function (event) {
             event.preventDefault();
             var user = {
-                name: $('[name=name]').val(),
-                username: $('[name=username]').val(),
-                email: $('[name=email]').val(),
-                password: $('[name=password]').val(),
+                username: event.currentTarget.username.value,
+                email: event.currentTarget.email.value,
+                password: event.currentTarget.password.value,
+                profile: {
+                    first_name: event.currentTarget.first_name.value,
+                    last_name: event.currentTarget.last_name.value
+                }
             }
-            console.log(user);
-    
-            Accounts.createUser({
-                name: user.name,
-                username: user.username,
-                email: user.email,
-                password: user.password
+            Meteor.call("register", user, function (err, res) {
+                if (!err) {
+                    console.log(res)
+                    
+                } else {
+                    console.log(err)
+                }
+                
             })
-            console.log(Meteor.users.find().fetch())
+            console.log(user);
+          
         }
     });
 }

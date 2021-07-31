@@ -12,15 +12,9 @@ function sendEmail(to, subject, text ) {
 }
   
 Meteor.methods({
-    /*
-    register: function(name, username, email, password) {
-        var user_exist = Meteor.users.find({'profile.email': email}).count();
-        var user = {
-            name: name,
-            username: username,
-            email: email,
-            password: password,
-        }
+    
+    register: function(user) {
+        var user_exist = Meteor.users.find({'profile.email': user.email}).count();
         if (user_exist == 0) {
             var userId = Accounts.createUser(user);
             if (userId) {
@@ -28,11 +22,11 @@ Meteor.methods({
             }
             
         }else{
-            return "This email Address is already registered";
+            throw new Meteor.Error('user_exist', "User already registered");
         }
         
     },
-    */
+    
    
     createProduct(product) {
         product["created_at"] = new Date();

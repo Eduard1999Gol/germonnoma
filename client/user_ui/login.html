@@ -1,11 +1,11 @@
 <template name="Login">
     {{#if userLoggedIn}}
-    <button class="btn btn-danger pull-right">
+    <button id="logout" class="btn btn-danger pull-right">
         {{_ "logout"}}
         <!-- TODO i18n -->
     </button>
     {{else}}
-    <button class="btn btn-success pull-right" data-bs-toggle="modal" data-bs-target="#loginModal">
+    <button id="loginButton" class="btn btn-success pull-right" data-bs-toggle="modal" data-bs-target="#loginModal">
         {{_ "login"}}
         <!-- TODO i18n -->
     </button>
@@ -34,7 +34,7 @@
                             </field>
                         </div>
                         <div class="row">
-                            <button class="btn-success btn" type="submit">
+                            <button id="login" class="btn-success btn" type="submit">
                                 {{_ "login"}}
                                 <!-- TODO i18n -->
                             </button>
@@ -46,7 +46,7 @@
                             </button>
                         </dib>
                         <div class="row">
-                            <button class="btn-info btn">
+                            <button id="goResetPassword" class="btn-info btn" data-bs-dismiss="modal" type="reset">
                                 {{_ "forgot_password"}}
                                 <!-- TODO i18n -->
                             </button>

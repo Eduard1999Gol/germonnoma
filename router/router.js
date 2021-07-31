@@ -152,6 +152,20 @@ Router.route(
     name: "register",
   }
 );
+Router.route(
+  "/reset_password",
+  function () {
+    this.subscribe("users");
+    if (this.ready()) {
+      this.render("ResetPassword");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "resetPassword",
+  }
+);
 
 Router.route(
   "/products/:_id/edit_product",
