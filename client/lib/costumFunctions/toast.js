@@ -7,7 +7,7 @@ export default function Toast(options) {
     }
     var toastElement = new bootstrap.Toast($('#epicToast'),{
         animation: true,
-        delay: options.duration
+        delay: options.duration //TODO duration check
     });
 
     toastElement.show()

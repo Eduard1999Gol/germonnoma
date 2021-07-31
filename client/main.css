@@ -16,9 +16,7 @@ body{
     max-height: 100px !important;
 }
 
-.modal{
-    margin-left: 37em !important;
-}
+
 
 select#language{
     width: 67px !important;
