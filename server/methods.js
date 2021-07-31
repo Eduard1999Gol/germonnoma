@@ -12,18 +12,14 @@ function sendEmail(to, subject, text ) {
 }
   
 Meteor.methods({
-    register: function(language, first_name, last_name, email, password, type) {
+    /*
+    register: function(name, username, email, password) {
         var user_exist = Meteor.users.find({'profile.email': email}).count();
         var user = {
+            name: name,
+            username: username,
             email: email,
             password: password,
-            profile:{
-                first_name: first_name,
-                last_name: last_name,
-                email: email,
-                type: type,
-                language: language
-            }
         }
         if (user_exist == 0) {
             var userId = Accounts.createUser(user);
@@ -36,6 +32,8 @@ Meteor.methods({
         }
         
     },
+    */
+   
     createProduct(product) {
         product["created_at"] = new Date();
         product["selected"] = false;

@@ -32,3 +32,6 @@ manuel:reactivearray
 accounts-ui
 accounts-facebook
 accounts-google
+accounts-base
+accounts-github
+accounts-twitter

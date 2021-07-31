@@ -13,7 +13,7 @@ Template.ProductDetails.events({
         var prove = window.confirm(TAPi18n.__('Are you really sure to delete the product  ')+ name + "?" );
         if (prove) {
             Meteor.call("deleteProduct", id, function (err, res) {
-                if (!err) {
+                if (!err) {         
                     Toast({
                         text: "Product is deleted", 
                         duration: 3000, 

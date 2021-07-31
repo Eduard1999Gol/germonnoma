@@ -113,7 +113,7 @@ Template.AddProduct.events({
                         file: template.newProductImage.get(),
                         chunkSize: 'dynamic',
                         meta: {
-                            product_id: res //hier benutze ich product id
+                            product_id: res
                         }
                         }, false);
                         upload.on('end', function (error, fileObj) {
