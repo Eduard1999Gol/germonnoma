@@ -1,7 +1,6 @@
 Template.Login.events({
-    'click button#goResister':function (event) {
+    'click button#goRegister': function (event) {
         event.preventDefault();
-        console.log(event)
-        
+        console.log(event);
     }
-})
+});
