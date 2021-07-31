@@ -9,21 +9,24 @@ import './layout.html';
 import './layout.js';
 import './home.html';
 import './home.js';
-import './product.html';
-import './product.js';
-import './add_product.html';
-import './add_product.js';
-import './product_details.html';
-import './product_details.js';
+import './product_ui/product.html';
+import './product_ui/product.js';
+import './product_ui/add_product.html';
+import './product_ui/add_product.js';
+import './product_ui/product_details.html';
+import './product_ui/product_details.js';
+import './product_ui/product_edit.html';
+import './product_ui/product_edit.js';
+import './product_ui/button_create_product.html';
+import './product_ui/button_create_product.js';
+import './user_ui/register.html';
+import './user_ui/register.js';
+import './user_ui/login.js';
+import './user_ui/login.html';
+import './user_ui/reset_password.js';
+import './user_ui/reset_password.html';
 import './global_helpers.js';
-import './product_edit.html';
-import './product_edit.js';
-import './button_create_product.html';
-import './button_create_product.js';
-import './modal_login.html';
-import './register.html';
-import './register.js';
-import './modal_login.js';
+
 
 
 /* Collections */

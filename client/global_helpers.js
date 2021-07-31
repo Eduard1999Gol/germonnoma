@@ -1,4 +1,4 @@
-import category from './product_category.js';
+import category from './product_ui/product_category.js';
 
 
 
