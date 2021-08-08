@@ -39,16 +39,17 @@ function setLanguage() {
 /**
  * Router beforeactions
  */
-/* 
+
 Router.onBeforeAction(setLanguage, {});
 
 Router.onBeforeAction(loginNeeded, {
 	except: [
-		"login",
-		"register"
+		"register",
+    "home"
+
 		
 	]
-}); */
+});
 
 Router.configure({
   layoutTemplate: "Layout",
