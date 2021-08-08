@@ -1,5 +1,5 @@
 import { ReactiveVar } from 'meteor/reactive-var'
-import Toast from './lib/costumFunctions/toast';
+import Toast from '../lib/costumFunctions/toast';
 
 Template.ProductEditPage.onCreated(function(){
     Session.set('selectedFile', "");

@@ -1,6 +1,6 @@
 import { toast } from "bulma-toast";
-import helper_functions from './lib/helper_functions';
-import category from './product_category.js';
+import helper_functions from '../lib/helper_functions';
+import Toast from '../lib/costumFunctions/toast';
 
 
 Template.ProductDetails.events({
@@ -13,36 +13,27 @@ Template.ProductDetails.events({
         var prove = window.confirm(TAPi18n.__('Are you really sure to delete the product  ')+ name + "?" );
         if (prove) {
             Meteor.call("deleteProduct", id, function (err, res) {
-                if (!err) {
-                    toast({
-                        message: TAPi18n.__('product_deleted'),
-                        type: 'is-success',
-                        duration: 3000,
-                        position: "bottom-right",
-                        closeOnClick: true,
-                        animate: { in: 'fadeIn', out: 'fadeOut' }
+                if (!err) {         
+                    Toast({
+                        text: "Product is deleted", 
+                        duration: 3000, 
+                        color: "success"
                     });
                     Router.go('/');
                 }else{
-                    toast({
-                        message: TAPi18n.__('product_not_deleted'),
-                        type: 'is-danger',
-                        duration: 3000,
-                        position: "bottom-right",
-                        closeOnClick: true,
-                        animate: { in: 'fadeIn', out: 'fadeOut' }
+                    Toast({
+                        text: "Product is not deleted", 
+                        duration: 3000, 
+                        color: "danger"
                     });
                 }
                 
             })
         } else {
-            toast({
-                message: TAPi18n.__('product_not_deleted'),
-                type: 'is-danger',
-                duration: 3000,
-                position: "bottom-right",
-                closeOnClick: true,
-                animate: { in: 'fadeIn', out: 'fadeOut' }
+            Toast({
+                text: "Product is not deleted", 
+                duration: 3000, 
+                color: "danger"
             });
         }
     },

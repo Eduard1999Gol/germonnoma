@@ -1,4 +1,4 @@
-import category from './product_category.js';
+import category from './product_ui/product_category.js';
 
 
 
@@ -18,4 +18,12 @@ Template.registerHelper("getCategoryName", function (key) {
 
 Template.registerHelper("getToastText", function () {
     return Session.get("toastText");
+});
+
+Template.registerHelper("userLoggedIn", function () {
+    if (Meteor.userId()) {
+        return true;
+    } else {
+        return false;
+    }
 });

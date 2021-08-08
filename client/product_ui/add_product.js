@@ -1,7 +1,5 @@
-import { toast } from 'bulma-toast';
-import helper_functions from './lib/helper_functions';
-import category from './product_category.js';
 import { ReactiveVar } from 'meteor/reactive-var'
+import Toast from '../lib/costumFunctions/toast';
 
 Template.AddProduct.onCreated(function(){
     Session.set('selectedFile', "");
@@ -115,7 +113,7 @@ Template.AddProduct.events({
                         file: template.newProductImage.get(),
                         chunkSize: 'dynamic',
                         meta: {
-                            product_id: res //hier benutze ich product id
+                            product_id: res
                         }
                         }, false);
                         upload.on('end', function (error, fileObj) {
@@ -129,21 +127,17 @@ Template.AddProduct.events({
                         var prod = Products.findOne({_id: res});
                         template.newProduct.set(prod)
                         //
-                    toast({
-                        message: TAPi18n.__('product_created'),
-                        type: 'is-success',
-                        duration: 3000,
-                        position: "bottom-right",
-                        closeOnClick: true
-                    });
+                        Toast({
+                            text: "Product is created", 
+                            duration: 3000, 
+                            color: "success"
+                        });
                     Router.go('/');
                 }else{
-                    toast({
-                        message: TAPi18n.__('product_not_created'),
-                        type: 'is-danger',
-                        duration: 3000,
-                        position: "bottom-right",
-                        closeOnClick: true
+                    Toast({
+                        text: "Product is not created", 
+                        duration: 3000, 
+                        color: "danger"
                     });
                 }
             });

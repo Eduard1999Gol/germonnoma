@@ -1,5 +1,3 @@
-import { toast } from 'bulma-toast';
-import helper_functions from './lib/helper_functions';
 
 Template.Layout.onCreated(function(){
 });
@@ -21,6 +19,11 @@ Template.Layout.events({
     'click a#Home': function (event) {
         event.preventDefault();
         Router.go('/');
+    },
+
+    'click a#Login': function (event) {
+        event.preventDefault();
+        
     }
 });
 

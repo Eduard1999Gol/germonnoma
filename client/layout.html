@@ -24,8 +24,15 @@
 
   <nav class="navbar navbar-dark bg-dark ">
     <a href="#" id="Home" class="navbar-brand text-light mx-4"><strong>Web-Shop</strong></a>
+    <li  class="nav-item">
+        
+    </li>
+   
     {{> CreateButton}}
+    {{> Login}}
+
     <ul class="navbar-nav">
+     
       <li class="nav-item">
         <form class="form-inline mx-2">
           <select class="form-select" id="language">
@@ -38,7 +45,7 @@
      
     </ul>
   </nav>
-  
+
   <div class="toast align-items-center text-white  m-4" id="epicToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 40px; right: 0;">
     <div class="d-flex">
       <div class="toast-body" id="toastText">
@@ -47,9 +54,5 @@
       <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
   </div>
-
-    
-  
- 
 </template>
 
