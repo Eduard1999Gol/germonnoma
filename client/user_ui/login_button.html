@@ -1,0 +1,17 @@
+<template name="LogginButtons">
+    {{#if userLoggedIn}}
+    <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    User       
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" id="myProfile" href="#">Profile</a></li>
+    <li><a class="dropdown-item" id="logout" href="#">{{_ "logout"}}</a></li>
+    </ul>
+    </div>
+    {{else}}
+    <a id="loginButton"  data-bs-toggle="modal" href="#" data-bs-target="#loginModal">
+        <i class="material-icons text-light ">login</i> 
+    </a>
+    {{/if}}
+</template>
