@@ -1,3 +1,4 @@
+
 <template name="Layout" class="background has-background-info">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
@@ -19,20 +20,34 @@
     {{/with}}
 </template>
 
+<template name="LogginButtons">
+  {{#if userLoggedIn}}
+  <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+  User       
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+  <li><a class="dropdown-item" id="myProfile" href="#">Profile</a></li>
+  <li><a class="dropdown-item" id="logout" href="#">{{_ "logout"}}</a></li>
+  </ul>
+  </div>
+  {{else}}
+  <a id="loginButton"  data-bs-toggle="modal" href="#" data-bs-target="#loginModal">
+      <i class="material-icons text-light ">login</i> 
+  </a>
+  {{/if}}
+  </template>
+
 
 <template name="Navbar" >
 
   <nav class="navbar navbar-dark bg-dark ">
     <a href="#" id="Home" class="navbar-brand text-light mx-4"><strong>Web-Shop</strong></a>
     <li  class="nav-item">
-        
     </li>
-   
     {{> CreateButton}}
-    {{> Login}}
-
+    {{> LogginButtons}}
     <ul class="navbar-nav">
-     
       <li class="nav-item">
         <form class="form-inline mx-2">
           <select class="form-select" id="language">
@@ -42,7 +57,6 @@
           </select>
         </form>
       </li>
-     
     </ul>
   </nav>
 

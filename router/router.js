@@ -46,8 +46,6 @@ Router.onBeforeAction(loginNeeded, {
 	except: [
 		"register",
     "home"
-
-		
 	]
 });
 
@@ -153,6 +151,23 @@ Router.route(
     name: "register",
   }
 );
+
+
+Router.route(
+  "/login",
+  function () {
+    this.subscribe("users");
+    if (this.ready()) {
+      this.render("Login");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "login",
+  }
+);
+
 Router.route(
   "/reset_password",
   function () {
@@ -167,6 +182,24 @@ Router.route(
     name: "resetPassword",
   }
 );
+
+Router.route(
+  "/my_profile",
+  function () {
+    this.subscribe("users");
+    if (this.ready()) {
+      this.render("MyProfile");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "MyProfile",
+  }
+);
+
+
+
 
 Router.route(
   "/products/:_id/edit_product",

@@ -21,10 +21,29 @@ Template.Layout.events({
         Router.go('/');
     },
 
-    'click a#Login': function (event) {
+    'click a#logout': function (event) {
         event.preventDefault();
-        
+        Meteor.logout(function (err, res) {
+            if (!err) {
+                console.log("logout")
+            } else {
+                console.log(err)
+            }
+        })
+    },
+
+    'click a#loginButton': function (event) {
+        event.preventDefault();
+        //$('form#loginForm')[0].reset();
+        Router.go('login');
+    },
+
+    'click a#myProfile': function (event) {
+        event.preventDefault();
+        Router.go('MyProfile');
+
     }
+
 });
 
 Template.Layout.helpers({

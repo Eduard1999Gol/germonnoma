@@ -27,6 +27,8 @@ import "./user_ui/login.html";
 import "./user_ui/login.js"
 import "./global_helpers.js";
 
+import "./user_ui/my_profile.html"
+
 /* Collections */
 Products = new Mongo.Collection("products");
 ProductImages = new FilesCollection({ collectionName: "ProductImages" });
