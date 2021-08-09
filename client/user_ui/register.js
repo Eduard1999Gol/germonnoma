@@ -29,6 +29,7 @@ if(Meteor.isClient){
                 
             })
             console.log(user);
+           
           
         }
     });

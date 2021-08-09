@@ -28,6 +28,7 @@ import "./user_ui/login.js"
 import "./user_ui/login_button.html"
 import "./global_helpers.js";
 import "./user_ui/my_profile.html"
+import "./user_ui/my_profile.js"
 
 /* Collections */
 Products = new Mongo.Collection("products");

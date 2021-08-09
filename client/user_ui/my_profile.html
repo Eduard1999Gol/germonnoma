@@ -1,5 +1,47 @@
 <template name="MyProfile">
-    <div>
-        MyProfile
-    </div>
+    <div class="text-white">
+        <div class="content">
+          <div class="container">
+            <div class="col">
+                <figure class="image is-256x256">
+                    <img src="https://bulma.io/images/placeholders/256x256.png">
+                  </figure>
+            </div>
+    
+            <div class="col">
+              <h1 class="title">{{getUserDetails}}</h1>
+              <p class="subtitle">{{_ "price"}}: {{product.price}}</p>
+              <p class="subtitle">{{_ "description"}}: {{product.description}}</p>
+              <p class="subtitle">
+                {{_ "category"}}: {{getCategoryName product.category}}
+              </p>
+            </div>
+          </div>
+    
+          <div class="mx-1">
+            <button
+              class="btn btn-danger mx-1"
+              id="delete-product"
+              data-name="{{product.name}}"
+              data-id="{{product._id}}"
+            >
+              {{_ "delete"}}
+            </button>
+            <button
+              class="btn btn-light mx-1"
+              id="editPage"
+              data-id="{{product._id}}"
+            >
+              {{_ "edit"}}
+            </button>
+            <button
+              class="btn btn-light mx-1"
+              id="return"
+              href="{{ pathFor route='home'}}"
+            >
+              {{_ "back"}}
+            </button>
+          </div>
+        </div>
+      </div>
 </template>
