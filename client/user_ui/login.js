@@ -5,8 +5,7 @@ Template.Login.events({
         event.preventDefault();
         Meteor.loginWithPassword(event.currentTarget.email_address.value, event.currentTarget.password.value, function (err, res) {
             if (!err) {
-                console.log(Meteor.user().profile.first_name);
-                Router.go('/');
+                Router.go('home');
                 Toast({
                     text: "You are logged", 
                     duration: 3000, 

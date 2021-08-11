@@ -1,12 +1,11 @@
 
 <template name="Login">
-    <div class="row justify-content-md-center">
-        <div class="col-sm-5  d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
           <div class="text-white">
             <form id="loginForm">
-              <h1 class="text-light mb-4 mt-3"><strong>Login:</strong> </h1>
+              <h1 class="text-light mb-4 mt-3"><strong>{{_ "Login"}}</strong> </h1>
               <div class="input-group mb-3 input-group-lg">
-                <input type="email" class="form-control" name="email_address" placeholder="E-mail"  aria-describedby="inputGroup-sizing-lg">
+                <input type="text" class="form-control" name="email_address" placeholder="E-mail or Username"  aria-describedby="inputGroup-sizing-lg">
               </div>
               <div class="input-group mb-3 input-group-lg">
                 <input type="password" name="password" class="form-control" placeholder="Password">
@@ -15,18 +14,20 @@
                 <input id="login" type="submit" class="btn btn-success btn-lg "  value="Login">
               </div>
               <hr>
-              <a id="goResetPassword" class="btn btn-link d-flex justify-content-center mb-0">
-                {{_ "forgot_password"}}
-              </a>
-              <div class="d-grid gap-2 col-6 mx-auto">
-                <a id="goRegister" class="btn  btn-lg d-flex justify-content-center text-white bg-primary" data-bs-dismiss="modal" type="reset">
+              <div class="row">
+                <div class="col">
+                  <a id="goRegister" class="btn  btn-link"  type="reset">
                     {{_ "Register"}}
                     <!-- TODO i18n -->  
                   </a>
+                </div>
+                <div class="col">
+                  <a id="goResetPassword" class="btn btn-link">
+                    {{_ "forgot_password"}}
+                  </a>
+                </div>
               </div>
             </form>
           </div>
         </div>
-    </div>
-</div>    
 </template>
