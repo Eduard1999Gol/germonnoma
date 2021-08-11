@@ -7,33 +7,17 @@
                     <img src="https://bulma.io/images/placeholders/256x256.png">
                   </figure>
             </div>
-    
             <div class="col">
-              <h1 class="title">{{getUserDetails}}</h1>
-              <p class="subtitle">{{_ "price"}}: {{product.price}}</p>
-              <p class="subtitle">{{_ "description"}}: {{product.description}}</p>
+              {{#with user}}
+              <h1 class="title">{{this.profile.first_name}}</h1>
+              <p class="subtitle">{{_ "Name"}}: </p>
+              <p class="subtitle">{{_ "Username"}}: </p>
               <p class="subtitle">
-                {{_ "category"}}: {{getCategoryName product.category}}
               </p>
+              {{/with}}
             </div>
           </div>
-    
           <div class="mx-1">
-            <button
-              class="btn btn-danger mx-1"
-              id="delete-product"
-              data-name="{{product.name}}"
-              data-id="{{product._id}}"
-            >
-              {{_ "delete"}}
-            </button>
-            <button
-              class="btn btn-light mx-1"
-              id="editPage"
-              data-id="{{product._id}}"
-            >
-              {{_ "edit"}}
-            </button>
             <button
               class="btn btn-light mx-1"
               id="return"

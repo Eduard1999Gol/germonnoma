@@ -184,7 +184,7 @@ Router.route(
 );
 
 Router.route(
-  "/my_profile",
+  "/my_profile/:_id",
   function () {
     this.subscribe("users");
     if (this.ready()) {
@@ -195,6 +195,12 @@ Router.route(
   },
   {
     name: "MyProfile",
+    data: function () {
+      var user = Meteor.users.findOne({_id: this.params._id})
+      return {
+        user: user
+      }
+    },
   }
 );
 

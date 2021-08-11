@@ -1,25 +1,34 @@
+import Toast from '../lib/costumFunctions/toast';
+
 Template.Login.events({
     'submit form#loginForm':function (event) {
         event.preventDefault();
         Meteor.loginWithPassword(event.currentTarget.email_address.value, event.currentTarget.password.value, function (err, res) {
             if (!err) {
-                console.log(Meteor.user())
+                console.log(Meteor.user().profile.first_name);
                 Router.go('/');
+                Toast({
+                    text: "You are logged", 
+                    duration: 3000, 
+                    color: "success"
+                });
             } else {
                 console.log(err)
             }
         })
     },
 
-    'click button#goRegister':function (event) {
+    'click a#goRegister':function (event) {
         event.preventDefault();
         Router.go('register');
     },
 
 
-    'click button#goResetPassword':function (event) {
+    'click a#goResetPassword':function (event) {
         event.preventDefault();
         Router.go('resetPassword');
-        console.log("console");
-    }
+    },
+
+
+
 })
