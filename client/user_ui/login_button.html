@@ -1,6 +1,6 @@
 <template name="LogginButtons">
     {{#if userLoggedIn}}
-    <div class="dropdown ml-50">
+    <div class="dropdown position-absolute top-0 end-0 mr-5 mt-2">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     User       
     </a>
@@ -10,8 +10,8 @@
     </ul>
     </div>
     {{else}}
-    <a id="loginButton"  data-bs-toggle="modal" href="#" data-bs-target="#loginModal">
-        <i class="material-icons text-light ">login</i> 
+    <a id="loginButton"  class="btn btn-success position-absolute top-0 end-0  mr-5 mt-2" href="#" data-bs-target="#loginModal">
+        Login
     </a>
     {{/if}}
 </template>
