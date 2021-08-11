@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor'
+import Toast from '../lib/costumFunctions/toast';
 
 Template.Register.onCreated(function(){
 });
@@ -10,27 +11,28 @@ if(Meteor.isClient){
     Template.Register.events({
         'submit form#register': function (event) {
             event.preventDefault();
-            var user = {
-                username: event.currentTarget.username.value,
-                email: event.currentTarget.email.value,
-                password: event.currentTarget.password.value,
-                profile: {
-                    first_name: event.currentTarget.first_name.value,
-                    last_name: event.currentTarget.last_name.value
+            if (event.currentTarget.password.value == event.currentTarget.password_2.value) {
+                var user = {
+                    username: event.currentTarget.username.value,
+                    email: event.currentTarget.email.value,
+                    password: event.currentTarget.password.value,
                 }
-            }
-            Meteor.call("register", user, function (err, res) {
-                if (!err) {
-                    console.log(res)
+                Meteor.call("register", user, function (err, res) {
+                    if (!err) {
+                        Router.go("login");
+                        
+                    } else {
+                        console.log(err);
+                    }
                     
-                } else {
-                    console.log(err)
-                }
-                
-            })
-            console.log(user);
-           
-          
+                })
+            } else {
+                Toast({
+                    text: "Passwords are not same", 
+                    duration: 3000, 
+                    color: "danger"
+                });
+            }
         }
     });
 }
