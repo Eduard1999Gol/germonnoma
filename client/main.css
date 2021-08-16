@@ -7,6 +7,19 @@
     margin-left: 75em !important;
 }
 
+.create{
+    margin-right: 80px !important;
+}
+
+.dropdown_user{
+    margin-right: 210px;
+}
+
+.login_button{
+    margin-right: 80px;
+}
+
+
 body{
     background-color: black !important;
 }
