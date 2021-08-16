@@ -26,6 +26,17 @@ Meteor.methods({
         }
         
     },
+
+    updateProfile: function (profile) {
+        Meteor.users.update({
+            _id: this.userId
+        },
+        {
+            $set: {
+                profile: profile
+            }
+        })
+    },
     
    
     createProduct(product) {

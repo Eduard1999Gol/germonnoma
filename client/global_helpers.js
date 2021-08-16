@@ -27,3 +27,30 @@ Template.registerHelper("userLoggedIn", function () {
         return false;
     }
 });
+
+
+
+Template.registerHelper("myProfile", function () {
+    if (Meteor.user().profile)  {
+        return {
+            first_name: Meteor.user().profile.first_name,
+            last_name: Meteor.user().profile.last_name,
+            street: Meteor.user().profile.street,
+            haus_number: Meteor.user().profile.haus_number,
+            state: Meteor.user().profile.state,
+            post_code: Meteor.user().profile.post_code,
+            city: Meteor.user().profile.city,
+        }
+    } else {
+        return {
+            first_name: "",
+            last_name: "",
+            street: "",
+            haus_number: "",
+            state: "",
+            post_code: "",
+            city: ""
+        }
+        
+    }
+})
