@@ -131,17 +131,17 @@ Router.route(
 );
 
 Router.route(
-  "/reset_password",
+  "/forgot_password",
   function () {
     this.subscribe("users");
     if (this.ready()) {
-      this.render("ResetPassword");
+      this.render("ForgotPassword");
     } else {
       this.render("Loading");
     }
   },
   {
-    name: "resetPassword",
+    name: "forgotPassword",
   }
 );
 

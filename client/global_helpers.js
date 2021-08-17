@@ -29,7 +29,6 @@ Template.registerHelper("userLoggedIn", function () {
 });
 
 
-
 Template.registerHelper("myProfile", function () {
     if (Meteor.user().profile)  {
         return {

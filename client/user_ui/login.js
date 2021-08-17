@@ -11,6 +11,7 @@ Template.Login.events({
                     duration: 3000, 
                     color: "success"
                 });
+
             } else {
                 console.log(err)
             }
@@ -25,7 +26,7 @@ Template.Login.events({
 
     'click a#goResetPassword':function (event) {
         event.preventDefault();
-        Router.go('resetPassword');
+        Router.go('forgotPassword');
     },
 
 
