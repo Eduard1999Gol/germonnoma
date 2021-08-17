@@ -6,7 +6,7 @@ Template.MyProfile.events({
     'click button#return': function (event){
         event.preventDefault();
         Router.go('/');
-        $( ".dropdown" ).show();
+        $( ".dropdown_user" ).show();
     },
 
     'submit form.profile': function (event) {

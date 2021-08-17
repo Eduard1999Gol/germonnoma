@@ -35,3 +35,5 @@ accounts-google
 accounts-base
 accounts-github
 accounts-twitter
+service-configuration
+facebook-config-ui

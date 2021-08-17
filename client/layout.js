@@ -14,13 +14,14 @@ Template.Layout.events({
     'click a#Home': function (event) {
         event.preventDefault();
         Router.go('/');
-        $( ".dropdown" ).show();
+        $( ".dropdown_user" ).show();
     },
 
     'click a#logout': function (event) {
         event.preventDefault();
         Meteor.logout(function (err, res) {
             if (!err) {
+                Router.go("login");
                 console.log("logout")
             } else {
                 console.log(err)
@@ -36,7 +37,7 @@ Template.Layout.events({
     'click a#myProfile': function (event) {
         event.preventDefault();
         Router.go('MyProfile',{_id:Meteor.userId()});
-        $( ".dropdown" ).hide();
+        $( ".dropdown_user" ).hide();
     }
 
 });

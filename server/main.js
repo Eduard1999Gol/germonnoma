@@ -11,6 +11,8 @@ Accounts.config({
 Accounts.emailTemplates.from = 'info@germonnoma.org';
 Accounts.emailTemplates.siteName = 'Germonnoma';
 
+
+
 Accounts.urls.resetPassword = function(token) {
   return Meteor.absoluteUrl('resetpassword/' + token);
 };
