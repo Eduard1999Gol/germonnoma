@@ -11,7 +11,10 @@ Template.MyProfile.events({
 
     'submit form.profile': function (event) {
         event.preventDefault();
+        var language = event.currentTarget.selectLanguage.value;
+        TAPi18n.setLanguage(language);
         var profile = {
+            language: event.currentTarget.selectLanguage.value,
             first_name: event.currentTarget.first_name.value,
             last_name: event.currentTarget.last_name.value,
             street: event.currentTarget.street.value,

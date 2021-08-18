@@ -29,16 +29,11 @@ body{
     max-height: 100px !important;
 }
 
-
-
-select#language{
-    width: 67px !important;
-    font-size: small !important;
-    
-
-}
 .button_profile {
     font-size: 30px !important;
     margin-top: 50px !important;
 }
 
+.color{
+    color: black !important;
+}

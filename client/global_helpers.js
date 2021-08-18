@@ -39,6 +39,7 @@ Template.registerHelper("myProfile", function () {
             state: Meteor.user().profile.state,
             post_code: Meteor.user().profile.post_code,
             city: Meteor.user().profile.city,
+            language: Meteor.user().profile.language,
         }
     } else {
         return {
@@ -48,7 +49,8 @@ Template.registerHelper("myProfile", function () {
             haus_number: "",
             state: "",
             post_code: "",
-            city: ""
+            city: "",
+            language: "",
         }
         
     }

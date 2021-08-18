@@ -37,3 +37,5 @@ accounts-github
 accounts-twitter
 service-configuration
 facebook-config-ui
+google-config-ui
+github-config-ui

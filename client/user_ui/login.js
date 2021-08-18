@@ -1,6 +1,10 @@
 import Toast from '../lib/costumFunctions/toast';
 
 Template.Login.events({
+    'click .link-github': function () {
+        Meteor.loginWithGithub()
+        Router.go('home');
+      },
     'click .login-facebook': function(event) {
         event.preventDefault();
         Meteor.loginWithFacebook({requestPermissions: ['public_profile', 'email']}, function(err){

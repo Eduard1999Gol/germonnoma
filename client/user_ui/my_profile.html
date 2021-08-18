@@ -14,17 +14,18 @@
                   {{#with user}}
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title">Username: {{this.username}}</h5>
+                      <h5 class="card-title"><strong class="color">Username: </strong>{{this.username}}</h5>
                     </div>
                     <div class="col">
-                      <h5 class="card-title">Email: {{this.email_address}}</h5>
+                      <h5 class="card-title"><strong class="color">Email: </strong>{{this.email_address}}</h5>
                     </div>
                   </div>
-                  <h6><strong>Fisrt name:</strong> {{myProfile.first_name}}</h6>
-                  <h6><strong>Last name:</strong> {{myProfile.last_name}}</h6>
-                  <h6><strong>Country:</strong> {{myProfile.state}}</h6>
-                  <h6><strong>Adress:</strong> {{myProfile.street}}, {{myProfile.haus_number}} </h6>
-                  <h6><strong>City/Post number:</strong> {{myProfile.city}},{{myProfile.post_code}}</h6>
+                  <h6><strong class="color">Language:</strong>{{myProfile.language}}</h6>
+                  <h6><strong class="color">Fisrt name:  </strong> {{myProfile.first_name}}</h6>
+                  <h6><strong class="color">Last name:  </strong> {{myProfile.last_name}}</h6>
+                  <h6><strong class="color">Country:</strong> {{myProfile.state}}</h6>
+                  <h6><strong class="color">Adress:</strong> {{myProfile.street}}, {{myProfile.haus_number}} </h6>
+                  <h6><strong class="color">City/Post number:</strong> {{myProfile.city}},{{myProfile.post_code}}</h6>
                   {{/with}}
                 </div>
               </div>
@@ -35,35 +36,43 @@
           <div class="row">
             <div class="col">
               <label class="form-label">Firstname</label>
-              <input type="text" class="input profile form-control m-1" name="first_name" placeholder="Firstname" value="{{myProfile.first_name}}" required >
+              <input type="text" class="input profile form-control m-1" name="first_name" placeholder="Firstname" value="{{myProfile.first_name}}">
             </div>
             <div class="col">
               <label class="form-label">Lastname</label>
-              <input type="text" class="input profile form-control m-1" name="last_name" placeholder="Lastname" value="{{myProfile.last_name}}" required >
+              <input type="text" class="input profile form-control m-1" name="last_name" placeholder="Lastname" value="{{myProfile.last_name}}">
+            </div>
+            <div class="col">
+              <label class="form-label">Language</label>
+              <select name="selectLanguage" class="form-select m-1" id="language">
+                <option value="en"><strong>EN</strong></option>
+                <option value="de"><strong>DE</strong></option>
+                <option value="ru"><strong>RU</strong></option>
+              </select>
             </div>
           </div>
           <div class="row">
             <div class="col">
               <label class="form-label">Street</label>
-              <input class="input profile form-control m-1" type="text" name="street" placeholder="Street" value="{{myProfile.street}}" required >
+              <input class="input profile form-control m-1" type="text" name="street" placeholder="Street" value="{{myProfile.street}}"  >
             </div>
             <div class="col">
               <label class="form-label">Haus number</label>
-              <input class="input profile form-control m-1" type="number" name="haus_number" placeholder="Hausnummer" value="{{myProfile.haus_number}}" required>
+              <input class="input profile form-control m-1" type="number" name="haus_number" placeholder="Hausnummer" value="{{myProfile.haus_number}}" >
             </div>
           </div>
           <div class="row">
             <div class="col">
               <label class="form-label">post code</label>
-              <input class="input profile form-control m-1" type="number" name="post_code" placeholder="post_code" value="{{myProfile.post_code}}" required >
+              <input class="input profile form-control m-1" type="number" name="post_code" placeholder="post_code" value="{{myProfile.post_code}}"  >
             </div>
             <div class="col">
               <label class="form-label">State</label>
-              <input class="input profile form-control m-1" type="text" name="state" placeholder="state" value="{{myProfile.state}}" required><br>
+              <input class="input profile form-control m-1" type="text" name="state" placeholder="state" value="{{myProfile.state}}" ><br>
             </div>
             <div class="col">
               <label class="form-label">City</label>
-              <input class="input profile form-control m-1" type="text" name="city" placeholder="city" value="{{myProfile.city}}" required ><br>
+              <input class="input profile form-control m-1" type="text" name="city" placeholder="city" value="{{myProfile.city}}"  ><br>
             </div>
           </div>
           <div class="d-grid gap-2">
