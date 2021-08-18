@@ -1,6 +1,4 @@
 Template.MyProfile.onRendered(function () {
-    console.log(document.getElementById("selected_language").innerText[0]);
-    //TAPi18n.setLanguage(Template.instance().data.user.profile.language);
 })
 
 
