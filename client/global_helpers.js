@@ -1,7 +1,5 @@
 import category from './product_ui/product_category.js';
 
-
-
 Template.registerHelper("getCategories", function () {
     var codes = [];
     for (var k in category) {
@@ -31,6 +29,7 @@ Template.registerHelper("userLoggedIn", function () {
 
 Template.registerHelper("myProfile", function () {
     if (Meteor.user().profile)  {
+        TAPi18n.setLanguage(Meteor.user().profile.language);
         return {
             first_name: Meteor.user().profile.first_name,
             last_name: Meteor.user().profile.last_name,
@@ -54,4 +53,5 @@ Template.registerHelper("myProfile", function () {
         }
         
     }
-})
+});
+

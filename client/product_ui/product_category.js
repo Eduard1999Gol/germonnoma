@@ -4,5 +4,4 @@ module.exports = {
     "003": TAPi18n.__('garden'),
     "004": TAPi18n.__('toys'),
     "005": TAPi18n.__('books')
-
 }

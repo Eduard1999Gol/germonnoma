@@ -24,6 +24,8 @@
     "price": "Цена",
     "description": "Описание",
     "category": "Категория",
-    "Search": "Искать",
-    "Users Profile": "Профиль пользователя"
+    "Search": "Искать", 
+    
+    "Users Profile": "Профиль пользователя",
+    "Username": "Имя пользователя"
 }

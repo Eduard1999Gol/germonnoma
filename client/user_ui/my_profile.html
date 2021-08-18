@@ -14,18 +14,18 @@
                   {{#with user}}
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title"><strong class="color">Username: </strong>{{this.username}}</h5>
+                      <h5 class="card-title"><strong class="color">{{_ "Username"}}: </strong>{{this.username}}</h5>
                     </div>
                     <div class="col">
-                      <h5 class="card-title"><strong class="color">Email: </strong>{{this.email_address}}</h5>
+                      <h5 class="card-title"><strong class="color">{{_ "Email"}}: </strong>{{this.email_address}}</h5>
                     </div>
                   </div>
-                  <h6><strong class="color">Language:</strong>{{myProfile.language}}</h6>
-                  <h6><strong class="color">Fisrt name:  </strong> {{myProfile.first_name}}</h6>
-                  <h6><strong class="color">Last name:  </strong> {{myProfile.last_name}}</h6>
-                  <h6><strong class="color">Country:</strong> {{myProfile.state}}</h6>
-                  <h6><strong class="color">Adress:</strong> {{myProfile.street}}, {{myProfile.haus_number}} </h6>
-                  <h6><strong class="color">City/Post number:</strong> {{myProfile.city}},{{myProfile.post_code}}</h6>
+                  <h6 id="selected_language"><strong class="color">{{_ "Language"}}: </strong>{{myProfile.language}}</h6>
+                  <h6><strong class="color">{{_ "Fisrt name"}}: </strong> {{myProfile.first_name}}</h6>
+                  <h6><strong class="color">{{_ "Last name"}}: </strong> {{myProfile.last_name}}</h6>
+                  <h6><strong class="color">{{_ "Country"}}: </strong> {{myProfile.state}}</h6>
+                  <h6><strong class="color">{{_ "Address"}}: </strong> {{myProfile.street}}, {{myProfile.haus_number}} </h6>
+                  <h6><strong class="color">{{_ "City"}}/{{_ "Post code"}}: </strong> {{myProfile.city}},{{myProfile.post_code}}</h6>
                   {{/with}}
                 </div>
               </div>
@@ -35,15 +35,15 @@
           <h3>{{_ "Change your Profile"}}</h3>
           <div class="row">
             <div class="col">
-              <label class="form-label">Firstname</label>
+              <label class="form-label">{{_ "First name"}}</label>
               <input type="text" class="input profile form-control m-1" name="first_name" placeholder="Firstname" value="{{myProfile.first_name}}">
             </div>
             <div class="col">
-              <label class="form-label">Lastname</label>
+              <label class="form-label">{{_ "Last name"}}</label>
               <input type="text" class="input profile form-control m-1" name="last_name" placeholder="Lastname" value="{{myProfile.last_name}}">
             </div>
             <div class="col">
-              <label class="form-label">Language</label>
+              <label class="form-label">{{_ "Language"}}</label>
               <select name="selectLanguage" class="form-select m-1" id="language">
                 <option value="en"><strong>EN</strong></option>
                 <option value="de"><strong>DE</strong></option>
@@ -53,25 +53,25 @@
           </div>
           <div class="row">
             <div class="col">
-              <label class="form-label">Street</label>
+              <label class="form-label">{{_ "Street"}}</label>
               <input class="input profile form-control m-1" type="text" name="street" placeholder="Street" value="{{myProfile.street}}"  >
             </div>
             <div class="col">
-              <label class="form-label">Haus number</label>
+              <label class="form-label">{{_ "Haus number"}}</label>
               <input class="input profile form-control m-1" type="number" name="haus_number" placeholder="Hausnummer" value="{{myProfile.haus_number}}" >
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <label class="form-label">post code</label>
+              <label class="form-label">{{_ "Post code"}}</label>
               <input class="input profile form-control m-1" type="number" name="post_code" placeholder="post_code" value="{{myProfile.post_code}}"  >
             </div>
             <div class="col">
-              <label class="form-label">State</label>
+              <label class="form-label">{{_ "Country"}}</label>
               <input class="input profile form-control m-1" type="text" name="state" placeholder="state" value="{{myProfile.state}}" ><br>
             </div>
             <div class="col">
-              <label class="form-label">City</label>
+              <label class="form-label">{{_ "City"}}</label>
               <input class="input profile form-control m-1" type="text" name="city" placeholder="city" value="{{myProfile.city}}"  ><br>
             </div>
           </div>

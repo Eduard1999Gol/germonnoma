@@ -23,6 +23,7 @@
     "price": "Price",
     "description": "Description",
     "category": "Category",
-    "Users Profile": "Users profile"
+    "Users Profile": "Users profile",
+    "Username": "Username"
 
 }

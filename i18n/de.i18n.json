@@ -25,5 +25,7 @@
     "price": "Preis",
     "description": "Beschreibung",
     "category": "Kategorie",
-    "Users Profile": "Benutzers Profil"
+    "Users Profile": "Benutzers Profil",
+    "Username": "Benutzername"
+    
 }
