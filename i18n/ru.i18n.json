@@ -27,5 +27,15 @@
     "Search": "Искать", 
     
     "Users Profile": "Профиль пользователя",
-    "Username": "Имя пользователя"
+    "Change your Profile": "Измени свой профиль",
+    "Username": "Имя пользователя",
+    "Language": "Язык",
+    "First name": "Имя",
+    "Last name": "Фамилия",
+    "Country": "Страна",
+    "Address": "Адрес",
+    "City": "Город",
+    "Post code": "Индекс",
+    "Street":  "Улица",
+    "Haus number": "Дом"
 }
