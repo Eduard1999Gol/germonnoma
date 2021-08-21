@@ -143,7 +143,6 @@ Router.route(
 Router.route(
   "/forgot_password",
   function () {
-    this.subscribe("users");
     if (this.ready()) {
       if (Meteor.userId() ){
         Router.go('home');
@@ -155,7 +154,7 @@ Router.route(
     }
   },
   {
-    name: "forgotPassword",
+    name: "forgot_password",
   }
 );
 
