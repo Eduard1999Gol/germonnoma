@@ -28,20 +28,20 @@ Accounts.urls.verifyEmail = function(token) {
 
 Meteor.startup(() => {
   ServiceConfiguration.configurations.remove({
-    service: 'facebook'
+    service: 'google'
     });
     ServiceConfiguration.configurations.insert({
-    service: 'facebook',
-    appId: '871789127084481',
-    secret: 'fee9d9e401066b4613bb9297f0f88079'
+    service: 'google',
+    clientId: Meteor.settings.google_auth.clientId,
+    secret: Meteor.settings.google_auth.secret
     });
-    
+
   /* Email Server Config */
   smtp = {
-    username: 'web25789746p1',
-    password: 'asdFqweR#2612009',
-    server: 'alfa3074.alfahosting-server.de',
-    port: 25
+    username: Meteor.settings.smtp.username,
+    password: Meteor.settings.smtp.password,
+    server: Meteor.settings.smtp.server,
+    port: Meteor.settings.smtp.port
   };
 
   process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;

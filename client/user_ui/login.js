@@ -5,9 +5,10 @@ Template.Login.events({
         Meteor.loginWithGithub()
         Router.go('home');
       },
-    'click .login-facebook': function(event) {
+
+    'click .login-google': function(event) {
         event.preventDefault();
-        Meteor.loginWithFacebook({requestPermissions: ['public_profile', 'email']}, function(err){
+        Meteor.loginWithGoogle(function(err){
             if (err) {
                 console.log('Handle errors here: ', err);
             }else{

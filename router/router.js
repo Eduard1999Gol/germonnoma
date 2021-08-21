@@ -171,6 +171,43 @@ Router.route(
 );
 
 
+Router.route(
+  "/verifyEmail/:token",
+  function () {
+    var self = this;
+    if (this.ready()) {
+      Accounts.verifyEmail(this.params.token, function (err) {
+        if(!err){
+          self.render("VerifyEmail");
+        }else{
+          Router.go("login");
+        }
+      })
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "verifyEmail",
+  }
+);
+
+
+Router.route(
+  "/after_register",
+  function () {
+    if (this.ready()) {
+      this.render("AfterRegister");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "after_register",
+  }
+);
+
+
 
 
 Router.route(
