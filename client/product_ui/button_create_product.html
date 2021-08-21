@@ -1,8 +1,5 @@
 <template name="CreateButton">
- 
-    <a id="addProduct" href="{{ pathFor route='addProduct'}}" class="button" data-toggle="tooltip" data-placement="top" title="click to create Product">
-      <i class="material-icons text-light">add</i>
-      </a>
-  
-    
+    <a id="addProduct" href="{{ pathFor route='addProduct'}}" class="btn btn-primary create" data-toggle="tooltip" data-placement="top" title="click to create Product">
+      {{_ "add_product"}}
+     </a>
 </template>

@@ -22,6 +22,18 @@
     "edit_product": "Edit product",
     "price": "Price",
     "description": "Description",
-    "category": "Category"
+    "category": "Category",
+    "Users Profile": "Users profile",
+    "Change your Profile": "Change your Profile",
+    "Username": "Username",
+    "Language": "Language",
+    "First name": "First name",
+    "Last name": "Last name",
+    "Country": "Country",
+    "Address": "Address",
+    "City": "City",
+    "Post code": "Post code",
+    "Street": "Street",
+    "Haus number": "Haus number"
 
 }

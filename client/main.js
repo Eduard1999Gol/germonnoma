@@ -20,12 +20,15 @@ import "./product_ui/product_edit.js";
 import "./product_ui/button_create_product.html";
 import "./product_ui/button_create_product.js";
 import "./user_ui/register.html";
-import "./user_ui/register.js";
-import "./user_ui/reset_password.js";
-import "./user_ui/reset_password.html";
+import "./user_ui/register.js";/* 
+import "./user_ui/forgot_password.js";
+import "./user_ui/forgot_password.html"; */
 import "./user_ui/login.html";
 import "./user_ui/login.js"
+import "./user_ui/login_button.html"
 import "./global_helpers.js";
+import "./user_ui/my_profile.html"
+import "./user_ui/my_profile.js"
 
 /* Collections */
 Products = new Mongo.Collection("products");

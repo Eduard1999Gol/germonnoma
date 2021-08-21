@@ -1,19 +1,3 @@
-function loginNeeded() {
-  if (!Meteor.userId() || !Meteor.user()) {
-    this.layout("Layout");
-    this.render("Login");
-  } else {
-    if (
-      Meteor.user().profile.language &&
-      Meteor.user().profile.language != Session.get("userLanguage")
-    ) {
-      TAPi18n.setLanguage(Meteor.user().profile.language);
-      Session.set("userLanguage", Meteor.user().profile.language);
-    }
-    this.next();
-  }
-}
-
 function redirectHome() {
   if (Meteor.userId()) {
     this.redirect("/");
@@ -22,39 +6,11 @@ function redirectHome() {
   }
 }
 
-function setLanguage() {
-  var lang;
-  if (Session.get("userLanguage")) {
-    lang = Session.get("userLanguage");
-    TAPi18n.setLanguage(Session.get("userLanguage"));
-  } else if (Meteor.user() && Meteor.user().profile.language) {
-    lang = Meteor.user().profile.language;
-  } else {
-    lang = "en";
-  }
-  TAPi18n.setLanguage(lang);
-  this.next();
-}
-
-/**
- * Router beforeactions
- */
-
-Router.onBeforeAction(setLanguage, {});
-
-Router.onBeforeAction(loginNeeded, {
-	except: [
-		"register",
-    "home"
-
-		
-	]
-});
-
 Router.configure({
   layoutTemplate: "Layout",
   template: "Layout",
 });
+
 
 Router.route(
   "/",
@@ -128,6 +84,10 @@ Router.route(
   function () {
     this.subscribe("product");
     this.subscribe("productImages");
+    if (!Meteor.userId()) {
+      Router.go("home");
+      
+    } else 
     if (this.ready()) {
       this.render("AddProduct");
     } else {
@@ -153,20 +113,65 @@ Router.route(
     name: "register",
   }
 );
+
+
 Router.route(
-  "/reset_password",
+  "/login",
   function () {
     this.subscribe("users");
     if (this.ready()) {
-      this.render("ResetPassword");
+      this.render("Login");
     } else {
       this.render("Loading");
     }
   },
   {
-    name: "resetPassword",
+    name: "login",
   }
 );
+
+Router.route(
+  "/forgot_password",
+  function () {
+    this.subscribe("users");
+    if (this.ready()) {
+      this.render("ForgotPassword");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "forgotPassword",
+  }
+);
+
+Router.route(
+  "/my_profile/:_id",
+  function () {
+    this.subscribe("users");
+    if (!Meteor.userId()) {
+      Router.go("home");
+      
+    } else 
+    if (this.ready()) {
+      this.render("MyProfile");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "MyProfile",
+    data: function () {
+      var user = Meteor.users.findOne({_id: this.params._id})
+      return {
+        user: user
+      }
+    },
+  }
+);
+
+
+
 
 Router.route(
   "/products/:_id/edit_product",

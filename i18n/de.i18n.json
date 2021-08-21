@@ -24,5 +24,18 @@
     "edit_product": "Artikel bearbeiten",
     "price": "Preis",
     "description": "Beschreibung",
-    "category": "Kategorie"
+    "category": "Kategorie",
+    "Users Profile": "Benutzers Profil",
+    "Change your Profile": "Profil bearbeiten",
+    "Username": "Benutzername",
+    "Language": "Sprache",
+    "First name": "Vorname",
+    "Last name": "Nachname",
+    "Country": "Land",
+    "Address": "Adresse",
+    "City": "Stadt",
+    "Post code": "Postleitzahl",
+    "Street": "Straße",
+    "Haus number": "Hausnummer"
+    
 }

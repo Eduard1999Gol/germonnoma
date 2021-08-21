@@ -10,7 +10,6 @@ Template.AddProduct.onCreated(function(){
         description: "",
         image: "https://bulma.io/images/placeholders/480x480.png"
     });
-
     this.newProductImage = new ReactiveVar();
 
 });
@@ -48,7 +47,6 @@ Template.AddProduct.events({
             description: product.description,
             image: "https://bulma.io/images/placeholders/480x480.png"
         });
-                
     },
       
     'keyup input#product_name_input': function (event) {

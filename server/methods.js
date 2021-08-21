@@ -13,6 +13,17 @@ function sendEmail(to, subject, text ) {
   
 Meteor.methods({
     
+    onCreateUser: function (options, user) {
+
+        if (!user.services.facebook) {
+            return user;
+        }
+        user.username = user.services.facebook.name;
+        user.emails = [{address: user.services.facebook.email}];
+    
+        return user;
+    },
+
     register: function(user) {
         var user_exist = Meteor.users.find({'profile.email': user.email}).count();
         if (user_exist == 0) {
@@ -25,6 +36,17 @@ Meteor.methods({
             throw new Meteor.Error('user_exist', "User already registered");
         }
         
+    },
+
+    updateProfile: function (profile) {
+        Meteor.users.update({
+            _id: this.userId
+        },
+        {
+            $set: {
+                profile: profile
+            }
+        })
     },
     
    

@@ -1,7 +1,5 @@
 import category from './product_ui/product_category.js';
 
-
-
 Template.registerHelper("getCategories", function () {
     var codes = [];
     for (var k in category) {
@@ -27,3 +25,33 @@ Template.registerHelper("userLoggedIn", function () {
         return false;
     }
 });
+
+
+Template.registerHelper("myProfile", function () {
+    if (Meteor.user().profile)  {
+        TAPi18n.setLanguage(Meteor.user().profile.language);
+        return {
+            first_name: Meteor.user().profile.first_name,
+            last_name: Meteor.user().profile.last_name,
+            street: Meteor.user().profile.street,
+            haus_number: Meteor.user().profile.haus_number,
+            state: Meteor.user().profile.state,
+            post_code: Meteor.user().profile.post_code,
+            city: Meteor.user().profile.city,
+            language: Meteor.user().profile.language,
+        }
+    } else {
+        return {
+            first_name: "",
+            last_name: "",
+            street: "",
+            haus_number: "",
+            state: "",
+            post_code: "",
+            city: "",
+            language: "",
+        }
+        
+    }
+});
+

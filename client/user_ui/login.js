@@ -1,40 +1,43 @@
+import Toast from '../lib/costumFunctions/toast';
+
 Template.Login.events({
+    'click .link-github': function () {
+        Meteor.loginWithGithub()
+        Router.go('home');
+      },
+    'click .login-facebook': function(event) {
+        event.preventDefault();
+        Meteor.loginWithFacebook({requestPermissions: ['public_profile', 'email']}, function(err){
+            if (err) {
+                console.log('Handle errors here: ', err);
+            }else{
+                Router.go('home');
+            }
+        });
+    },
     'submit form#loginForm':function (event) {
         event.preventDefault();
         Meteor.loginWithPassword(event.currentTarget.email_address.value, event.currentTarget.password.value, function (err, res) {
             if (!err) {
-                console.log(Meteor.user())
-                $('#loginModal').modal("toggle");
+               
+                Router.go('home');
             } else {
                 console.log(err)
             }
         })
     },
-    'click button#loginButton': function (event) {
+
+    'click a#goRegister':function (event) {
         event.preventDefault();
-        $('form#loginForm')[0].reset();
+        Router.go('register');
     },
 
-    'click button#logout': function (event) {
-        event.preventDefault();
-        Meteor.logout(function (err, res) {
-            if (!err) {
-                console.log("logout")
-            } else {
-                console.log(err)
-            }
-            
-        })
-    },
-    
 
-    'click button#goRegister':function (event) {
+    'click a#goResetPassword':function (event) {
         event.preventDefault();
-        Router.go('register')
+        Router.go('forgotPassword');
     },
 
-    'click button#goResetPassword':function (event) {
-        event.preventDefault();
-        Router.go('resetPassword')
-    }
+
+
 })

@@ -11,6 +11,8 @@ Accounts.config({
 Accounts.emailTemplates.from = 'info@germonnoma.org';
 Accounts.emailTemplates.siteName = 'Germonnoma';
 
+
+
 Accounts.urls.resetPassword = function(token) {
   return Meteor.absoluteUrl('resetpassword/' + token);
 };
@@ -25,7 +27,15 @@ Accounts.urls.verifyEmail = function(token) {
 
 
 Meteor.startup(() => {
-
+  ServiceConfiguration.configurations.remove({
+    service: 'facebook'
+    });
+    ServiceConfiguration.configurations.insert({
+    service: 'facebook',
+    appId: '871789127084481',
+    secret: 'fee9d9e401066b4613bb9297f0f88079'
+    });
+    
   /* Email Server Config */
   smtp = {
     username: 'web25789746p1',
@@ -37,6 +47,7 @@ Meteor.startup(() => {
   process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 
 });
+
 
 /* 
 Collections

@@ -26,12 +26,6 @@ Template.Product.events({
         event.preventDefault();
         Router.go('/productDetails', {_id: event.target.dataset.id});
     },
-    
-
-    'click a.icon': function (event) {
-        event.preventDefault();
-        event.target.className = "material-icons text-blue";
-    },
 });
 
 

@@ -1,0 +1,96 @@
+<template name="MyProfile">
+   <section>
+     <form class="profile text-white">
+      <div class="row">
+        <div class="col">
+          <h1>{{_ "Users Profile"}}</h1>
+          <div class="card mb-3 border-info bg-secondary">
+            <div class="row ">
+              <div class="col-md-4">
+                <img src="https://bulma.io/images/placeholders/256x256.png">
+              </div>
+              <div class="col-8 p-0">
+                <div class="card-body">
+                  {{#with user}}
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title"><strong class="color">{{_ "Username"}}: </strong>{{this.username}}</h5>
+                    </div>
+                    <div class="col">
+                      <h5 class="card-title"><strong class="color">{{_ "Email"}}: </strong>{{this.email_address}}</h5>
+                    </div>
+                  </div>
+                  <h6 id="selected_language"><strong class="color">{{_ "Language"}}: </strong>{{myProfile.language}}</h6>
+                  <h6><strong class="color">{{_ "First name"}}: </strong> {{myProfile.first_name}}</h6>
+                  <h6><strong class="color">{{_ "Last name"}}: </strong> {{myProfile.last_name}}</h6>
+                  <h6><strong class="color">{{_ "Country"}}: </strong> {{myProfile.state}}</h6>
+                  <h6><strong class="color">{{_ "Address"}}: </strong> {{myProfile.street}}, {{myProfile.haus_number}} </h6>
+                  <h6><strong class="color">{{_ "City"}}/{{_ "Post code"}}: </strong> {{myProfile.city}},{{myProfile.post_code}}</h6>
+                  {{/with}}
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="inputs invisible">
+          <h3>{{_ "Change your Profile"}}</h3>
+          <div class="row">
+            <div class="col">
+              <label class="form-label">{{_ "First name"}}</label>
+              <input type="text" class="input profile form-control m-1" name="first_name" placeholder="Firstname" value="{{myProfile.first_name}}">
+            </div>
+            <div class="col">
+              <label class="form-label">{{_ "Last name"}}</label>
+              <input type="text" class="input profile form-control m-1" name="last_name" placeholder="Lastname" value="{{myProfile.last_name}}">
+            </div>
+            <div class="col">
+              <label class="form-label">{{_ "Language"}}</label>
+              <select name="selectLanguage" class="form-select m-1" id="language">
+                <option value="en"><strong>EN</strong></option>
+                <option value="de"><strong>DE</strong></option>
+                <option value="ru"><strong>RU</strong></option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="form-label">{{_ "Street"}}</label>
+              <input class="input profile form-control m-1" type="text" name="street" placeholder="Street" value="{{myProfile.street}}"  >
+            </div>
+            <div class="col">
+              <label class="form-label">{{_ "Haus number"}}</label>
+              <input class="input profile form-control m-1" type="number" name="haus_number" placeholder="Hausnummer" value="{{myProfile.haus_number}}" >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="form-label">{{_ "Post code"}}</label>
+              <input class="input profile form-control m-1" type="number" name="post_code" placeholder="post_code" value="{{myProfile.post_code}}"  >
+            </div>
+            <div class="col">
+              <label class="form-label">{{_ "Country"}}</label>
+              <input class="input profile form-control m-1" type="text" name="state" placeholder="state" value="{{myProfile.state}}" ><br>
+            </div>
+            <div class="col">
+              <label class="form-label">{{_ "City"}}</label>
+              <input class="input profile form-control m-1" type="text" name="city" placeholder="city" value="{{myProfile.city}}"  ><br>
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success save rounded-pill">
+              {{_ "save"}}
+            </button>
+          </div>
+        </div>
+        </div>
+        <div class="col-3" >
+          <button class="button_profile btn btn-info edit btn-lg my-5">
+           {{_ "edit"}}
+         </button>
+         <button class="button_profile btn btn-secondary btn-lg  my-5" id="return">
+          {{_ "back"}}
+        </button>
+        </div>
+      </div>
+     </form>
+   </section>
+</template>
