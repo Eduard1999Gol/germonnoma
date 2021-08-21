@@ -32,6 +32,8 @@ import "./user_ui/my_profile.js"
 import "./user_ui/after_register.html"
 import "./user_ui/verify_email.html"
 
+
+
 /* Collections */
 Products = new Mongo.Collection("products");
 ProductImages = new FilesCollection({ collectionName: "ProductImages" });

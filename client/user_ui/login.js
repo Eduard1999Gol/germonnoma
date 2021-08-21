@@ -23,7 +23,12 @@ Template.Login.events({
                
                 Router.go('home');
             } else {
-                console.log(err)
+                
+                Toast({
+                    text: "This email is not verified", 
+                    duration: 3000, 
+                    color: "danger"
+                });
             }
         })
     },

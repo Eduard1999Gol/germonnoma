@@ -25,6 +25,13 @@ Accounts.urls.verifyEmail = function(token) {
   return Meteor.absoluteUrl('verifyEmail/' + token);
 };
 
+Accounts.validateLoginAttempt(function (options) {
+  if (options.user.emails[0].verified === true) {
+    return true;
+  } else {
+    throw new Meteor.Error("email_not_verified")
+  }
+});
 
 Meteor.startup(() => {
   ServiceConfiguration.configurations.remove({

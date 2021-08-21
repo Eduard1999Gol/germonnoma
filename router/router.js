@@ -1,15 +1,18 @@
-function redirectHome() {
-  if (Meteor.userId()) {
-    this.redirect("/");
-  } else {
-    this.next();
-  }
-}
 
 Router.configure({
   layoutTemplate: "Layout",
   template: "Layout",
 });
+
+Router.onBeforeAction(function () {
+  if (!Meteor.userId()) {
+    this.render("Login");
+  } else {
+    this.next();
+  }
+},{
+  except: ['register', 'verifyEmail', 'login', 'after_register', 'home']
+})
 
 
 Router.route(
@@ -102,9 +105,12 @@ Router.route(
 Router.route(
   "/register",
   function () {
-    this.subscribe("users");
     if (this.ready()) {
-      this.render("Register");
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
+        this.render("Register");
+      }
     } else {
       this.render("Loading");
     }
@@ -120,7 +126,11 @@ Router.route(
   function () {
     this.subscribe("users");
     if (this.ready()) {
-      this.render("Login");
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
+        this.render("Login");
+      }
     } else {
       this.render("Loading");
     }
@@ -135,7 +145,11 @@ Router.route(
   function () {
     this.subscribe("users");
     if (this.ready()) {
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
       this.render("ForgotPassword");
+      }
     } else {
       this.render("Loading");
     }
@@ -197,7 +211,11 @@ Router.route(
   "/after_register",
   function () {
     if (this.ready()) {
-      this.render("AfterRegister");
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
+        this.render("AfterRegister");
+      }
     } else {
       this.render("Loading");
     }
