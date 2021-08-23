@@ -11,7 +11,7 @@ Router.onBeforeAction(function () {
     this.next();
   }
 },{
-  except: ['register', 'verifyEmail', 'login', 'after_register', 'home']
+  except: ['register', 'verifyEmail', 'login', 'after_register', 'home', 'forgot_password',"reset_password_email"]
 })
 
 
@@ -144,11 +144,7 @@ Router.route(
   "/forgot_password",
   function () {
     if (this.ready()) {
-      if (Meteor.userId() ){
-        Router.go('home');
-      } else {
       this.render("ForgotPassword");
-      }
     } else {
       this.render("Loading");
     }
@@ -223,6 +219,25 @@ Router.route(
     name: "after_register",
   }
 );
+
+Router.route(
+  "/reset_password_email",
+  function () {
+    if (this.ready()) {
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
+        this.render("AfterResetPassword");
+      }
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "reset_password_email",
+  }
+);
+
 
 
 

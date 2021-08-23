@@ -21,7 +21,6 @@ Template.Register.events({
                 profile:{
                     language: event.currentTarget.selectLanguage.value,
                 }
-                
             }
             Meteor.call("register", user, function (err, res) {
                 if (!err) {

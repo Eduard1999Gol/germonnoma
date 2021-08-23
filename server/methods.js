@@ -1,15 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Email } from 'meteor/email';
 
-
-function sendEmail(to, subject, text ) {
-    Email.send({
-        to: to,
-        from: 'info@germonnoma.org',
-        subject: subject,
-        text: text
-    });
-}
+x
   
 Meteor.methods({
     
@@ -23,6 +15,16 @@ Meteor.methods({
             
         }else{
             throw new Meteor.Error('user_exist', "User already registered");
+        }
+        
+    },
+
+    sendResetEmail: function (email) {
+        var user = Meteor.users.findOne({"emails": { $elemMatch:{"address": email}}});
+        if(user){
+            return Accounts.sendResetPasswordEmail(user._id)
+        }else{
+            throw new Meteor.Error("Email_doesnt_exist")
         }
         
     },
