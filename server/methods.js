@@ -1,21 +1,18 @@
 import { Meteor } from 'meteor/meteor';
 import { Email } from 'meteor/email';
 
-  
 Meteor.methods({
-    
     register: function(user) {
         var user_exist = Meteor.users.find({'profile.email': user.email}).count();
         if (user_exist == 0) {
             var userId = Accounts.createUser(user);
             if (userId) {
-                return Accounts.sendVerificationEmail(userId);
+                Accounts.sendVerificationEmail(userId);
             }
-            
+            return userId;
         }else{
             throw new Meteor.Error('user_exist', "User already registered");
         }
-        
     },
 
     sendResetEmail: function (email) {
