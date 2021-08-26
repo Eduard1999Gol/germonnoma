@@ -3,16 +3,11 @@
           <div class="text-white">
             <form id="loginForm">
               <h1 class="text-light mb-4 mt-3"><strong>{{_ "Login"}}</strong> </h1>
-            <!--   <button class="link-github">Link Github Account</button> -->
-           <!--  {{> loginButtons}} -->
               <div class="input-group mb-3 input-group-lg">
                 <input type="text" class="form-control" name="email_address" placeholder="E-mail or Username"  aria-describedby="inputGroup-sizing-lg">
               </div>
               <div class="input-group mb-3 input-group-lg">
                 <input type="password" name="password" class="form-control" placeholder="Password">
-              </div>
-              <div class="d-grid gap-2 ">
-                <input class="btn-primary login-facebook btn-lg" value="login with facebook" type="button">
               </div>
               <div class="d-grid gap-2 mt-2">
                 <input id="login" type="submit" class="btn btn-success btn-lg"  value="Login">
@@ -26,7 +21,7 @@
                   </a>
                 </div>
                 <div class="col">
-                  <a id="goResetPassword" class="btn btn-link">
+                  <a href="/forgot_password">
                     {{_ "forgot_password"}}
                      <!-- TODO i18n -->  
                   </a>

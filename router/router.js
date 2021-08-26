@@ -1,15 +1,18 @@
-function redirectHome() {
-  if (Meteor.userId()) {
-    this.redirect("/");
-  } else {
-    this.next();
-  }
-}
 
 Router.configure({
   layoutTemplate: "Layout",
   template: "Layout",
 });
+
+Router.onBeforeAction(function () {
+  if (!Meteor.userId()) {
+    this.render("Login");
+  } else {
+    this.next();
+  }
+},{
+  except: ['register', 'verifyEmail', 'login', 'after_register', 'home', 'forgot_password',"reset_password_email"]
+})
 
 
 Router.route(
@@ -102,9 +105,12 @@ Router.route(
 Router.route(
   "/register",
   function () {
-    this.subscribe("users");
     if (this.ready()) {
-      this.render("Register");
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
+        this.render("Register");
+      }
     } else {
       this.render("Loading");
     }
@@ -120,7 +126,11 @@ Router.route(
   function () {
     this.subscribe("users");
     if (this.ready()) {
-      this.render("Login");
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
+        this.render("Login");
+      }
     } else {
       this.render("Loading");
     }
@@ -133,7 +143,6 @@ Router.route(
 Router.route(
   "/forgot_password",
   function () {
-    this.subscribe("users");
     if (this.ready()) {
       this.render("ForgotPassword");
     } else {
@@ -141,7 +150,7 @@ Router.route(
     }
   },
   {
-    name: "forgotPassword",
+    name: "forgot_password",
   }
 );
 
@@ -169,6 +178,66 @@ Router.route(
     },
   }
 );
+
+
+Router.route(
+  "/verifyEmail/:token",
+  function () {
+    var self = this;
+    if (this.ready()) {
+      Accounts.verifyEmail(this.params.token, function (err) {
+        if(!err){
+          self.render("VerifyEmail");
+        }else{
+          Router.go("login");
+        }
+      })
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "verifyEmail",
+  }
+);
+
+
+Router.route(
+  "/after_register",
+  function () {
+    if (this.ready()) {
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
+        this.render("AfterRegister");
+      }
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "after_register",
+  }
+);
+
+Router.route(
+  "/reset_password_email",
+  function () {
+    if (this.ready()) {
+      if (Meteor.userId() ){
+        Router.go('home');
+      } else {
+        this.render("AfterResetPassword");
+      }
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "reset_password_email",
+  }
+);
+
 
 
 
