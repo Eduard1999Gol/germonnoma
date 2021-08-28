@@ -3,8 +3,6 @@ import { ReactiveVar } from 'meteor/reactive-var'
 Template.Product.onCreated(function(){
     Session.set("dfv");
     this.newAlert = new ReactiveVar();
-    console.log(this.newAlert)
-
 });
 
 Template.Product.events({

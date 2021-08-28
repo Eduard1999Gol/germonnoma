@@ -60,4 +60,4 @@ Meteor.startup(() => {
 Collections
 */
 Products = new Mongo.Collection('products');
-ProductImages = new FilesCollection({ collectionName: 'ProductImages'});
+ProductImages = new Mongo.Collection('ProductImages');

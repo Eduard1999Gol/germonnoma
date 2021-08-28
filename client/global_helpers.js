@@ -26,7 +26,25 @@ Template.registerHelper("userLoggedIn", function () {
     }
 });
 
+Template.registerHelper("getProductDetails", function () {
+    var project_id = Router.current().params._id;
+    if (project_id) {
+        var product = Products.findOne({ _id: project_id });
+    }
+    if (product) {
+        var image = ProductImages.findOne({
+            product_id: product._id,
+        });
+    }
+    if (product && image) {
+        product["image"] = image.image;
+        return product;
+    }
+    
 
+});
+
+ 
 Template.registerHelper("myProfile", function () {
     if (Meteor.user().profile)  {
         TAPi18n.setLanguage(Meteor.user().profile.language);

@@ -12,22 +12,22 @@
             </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Name</label>
-            <input id="product_name_input" class="form-control" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{product.name}}" aria-label=".form-select-lg example" required>
+            <input id="product_name_input" class="form-control" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{getProductDetails.name}}" aria-label=".form-select-lg example" required>
         </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Price</label>
-            <input id="product_price_input" class="form-control" type="text" name="product_name" placeholder="{{_ "product_price"}}" value="{{product.price}}" aria-label=".form-select-lg example" required>
+            <input id="product_price_input" class="form-control" type="text" name="product_price" placeholder="{{_ "product_price"}}" value="{{getProductDetails.price}}" aria-label=".form-select-lg example" required>
         </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Description</label>
-            <textarea id="product_description_textarea" class="textarea form-control" name="product_description" placeholder="{{_ "product_description"}}" required>{{product.description}}</textarea>
+            <textarea id="product_description_textarea" class="textarea form-control" name="product_description" placeholder="{{_ "product_description"}}" required>{{getProductDetails.description}}</textarea>
         </div>
         <div class="card" >
             <div class="card-image">
               <figure class="image ">
-                <img src="{{product.image}}" alt="Placeholder image" style="width:400px;height:300px;" >
+                <img src="{{getProductDetails.image}}" alt="Placeholder image" style="width:400px;height:300px;" >
               </figure>
             </div>
           </div>
@@ -37,13 +37,13 @@
             </label>
         </div>
         <button  class="btn btn-success" id="editProductForm" type="button" >{{_ "save"}}</button>
-        <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=product._id}}" class="goToProduct btn btn-secondary">{{_ "cancel"}}</a> 
+        <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=getProductDetails._id}}" class="goToProduct btn btn-secondary">{{_ "cancel"}}</a> 
             </div>
         </div>    
         <div class="col">
             <div class="row" style="width:350px;height:350px;" >
                 <h4 class="text-white">Prewiew</h4>
-                {{#with product}}
+                {{#with getProductDetails}}
                 {{> Product}}
                 {{/with}}
             </div>

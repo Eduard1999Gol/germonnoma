@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Email } from 'meteor/email';
+import { check } from 'meteor/check';
 
 Meteor.methods({
     register: function(user) {
@@ -14,7 +15,7 @@ Meteor.methods({
             throw new Meteor.Error('user_exist', "User already registered");
         }
     },
-
+    
     sendResetEmail: function (email) {
         var user = Meteor.users.findOne({"emails": { $elemMatch:{"address": email}}});
         if(user){
@@ -37,12 +38,28 @@ Meteor.methods({
     },
     
    
-    createProduct(product) {
-        product["created_at"] = new Date();
-        product["selected"] = false;
-        var id = Products.insert(product);
+    createProduct: function(category, name, price, description, image) {
+        check(category, String);
+        check(name, String);
+        check(price, Number);
+        check(description, String);
+        check(image, String);
+        var created_at = new Date();
+        var selected = false;
+        var id = Products.insert({
+            name: name,
+            category: category,
+            price: price,
+            description: description,
+            created_at: created_at,
+            selected: selected,
+            deleted: false
+        });
         if (id) {
-            return id;
+            return ProductImages.insert({
+                image: image,
+                product_id: id
+            });
         }else{
             throw new Meteor.Error(502);
         }

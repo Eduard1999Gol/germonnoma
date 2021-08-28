@@ -3,15 +3,26 @@ import Toast from '../lib/costumFunctions/toast';
 
 Template.ProductEditPage.onCreated(function(){
     Session.set('selectedFile', "");
-    var product = Template.instance();
-    this.newProduct = new ReactiveVar({
-        name: Template.instance().data.product.name,
-        price: Template.instance().data.product.price,
-        description: Template.instance().data.product.description,
-        image: Template.instance().data.product.image
-    });
-    console.log(this.newProduct)
-
+    var project_id = Router.current().params._id;
+    this.newProduct = new ReactiveVar();
+    if (project_id) {
+        var product = Products.findOne({ _id: project_id });
+    }
+    if (product) {
+        var image = ProductImages.findOne({
+            product_id: product._id,
+        });
+    }
+    if (product && image) {
+        product["image"] = image.image;
+        this.newProduct.set({
+            name: product.name,
+            price: product.price,
+            description: product.description,
+            image: product.image
+        });
+    }
+    console.log();
     this.newProductImage = new ReactiveVar();
 });
 
@@ -24,7 +35,7 @@ Template.ProductEditPage.events({
             name: product.name,
             price: product.price,
             description: event.currentTarget.value,
-            image:  Template.instance().data.product.image
+            image: product.image
         });
                 
     },
@@ -38,7 +49,7 @@ Template.ProductEditPage.events({
             name: product.name,
             price: product.price,
             description: product.description,
-            image: Template.instance().data.product.image
+            image: product.image
         });
                 
     },
@@ -50,10 +61,8 @@ Template.ProductEditPage.events({
             name: event.currentTarget.value,
             price: product.price,
             description: product.description,
-            image: Template.instance().data.product.image
+            image: product.image
         });
-        
-                
     },
 
     'keyup input#product_price_input': function (event) {
@@ -64,7 +73,7 @@ Template.ProductEditPage.events({
             name: product.name,
             price: event.currentTarget.value,
             description: product.description,
-            image: Template.instance().data.product.image
+            image: product.image
         })
     },
 
@@ -113,7 +122,6 @@ Template.ProductEditPage.events({
                     duration: 3000, 
                     color: "success"
                 });
-
             }
              else {
                 Toast({
@@ -121,16 +129,13 @@ Template.ProductEditPage.events({
                     duration: 3000, 
                     color: "danger"
                 });
-                
             }
-
         })
     },
     'click a#returnToProducts': function (event) {
         event.preventDefault();
         Router.go('/');
     },
-
 });
 
 
@@ -145,6 +150,7 @@ Template.ProductEditPage.helpers({
             }
         }
     },
+
     'selectedFile':function () {
         if (Session.get('selectedFile')) {
             return Session.get('selectedFile');
