@@ -34,7 +34,6 @@ Template.AddProduct.events({
             description: event.currentTarget.value,
             image: product.image
         });
-        console.log(product.image);     
     },
 
     'change select#product_category_select': function (event) {
@@ -96,14 +95,18 @@ Template.AddProduct.events({
         event.preventDefault();
         var template =  Template.instance();
         var newProduct = template.newProduct.get();
-        if (newProduct.name != "" && newProduct.category != "" && newProduct.price != "" && newProduct.description != "" && template.newProductImage.get()) {
-                var category = template.newProduct.get().category;
-                var name =  template.newProduct.get().name;
-                var price = parseInt(template.newProduct.get().price);
-                var description = template.newProduct.get().description;
-                var image = template.newProduct.get().image;
+        if (newProduct.name != ""  && newProduct.price != "" && newProduct.description != "" && template.newProductImage.get()) {
+            var product = {
+                category: template.newProduct.get().category,
+                name: template.newProduct.get().name,
+                price: parseInt(template.newProduct.get().price),
+                description: template.newProduct.get().description,
+                image: template.newProduct.get().image
 
-            Meteor.call('createProduct', category, name, price, description, image, function (err, res) {
+            }
+                
+
+            Meteor.call('createProduct', product, function (err, res) {
                 if (!err) {
                     Toast({
                         text: "Product is created", 

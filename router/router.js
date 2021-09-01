@@ -29,8 +29,8 @@ Router.route(
   {
     name: "home",
     data: function () {
-      var products = Products.find({ selected: false, deleted: false }).fetch();
-      var selected_products = Products.find({ selected: true, deleted: false }).fetch();
+      var products = Products.find({ selected: false}).fetch();
+      var selected_products = Products.find({ selected: true}).fetch();
       products.forEach((product) => {
         var image = ProductImages.findOne({ product_id: product._id });
         if (image) {
@@ -256,7 +256,7 @@ Router.route(
     this.subscribe("publishProductId", this.params._id);
     this.subscribe("productImageById", this.params._id);
     if (this.ready()) {
-      this.render("ProductEditPage");
+      this.render("EditProductPage");
     } else {
       this.render("Loading");
     }

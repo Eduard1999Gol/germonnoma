@@ -1,53 +1,43 @@
-<template name="ProductEditPage">
-        <div class="row">
-            <div class="col">
-                <div class="text-white">
-                <h1 class="title">{{_ "edit_product"}}</h1>
-                <div class="select is-fullwidth ">
-                <select name="category" id="product_category_select"  class="form-select mb-3" aria-label=".form-select-lg example"> 
-                {{#each getCategories}}
-                <option value="{{this.value}}" {{isSelected this.value}}>{{this.display}}</option>
-                {{/each}}
-               </select>
-            </div>
+<template name="EditProductPage">
+    <div class="row">
+      <div class="col text-white">
+        <h1 class="title is-1">{{_ "edit_product"}}</h1>
+        <div class="select is-fullwidth">
+          <label for="exampleFormControlInput1" class="form-label">Choose Category</label>
+          <select name="product_category" id="product_category_select" class="form-select mb-3" aria-label=".form-select-lg example">
+            {{#each getCategories}}
+            <option value="{{this.value}}">{{this.display}}</option>
+            {{/each}}
+          </select>
+        </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Name</label>
-            <input id="product_name_input" class="form-control" type="text" name="product_name" placeholder="{{_ "product_name"}}" value="{{getProductDetails.name}}" aria-label=".form-select-lg example" required>
+          <label for="exampleFormControlInput1" class="form-label">Name</label>
+          <input name="product_name" id="product_name_input" class="form-control"  placeholder="{{_ "product_name"}}"  value="{{getProductDetails.name}}" required>
         </div>
-
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Price</label>
-            <input id="product_price_input" class="form-control" type="text" name="product_price" placeholder="{{_ "product_price"}}" value="{{getProductDetails.price}}" aria-label=".form-select-lg example" required>
+          <label for="exampleFormControlInput1" class="form-label" >Prise</label>
+          <input class="input form-control" id="product_price_input" type="number" min="0" name="product_price" value="{{getProductDetails.price}}" placeholder="{{_ "product_price"}}" required >
         </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Description</label>
-            <textarea id="product_description_textarea" class="textarea form-control" name="product_description" placeholder="{{_ "product_description"}}" required>{{getProductDetails.description}}</textarea>
+        <div class="mb-6">
+          <label for="exampleFormControlTextarea1"  class="form-label">Product Description</label>
+          <textarea class="textarea form-control" name="product_description" placeholder="{{_ "product_description"}}"  id="product_description_textarea" rows="3" required></textarea>
         </div>
-        <div class="card" >
-            <div class="card-image">
-              <figure class="image ">
-                <img src="{{getProductDetails.image}}" alt="Placeholder image" style="width:400px;height:300px;" >
-              </figure>
-            </div>
-          </div>
-          <div class="file my-1" >
-            <label class="file-label">
-                <input class="file-input" type="file" name="resume" accept="image/png, image/jpeg" >
-            </label>
+        <div class="file is-primary my-2">
+          <label class="file-label">
+              <input class="file-input"  type="file" name="product_image" accept="image/png, image/jpeg" required>
+          </label>
+      </div>
+      <div >
+        <div class="my-1">
+          <button id="editProductForm" type="button" class="btn btn-success padding-5">{{_ "save"}}</button>
+          <button id="returnToProducts" type="button" class="btn btn-light close-modal padding-5">{{_ "back"}}</button>
         </div>
-        <button  class="btn btn-success" id="editProductForm" type="button" >{{_ "save"}}</button>
-        <a id="returnToProducts" href="{{ pathFor route='productDetails' _id=getProductDetails._id}}" class="goToProduct btn btn-secondary">{{_ "cancel"}}</a> 
-            </div>
-        </div>    
-        <div class="col">
-            <div class="row" style="width:350px;height:350px;" >
-                <h4 class="text-white">Prewiew</h4>
-                {{#with getProductDetails}}
-                {{> Product}}
-                {{/with}}
-            </div>
-        </div>    
+      </div>
+      </div>
+      <div class="col-4 my-5">
+          {{#with getNewProduct}}
+          {{> Product}}
+          {{/with}}
+      </div>
     </div>
-    
 </template>

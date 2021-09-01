@@ -38,26 +38,22 @@ Meteor.methods({
     },
     
    
-    createProduct: function(category, name, price, description, image) {
-        check(category, String);
-        check(name, String);
-        check(price, Number);
-        check(description, String);
-        check(image, String);
+    createProduct: function(product) {
         var created_at = new Date();
         var selected = false;
-        var id = Products.insert({
-            name: name,
-            category: category,
-            price: price,
-            description: description,
+        var id = Products.insert(product = {
+            category: product.category,
+            name: product.name,
+            price: product.price,
+            description: product.description,
+            image: product.image,
             created_at: created_at,
-            selected: selected,
-            deleted: false
+            selected: selected
+
         });
         if (id) {
             return ProductImages.insert({
-                image: image,
+                image: product.image,
                 product_id: id
             });
         }else{
@@ -79,7 +75,8 @@ Meteor.methods({
                 category: product.category,
                 name: product.name,
                 price: product.price,
-                description: product.description
+                description: product.description,
+                image: product.image
             }
         });
     },
