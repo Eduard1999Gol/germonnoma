@@ -1,7 +1,16 @@
 <template name="AfterRegister">
-    <p1 class="text-white">
-        Gehe auf deine email und click auf bestätigungslink
-    </p1>
-    <a href="/login" class="btn btn-success">weiter</a>
-
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-secondary" role="alert">
+                    <h5>{{_ "Now check your mail with a link that enables you to verify the Email"}}</h5>
+                </div>
+                <hr style="color: beige;">
+                <div class="d-flex justify-content-center">
+                    <a href="/login" class="btn btn-success btn-lg" style="width: 200px;">Login</a>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
 </template>

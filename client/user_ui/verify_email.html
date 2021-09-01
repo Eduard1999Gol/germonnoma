@@ -1,9 +1,16 @@
 <template name="VerifyEmail">
-    <h5 class="text-white">
-        Email wurde erfolgreich verifiziert du kansst dich jetzt einlogen
-    </h5>
-    <a class="btn btn-success" href="/login">
-        Login
-    </a>
-
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-secondary" role="alert">
+                    <h5>{{_ "Nice! Your email was been verified and you are logged.  Click to keep on"}}</h5>
+                </div>
+                <hr style="color: beige;">
+                <div class="d-flex justify-content-center">
+                    <a href="/login" class="btn btn-success btn-lg" style="width: 200px;">{{_ "keep on"}}</a>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
 </template>
