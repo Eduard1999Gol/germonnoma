@@ -262,6 +262,6 @@ Router.route(
     }
   },
   {
-    name: "productEdit"
+    name: "productEdit",
   }
 );

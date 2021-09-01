@@ -39,7 +39,7 @@ Template.registerHelper("getProductDetails", function () {
     }
     if (product && image) {
         product["image"] = image.image;
-        Session.set("image",image.image)
+        Session.set("product", product)
         return product;
     }
     

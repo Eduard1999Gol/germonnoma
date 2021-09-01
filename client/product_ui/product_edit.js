@@ -5,17 +5,18 @@ import Toast from '../lib/costumFunctions/toast';
 Template.EditProductPage.onCreated(function(){
     Session.set('selectedFile', "");
     this.newProduct = new ReactiveVar({
-        category: "",
-        name: "",
-        price: "",
-        description: "",
-        image: Session.get("image")
+        category: Session.get("product").category,
+        name: Session.get("product").name,
+        price: Session.get("product").price,
+        description: Session.get("product").description,
+        image: Session.get("product").image
     });
     this.newProductImage = new ReactiveVar();
 
 });
 
-Template.EditProductPage.onRendered(function(){
+
+Template.AddProduct.onRendered(function(){
 });
 
 
