@@ -29,6 +29,7 @@ Template.registerHelper("userLoggedIn", function () {
 Template.registerHelper("getProductDetails", function () {
     var project_id = Router.current().params._id;
     if (project_id) {
+        Session.set("id",project_id);
         var product = Products.findOne({ _id: project_id });
     }
     if (product) {
@@ -38,6 +39,7 @@ Template.registerHelper("getProductDetails", function () {
     }
     if (product && image) {
         product["image"] = image.image;
+        Session.set("image",image.image)
         return product;
     }
     

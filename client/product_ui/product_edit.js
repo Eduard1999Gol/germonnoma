@@ -9,7 +9,7 @@ Template.EditProductPage.onCreated(function(){
         name: "",
         price: "",
         description: "",
-        image: "https://bulma.io/images/placeholders/480x480.png"
+        image: Session.get("image")
     });
     this.newProductImage = new ReactiveVar();
 
@@ -94,7 +94,7 @@ Template.EditProductPage.events({
     },
 
     "click button#editProductForm": function (event) {
-        event.preventDefault();  
+        event.preventDefault();
         var template =  Template.instance();
         var newProduct = template.newProduct.get();
         var product = {
@@ -104,7 +104,7 @@ Template.EditProductPage.events({
             description: template.newProduct.get().description,
             image: template.newProduct.get().image
         }
-        console.log(Template.instance().data.product._id)
+        var id = Session.get("id");
         Meteor.call('updateProduct', id, product, function (err, res) {
             if (!err) {
                 Toast({
