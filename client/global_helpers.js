@@ -19,24 +19,6 @@ Template.registerHelper("getToastText", function () {
 });
 
 
-Template.registerHelper("selectedProduct", function () {
-    var selected_products = Products.find({ selected: true}).fetch();
-    Session.set("selectedProducts",selected_products)
-    if (selected_products.length != 0) {
-        return true
-    } else {
-        return false
-    }
-});
-
-
-Template.registerHelper("userLoggedIn", function () {
-    if (Meteor.userId()) {
-        return true;
-    } else {
-        return false;
-    }
-});
 
 
 

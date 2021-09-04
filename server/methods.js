@@ -59,10 +59,18 @@ Meteor.methods({
             throw new Meteor.Error(502);
         }
     },
+    
 
     deleteProduct: function (id) {
         Products.remove({_id: id});
-        console.log("gemacht")
+    },
+
+    removeSelectedProducts: function () {
+        if (this.userId) {
+            Products.remove({selected: true});
+        } else {
+            throw new Meteor.Error(401);
+        }
     },
 
     updateProduct: function (id, product) {
