@@ -49,7 +49,6 @@ Meteor.methods({
             image: product.image,
             created_at: created_at,
             selected: selected
-
         });
         if (id) {
             return ProductImages.insert({
@@ -63,6 +62,7 @@ Meteor.methods({
 
     deleteProduct: function (id) {
         Products.remove({_id: id});
+        console.log("gemacht")
     },
 
     updateProduct: function (id, product) {

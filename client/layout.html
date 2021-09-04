@@ -24,6 +24,7 @@
   <nav class="navbar bg-dark ">
     <a href="#" id="Home" class="navbar-brand text-light mx-4"><strong>Web-Shop</strong></a>
     {{> LogginButtons}}
+
     {{#if userLoggedIn}}
     {{> CreateButton}}
     {{/if}}
@@ -36,5 +37,10 @@
       <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
   </div>
+  {{#if userLoggedIn}}
+  {{#if selectedProduct}}
+  <a href="#" class="btn btn-secondary" id="selectedProduct" >Delete</a>
+  {{/if}}
+  {{/if}}
 </template>
 
