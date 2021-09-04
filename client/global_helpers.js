@@ -18,15 +18,31 @@ Template.registerHelper("getToastText", function () {
     return Session.get("toastText");
 });
 
-Template.registerHelper("userLoggedIn", function () {
-    if (Meteor.userId()) {
-        return true;
-    } else {
-        return false;
+
+
+
+
+Template.registerHelper("getProductDetails", function () {
+    var project_id = Router.current().params._id;
+    if (project_id) {
+        Session.set("id",project_id);
+        var product = Products.findOne({ _id: project_id });
     }
+    if (product) {
+        var image = ProductImages.findOne({
+            product_id: product._id,
+        });
+    }
+    if (product && image) {
+        product["image"] = image.image;
+        Session.set("product", product)
+        return product;
+    }
+    
+
 });
 
-
+ 
 Template.registerHelper("myProfile", function () {
     if (Meteor.user().profile)  {
         TAPi18n.setLanguage(Meteor.user().profile.language);

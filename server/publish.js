@@ -1,6 +1,6 @@
 
 Meteor.publish('products', function () {
-    return Products.find({});
+    return Products.find({deleted: false});
   });
   
 
@@ -9,7 +9,7 @@ Meteor.publish('publishProductId', function (id) {
 });
 
 Meteor.publish('productImageById', function (id) {
-  return ProductImages.find({'meta.product_id': id});
+  return ProductImages.find({product_id: id});
 });
 
 Meteor.publish('productImages', function () {

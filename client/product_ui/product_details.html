@@ -5,18 +5,18 @@
         <div class="col">
           <figure class="image">
             <img
-              src="{{product.image}}"
+              src="{{getProductDetails.image}}"
               alt="Placeholder image"
               style="width: 400px; height: 400px"
             />
           </figure>
         </div>
         <div class="col">
-          <h1 class="title">{{product.name}}</h1>
-          <p class="subtitle">{{_ "price"}}: {{product.price}}</p>
-          <p class="subtitle">{{_ "description"}}: {{product.description}}</p>
+          <h1 class="title">{{getProductDetails.name}}</h1>
+          <p class="subtitle">{{_ "price"}}: {{getProductDetails.price}}</p>
+          <p class="subtitle">{{_ "description"}}: {{getProductDetails.description}}</p>
           <p class="subtitle">
-            {{_ "category"}}: {{getCategoryName product.category}}
+            {{_ "category"}}: {{getCategoryName getProductDetails.category}}
           </p>
         </div>
       </div>
@@ -24,15 +24,15 @@
         <button
           class="btn btn-danger mx-1"
           id="delete-product"
-          data-name="{{product.name}}"
-          data-id="{{product._id}}"
+          data-name="{{getProductDetails.name}}"
+          data-id="{{getProductDetails._id}}"
         >
           {{_ "delete"}}
         </button>
         <button
           class="btn btn-light mx-1"
           id="editPage"
-          data-id="{{product._id}}"
+          data-id="{{getProductDetails._id}}"
         >
           {{_ "edit"}}
         </button>

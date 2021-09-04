@@ -24,11 +24,12 @@
   <nav class="navbar bg-dark ">
     <a href="#" id="Home" class="navbar-brand text-light mx-4"><strong>Web-Shop</strong></a>
     {{> LogginButtons}}
-    {{#if userLoggedIn}}
+
+    {{#if currentUser}}
     {{> CreateButton}}
     {{/if}}
   </nav>
-  <div class="toast align-items-center text-white  m-4" id="epicToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 40px; right: 0;">
+  <div class="toast align-items-center text-white m-4" id="epicToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 40px; right: 0;">
     <div class="d-flex">
       <div class="toast-body" id="toastText">
         {{getToastText}}

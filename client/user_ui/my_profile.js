@@ -1,4 +1,5 @@
 Template.MyProfile.onRendered(function () {
+    console.log(Template.instance()).data.user;
 })
 
 

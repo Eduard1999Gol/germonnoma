@@ -50,8 +50,6 @@ Template.ProductDetails.events({
 
 
 
-Template.Product.helpers({
-    'getProductDetails': function () {
-        return Products.findOne({_id: Session.get('product_id')});
-    }
+Template.ProductDetails.helpers({
+  
 });

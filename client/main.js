@@ -1,10 +1,8 @@
 import { Mongo } from "meteor/mongo";
-import { FilesCollection } from "meteor/ostrio:files";
 import "./main.css";
 
 
 /* Pages */
-
 import "../router/router.js";
 import "./layout.html";
 import "./layout.js";
@@ -34,7 +32,9 @@ import "./user_ui/verify_email.html";
 import "./user_ui/reset_password_email.html";
 import "./user_ui/forgot_password.html";
 import "./user_ui/forgot_password.js";
+import "./user_ui/after_email_reset_password.html";
+import "./user_ui/after_email_reset_password.js"
 
 /* Collections */
 Products = new Mongo.Collection("products");
-ProductImages = new FilesCollection({ collectionName: "ProductImages" });
+ProductImages = new Mongo.Collection("ProductImages");

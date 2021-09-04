@@ -27,15 +27,9 @@ accounts-password
 tap:i18n
 email@2.0.0
 session@1.2.0
-ostrio:files
 manuel:reactivearray
 accounts-ui
-accounts-facebook
 accounts-google
 accounts-base
-accounts-github
-accounts-twitter
 service-configuration
-facebook-config-ui
-google-config-ui
-github-config-ui
+check

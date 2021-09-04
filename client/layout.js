@@ -1,8 +1,10 @@
 
 Template.Layout.onCreated(function(){
+
 });
 
 Template.Layout.onRendered(function(){
+    
 });
 
 Template.Layout.events({
@@ -33,8 +35,9 @@ Template.Layout.events({
         event.preventDefault();
         Router.go('MyProfile',{_id:Meteor.userId()});
         $( ".dropdown_user" ).hide();
-    }
+    },
 
+   
 });
 
 Template.Layout.helpers({

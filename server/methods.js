@@ -1,23 +1,21 @@
 import { Meteor } from 'meteor/meteor';
 import { Email } from 'meteor/email';
+import { check } from 'meteor/check';
 
-  
 Meteor.methods({
-    
     register: function(user) {
         var user_exist = Meteor.users.find({'profile.email': user.email}).count();
         if (user_exist == 0) {
             var userId = Accounts.createUser(user);
             if (userId) {
-                return Accounts.sendVerificationEmail(userId);
+                Accounts.sendVerificationEmail(userId);
             }
-            
+            return userId;
         }else{
             throw new Meteor.Error('user_exist', "User already registered");
         }
-        
     },
-
+    
     sendResetEmail: function (email) {
         var user = Meteor.users.findOne({"emails": { $elemMatch:{"address": email}}});
         if(user){
@@ -40,19 +38,39 @@ Meteor.methods({
     },
     
    
-    createProduct(product) {
-        product["created_at"] = new Date();
-        product["selected"] = false;
-        var id = Products.insert(product);
+    createProduct: function(product) {
+        var created_at = new Date();
+        var selected = false;
+        var id = Products.insert(product = {
+            category: product.category,
+            name: product.name,
+            price: product.price,
+            description: product.description,
+            image: product.image,
+            created_at: created_at,
+            selected: selected
+        });
         if (id) {
-            return id;
+            return ProductImages.insert({
+                image: product.image,
+                product_id: id
+            });
         }else{
             throw new Meteor.Error(502);
         }
     },
+    
 
     deleteProduct: function (id) {
         Products.remove({_id: id});
+    },
+
+    removeSelectedProducts: function () {
+        if (this.userId) {
+            Products.remove({selected: true});
+        } else {
+            throw new Meteor.Error(401);
+        }
     },
 
     updateProduct: function (id, product) {
@@ -65,7 +83,8 @@ Meteor.methods({
                 category: product.category,
                 name: product.name,
                 price: product.price,
-                description: product.description
+                description: product.description,
+                image: product.image
             }
         });
     },

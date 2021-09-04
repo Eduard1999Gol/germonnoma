@@ -1,21 +1,31 @@
 import { ReactiveVar } from 'meteor/reactive-var'
 import Toast from '../lib/costumFunctions/toast';
 
-Template.ProductEditPage.onCreated(function(){
-    Session.set('selectedFile', "");
-    var product = Template.instance();
-    this.newProduct = new ReactiveVar({
-        name: Template.instance().data.product.name,
-        price: Template.instance().data.product.price,
-        description: Template.instance().data.product.description,
-        image: Template.instance().data.product.image
-    });
-    console.log(this.newProduct)
 
+Template.EditProductPage.onCreated(function(){
+    Session.set('selectedFile', "");
+    this.newProduct = new ReactiveVar({
+        category: Session.get("product").category,
+        name: Session.get("product").name,
+        price: Session.get("product").price,
+        description: Session.get("product").description,
+        image: Session.get("product").image
+    });
     this.newProductImage = new ReactiveVar();
+
 });
 
-Template.ProductEditPage.events({
+
+Template.AddProduct.onRendered(function(){
+});
+
+
+Template.EditProductPage.events({
+    'click button#returnToProducts': function (event) {
+        event.preventDefault();
+        Router.go('/');
+    },
+
     'change textarea#product_description_textarea': function (event) {
         event.preventDefault();
         var product = Template.instance().newProduct.get();
@@ -24,24 +34,23 @@ Template.ProductEditPage.events({
             name: product.name,
             price: product.price,
             description: event.currentTarget.value,
-            image:  Template.instance().data.product.image
+            image: product.image
         });
-                
+        console.log(product.image);     
     },
 
     'change select#product_category_select': function (event) {
         event.preventDefault();
         var product = Template.instance().newProduct.get();
-        console.log(event.currentTarget.value)
         Template.instance().newProduct.set({
             category: event.currentTarget.value,
             name: product.name,
             price: product.price,
             description: product.description,
-            image: Template.instance().data.product.image
+            image: product.image
         });
-                
     },
+      
     'keyup input#product_name_input': function (event) {
         event.preventDefault();
         var product = Template.instance().newProduct.get();
@@ -50,10 +59,9 @@ Template.ProductEditPage.events({
             name: event.currentTarget.value,
             price: product.price,
             description: product.description,
-            image: Template.instance().data.product.image
+            image: product.image
         });
-        
-                
+       
     },
 
     'keyup input#product_price_input': function (event) {
@@ -64,48 +72,40 @@ Template.ProductEditPage.events({
             name: product.name,
             price: event.currentTarget.value,
             description: product.description,
-            image: Template.instance().data.product.image
+            image: product.image
         })
     },
 
-
-    'change input.file-input':function (event) {
+    'change input.file-input': function (event) {
         event.preventDefault();
-        var id = Template.instance().data.product._id;
-        Meteor.call('removeImage', id, function(err, res){
-            if(!err){
-                const upload = ProductImages.insert({
-                    file: event.target.files[0],
-                    chunkSize: 'dynamic',
-                    meta: {
-                        product_id: id
-                    }
-                  }, false);
-                  upload.on('end', function (error, fileObj) {
-                    if (error) {
-                      return error;
-                    } else {
-                      return true;
-                    }
-                  });
-                  upload.start();
-            }else{
-                console.log(err);
-            }
-        })
+        Template.instance().newProductImage.set(event.currentTarget.files[0]);
+        var reader = new FileReader();
+        var template = Template.instance();
+        var product = Template.instance().newProduct.get();
+        reader.onload = function (e) {
+            template.newProduct.set({
+                category: product.category,
+                name: product.name,
+                price: product.price,
+                description: product.description,
+                image: e.target.result
+            });
+        };
+        reader.readAsDataURL(event.currentTarget.files[0]);
     },
 
     "click button#editProductForm": function (event) {
-        event.preventDefault();  
+        event.preventDefault();
         var template =  Template.instance();
         var newProduct = template.newProduct.get();
         var product = {
             category: template.newProduct.get().category,
             name: template.newProduct.get().name,
             price: template.newProduct.get().price,
-            description: template.newProduct.get().description
+            description: template.newProduct.get().description,
+            image: template.newProduct.get().image
         }
-        var id = Template.instance().data.product._id;
+        var id = Session.get("id");
         Meteor.call('updateProduct', id, product, function (err, res) {
             if (!err) {
                 Toast({
@@ -126,50 +126,21 @@ Template.ProductEditPage.events({
 
         })
     },
-    'click a#returnToProducts': function (event) {
-        event.preventDefault();
-        Router.go('/');
-    },
-
 });
 
 
-Template.ProductEditPage.helpers({
-    "isSelected": function (cat) {
-        if (Template.instance().data.product) {
-            var cat2 = Template.instance().data.product.category;
-            if (cat == cat2) {
-                return "selected";
-            } else {
-                return "";
-            }
-        }
-    },
-    'selectedFile':function () {
-        if (Session.get('selectedFile')) {
-            return Session.get('selectedFile');
-        } else {
-          return "choose_picture";
-        }
-    },
-
-    'getNewProduct': function () {
-        if (Template.instance().newProduct.get()) {
-          var product = Template.instance().newProduct.get();
-          if (product) {
-            var image = ProductImages.findOne({"meta.product_id": product._id}).link();
-            product["image"] = image;
-          }
-          return product;
-        } else {
-            return {};
-        }
-    },
-
-    'product': function () {
-        return Template.instance().newProduct.get();
+Template.EditProductPage.helpers({
+  'selectedFile':function () {
+      if (Session.get('selectedFile')) {
+          return Session.get('selectedFile');
+      } else {
+        return "choose_picture";
       }
-          
+  },
 
+  'getNewProduct': function () {
+    return Template.instance().newProduct.get();
+  }
+        
 });
 

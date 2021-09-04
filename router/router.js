@@ -11,7 +11,7 @@ Router.onBeforeAction(function () {
     this.next();
   }
 },{
-  except: ['register', 'verifyEmail', 'login', 'after_register', 'home', 'forgot_password',"reset_password_email"]
+  except: ['register', 'verifyEmail', 'login', 'after_register', 'home', 'forgot_password',"reset_password_email","set_password_page"]
 })
 
 
@@ -29,27 +29,23 @@ Router.route(
   {
     name: "home",
     data: function () {
-      var arr = [];
-      var arr2 = [];
-      var products = Products.find({ selected: false }).fetch();
-      var selected_products = Products.find({ selected: true }).fetch();
+      var products = Products.find({ selected: false}).fetch();
+      var selected_products = Products.find({ selected: true}).fetch();
       products.forEach((product) => {
-        var image = ProductImages.findOne({ "meta.product_id": product._id });
+        var image = ProductImages.findOne({ product_id: product._id });
         if (image) {
-          product["image"] = image.link();
-          arr.push(product);
+          product["image"] = image.image;
         }
       });
       selected_products.forEach((product) => {
-        var image = ProductImages.findOne({ "meta.product_id": product._id });
+        var image = ProductImages.findOne({ product_id: product._id });
         if (image) {
-          product["image"] = image.link();
-          arr2.push(product);
+          product["image"] = image.image;
         }
       });
       return {
-        products: arr,
-        selected_products: arr2,
+        products: products,
+        selected_products: selected_products,
       };
     },
   }
@@ -58,8 +54,7 @@ Router.route(
 Router.route(
   "/products/:_id",
   function () {
-    this.subscribe("publishProductId", this.params._id);
-    console.log(this);
+    this.subscribe("products", this.params._id);
     this.subscribe("productImageById", this.params._id);
     if (this.ready()) {
       this.render("ProductDetails");
@@ -68,17 +63,7 @@ Router.route(
     }
   },
   {
-    name: "productDetails",
-    data: function () {
-      var product = Products.findOne({ _id: this.params._id });
-      var image = ProductImages.findOne({
-        "meta.product_id": product._id,
-      }).link();
-      product["image"] = image;
-      return {
-        product: product,
-      };
-    },
+    name: "productDetails"
   }
 );
 
@@ -140,19 +125,6 @@ Router.route(
   }
 );
 
-Router.route(
-  "/forgot_password",
-  function () {
-    if (this.ready()) {
-      this.render("ForgotPassword");
-    } else {
-      this.render("Loading");
-    }
-  },
-  {
-    name: "forgot_password",
-  }
-);
 
 Router.route(
   "/my_profile/:_id",
@@ -220,6 +192,21 @@ Router.route(
   }
 );
 
+
+Router.route(
+  "/forgot_password",
+  function () {
+    if (this.ready()) {
+      this.render("ForgotPassword");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "forgot_password",
+  }
+);
+
 Router.route(
   "/reset_password_email",
   function () {
@@ -239,6 +226,27 @@ Router.route(
 );
 
 
+Router.route(
+  "/resetpassword/:token",
+  function () {
+    var self = this;
+    if (this.ready()) {
+      this.render("SetPassword");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "set_password_page",
+    data: function () {
+      return {
+        token: this.params.token
+      }
+    }
+  }
+);
+
+
 
 
 
@@ -248,24 +256,12 @@ Router.route(
     this.subscribe("publishProductId", this.params._id);
     this.subscribe("productImageById", this.params._id);
     if (this.ready()) {
-      this.render("ProductEditPage");
+      this.render("EditProductPage");
     } else {
       this.render("Loading");
     }
   },
   {
     name: "productEdit",
-    data: function () {
-      var product = Products.findOne({ _id: this.params._id });
-      if (product) {
-        var image = ProductImages.findOne({ "meta.product_id": product._id });
-      }
-      if (image) {
-        product["image"] = image.link();
-      }
-      return {
-        product: product,
-      };
-    },
   }
 );
