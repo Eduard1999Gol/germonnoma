@@ -1,8 +1,6 @@
 import { ReactiveVar } from 'meteor/reactive-var'
 
 Template.Product.onCreated(function(){
-    Session.set("dfv");
-    this.newAlert = new ReactiveVar();
 });
 
 Template.Product.events({
@@ -17,7 +15,6 @@ Template.Product.events({
         event.preventDefault();
         var id = event.currentTarget.dataset.id;
         Meteor.call("selectedProduct", id, true)
-        
     },
 
     'click a#goToProduct': function (event) {

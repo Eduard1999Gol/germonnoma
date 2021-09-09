@@ -1,3 +1,4 @@
+import moment from 'moment';
 import category from './product_ui/product_category.js';
 
 Template.registerHelper("getCategories", function () {
@@ -17,6 +18,20 @@ Template.registerHelper("getCategoryName", function (key) {
 Template.registerHelper("getToastText", function () {
     return Session.get("toastText");
 });
+
+Template.registerHelper("formatDateTime", function (date) {
+    return moment(date).format('DD.MM.YYYY HH:mm');
+});
+
+Template.registerHelper("getAmount", function (amount) {
+    var formatter = new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR'
+    })
+    return formatter.format(amount)
+    
+});
+
 
 
 
