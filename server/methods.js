@@ -41,7 +41,7 @@ Meteor.methods({
     createProduct: function(product) {
         var created_at = new Date();
         var selected = false;
-        var id = Products.insert(product = {
+        return Products.insert(product = {
             category: product.category,
             name: product.name,
             price: product.price,
@@ -49,16 +49,14 @@ Meteor.methods({
             created_at: created_at,
             selected: selected
         });
-        if (id) {
-                return ProductImages.insert({
-                image: product.image,
-                product_id: id
-            });
-        }else{
-            throw new Meteor.Error(502);
-        }
     },
     
+    insertImage: function (product_id, image) {
+        return ProductImages.insert({
+            image: image,
+            product_id: product_id
+        });
+    },
 
     deleteProduct: function (id) {
         Products.remove({_id: id});
