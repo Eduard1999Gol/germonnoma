@@ -1,11 +1,12 @@
 <template name="EditProductPage">
-    <div class="row">
-      <div class="col text-white">
-        <h1 class="title is-1">{{_ "edit_product"}}</h1>
-        <form id="editProductForm">
+  <div class="row">
+    <div class="col text-white">
+      <h1 class="title is-1">{{_ "edit_product"}}</h1>
+      <form id="editProductForm">
         <div class="select is-fullwidth">
           <label for="exampleFormControlInput1" class="form-label">Choose Category</label>
-          <select name="product_category" id="product_category_select" class="form-select mb-3" aria-label=".form-select-lg example">
+          <select name="product_category" id="product_category_select" class="form-select mb-3"
+            aria-label=".form-select-lg example">
             {{#each getCategories}}
             <option value="{{getProductDetails.category}}">{{this.display}}</option>
             {{/each}}
@@ -13,28 +14,32 @@
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Name</label>
-          <input name="product_name" id="product_name_input" class="form-control"  placeholder="{{_ "product_name"}}"  value="{{getProductDetails.name}}" required>
+          <input name="product_name" id="product_name_input" class="form-control" placeholder="{{_ " product_name"}}"
+            value="{{getProductDetails.name}}" required>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label" >Prise</label>
-          <input class="input form-control" id="product_price_input" type="number" min="0" name="product_price" value="{{getProductDetails.price}}" placeholder="{{_ "product_price"}}" required >
+          <label for="exampleFormControlInput1" class="form-label">Prise</label>
+          <input class="input form-control" id="product_price_input" type="number" min="0" name="product_price"
+            value="{{getProductDetails.price}}" placeholder="{{_ " product_price"}}" required>
         </div>
         <div class="mb-6">
-          <label for="exampleFormControlTextarea1"  class="form-label">Product Description</label>
-          <textarea class="textarea form-control" name="product_description" placeholder="{{_ "product_description"}}"  id="product_description_textarea" rows="3" required>{{getProductDetails.description}}</textarea>
+          <label for="exampleFormControlTextarea1" class="form-label">Product Description</label>
+          <textarea class="textarea form-control" name="product_description" placeholder="{{_ " product_description"}}"
+            id="product_description_textarea" rows="3" required>{{getProductDetails.description}}</textarea>
         </div>
         <div class="file is-primary my-2">
           <label class="file-label">
-              <input class="file-input"  type="file" name="product_image"  accept="image/png, image/jpeg" required>
+            <input class="file-input" type="file" name="product_image" accept="image/png, image/jpeg, image/jpg" required>
           </label>
-      </div>
-      <div >
-        <div class="my-1">
-          <button id="editProductForm" type="submit" class="btn btn-success padding-5">{{_ "save"}}</button>
-          <button id="returnToProducts" type="button" class="btn btn-light close-modal padding-5">{{_ "back"}}</button>
         </div>
-      </div>
-    </form>
-      </div>
+        <div>
+          <div class="my-1">
+            <button id="editProductForm" type="submit" class="btn btn-success padding-5">{{_ "save"}}</button>
+            <button id="returnToProducts" type="button" class="btn btn-light close-modal padding-5">{{_
+              "back"}}</button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </template>

@@ -31,7 +31,7 @@ Router.route(
     data: function () {
       var products = Products.find({ selected: false}).fetch();
       var selected_products = Products.find({ selected: true}).fetch();
-      products.forEach((product) => {
+      products.forEach(product => {
         var image = ProductImages.findOne({ product_id: product._id });
         if (image) {
           product["image"] = image.image;

@@ -46,7 +46,6 @@ Meteor.methods({
             name: product.name,
             price: product.price,
             description: product.description,
-            image: product.image,
             created_at: created_at,
             selected: selected
         });
@@ -68,7 +67,7 @@ Meteor.methods({
 
     updateProduct: function (id, product) {
         product["edited_at"] = new Date();
-        return Products.update({
+        Products.update({
             _id: id
         }, 
         {
@@ -77,6 +76,10 @@ Meteor.methods({
                 name: product.name,
                 price: product.price,
                 description: product.description,
+            }
+        });
+        return ProductImages.update({product_id: id},{
+            $set:{
                 image: product.image
             }
         });
