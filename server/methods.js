@@ -51,7 +51,7 @@ Meteor.methods({
             selected: selected
         });
         if (id) {
-            return ProductImages.insert({
+                return ProductImages.insert({
                 image: product.image,
                 product_id: id
             });
@@ -65,13 +65,6 @@ Meteor.methods({
         Products.remove({_id: id});
     },
 
-    removeSelectedProducts: function () {
-        if (this.userId) {
-            Products.remove({selected: true});
-        } else {
-            throw new Meteor.Error(401);
-        }
-    },
 
     updateProduct: function (id, product) {
         product["edited_at"] = new Date();
@@ -102,15 +95,8 @@ Meteor.methods({
 
     removeImage: function (id) {
         ProductImages.remove({
-            'meta.product_id': id
-        });
-        Products.update({
             _id: id
-        }, 
-        {
-            $set: {
-                "image_link": "https://bulma.io/images/placeholders/1280x960.png"
-            }
         });
+        Products.update({_id: id});
     },
 });

@@ -18,8 +18,10 @@ Template.AddProduct.events({
                 console.log(e)
                 var image = e.target.result;
                 Session.set("image",image);
+               
                 
         };
+        console.log(Session.get("image"))
         reader.readAsDataURL(event.currentTarget.files[0]);
     },
 
@@ -52,6 +54,17 @@ Template.AddProduct.events({
         
     },
 });
+
+
+Template.AddProduct.helpers({
+    'selectedFile':function () {
+        if (Session.get('selectedFile')) {
+            return Session.get('selectedFile');
+        } else {
+          return "choose_picture";
+        }
+    },
+  });
 
 
 

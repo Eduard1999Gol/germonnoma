@@ -2,11 +2,12 @@
     <div class="row">
       <div class="col text-white">
         <h1 class="title is-1">{{_ "edit_product"}}</h1>
+        <form id="editProductForm">
         <div class="select is-fullwidth">
           <label for="exampleFormControlInput1" class="form-label">Choose Category</label>
           <select name="product_category" id="product_category_select" class="form-select mb-3" aria-label=".form-select-lg example">
             {{#each getCategories}}
-            <option value="{{this.value}}">{{this.display}}</option>
+            <option value="{{getProductDetails.category}}">{{this.display}}</option>
             {{/each}}
           </select>
         </div>
@@ -24,20 +25,16 @@
         </div>
         <div class="file is-primary my-2">
           <label class="file-label">
-              <input class="file-input"  type="file" name="product_image" accept="image/png, image/jpeg" required>
+              <input class="file-input"  type="file" name="product_image"  accept="image/png, image/jpeg" required>
           </label>
       </div>
       <div >
         <div class="my-1">
-          <button id="editProductForm" type="button" class="btn btn-success padding-5">{{_ "save"}}</button>
+          <button id="editProductForm" type="submit" class="btn btn-success padding-5">{{_ "save"}}</button>
           <button id="returnToProducts" type="button" class="btn btn-light close-modal padding-5">{{_ "back"}}</button>
         </div>
       </div>
-      </div>
-      <div class="col-4 my-5">
-          {{#with getNewProduct}}
-          {{> Product}}
-          {{/with}}
+    </form>
       </div>
     </div>
 </template>

@@ -34,9 +34,6 @@ Template.registerHelper("getAmount", function (amount) {
 
 
 
-
-
-
 Template.registerHelper("getProductDetails", function () {
     var project_id = Router.current().params._id;
     if (project_id) {
@@ -47,17 +44,17 @@ Template.registerHelper("getProductDetails", function () {
         var image = ProductImages.findOne({
             product_id: product._id,
         });
+        Session.set('ImageId',image._id)
     }
     if (product && image) {
         product["image"] = image.image;
         Session.set("product", product)
         return product;
     }
-    
-
 });
 
  
+
 Template.registerHelper("myProfile", function () {
     if (Meteor.user().profile)  {
         TAPi18n.setLanguage(Meteor.user().profile.language);
