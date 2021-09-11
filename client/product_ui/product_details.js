@@ -1,6 +1,10 @@
 import helper_functions from '../lib/helper_functions';
 import Toast from '../lib/costumFunctions/toast';
+import { Carousel } from 'mdb-ui-kit';
 
+Template.ProductDetails.onRendered(function () {
+    console.log(Carousel);
+})
 
 Template.ProductDetails.events({
     'click button#delete-product': function (event) {

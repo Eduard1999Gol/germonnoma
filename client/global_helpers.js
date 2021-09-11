@@ -35,20 +35,14 @@ Template.registerHelper("getAmount", function (amount) {
 
 
 Template.registerHelper("getProductDetails", function () {
-    var project_id = Router.current().params._id;
-    if (project_id) {
-        Session.set("id",project_id);
-        var product = Products.findOne({ _id: project_id });
-    }
+    var product = Products.findOne({ _id: Router.current().params._id });
     if (product) {
-        var image = ProductImages.findOne({
+        var images = ProductImages.find({
             product_id: product._id,
-        });
-        Session.set('ImageId',image._id)
+        }).fetch();
     }
-    if (product && image) {
-        product["image"] = image.image;
-        Session.set("product", product)
+    if (product && images) {
+        product["images"] = images;
         return product;
     }
 });

@@ -1,4 +1,20 @@
 <template name="ProductDetails">
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel">
+    <div class="carousel-inner">
+      {{#with getProductDetails}}
+      {{#each this.images}}
+      <div class="carousel-item active">
+        <img
+          src="{{this.image}}"
+          class="d-block w-100"
+          alt="..."
+        />
+      </div>
+      {{/each}}
+      {{/with}}
+      
+    </div>
+  </div>
   <div class="text-white">
     <div class="content">
       <div class="container">
