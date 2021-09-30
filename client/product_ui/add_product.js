@@ -36,8 +36,6 @@ Template.AddProduct.events({
                 });
             }
         });
-        
-        
     },
 });
 

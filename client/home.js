@@ -1,9 +1,8 @@
 Template.Home.events({
-    'keyup input#SearchProduct': function (event) {
+    'submit form.searchForm': function (event) {
         event.preventDefault();
-        var key = event.currentTarget.value;
+        console.log(event.target.search.value)
+        var key = event.currentTarget.search.value;
         Session.set('searchTerm',key);
-        console.log(typeof Session.get('searchTerm'));
     }
-    
 })

@@ -20,6 +20,7 @@ Router.route(
   function () {
     this.subscribe("products");
     this.subscribe("productImages");
+    Session.set("searchTerm","");
     if (this.ready()) {
       this.render("Home");
     } else {
@@ -29,15 +30,8 @@ Router.route(
   {
     name: "home",
     data: function () {
-      var products = Products.find({ selected: false}).fetch();
-      var selected_products = Products.find({ selected: true}).fetch();
+      var products = Products.find({ selected: false, name: { $regex: Session.get('searchTerm'), $options: 'i'}}).fetch();
       products.forEach(product => {
-        var image = ProductImages.findOne({ product_id: product._id });
-        if (image) {
-          product["image"] = image.image;
-        }
-      });
-      selected_products.forEach((product) => {
         var image = ProductImages.findOne({ product_id: product._id });
         if (image) {
           product["image"] = image.image;
@@ -45,7 +39,6 @@ Router.route(
       });
       return {
         products: products,
-        selected_products: selected_products,
       };
     },
   }

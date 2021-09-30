@@ -1,15 +1,8 @@
 <template name="Home">
-    <form class="d-flex mb-3">
-        <input id="SearchProduct" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="searchForm d-flex mb-3" >
+        <input   type="text" placeholder="Search" name="seaŕch">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-    <div class="row">
-        {{#each selected_products}}
-        <div class="col-5">
-            {{> Product}}
-        </div>
-        {{/each}}
-    </div>
     <hr style="color: aliceblue;">
     <div class="row">
         {{#each products}}
