@@ -1,22 +1,8 @@
-import { ReactiveVar } from 'meteor/reactive-var'
 import Toast from '../lib/costumFunctions/toast';
-
 Template.AddProduct.onCreated(function(){
     Session.set('selectedFile', "");
-    this.newProduct = new ReactiveVar({
-        category: "",
-        name: "",
-        price: "",
-        description: "",
-        image: "https://bulma.io/images/placeholders/480x480.png"
-    });
-    this.newProductImage = new ReactiveVar();
-
+    this.images = new ReactiveArray([]);
 });
-
-Template.AddProduct.onRendered(function(){
-});
-
 
 Template.AddProduct.events({
     'click button#returnToProducts': function (event) {
@@ -24,125 +10,45 @@ Template.AddProduct.events({
         Router.go('/');
     },
 
-    'change textarea#product_description_textarea': function (event) {
+    'submit form#addProductForm':function (event) {
         event.preventDefault();
-        var product = Template.instance().newProduct.get();
-        Template.instance().newProduct.set({
-            category: product.category,
-            name: product.name,
-            price: product.price,
-            description: event.currentTarget.value,
-            image: product.image
-        });
-    },
-
-    'change select#product_category_select': function (event) {
-        event.preventDefault();
-        var product = Template.instance().newProduct.get();
-        Template.instance().newProduct.set({
-            category: event.currentTarget.value,
-            name: product.name,
-            price: product.price,
-            description: product.description,
-            image: product.image
-        });
-    },
-      
-    'keyup input#product_name_input': function (event) {
-        event.preventDefault();
-        var product = Template.instance().newProduct.get();
-        Template.instance().newProduct.set({
-            category: product.category,
-            name: event.currentTarget.value,
-            price: product.price,
-            description: product.description,
-            image: product.image
-        });
-       
-    },
-
-    'keyup input#product_price_input': function (event) {
-        event.preventDefault();
-        var product = Template.instance().newProduct.get();
-        Template.instance().newProduct.set({
-            category: product.category,
-            name: product.name,
-            price: event.currentTarget.value,
-            description: product.description,
-            image: product.image
-        })
-    },
-
-    'change input.file-input': function (event) {
-        event.preventDefault();
-        Template.instance().newProductImage.set(event.currentTarget.files[0]);
-        var reader = new FileReader();
-        var template = Template.instance();
-        var product = Template.instance().newProduct.get();
-        reader.onload = function (e) {
-            template.newProduct.set({
-                category: product.category,
-                name: product.name,
-                price: product.price,
-                description: product.description,
-                image: e.target.result
-            });
-        };
-        reader.readAsDataURL(event.currentTarget.files[0]);
-    },
-
-    'click button#addProductForm':function (event) {
-        event.preventDefault();
-        var template =  Template.instance();
-        var newProduct = template.newProduct.get();
-        if (newProduct.name != ""  && newProduct.price != "" && newProduct.description != "" && template.newProductImage.get()) {
-            var product = {
-                category: template.newProduct.get().category,
-                name: template.newProduct.get().name,
-                price: parseInt(template.newProduct.get().price),
-                description: template.newProduct.get().description,
-                image: template.newProduct.get().image
-
-            }
-                
-
-            Meteor.call('createProduct', product, function (err, res) {
-                if (!err) {
-                    Toast({
-                        text: "Product is created", 
-                        duration: 3000, 
-                        color: "success"
-                    });
-                    Router.go('/');
-                }else{
-                    Toast({
-                        text: "Product is not created", 
-                        duration: 3000, 
-                        color: "danger"
-                    });
-                }
-            });
-        } else {
-            alert("Die Felder müssen ausgefüllt werden!")
+        var product = {
+            category: event.currentTarget.product_category.value,
+            name: event.currentTarget.product_name.value,
+            price: parseInt(event.currentTarget.product_price.value),
+            description: event.currentTarget.product_description.value,
         }
-        
+        Meteor.call('createProduct', product, function (err, res) {
+            if (!err) {
+                for (let i = 0; i < event.currentTarget.product_image.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        Meteor.call('insertImage', res, e.target.result);
+                    };
+                    reader.readAsDataURL(event.currentTarget.product_image.files[i]);
+                }
+                Router.go('/');
+            }else{
+                Toast({
+                    text: "Product is not created", 
+                    duration: 3000, 
+                    color: "danger"
+                });
+            }
+        });
     },
 });
 
 
 Template.AddProduct.helpers({
-  'selectedFile':function () {
-      if (Session.get('selectedFile')) {
-          return Session.get('selectedFile');
-      } else {
-        return "choose_picture";
-      }
-  },
+    'selectedFile':function () {
+        if (Session.get('selectedFile')) {
+            return Session.get('selectedFile');
+        } else {
+          return "choose_picture";
+        }
+    },
+  });
 
-  'getNewProduct': function () {
-    return Template.instance().newProduct.get();
-  }
-        
-});
 
 

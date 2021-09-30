@@ -1,19 +1,12 @@
 <template name="Home">
-    {{#if currentUser}}
-    {{#if selected_products}}
-    <a href="#" class="btn btn-secondary" id="selectedProduct" >Delete</a>
-    {{/if}}
-    {{/if}}
-    <div class="row">
-        {{#each selected_products}}
-        <div class="col-3">
-            {{> Product}}
-        </div>
-        {{/each}}
-    </div>
+    <form class="searchForm d-flex mb-3" >
+        <input   type="text" placeholder="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    <hr style="color: aliceblue;">
     <div class="row">
         {{#each products}}
-        <div class="col-3">
+        <div class="col-5">
             {{> Product}}
         </div>
         {{/each}}

@@ -1,24 +1,8 @@
 Template.Home.events({
-    'click a#selectedProduct': function (event) {
+    'submit form.searchForm': function (event) {
         event.preventDefault();
-        var prove = window.confirm("Are you really sure to delete this elements?");
-        if (prove) {
-            Meteor.call('removeSelectedProducts', function (err, res) {
-                if(!err){
-                
-                }
-                else{
-                    console.log(err);
-                }
-            })
-                    
-        } else {
-            Toast({
-                text: "Der Vorgang wurde abgebrochen", 
-                duration: 3000, 
-                color: "danger"
-            })
-        }
-        
+        if (event.currentTarget.search.value) {
+            Router.go("searchedProducts", {searchTerm: event.currentTarget.search.value});
+        }  
     }
 })

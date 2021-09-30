@@ -1,11 +1,15 @@
 import helper_functions from '../lib/helper_functions';
 import Toast from '../lib/costumFunctions/toast';
 
+Template.ProductDetails.onRendered(function () {
+    console.log(Carousel);
+})
 
 Template.ProductDetails.events({
     'click button#delete-product': function (event) {
         event.preventDefault();
         var id = event.target.dataset.id;
+        console.log(id)
         var name = event.target.dataset.name;
         var prove = window.confirm(TAPi18n.__('Are you really sure to delete the product  ')+ name + "?" );
         if (prove) {

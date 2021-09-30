@@ -41,41 +41,31 @@ Meteor.methods({
     createProduct: function(product) {
         var created_at = new Date();
         var selected = false;
-        var id = Products.insert(product = {
+        return Products.insert(product = {
             category: product.category,
             name: product.name,
             price: product.price,
             description: product.description,
-            image: product.image,
             created_at: created_at,
             selected: selected
         });
-        if (id) {
-            return ProductImages.insert({
-                image: product.image,
-                product_id: id
-            });
-        }else{
-            throw new Meteor.Error(502);
-        }
     },
     
+    insertImage: function (product_id, image) {
+        return ProductImages.insert({
+            image: image,
+            product_id: product_id
+        });
+    },
 
     deleteProduct: function (id) {
         Products.remove({_id: id});
     },
 
-    removeSelectedProducts: function () {
-        if (this.userId) {
-            Products.remove({selected: true});
-        } else {
-            throw new Meteor.Error(401);
-        }
-    },
 
     updateProduct: function (id, product) {
         product["edited_at"] = new Date();
-        return Products.update({
+        Products.update({
             _id: id
         }, 
         {
@@ -84,6 +74,10 @@ Meteor.methods({
                 name: product.name,
                 price: product.price,
                 description: product.description,
+            }
+        });
+        return ProductImages.update({product_id: id},{
+            $set:{
                 image: product.image
             }
         });
@@ -102,15 +96,8 @@ Meteor.methods({
 
     removeImage: function (id) {
         ProductImages.remove({
-            'meta.product_id': id
-        });
-        Products.update({
             _id: id
-        }, 
-        {
-            $set: {
-                "image_link": "https://bulma.io/images/placeholders/1280x960.png"
-            }
         });
+        Products.update({_id: id});
     },
 });

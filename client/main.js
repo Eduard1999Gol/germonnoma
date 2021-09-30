@@ -33,7 +33,9 @@ import "./user_ui/reset_password_email.html";
 import "./user_ui/forgot_password.html";
 import "./user_ui/forgot_password.js";
 import "./user_ui/after_email_reset_password.html";
-import "./user_ui/after_email_reset_password.js"
+import "./user_ui/after_email_reset_password.js";
+import "./product_ui/search_products.js";
+import "./product_ui/search_products.html";
 
 /* Collections */
 Products = new Mongo.Collection("products");

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import category from './product_ui/product_category.js';
 
 Template.registerHelper("getCategories", function () {
@@ -18,31 +19,36 @@ Template.registerHelper("getToastText", function () {
     return Session.get("toastText");
 });
 
+Template.registerHelper("formatDateTime", function (date) {
+    return moment(date).format('DD.MM.YYYY HH:mm');
+});
 
+Template.registerHelper("getAmount", function (amount) {
+    var formatter = new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR'
+    })
+    return formatter.format(amount)
+    
+});
 
 
 
 Template.registerHelper("getProductDetails", function () {
-    var project_id = Router.current().params._id;
-    if (project_id) {
-        Session.set("id",project_id);
-        var product = Products.findOne({ _id: project_id });
-    }
+    var product = Products.findOne({ _id: Router.current().params._id });
     if (product) {
-        var image = ProductImages.findOne({
+        var images = ProductImages.find({
             product_id: product._id,
-        });
+        }).fetch();
     }
-    if (product && image) {
-        product["image"] = image.image;
-        Session.set("product", product)
+    if (product && images) {
+        product["images"] = images;
         return product;
     }
-    
-
 });
 
  
+
 Template.registerHelper("myProfile", function () {
     if (Meteor.user().profile)  {
         TAPi18n.setLanguage(Meteor.user().profile.language);

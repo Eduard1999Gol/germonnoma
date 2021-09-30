@@ -2,7 +2,6 @@
 Template.SetPassword.events({
     'submit form#SetNewPassword': function (event) {
         event.preventDefault();
-        // console.log(Template.instance().data.token); 
         var token = Router.current().params.token;
         var password = event.currentTarget.password.value;
         var password_2 = event.currentTarget.password_2.value;
@@ -23,5 +22,3 @@ Template.SetPassword.events({
     }
 })
 
-// if('1' == 1) => true
-// if('1' === 1) => false

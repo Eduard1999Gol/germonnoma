@@ -16,3 +16,13 @@ Meteor.publish('productImages', function () {
   return ProductImages.find({});
 });
 
+Meteor.publish('searchedProducts', function (searchTerm) {
+  var products = [];
+  Products.find({name: { $regex: searchTerm, $options: 'i'}}).forEach(element => {
+    products.push(element._id);
+  });
+  return [Products.find({name: { $regex: searchTerm, $options: 'i'}}),
+  ProductImages.find({product_id: {$in: products}})
+];
+});
+
