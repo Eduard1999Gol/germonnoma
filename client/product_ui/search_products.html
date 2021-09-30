@@ -1,0 +1,12 @@
+<template name="SearchProducts">
+
+    <h1 class="text-white">Search: {{searchTerm}} </h1>
+    <div class="row">
+        {{#each products}}
+        <div class="col-5">
+            {{> Product}}
+        </div>
+        {{/each}}
+    </div>
+
+</template>
