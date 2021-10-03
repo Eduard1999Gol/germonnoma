@@ -40,14 +40,12 @@ Meteor.methods({
    
     createProduct: function(product) {
         var created_at = new Date();
-        var selected = false;
         return Products.insert(product = {
             category: product.category,
             name: product.name,
             price: product.price,
             description: product.description,
             created_at: created_at,
-            selected: selected
         });
     },
     
