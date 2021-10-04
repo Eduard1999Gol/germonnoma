@@ -25,7 +25,20 @@ Meteor.methods({
         }
         
     },
-
+    addProductToBasket: function (product_id) {
+        check(product_id, String);
+        if (this.userId) {
+            return Meteor.users.update({
+                _id: this.userId
+            },{
+                $push:{
+                    "profile.basket": product_id
+                }
+            })
+        } else {
+            throw new Meteor.Error(401);
+        }  
+    },
     updateProfile: function (profile) {
         Meteor.users.update({
             _id: this.userId
