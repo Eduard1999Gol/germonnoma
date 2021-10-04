@@ -8,6 +8,12 @@ Template.Layout.onRendered(function(){
 });
 
 Template.Layout.events({
+    'click button#basket':function (event) {
+        event.preventDefault();
+        Router.go("basket_page");
+
+    },
+
     'click a#Home': function (event) {
         event.preventDefault();
         Router.go('/');

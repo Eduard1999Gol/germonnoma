@@ -53,6 +53,7 @@ Template.registerHelper("myProfile", function () {
     if (Meteor.user().profile)  {
         TAPi18n.setLanguage(Meteor.user().profile.language);
         return {
+            basket: Meteor.user().profile.basket.length,
             first_name: Meteor.user().profile.first_name,
             last_name: Meteor.user().profile.last_name,
             street: Meteor.user().profile.street,
@@ -64,6 +65,7 @@ Template.registerHelper("myProfile", function () {
         }
     } else {
         return {
+            basket: [],
             first_name: "",
             last_name: "",
             street: "",

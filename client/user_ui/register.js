@@ -13,21 +13,20 @@ Template.Register.events({
         event.preventDefault();
         var language = event.currentTarget.selectLanguage.value;
         TAPi18n.setLanguage(language);
-        var basket = [];
+        var list = [];
         if (event.currentTarget.password.value == event.currentTarget.password_2.value) {
             var user = {
                 username: event.currentTarget.username.value,
                 email: event.currentTarget.email.value,
                 password: event.currentTarget.password.value,
                 profile:{
-                    basket: basket,
                     language: event.currentTarget.selectLanguage.value,
+                    basket: list,
                 }
             }
             Meteor.call("register", user, function (err, res) {
                 if (!err) {
                     Router.go("after_register");
-                    
                 } else {
                     console.log(err);
                 }

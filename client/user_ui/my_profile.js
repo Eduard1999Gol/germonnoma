@@ -15,6 +15,7 @@ Template.MyProfile.events({
         var language = event.currentTarget.selectLanguage.value;
         TAPi18n.setLanguage(language);
         var profile = {
+            basket: Meteor.user().profile.basket,
             language: event.currentTarget.selectLanguage.value,
             first_name: event.currentTarget.first_name.value,
             last_name: event.currentTarget.last_name.value,

@@ -30,7 +30,7 @@ Router.route(
   {
     name: "home",
     data: function () {
-      var products = Products.find({ selected: false, name: { $regex: Session.get('searchTerm'), $options: 'i'}}).fetch();
+      var products = Products.find({ name: { $regex: Session.get('searchTerm'), $options: 'i'}}).fetch();
       products.forEach(product => {
         var image = ProductImages.findOne({ product_id: product._id });
         if (image) {
@@ -154,7 +154,6 @@ Router.route(
     this.subscribe("users");
     if (!Meteor.userId()) {
       Router.go("home");
-      
     } else 
     if (this.ready()) {
       this.render("MyProfile");
@@ -172,6 +171,44 @@ Router.route(
     },
   }
 );
+
+
+Router.route(
+  "/my_basket",
+  function () {
+    this.subscribe("users");
+    if (!Meteor.userId()) {
+      Router.go("home");
+    } else 
+    if (this.ready()) {
+      this.render("UserBasket");
+    } else {
+      this.render("Loading");
+    }
+  },
+  {
+    name: "basket_page",
+    data: function () {
+      if (Meteor.user()) {
+        var basket_products = [];
+        var products_id = Meteor.user().profile.basket;
+        for (let i = 0; i < products_id.length; i++) {
+         basket_products.push(Products.findOne({_id: products_id[i]}));          
+        }
+        basket_products.forEach(product => {
+          var image = ProductImages.findOne({ product_id: product._id });
+          if (image) {
+            product["image"] = image.image;
+          }
+        });
+        return {
+          basket_products: basket_products
+        }
+      }
+    }, 
+  }
+);
+
 
 
 Router.route(
@@ -287,3 +324,4 @@ Router.route(
     name: "productEdit",
   }
 );
+

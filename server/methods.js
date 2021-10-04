@@ -37,7 +37,6 @@ Meteor.methods({
         })
     },
     
-   
     createProduct: function(product) {
         var created_at = new Date();
         return Products.insert(product = {
@@ -80,7 +79,7 @@ Meteor.methods({
             }
         });
     },
-    
+    /* 
     selectedProduct: function (id, selected) {
         return Products.update({
             _id: id
@@ -90,7 +89,7 @@ Meteor.methods({
                 selected: selected
             }
         });
-    },
+    }, */
 
     removeImage: function (id) {
         ProductImages.remove({
