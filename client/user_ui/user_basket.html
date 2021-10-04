@@ -1,0 +1,11 @@
+<template name="UserBasket">
+<h1 class="text-white">Buy Now!</h1>
+<hr>
+<div class="row">
+    {{#each basket_products}}
+    <div class="col-5">
+        {{> Product}}
+    </div>
+    {{/each}}
+</div>
+</template>
