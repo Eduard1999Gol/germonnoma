@@ -38,6 +38,9 @@ import "./product_ui/search_products.js";
 import "./product_ui/search_products.html";
 import "./user_ui/user_basket.js";
 import "./user_ui/user_basket.html";
+import "./product_ui/product_basket.html"
+import "./product_ui/product_basket.js"
+
 
 
 /* Collections */

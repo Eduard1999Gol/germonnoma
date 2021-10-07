@@ -19,6 +19,21 @@ Template.registerHelper("getToastText", function () {
     return Session.get("toastText");
 });
 
+
+Template.registerHelper("berechneMenge", function (id) {
+    if (Meteor.user().profile.basket) {
+        var wagen = Meteor.user().profile.basket;
+        var menge = 1;
+        for (let i = 0; i < wagen.length; i++) {
+            if (wagen[i]===id) {
+                menge++
+            }
+            return menge
+        }
+    }
+});
+
+
 Template.registerHelper("formatDateTime", function (date) {
     return moment(date).format('DD.MM.YYYY HH:mm');
 });

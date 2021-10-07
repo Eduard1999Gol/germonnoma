@@ -39,6 +39,19 @@ Meteor.methods({
             throw new Meteor.Error(401);
         }  
     },
+
+    removeProductFromBasket: function (product_id) {
+        if (this.userId) {
+            return Meteor.users.update({
+                _id: this.userId
+            },{
+                $pull:{"profile.basket": product_id},
+            })
+        } else {
+            throw new Meteor.Error(401);
+        }  
+    },
+
     updateProfile: function (profile) {
         Meteor.users.update({
             _id: this.userId

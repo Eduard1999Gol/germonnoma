@@ -1,3 +1,4 @@
+import  { uniq } from 'meteor/underscore'
 
 Router.configure({
   layoutTemplate: "Layout",
@@ -73,7 +74,7 @@ Router.route(
   {
     name: "searchedProducts",
     data: function () {
-      var products = Products.find({ selected: false, name: { $regex: this.params.searchTerm, $options: 'i'}}).fetch();
+      var products = Products.find({ name: { $regex: this.params.searchTerm, $options: 'i'}}).fetch();
       products.forEach(product => {
         var image = ProductImages.findOne({ product_id: product._id });
         if (image) {
@@ -192,8 +193,10 @@ Router.route(
       if (Meteor.user()) {
         var basket_products = [];
         var products_id = Meteor.user().profile.basket;
-        for (let i = 0; i < products_id.length; i++) {
-         basket_products.push(Products.findOne({_id: products_id[i]}));          
+        var ids = _.uniq(products_id);
+        console.log(ids)
+        for (let i = 0; i < ids.length; i++) {
+         basket_products.push(Products.findOne({_id: ids[i]}));          
         }
         basket_products.forEach(product => {
           var image = ProductImages.findOne({ product_id: product._id });
@@ -201,8 +204,9 @@ Router.route(
             product["image"] = image.image;
           }
         });
+        console.log(products_id); 
         return {
-          basket_products: basket_products
+          basket_products: basket_products,
         }
       }
     }, 
