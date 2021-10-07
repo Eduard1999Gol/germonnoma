@@ -194,7 +194,6 @@ Router.route(
         var basket_products = [];
         var products_id = Meteor.user().profile.basket;
         var ids = _.uniq(products_id);
-        console.log(ids)
         for (let i = 0; i < ids.length; i++) {
          basket_products.push(Products.findOne({_id: ids[i]}));          
         }
@@ -204,7 +203,6 @@ Router.route(
             product["image"] = image.image;
           }
         });
-        console.log(products_id); 
         return {
           basket_products: basket_products,
         }

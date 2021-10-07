@@ -1,5 +1,6 @@
 import moment from 'moment';
 import category from './product_ui/product_category.js';
+import  { countBy } from 'meteor/underscore'
 
 Template.registerHelper("getCategories", function () {
     var codes = [];
@@ -23,13 +24,13 @@ Template.registerHelper("getToastText", function () {
 Template.registerHelper("berechneMenge", function (id) {
     if (Meteor.user().profile.basket) {
         var wagen = Meteor.user().profile.basket;
-        var menge = 1;
+        var count = 0;
         for (let i = 0; i < wagen.length; i++) {
             if (wagen[i]===id) {
-                menge++
+                count++
             }
-            return menge
         }
+        return count
     }
 });
 

@@ -1,5 +1,5 @@
 <template name="ProductBasket">
-    <h1 class="text-light">{{berechneMenge this.id}}</h1>
+    <!-- <h1 class="text-dark">{{this._id}}</h1> -->
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
           <div class="col-md-4">
@@ -21,7 +21,7 @@
         <label for="exampleFormControlInput1" class="form-label ml-2">Menge</label>
         <div class="btn-group" role="group" aria-label="Basic example">
             <button id="addtowagen" type="button" class="btn btn-success" data-id="{{this._id}}"><i class="material-icons">add_circle_outline</i></button>
-            <h5  class="btn p-0 m-0" >{{berechneMenge this.id}}</h5>
+            <h3  class="btn p-0 m-0" ><strong style="font-size: 20px;">{{berechneMenge this._id}}</strong></h3>
             <button id="removefromwagen" type="button" class="btn btn-secondary" data-id="{{this._id}}"><i class="material-icons">remove_circle_outline</i></button>
           </div>
       </div>
