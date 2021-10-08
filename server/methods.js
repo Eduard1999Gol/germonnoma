@@ -45,7 +45,7 @@ Meteor.methods({
             return Meteor.users.update({
                 _id: this.userId
             },{
-                $pull:{"profile.basket": product_id},
+                $pull: { "profile.basket": product_id}
             })
         } else {
             throw new Meteor.Error(401);

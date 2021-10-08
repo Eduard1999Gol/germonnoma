@@ -191,8 +191,16 @@ Router.route(
     name: "basket_page",
     data: function () {
       if (Meteor.user()) {
+        var summe = 0;
         var basket_products = [];
+        var preise = [];
         var products_id = Meteor.user().profile.basket;
+        products_id.forEach(element => {
+          preise.push(Products.findOne({_id: element}))
+        });
+        preise.forEach(el => {
+          summe+=el.price
+        });
         var ids = _.uniq(products_id);
         for (let i = 0; i < ids.length; i++) {
          basket_products.push(Products.findOne({_id: ids[i]}));          
@@ -202,8 +210,10 @@ Router.route(
           if (image) {
             product["image"] = image.image;
           }
+        
         });
         return {
+          summe: summe,
           basket_products: basket_products,
         }
       }

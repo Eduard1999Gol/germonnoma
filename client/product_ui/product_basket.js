@@ -5,8 +5,6 @@ Template.ProductBasket.events({
     'click button#addtowagen': function (params) {
         params.preventDefault();
         var product_id = params.target.dataset.id; 
-        
-
         Meteor.call("addProductToBasket", product_id,function (err, res) {
             if (!err) {
                 return res
