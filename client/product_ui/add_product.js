@@ -1,4 +1,5 @@
 import Toast from '../lib/costumFunctions/toast';
+
 Template.AddProduct.onCreated(function(){
     Session.set('selectedFile', "");
     this.images = new ReactiveArray([]);

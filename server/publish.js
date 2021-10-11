@@ -19,10 +19,13 @@ Meteor.publish('productImages', function () {
 Meteor.publish('searchedProducts', function (searchTerm) {
   var products = [];
   Products.find({name: { $regex: searchTerm, $options: 'i'}}).forEach(element => {
-    products.push(element._id);
+    products.push(element._id)
   });
   return [Products.find({name: { $regex: searchTerm, $options: 'i'}}),
   ProductImages.find({product_id: {$in: products}})
 ];
 });
+
+
+
 

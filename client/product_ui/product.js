@@ -1,22 +1,24 @@
-import { ReactiveVar } from 'meteor/reactive-var'
+import Toast from '../lib/costumFunctions/toast';
 
 Template.Product.onCreated(function(){
 });
 
 Template.Product.events({
-    'click button.deselect-product': function (event) {
+    'click button#userBasket': function (event) {
         event.preventDefault();
-        var id = event.currentTarget.dataset.id;
-        Meteor.call("selectedProduct", id, false)
-        
+        var product_id = event.target.dataset.id;
+        Meteor.call("addProductToBasket", product_id, function (err, res) {
+            if (!err) {
+                Toast({
+                    text: "to shop basket added", 
+                    duration: 3000, 
+                    color: "success"
+                });
+            } else {
+                return err
+            }
+        })
     },
-
-    'click button.select-product': function (event) {
-        event.preventDefault();
-        var id = event.currentTarget.dataset.id;
-        Meteor.call("selectedProduct", id, true)
-    },
-
     'click a#goToProduct': function (event) {
         event.preventDefault();
         Router.go('/productDetails', {_id: event.target.dataset.id});

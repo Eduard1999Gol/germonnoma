@@ -5,7 +5,6 @@ export default function Toast(options) {
     }else{
         $('#epicToast').addClass("bg-success");
     }
-    console.log(options)
     var toastElement = new bootstrap.Toast($('#epicToast'),{
         animation: true,
         delay: options.duration 

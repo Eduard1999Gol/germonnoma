@@ -1,8 +1,9 @@
 <template name="LogginButtons">
     {{#if currentUser}}
     <div class="dropdown_user position-absolute top-1 end-0">
+        <button id="basket" class="btn btn-secondary"><i class="material-icons">shopping_cart</i>{{berechneMenge currentUser.profile.basket}}</button>
     <a class="btn btn-secondary dropdown-toggle" id="dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        {{myProfile.first_name}}
+        {{currentUser.username}}
     </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <li><a class="dropdown-item" id="myProfile" href="#">Profile</a></li>

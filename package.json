@@ -8,7 +8,7 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
-    "@babel/runtime": "^7.15.3",
+    "@babel/runtime": "^7.15.4",
     "@sweetalert2/theme-material-ui": "^4.0.1",
     "babel-runtime": "^6.26.0",
     "bcrypt": "^5.0.0",

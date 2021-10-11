@@ -1,0 +1,28 @@
+<template name="ProductBasket">
+    <!-- <h1 class="text-dark">{{this._id}}</h1> -->
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <a data-id="{{this._id}}" href="{{ pathFor route='productDetails' _id=this._id}}" >
+            <img src="{{this.image}}" class="img-fluid rounded mx-auto d-block" alt="...">
+          </a>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a data-id="{{this._id}}" href="{{ pathFor route='productDetails' _id=this._id}}" >
+              <h5 class="card-title">{{this.name}}</h5>
+              </a>
+              <p class="card-text text-truncate">{{this.description}}</p>
+              <h5 class="card-title text-success">{{getAmount this.price}}</h5>
+              <p class="card-text"><small class="text-muted">{{formatDateTime this.created_at}}</small></p>
+            </div>
+          </div>
+        </div>
+        <label for="exampleFormControlInput1" class="form-label ml-2">Menge</label>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button id="addtowagen" type="button" class="btn btn-success" data-id="{{this._id}}"><i class="material-icons">add_circle_outline</i></button>
+            <h3  class="btn p-0 m-0" ><strong style="font-size: 20px;">{{this.count}}</strong></h3>
+            <button id="removefromwagen" type="button" class="btn btn-secondary" data-id="{{this._id}}"><i class="material-icons">remove_circle_outline</i></button>
+          </div>
+      </div>
+</template>
