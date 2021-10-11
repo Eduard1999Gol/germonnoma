@@ -21,17 +21,14 @@ Template.registerHelper("getToastText", function () {
 });
 
 
-Template.registerHelper("berechneMenge", function (id) {
-    if (Meteor.user().profile.basket) {
-        var wagen = Meteor.user().profile.basket;
-        var count = 0;
-        for (let i = 0; i < wagen.length; i++) {
-            if (wagen[i]===id) {
-                count++
-            }
-        }
-        return count
+Template.registerHelper("berechneMenge", function (wagen) {
+    var count = 0;
+    if (wagen) {
+        wagen.forEach(element => {
+            count+=element.count;
+        });
     }
+    return count
 });
 
 

@@ -25,31 +25,64 @@ Meteor.methods({
         }
         
     },
+
+
     addProductToBasket: function (product_id) {
         check(product_id, String);
         if (this.userId) {
-            return Meteor.users.update({
-                _id: this.userId
-            },{
-                $push:{
-                    "profile.basket": product_id
+            var product = Products.findOne({_id: product_id});
+            if (product) {
+                var exist = Meteor.users.findOne({_id: this.userId, "profile.basket._id": product_id});
+                if (exist) {
+                    return Meteor.users.update({
+                        _id: this.userId, 
+                        "profile.basket._id": product_id
+                    },{
+                        $inc:{"profile.basket.$.count":1}
+                    })
+                } else {
+                    return Meteor.users.update({_id: this.userId},{$push:{
+                        "profile.basket": {_id: product_id, count: 1}
+                    }})
                 }
-            })
+                
+            }
         } else {
-            throw new Meteor.Error(401);
-        }  
+            throw new Meteor.Error(402)
+        }
     },
 
     removeProductFromBasket: function (product_id) {
+        check(product_id, String);
         if (this.userId) {
-            return Meteor.users.update({
-                _id: this.userId
-            },{
-                $pull: { "profile.basket": product_id}
-            })
+            var count = 0;
+            var basket = Meteor.users.findOne({_id: this.userId});
+            var product = Products.findOne({_id: product_id});
+            basket.profile.basket.forEach(element => {
+                if (element._id===product_id && element.count==1) {
+                    count = element.count;
+                }
+            });
+                if (count==1) {
+                    return Meteor.users.update({
+                        _id: this.userId, 
+                    },{
+                        $pull:{"profile.basket": {
+                            _id: product_id
+                        }}
+                    })
+                } else {
+                    return Meteor.users.update({ 
+                        _id: this.userId,
+                         "profile.basket._id": product_id
+                        },
+                        {$inc:{"profile.basket.$.count": -1}
+                    })
+                }
+                
         } else {
-            throw new Meteor.Error(401);
-        }  
+            throw new Meteor.Error(402)
+        }
     },
 
     updateProfile: function (profile) {
