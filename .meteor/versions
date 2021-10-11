@@ -56,6 +56,7 @@ iron:middleware-stack@1.1.0
 iron:router@1.1.2
 iron:url@1.1.0
 jquery@1.11.11
+juliancwirko:postcss@2.0.6
 launch-screen@1.2.1
 less@3.0.2
 livedata@1.0.18
@@ -103,13 +104,13 @@ socket-stream-client@0.3.2
 spacebars@1.1.0
 spacebars-compiler@1.2.1
 srp@1.1.0
-standard-minifier-css@1.7.2
 standard-minifier-js@2.6.0
 tap:i18n@1.8.2
 templating@1.4.0
 templating-compiler@1.4.0
 templating-runtime@1.4.0
 templating-tools@1.2.0
+tmeasday:check-npm-versions@1.0.2
 tracker@1.2.0
 typescript@4.2.2
 ui@1.0.13
