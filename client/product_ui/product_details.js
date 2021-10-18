@@ -1,9 +1,13 @@
 import helper_functions from '../lib/helper_functions';
 import Toast from '../lib/costumFunctions/toast';
 
-Template.ProductDetails.onRendered(function () {
-    console.log(Carousel);
-})
+Template.Home.onCreated(function () {
+    Tracker.autorun(function(){
+        Meteor.subscribe("products", Router.current().params._id);
+        Meteor.subscribe("productImageById", Router.current().params._id);
+       })
+})   
+   
 
 Template.ProductDetails.events({
     'click button#delete-product': function (event) {
@@ -55,5 +59,16 @@ Template.ProductDetails.events({
 
 
 Template.ProductDetails.helpers({
-  
+    "getProductDetails": function () {
+        var product = Products.findOne({ _id: Router.current().params._id });
+        if (product) {
+            var images = ProductImages.find({
+                product_id: product._id,
+            }).fetch();
+        }
+        if (product && images) {
+            product["images"] = images;
+            return product;
+        }
+    }
 });

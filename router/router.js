@@ -29,13 +29,7 @@ Router.route(
 Router.route(
   "/products/:_id",
   function () {
-    this.subscribe("products", this.params._id);
-    this.subscribe("productImageById", this.params._id);
-    if (this.ready()) {
       this.render("ProductDetails");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "productDetails"
