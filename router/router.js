@@ -64,15 +64,11 @@ Router.route(
 Router.route(
   "/register",
   function () {
-    if (this.ready()) {
       if (Meteor.userId() ){
         Router.go('home');
       } else {
         this.render("Register");
       }
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "register",
@@ -83,16 +79,11 @@ Router.route(
 Router.route(
   "/login",
   function () {
-    this.subscribe("users");
-    if (this.ready()) {
       if (Meteor.userId() ){
         Router.go('home');
       } else {
         this.render("Login");
       }
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "login",
