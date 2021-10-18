@@ -94,24 +94,14 @@ Router.route(
 Router.route(
   "/my_profile/:_id",
   function () {
-    this.subscribe("users");
     if (!Meteor.userId()) {
       Router.go("home");
-    } else 
-    if (this.ready()) {
-      this.render("MyProfile");
     } else {
-      this.render("Loading");
-    }
+      this.render("MyProfile");
+      }
   },
   {
     name: "MyProfile",
-    data: function () {
-      var user = Meteor.users.findOne({_id: this.params._id})
-      return {
-        user: user
-      }
-    },
   }
 );
 
