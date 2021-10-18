@@ -19,8 +19,7 @@ Router.onBeforeAction(function () {
 Router.route(
   "/",
   function () {
-    this.subscribe("products");
-    this.subscribe("productImages");
+    
     Session.set("searchTerm","");
     if (this.ready()) {
       this.render("Home");
@@ -30,18 +29,7 @@ Router.route(
   },
   {
     name: "home",
-    data: function () {
-      var products = Products.find({ name: { $regex: Session.get('searchTerm'), $options: 'i'}}).fetch();
-      products.forEach(product => {
-        var image = ProductImages.findOne({ product_id: product._id });
-        if (image) {
-          product["image"] = image.image;
-        }
-      });
-      return {
-        products: products,
-      };
-    },
+   
   }
 );
 

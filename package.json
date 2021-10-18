@@ -11,7 +11,7 @@
     "@babel/runtime": "^7.15.4",
     "@sweetalert2/theme-material-ui": "^4.0.1",
     "babel-runtime": "^6.26.0",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "bulma-toast": "^2.3.0",
     "image-to-base64": "^2.2.0",
     "jquery": "^3.5.1",
