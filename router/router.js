@@ -109,42 +109,13 @@ Router.route(
 Router.route(
   "/my_basket",
   function () {
-    this.subscribe("users");
     if (!Meteor.userId()) {
       Router.go("home");
     } else 
-    if (this.ready()) {
       this.render("UserBasket");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "basket_page",
-    data: function () {
-      var basket_products = [];
-      var user = Meteor.user();
-      var sum = 0;
-      if (user) {
-        var wagen = user.profile.basket;
-        wagen.forEach(element => {
-          var product = Products.findOne({_id: element._id});
-          product["count"] = element.count;
-          product["sum"] = element.count*product.price;
-          var image = ProductImages.findOne({ product_id: product._id });
-          if (image) {
-          product["image"] = image.image;
-        }
-        sum+=product.sum;
-          basket_products.push(product);
-        });
-      }
-
-      return{
-        basket_products: basket_products,
-        sum: sum
-      }
-    }, 
   }
 );
 
