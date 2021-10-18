@@ -1,7 +1,19 @@
 
 Meteor.publish('products', function () {
-    return Products.find({deleted: false});
+    return Products.find();
   });
+
+Meteor.publish('basket_products', function () {
+    var products = [];
+    var user = Meteor.users.findOne({_id: this.userId});
+    user.profile.basket.forEach(element => {
+      products.push(element._id);
+    });
+    return [Products.find({_id: {$in: products}}),
+    ProductImages.find({product_id: {$in: products}})
+];
+});
+  
   
 
 Meteor.publish('publishProductId', function (id) {

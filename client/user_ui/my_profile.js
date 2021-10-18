@@ -1,6 +1,9 @@
-Template.MyProfile.onRendered(function () {
-    console.log(Template.instance()).data.user;
-})
+Template.MyProfile.onCreated(function () {
+    Tracker.autorun(function(){
+        Meteor.subscribe("products", Router.current().params._id);
+        Meteor.subscribe("productImageById", Router.current().params._id);
+       })
+})   
 
 
 Template.MyProfile.events({

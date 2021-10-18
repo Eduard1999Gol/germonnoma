@@ -19,42 +19,17 @@ Router.onBeforeAction(function () {
 Router.route(
   "/",
   function () {
-    this.subscribe("products");
-    this.subscribe("productImages");
-    Session.set("searchTerm","");
-    if (this.ready()) {
       this.render("Home");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "home",
-    data: function () {
-      var products = Products.find({ name: { $regex: Session.get('searchTerm'), $options: 'i'}}).fetch();
-      products.forEach(product => {
-        var image = ProductImages.findOne({ product_id: product._id });
-        if (image) {
-          product["image"] = image.image;
-        }
-      });
-      return {
-        products: products,
-      };
-    },
   }
 );
 
 Router.route(
   "/products/:_id",
   function () {
-    this.subscribe("products", this.params._id);
-    this.subscribe("productImageById", this.params._id);
-    if (this.ready()) {
       this.render("ProductDetails");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "productDetails"
@@ -64,28 +39,11 @@ Router.route(
 Router.route(
   "/products/search/:searchTerm",
   function () {
-    this.subscribe("searchedProducts", this.params.searchTerm);
-    if (this.ready()) {
       this.render("SearchProducts");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "searchedProducts",
-    data: function () {
-      var products = Products.find({ name: { $regex: this.params.searchTerm, $options: 'i'}}).fetch();
-      products.forEach(product => {
-        var image = ProductImages.findOne({ product_id: product._id });
-        if (image) {
-          product["image"] = image.image;
-        }
-      });
-      return {
-        products: products,
-        searchTerm: this.params.searchTerm
-      };
-    },
+    
   }
 );
 
@@ -93,17 +51,10 @@ Router.route(
 Router.route(
   "/addproduct",
   function () {
-    this.subscribe("product");
-    this.subscribe("productImages");
     if (!Meteor.userId()) {
       Router.go("home");
-      
     } else 
-    if (this.ready()) {
       this.render("AddProduct");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "addProduct",
@@ -113,15 +64,11 @@ Router.route(
 Router.route(
   "/register",
   function () {
-    if (this.ready()) {
       if (Meteor.userId() ){
         Router.go('home');
       } else {
         this.render("Register");
       }
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "register",
@@ -132,16 +79,11 @@ Router.route(
 Router.route(
   "/login",
   function () {
-    this.subscribe("users");
-    if (this.ready()) {
       if (Meteor.userId() ){
         Router.go('home');
       } else {
         this.render("Login");
       }
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "login",
@@ -152,24 +94,14 @@ Router.route(
 Router.route(
   "/my_profile/:_id",
   function () {
-    this.subscribe("users");
     if (!Meteor.userId()) {
       Router.go("home");
-    } else 
-    if (this.ready()) {
-      this.render("MyProfile");
     } else {
-      this.render("Loading");
-    }
+      this.render("MyProfile");
+      }
   },
   {
     name: "MyProfile",
-    data: function () {
-      var user = Meteor.users.findOne({_id: this.params._id})
-      return {
-        user: user
-      }
-    },
   }
 );
 
@@ -177,42 +109,13 @@ Router.route(
 Router.route(
   "/my_basket",
   function () {
-    this.subscribe("users");
     if (!Meteor.userId()) {
       Router.go("home");
     } else 
-    if (this.ready()) {
       this.render("UserBasket");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "basket_page",
-    data: function () {
-      var basket_products = [];
-      var user = Meteor.user();
-      var sum = 0;
-      if (user) {
-        var wagen = user.profile.basket;
-        wagen.forEach(element => {
-          var product = Products.findOne({_id: element._id});
-          product["count"] = element.count;
-          product["sum"] = element.count*product.price;
-          var image = ProductImages.findOne({ product_id: product._id });
-          if (image) {
-          product["image"] = image.image;
-        }
-        sum+=product.sum;
-          basket_products.push(product);
-        });
-      }
-
-      return{
-        basket_products: basket_products,
-        sum: sum
-      }
-    }, 
   }
 );
 

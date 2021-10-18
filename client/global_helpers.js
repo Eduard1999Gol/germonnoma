@@ -47,48 +47,10 @@ Template.registerHelper("getAmount", function (amount) {
 
 
 
-Template.registerHelper("getProductDetails", function () {
-    var product = Products.findOne({ _id: Router.current().params._id });
-    if (product) {
-        var images = ProductImages.find({
-            product_id: product._id,
-        }).fetch();
-    }
-    if (product && images) {
-        product["images"] = images;
-        return product;
-    }
-});
 
  
 
-Template.registerHelper("myProfile", function () {
-    if (Meteor.user().profile)  {
-        TAPi18n.setLanguage(Meteor.user().profile.language);
-        return {
-            basket: Meteor.user().profile.basket.length,
-            first_name: Meteor.user().profile.first_name,
-            last_name: Meteor.user().profile.last_name,
-            street: Meteor.user().profile.street,
-            haus_number: Meteor.user().profile.haus_number,
-            state: Meteor.user().profile.state,
-            post_code: Meteor.user().profile.post_code,
-            city: Meteor.user().profile.city,
-            language: Meteor.user().profile.language,
-        }
-    } else {
-        return {
-            basket: [],
-            first_name: "",
-            last_name: "",
-            street: "",
-            haus_number: "",
-            state: "",
-            post_code: "",
-            city: "",
-            language: "",
-        }
-        
-    }
+Template.registerHelper("getUserEmail", function (user) {
+    return user.emails[0].address;
 });
 

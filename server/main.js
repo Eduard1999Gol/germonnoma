@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import './methods.js';
 import validator from 'validator';
+import './publish.js';
+import './methods.js';
 
 Accounts.config({
   forbidClientAccountCreation: true,
