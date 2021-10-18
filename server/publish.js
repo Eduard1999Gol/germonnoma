@@ -1,6 +1,6 @@
 
 Meteor.publish('products', function () {
-    return Products.find({deleted: false});
+    return Products.find();
   });
   
 
