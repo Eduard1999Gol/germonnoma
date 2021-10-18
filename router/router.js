@@ -51,17 +51,10 @@ Router.route(
 Router.route(
   "/addproduct",
   function () {
-    this.subscribe("product");
-    this.subscribe("productImages");
     if (!Meteor.userId()) {
       Router.go("home");
-      
     } else 
-    if (this.ready()) {
       this.render("AddProduct");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "addProduct",
