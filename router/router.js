@@ -19,17 +19,10 @@ Router.onBeforeAction(function () {
 Router.route(
   "/",
   function () {
-    
-    Session.set("searchTerm","");
-    if (this.ready()) {
       this.render("Home");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "home",
-   
   }
 );
 
