@@ -39,28 +39,11 @@ Router.route(
 Router.route(
   "/products/search/:searchTerm",
   function () {
-    this.subscribe("searchedProducts", this.params.searchTerm);
-    if (this.ready()) {
       this.render("SearchProducts");
-    } else {
-      this.render("Loading");
-    }
   },
   {
     name: "searchedProducts",
-    data: function () {
-      var products = Products.find({ name: { $regex: this.params.searchTerm, $options: 'i'}}).fetch();
-      products.forEach(product => {
-        var image = ProductImages.findOne({ product_id: product._id });
-        if (image) {
-          product["image"] = image.image;
-        }
-      });
-      return {
-        products: products,
-        searchTerm: this.params.searchTerm
-      };
-    },
+    
   }
 );
 
