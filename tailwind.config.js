@@ -4,13 +4,15 @@ module.exports = {
       "./client/*.js",
       "./client/*.html"
     ],
-    darkMode: false, // or 'media' or 'class'
+    darkMode: false, 
     theme: {
       extend: {},
     },
     variants: {
       extend: {},
     },
-    plugins: [],
-  }
+    plugins: [
+      require('@tailwindcss/custom-forms'),
+    ]
   
+  }

@@ -3,12 +3,21 @@ Template.Layout.onCreated(function(){
 
 });
 
-Template.Layout.onRendered(function(){
-    
+
+Template.Layout.onRendered(function () {
+  
 });
 
 Template.Layout.events({
-    'click button#basket':function (event) {
+    'click a.dropdown-trigger': function (event) {
+        var instance = $('.dropdown-trigger').dropdown();
+        var dropdown = M.Dropdown.getInstance(instance,{
+            coverTrigger: false
+        });
+        dropdown.open();
+    },
+
+    'click a#basket':function (event) {
         event.preventDefault();
         Router.go("basket_page");
     },
