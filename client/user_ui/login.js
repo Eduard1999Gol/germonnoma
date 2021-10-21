@@ -1,21 +1,7 @@
 import Toast from '../lib/costumFunctions/toast';
 
 Template.Login.events({
-    'click .link-github': function () {
-        Meteor.loginWithGithub()
-        Router.go('home');
-      },
-
-    'click .login-google': function(event) {
-        event.preventDefault();
-        Meteor.loginWithGoogle(function(err){
-            if (err) {
-                console.log('Handle errors here: ', err);
-            }else{
-                Router.go('home');
-            }
-        });
-    },
+   
     'submit form#loginForm':function (event) {
         event.preventDefault();
         Meteor.loginWithPassword(event.currentTarget.email_address.value, event.currentTarget.password.value, function (err, res) {
@@ -33,7 +19,7 @@ Template.Login.events({
         })
     },
 
-    'click a#goRegister':function (event) {
+    'click button#goRegister':function (event) {
         event.preventDefault();
         Router.go('register');
     },

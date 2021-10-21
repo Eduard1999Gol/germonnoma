@@ -11,9 +11,7 @@ Template.Layout.onRendered(function () {
 Template.Layout.events({
     'click a.dropdown-trigger': function (event) {
         var instance = $('.dropdown-trigger').dropdown();
-        var dropdown = M.Dropdown.getInstance(instance,{
-            coverTrigger: false
-        });
+        var dropdown = M.Dropdown.getInstance(instance);
         dropdown.open();
     },
 
@@ -40,7 +38,7 @@ Template.Layout.events({
         })
     },
 
-    'click a#loginButton': function (event) {
+    'click button#loginButton': function (event) {
         event.preventDefault();
         Router.go('login');
     },
