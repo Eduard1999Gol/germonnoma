@@ -12,12 +12,13 @@
     <div>
         {{> yield}}
     </div>
+    {{language}}
 </template>
 
 <template name="Navbar" >
-  <nav>
+  <nav class="bg-gradient-to-br from-pink-500 to-rose-500">
     <div class="nav-wrapper">
-      <a href="#" id="Home" class="navbar-brand text-light mx-4" style="font-size: 30px;"><strong>Web-Shop</strong></a>
+      <a href="#" id="Home" class="navbar-brand  text-light mx-4" style="font-size: 30px;"><strong>Web-Shop</strong></a>
       <ul class="right hide-on-med-and-down">
         {{#if currentUser}}
         <li><a id="basket" href="#"><ul><li><i class="material-icons">shopping_cart </i></li><li class="">{{berechneMenge currentUser.profile.basket}}</li></ul></a></li>

@@ -16,9 +16,7 @@ Template.registerHelper("getCategoryName", function (key) {
     return category[key]
 });
 
-Template.registerHelper("getToastText", function () {
-    return Session.get("toastText");
-});
+
 
 
 Template.registerHelper("berechneMenge", function (wagen) {
@@ -30,6 +28,13 @@ Template.registerHelper("berechneMenge", function (wagen) {
     }
     return count
 });
+
+Template.registerHelper("language", function () {
+    if (Meteor.user().profile) {
+        TAPi18n.setLanguage(Meteor.user().profile.language);
+    }
+    
+})
 
 
 Template.registerHelper("formatDateTime", function (date) {
@@ -44,10 +49,6 @@ Template.registerHelper("getAmount", function (amount) {
     return formatter.format(amount)
     
 });
-
-
-
-
  
 
 Template.registerHelper("getUserEmail", function (user) {
