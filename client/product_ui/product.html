@@ -4,11 +4,19 @@
       <img src="{{this.image}}" alt="" class="relativ object-cover rounded-2xl" />
     </div>
     <div class="w-2/3 flex flex-col  p-2">
-      <div><p class="text-xl truncate">{{this.name}}</p></div>
-      <div class="my-2"><p class="text-lg">{{getAmount this.price}}</p></div>
-      <div><p class="text-sm text-gray-500 truncate">{{this.description}}</p></div>
+      <div>
+        <p class="text-xl truncate">{{this.name}}</p>
+      </div>
+      <div class="my-2">
+        <p class="text-lg">{{getAmount this.price}}</p>
+      </div>
+      <div>
+        <p class="text-sm text-gray-500 truncate">{{this.description}}</p>
+      </div>
       <div class=" flex  ">
-        <button id="userBasket"  data-id="{{this._id}}"  class="w-full flex rounded-xl border bg-red-400  text-white p-2  justify-center mt-2" >   <i class="material-icons">shopping_cart</i></button>
+        <button id="userBasket" data-id="{{this._id}}"
+          class="w-full flex rounded-xl border bg-red-400  text-white p-2  justify-center mt-2"> <i
+            class="material-icons">shopping_cart</i></button>
       </div>
     </div>
   </div>
