@@ -1,18 +1,15 @@
 <template name="Home">
-  <form class="searchForm ml-12 mt-2 mb-3">
-    <div class="grid grid-cols-10 gap-4">
-      <div class="col-span-9 ...">
+  <form class="searchForm flex mx-2">
+      <div class="w-3/4">
         <input type="text" name="search" placeholder="Search">
       </div>
-      <div class="col-span-1 ...">
+      <div class="w-1/4">
         <button class="btn btn-secondary mt-2" style="width: 90px;" type="button">
           <i class="fa fa-search"></i>
         </button>
       </div>
-    </div>
   </form>
-  <hr class="mx-8 mb-2">
-  <div class="flex flex-wrap ">
+  <div class="flex flex-wrap">
     {{#each data.products}}
     {{> Product}}
     {{/each}}
