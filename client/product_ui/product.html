@@ -1,33 +1,15 @@
-<template name="Product"> 
-  <!--   
-        <a data-id="{{this._id}}" href="{{ pathFor route='productDetails' _id=this._id}}" >
-        <img src="{{this.image}}" class="img-fluid rounded mx-auto d-block" alt="...">
-      </a>
-    --> 
-    
-  <div class="flex  border-2 border-gray-200 mx-3 m-2 py-6 rounded-2xl  shadow-xl">
-    <div class="flex-none w-48 relative py-4">
-      <a data-id="{{this._id}}" href="{{ pathFor route='productDetails' _id=this._id}}">
-        <img src="{{this.image}}" alt="" class="absolute inset-0 w-full h-full object-cover rounded-2xl" />
-      </a>
+<template name="Product">
+  <div class="flex   border-1 border-gray-300 rounded-md shadow-xl">
+    <div class="w-1/3 flex">
+      <img src="{{this.image}}" alt="" class="relativ object-cover rounded-2xl" />
     </div>
-    <form class="flex-auto px-4 ">
-      <div class="flex flex-wrap">
-        <h1 class="flex-auto text-xl font-semibold mt-0" style="font-size: 30px;">
-          {{this.name}}
-        </h1>
-        <div class="text-xl font-semibold text-gray-500">
-          {{getAmount this.price}}
-        </div>
-        <div class="w-full flex-none text-sm font-medium text-gray-500 mt-2 pb-3">
-          {{this.description}}
-        </div>
+    <div class="w-2/3 flex flex-col  p-2">
+      <div><p class="text-xl truncate">{{this.name}}</p></div>
+      <div class="my-2"><p class="text-lg">{{getAmount this.price}}</p></div>
+      <div><p class="text-sm text-gray-500 truncate">{{this.description}}</p></div>
+      <div class=" flex  ">
+        <button id="userBasket"  data-id="{{this._id}}"  class="w-full flex rounded-xl border bg-red-400  text-white p-2  justify-center mt-2" >   <i class="material-icons">shopping_cart</i></button>
       </div>
-      <div class="flex text-sm mt-5 font-medium">
-        <div class="flex-auto flex ">
-          <button id="userBasket"  data-id="{{this._id}}"  class="w-full flex items-center justify-center rounded-md border bg-red-400  py-3 text-white text-xl" >   <i class="material-icons">add</i>Add to bag</button>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </template>

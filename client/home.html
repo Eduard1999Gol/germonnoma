@@ -1,6 +1,4 @@
 <template name="Home">
- 
-
     <form class="searchForm ml-12 mt-2 mb-3">
       <div class="grid grid-cols-10 gap-4">
           <div class="col-span-9 ...">
@@ -14,10 +12,13 @@
       </div>
     </form>
 
- <hr class="mx-8 mb-2" style="color:aquamarine">
-    <div class="grid gap-4 grid-cols-2">
-        {{#each data.products}}
-            {{> Product}}
-        {{/each}}
-    </div>
+ <hr class="mx-8 mb-2">
+ <div class="flex flex-wrap ">
+  {{#each data.products}}
+  {{> Product}}
+{{/each}}
+
+ </div>
+
+      
 </template>
