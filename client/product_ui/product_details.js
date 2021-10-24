@@ -61,10 +61,12 @@ Template.ProductDetails.events({
 Template.ProductDetails.helpers({
     "getProductDetails": function () {
         var product = Products.findOne({ _id: Router.current().params._id });
+        console.log(product);
+
         if (product) {
             var images = ProductImages.find({
                 product_id: product._id,
-            }).fetch();
+            });
         }
         if (product && images) {
             product["images"] = images;

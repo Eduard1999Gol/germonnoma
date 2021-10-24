@@ -32,7 +32,4 @@ Template.Product.helpers({
         return Products.findOne({_id: Session.get('product_id')});
     },
 
-    'getAlert': function () {
-        return Template.instance().newAlert.get();
-      }
 });

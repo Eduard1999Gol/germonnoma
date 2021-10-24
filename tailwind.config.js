@@ -12,7 +12,9 @@ module.exports = {
       extend: {},
     },
     plugins: [
-      require('@tailwindcss/custom-forms'),
+      require('tailwindcss'),
+      require('autoprefixer'),
+      require('@tailwindcss/forms'),
     ]
   
   }
