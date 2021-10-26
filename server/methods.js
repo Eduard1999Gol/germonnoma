@@ -104,6 +104,7 @@ Meteor.methods({
             price: product.price,
             description: product.description,
             created_at: created_at,
+            user_id: Meteor.user()._id
         });
     },
     

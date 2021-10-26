@@ -5,6 +5,7 @@ Template.Home.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("products", Router.current().params._id);
         Meteor.subscribe("productImageById", Router.current().params._id);
+        Meteor.subscribe("users");
        })
 })   
    
@@ -56,12 +57,10 @@ Template.ProductDetails.events({
   
 });
 
-
-
 Template.ProductDetails.helpers({
     "getProductDetails": function () {
         var product = Products.findOne({ _id: Router.current().params._id });
-        console.log(product);
+      
 
         if (product) {
             var images = ProductImages.find({

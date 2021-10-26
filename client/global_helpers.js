@@ -37,6 +37,13 @@ Template.registerHelper("language", function () {
 })
 
 
+Template.registerHelper("getStoreName", function (user_id) {
+    const user = Meteor.users.findOne({_id: user_id});
+    console.log(user)
+    return user.profile.store_name
+});
+
+
 Template.registerHelper("formatDateTime", function (date) {
     return moment(date).format('DD.MM.YYYY HH:mm');
 });

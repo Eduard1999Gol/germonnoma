@@ -9,19 +9,42 @@ Template.Register.onRendered(function(){
 
 
 Template.Register.events({
+    'change input#checkbox': function (event) {
+        event.preventDefault();
+        if(event.currentTarget.checked==true){
+            $('#store').prop('disabled', false);
+        }else{
+            $('#store').prop('disabled', true);
+        }
+    },
+
     'submit form#register': function (event) {
         event.preventDefault();
         var language = event.currentTarget.selectLanguage.value;
         TAPi18n.setLanguage(language);
         var list = [];
+        var checked = event.currentTarget.checkbox.checked;
         if (event.currentTarget.password.value == event.currentTarget.password_2.value) {
-            var user = {
-                username: event.currentTarget.username.value,
-                email: event.currentTarget.email.value,
-                password: event.currentTarget.password.value,
-                profile:{
-                    language: event.currentTarget.selectLanguage.value,
-                    basket: list,
+            if(checked==true){
+                var user = {
+                    username: event.currentTarget.username.value,
+                    email: event.currentTarget.email.value,
+                    password: event.currentTarget.password.value,
+                    profile:{
+                        store_name: event.currentTarget.checkbox.value,
+                        language: event.currentTarget.selectLanguage.value,
+                        basket: list,
+                    }
+                }
+            }else{
+                var user = {
+                    username: event.currentTarget.username.value,
+                    email: event.currentTarget.email.value,
+                    password: event.currentTarget.password.value,
+                    profile:{
+                        language: event.currentTarget.selectLanguage.value,
+                        basket: list,
+                    }
                 }
             }
             Meteor.call("register", user, function (err, res) {
@@ -31,13 +54,8 @@ Template.Register.events({
                     console.log(err);
                 }
                 
-            })
-        } else {
-            Toast({
-                text: "Passwords are not same", 
-                duration: 3000, 
-                color: "danger"
-            });
+            })} else {
+            alert("passwords  are not same");
         }
     }
 });    

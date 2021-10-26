@@ -1,6 +1,7 @@
 <template name="MyProfile">
   <h1 class="text-center">{{_ "Users Profile"}}</h1>
   {{#with currentUser}}
+  {{this.profile.store_name}}
   <div class="grid grid-cols-5 ">
     <div class="col-span-4 ">
       <figure class="md:flex bg-gray-100 shadow-xl w-11/12 h-72 rounded-xl ">

@@ -3,6 +3,11 @@ Meteor.publish('products', function () {
     return Products.find();
   });
 
+Meteor.publish('users', function () {
+  return Meteor.users.find();
+  
+})
+
 Meteor.publish('basket_products', function () {
     var products = [];
     var user = Meteor.users.findOne({_id: this.userId});
