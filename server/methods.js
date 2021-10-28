@@ -52,6 +52,31 @@ Meteor.methods({
         }
     },
 
+    addProductToOrders: function (product_id) {
+        check(product_id, String);
+        if (this.userId) {
+            var product = Products.findOne({_id: product_id});
+            if (product) {
+                var exist = Meteor.users.findOne({_id: this.userId, "profile.orders._id": product_id});
+                if (exist) {
+                    return Meteor.users.update({
+                        _id: this.userId, 
+                        "profile.orders._id": product_id
+                    },{
+                        $inc:{"profile.orders.$.count":1}
+                    })
+                } else {
+                    return Meteor.users.update({_id: this.userId},{$push:{
+                        "orders.basket": {_id: product_id, count: 1}
+                    }})
+                }
+                
+            }
+        } else {
+            throw new Meteor.Error(402)
+        }
+    },
+
     removeProductFromBasket: function (product_id) {
         check(product_id, String);
         if (this.userId) {

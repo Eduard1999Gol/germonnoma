@@ -2,6 +2,7 @@ Template.Home.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("products");
         Meteor.subscribe("productImages")
+        Meteor.subscribe("users")
        })
 })
 

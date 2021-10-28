@@ -3,6 +3,7 @@ import "./user_basket.html"
 Template.UserBasket.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("basket_products");
+        Meteor.subscribe("users");
        })
 })
 

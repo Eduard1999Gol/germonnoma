@@ -9,16 +9,25 @@ Template.Product.events({
         var product_id = event.target.dataset.id;
         Meteor.call("addProductToBasket", product_id, function (err, res) {
             if (!err) {
-                Toast({
-                    text: "to shop basket added", 
-                    duration: 3000, 
-                    color: "success"
-                });
+                alert("to  basket added")
             } else {
                 return err
             }
         })
     },
+
+    'click button#userOrders': function (event) {
+        event.preventDefault();
+        var product_id = event.target.dataset.id;
+        Meteor.call("addProductToOrders", product_id, function (err, res) {
+            if (!err) {
+                alert("to orders added");
+            } else {
+                return err
+            }
+        })
+    },
+    
     'click a#goToProduct': function (event) {
         event.preventDefault();
         Router.go('/productDetails', {_id: event.target.dataset.id});

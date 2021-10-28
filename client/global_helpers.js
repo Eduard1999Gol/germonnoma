@@ -17,8 +17,6 @@ Template.registerHelper("getCategoryName", function (key) {
 });
 
 
-
-
 Template.registerHelper("berechneMenge", function (wagen) {
     var count = 0;
     if (wagen) {
@@ -48,13 +46,13 @@ Template.registerHelper("formatDateTime", function (date) {
     return moment(date).format('DD.MM.YYYY HH:mm');
 });
 
+
 Template.registerHelper("getAmount", function (amount) {
     var formatter = new Intl.NumberFormat('de-DE', {
         style: 'currency',
         currency: 'EUR'
     })
     return formatter.format(amount)
-    
 });
  
 

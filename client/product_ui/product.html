@@ -21,11 +21,13 @@
         <div class="flex">
           <p class="text-sm text-gray-500 truncate">{{this.description}}</p>
         </div>
-        <div class="flex">
+        <div class="flex-auto flex space-x-3">
+          <button id="userOrders" data-id="{{this._id}}" class="w-1/2  justify-center rounded-xl bg-black text-white mt-2" type="submit">Buy now</button>
           <button id="userBasket" data-id="{{this._id}}"
-            class="w-full flex rounded-xl border bg-red-400  text-white p-2  justify-center mt-2"> <i
-              class="material-icons">shopping_cart</i></button>
+          class="w-1/2 flex rounded-xl border bg-red-400  text-white p-2  justify-center mt-2"> <i
+            class="material-icons">shopping_cart</i></button>
         </div>
+       
       </div>
     </div>
   </div>

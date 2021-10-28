@@ -23,6 +23,7 @@ Template.Register.events({
         var language = event.currentTarget.selectLanguage.value;
         TAPi18n.setLanguage(language);
         var list = [];
+        var list2 = [];
         var checked = event.currentTarget.checkbox.checked;
         if (event.currentTarget.password.value == event.currentTarget.password_2.value) {
             if(checked==true){
@@ -34,6 +35,7 @@ Template.Register.events({
                         store_name: event.currentTarget.checkbox.value,
                         language: event.currentTarget.selectLanguage.value,
                         basket: list,
+                        orders: list2
                     }
                 }
             }else{
@@ -44,6 +46,7 @@ Template.Register.events({
                     profile:{
                         language: event.currentTarget.selectLanguage.value,
                         basket: list,
+                        orders: list2
                     }
                 }
             }
