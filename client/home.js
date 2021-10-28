@@ -26,7 +26,6 @@ Template.Home.helpers({
             product["image"] = image.image;
           }
         });
-        console.log(products)
         return {
           products: products,
         };

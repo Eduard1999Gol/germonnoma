@@ -23,7 +23,7 @@ Template.UserBasket.helpers({
             product["image"] = image.image;
           }
           sum+=product.sum;
-            basket_products.push(product);
+          basket_products.push(product);
           });
         }
   

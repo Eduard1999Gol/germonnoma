@@ -1,3 +1,24 @@
 <template name="UserOrders">
-    <h1>Orders</h1>
+    <h1 class="text-center m-2"><strong>My Orders</strong> </h1>
+    <div class="flex mx-5">
+        <table class="table-fixed">
+            <thead>
+              <tr class="text-3xl">
+                <th class="w-1/2 ">Products</th>
+                <th class="w-1/4">Store</th>
+                <th class="w-1/4">Status</th> 
+              </tr>
+            </thead>
+            <tbody>
+            {{#each getOrders.orders}}
+              <tr>
+                <td><img src="{{this.image}}"  class=" w-1/4 rounded-2xl" alt="">{{this.name}}</td>
+                <td>{{getStoreName this.user_id}}</td>
+                <td>Versendet</td>
+              </tr>
+             {{/each}}
+            </tbody>
+          </table>
+    </div>
+   
 </template>

@@ -67,7 +67,7 @@ Meteor.methods({
                     })
                 } else {
                     return Meteor.users.update({_id: this.userId},{$push:{
-                        "orders.basket": {_id: product_id, count: 1}
+                        "profile.orders": {_id: product_id, count: 1}
                     }})
                 }
                 
