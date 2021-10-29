@@ -10,6 +10,7 @@ Template.UserOrders.helpers({
     "getOrders": function () {
         var orders = [];
         var user = Meteor.user();
+        const verkäufer = Meteor.users.findOne({_id: user_id});
         if (user) {
           var wagen = user.profile.orders;
           wagen.forEach(element => {
