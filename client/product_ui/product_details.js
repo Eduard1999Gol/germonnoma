@@ -1,6 +1,3 @@
-import helper_functions from '../lib/helper_functions';
-import Toast from '../lib/costumFunctions/toast';
-
 
 Template.ProductDetails.onCreated(function () {
     Tracker.autorun(function(){

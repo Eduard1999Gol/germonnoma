@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor'
-import Toast from '../lib/costumFunctions/toast';
 
 Template.Register.onCreated(function(){
 });

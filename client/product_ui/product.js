@@ -1,5 +1,3 @@
-import Toast from '../lib/costumFunctions/toast';
-
 Template.Product.onCreated(function(){
 });
 
@@ -9,7 +7,7 @@ Template.Product.events({
         var product_id = event.target.dataset.id;
         Meteor.call("addProductToBasket", product_id, function (err, res) {
             if (!err) {
-                alert("to  basket added")
+                M.toast({html: 'to cart added', classes: 'rounded'});
             } else {
                 return err
             }
@@ -19,9 +17,10 @@ Template.Product.events({
     'click button#userOrders': function (event) {
         event.preventDefault();
         var product_id = event.target.dataset.id;
+        Meteor.call("updateCount", product_id);
         Meteor.call("addProductToOrders", product_id, function (err, res) {
             if (!err) {
-                alert("to orders added");
+                M.toast({html: 'Das Product wurde bestellt', classes: 'rounded'});
             } else {
                 return err
             }

@@ -77,6 +77,14 @@ Meteor.methods({
         }
     },
 
+    updateCount: function (product_id) {
+        return Products.update({
+            _id: product_id,
+        },{
+            $inc:{ count: -1}
+        })
+    },
+
     removeProductFromBasket: function (product_id) {
         check(product_id, String);
         if (this.userId) {
@@ -124,6 +132,7 @@ Meteor.methods({
     createProduct: function(product) {
         var created_at = new Date();
         return Products.insert(product = {
+            count: product.count,
             category: product.category,
             name: product.name,
             price: product.price,

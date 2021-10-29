@@ -1,5 +1,3 @@
-import Toast from '../lib/costumFunctions/toast';
-
 Template.Login.events({
    
     'submit form#loginForm':function (event) {

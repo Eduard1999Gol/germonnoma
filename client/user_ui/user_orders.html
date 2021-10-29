@@ -7,7 +7,7 @@
                 <th class="w-1/2 ">Products</th>
                 <th class="w-1/4"><i
                   class="material-icons" style="font-size: 35px;">store</i>Store</th>
-                <th class="w-1/4">Status</th> info
+                <th class="w-1/4">Status</th> 
               </tr>
             </thead>
             <tbody>
@@ -16,11 +16,11 @@
                 <td>
                   <div class="grid grid-cols-3">
                     <div class=""><img src="{{this.image}}"  class=" w-8/12 rounded-2xl" alt=""></div>
-                    <div class="col-span-2"><h4>{{this.name}}</h4><h5 class="text-gray-500">Menge: {{this.count}} / </h5></div>
+                    <div class="col-span-2"><h4>{{this.name}}</h4><h5 class="text-gray-500">Menge: {{this.count}}</h5></div>
                 </div>
               </td>
-                <td class="text-3xl text-red-500">"{{getStoreName this.user_id}}"</td>
-                <td>Versendet</td>
+                <td class="text-3xl text-red-500">"{{getStoreName this.user_id}}" / <a href="#">{{this.verkäufer}}</a></td>
+                <td>bestellt</td>
               </tr>
              {{/each}}
             </tbody>

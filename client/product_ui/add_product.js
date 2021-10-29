@@ -1,5 +1,3 @@
-import Toast from '../lib/costumFunctions/toast';
-
 Template.AddProduct.events({
     'click button#returnToProducts': function (event) {
         event.preventDefault();
@@ -9,6 +7,7 @@ Template.AddProduct.events({
     'submit form#addProductForm':function (event) {
         event.preventDefault();
         var product = {
+            count: parseInt(event.currentTarget.product_count.value),
             category: event.currentTarget.product_category.value,
             name: event.currentTarget.product_name.value,
             price: parseInt(event.currentTarget.product_price.value),
@@ -23,13 +22,11 @@ Template.AddProduct.events({
                     };
                     reader.readAsDataURL(event.currentTarget.product_image.files[i]);
                 }
+                M.toast({html: 'The Product is created', classes: 'rounded'});
                 Router.go('/');
             }else{
-                Toast({
-                    text: "Product is not created", 
-                    duration: 3000, 
-                    color: "danger"
-                });
+                M.toast({html: 'The Product is not created', classes: 'rounded'});
+                
             }
         });
     },

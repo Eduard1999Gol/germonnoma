@@ -1,6 +1,5 @@
 import moment from 'moment';
 import category from './product_ui/product_category.js';
-import  { countBy } from 'meteor/underscore'
 
 Template.registerHelper("getCategories", function () {
     var codes = [];
