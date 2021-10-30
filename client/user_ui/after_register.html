@@ -1,16 +1,17 @@
 <template name="AfterRegister">
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col">
-                <div class="alert alert-secondary" role="alert">
-                    <h5>{{_ "Now check your mail with a link that enables you to verify the Email"}}</h5>
-                </div>
-                <hr style="color: beige;">
-                <div class="d-flex justify-content-center">
-                    <a href="/login" class="btn btn-success btn-lg" style="width: 200px;">Login</a>
-                </div>
-            </div>
-            <div class="col-3"></div>
+    <div class="mt-10">
+        <div class="text-center" role="alert">
+            <h5>{{_ "Now check your mail with a link that enables you to verify the Email"}}</h5>
         </div>
+        <hr class="w-9/12 ml-56" style="color: rgb(34, 34, 23);">
+        <h6 class="text-center">or</h6>
+    
+        <div class="grid grid-cols-6 gap-4">
+            <div class="col-start-3 col-span-4 ...">
+            <a href="/login" class="w-1/6 h-10 text-base font-medium text-3xl text-center rounded-xl border bg-red-400 mt-2 text-white ml-44" id="login" type="button">login</a>
+            </div>
+          </div>
+
     </div>
+    
 </template>

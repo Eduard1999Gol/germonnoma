@@ -15,7 +15,21 @@ Meteor.methods({
             throw new Meteor.Error('user_exist', "User already registered");
         }
     },
+
+    registerStore: function (user, store) {
+        check(user, Object);
+        check(store, String);
+        var userId = Accounts.createUser(user);
+        if (userId) {
+            Accounts.sendVerificationEmail(userId);
+            var store_id = Stores.insert({
+                store_name: store,
+                user_id: userId
+            })
+        }
+    },
     
+
     sendResetEmail: function (email) {
         var user = Meteor.users.findOne({"emails": { $elemMatch:{"address": email}}});
         if(user){
@@ -50,6 +64,39 @@ Meteor.methods({
         } else {
             throw new Meteor.Error(402)
         }
+    },
+
+    addProductToOrders: function (product_id) {
+        check(product_id, String);
+        if (this.userId) {
+            var product = Products.findOne({_id: product_id});
+            if (product) {
+                var exist = Meteor.users.findOne({_id: this.userId, "profile.orders._id": product_id});
+                if (exist) {
+                    return Meteor.users.update({
+                        _id: this.userId, 
+                        "profile.orders._id": product_id
+                    },{
+                        $inc:{"profile.orders.$.count":1}
+                    })
+                } else {
+                    return Meteor.users.update({_id: this.userId},{$push:{
+                        "profile.orders": {_id: product_id, count: 1}
+                    }})
+                }
+                
+            }
+        } else {
+            throw new Meteor.Error(402)
+        }
+    },
+
+    updateCount: function (product_id) {
+        return Products.update({
+            _id: product_id,
+        },{
+            $inc:{ count: -1}
+        })
     },
 
     removeProductFromBasket: function (product_id) {
@@ -99,11 +146,13 @@ Meteor.methods({
     createProduct: function(product) {
         var created_at = new Date();
         return Products.insert(product = {
+            count: product.count,
             category: product.category,
             name: product.name,
             price: product.price,
             description: product.description,
             created_at: created_at,
+            user_id: Meteor.user()._id
         });
     },
     
@@ -156,4 +205,31 @@ Meteor.methods({
         });
         Products.update({_id: id});
     },
+
+    createOrders: function (orders) {
+        check(orders, Array);
+        orders.forEach(element => {
+            var  product = Products.findOne({
+                _id: element._id
+            })
+            var order = {
+                user_id: this.userId,
+                ordered_at: new Date(),
+                product: product,
+                store_id: product.user_id,
+                count: parseInt(element.count),
+                status: "payed"
+            }
+            Orders.insert(order);
+        });
+        Meteor.users.update({
+            _id: this.userId
+        },{
+            $set: {
+                "profile.basket": []
+            }
+        })
+
+        
+    }
 });

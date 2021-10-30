@@ -4,8 +4,8 @@ import "./main.css";
 
 /* Pages */
 import "../router/router.js";
-import "./layout.html";
-import "./layout.js";
+import "./layout.html"
+import "./layout.js"
 import "./home.html";
 import "./home.js";
 import "./product_ui/product.html";
@@ -16,14 +16,11 @@ import "./product_ui/product_details.html";
 import "./product_ui/product_details.js";
 import "./product_ui/product_edit.html";
 import "./product_ui/product_edit.js";
-import "./product_ui/button_create_product.html";
-import "./product_ui/button_create_product.js";
 import "./user_ui/register.html";
 import "./user_ui/register.js";
 import "./user_ui/register.js";
 import "./user_ui/login.html";
 import "./user_ui/login.js";
-import "./user_ui/login_button.html";
 import "./global_helpers.js";
 import "./user_ui/my_profile.html";
 import "./user_ui/my_profile.js";
@@ -39,10 +36,14 @@ import "./product_ui/search_products.html";
 import "./user_ui/user_basket.js";
 import "./user_ui/user_basket.html";
 import "./product_ui/product_basket.html"
-import "./product_ui/product_basket.js"
+import "./product_ui/product_basket.js";
+import "./user_ui/user_orders.html";
+import "./user_ui/user_orders.js"
 
 
 
 /* Collections */
 Products = new Mongo.Collection("products");
 ProductImages = new Mongo.Collection("ProductImages");
+Orders = new Mongo.Collection("orders");
+Stores = new Mongo.Collection("stores");

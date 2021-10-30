@@ -1,10 +1,9 @@
-import helper_functions from '../lib/helper_functions';
-import Toast from '../lib/costumFunctions/toast';
 
-Template.Home.onCreated(function () {
+Template.ProductDetails.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("products", Router.current().params._id);
         Meteor.subscribe("productImageById", Router.current().params._id);
+        Meteor.subscribe("users");
        })
 })   
    
@@ -18,7 +17,9 @@ Template.ProductDetails.events({
         var prove = window.confirm(TAPi18n.__('Are you really sure to delete the product  ')+ name + "?" );
         if (prove) {
             Meteor.call("deleteProduct", id, function (err, res) {
-                if (!err) {         
+                if (!err) { 
+                    Router.go('/');
+
                     Toast({
                         text: "Product is deleted", 
                         duration: 3000, 
@@ -56,15 +57,13 @@ Template.ProductDetails.events({
   
 });
 
-
-
 Template.ProductDetails.helpers({
     "getProductDetails": function () {
         var product = Products.findOne({ _id: Router.current().params._id });
         if (product) {
             var images = ProductImages.find({
                 product_id: product._id,
-            }).fetch();
+            });
         }
         if (product && images) {
             product["images"] = images;

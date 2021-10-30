@@ -2,10 +2,12 @@ Template.Home.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("products");
         Meteor.subscribe("productImages")
+        Meteor.subscribe("users")
        })
 })
 
 Template.Home.events({
+   
     'submit form.searchForm': function (event) {
         event.preventDefault();
         if (event.currentTarget.search.value) {
@@ -24,7 +26,6 @@ Template.Home.helpers({
             product["image"] = image.image;
           }
         });
-        console.log(products)
         return {
           products: products,
         };

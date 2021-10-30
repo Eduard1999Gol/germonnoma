@@ -119,6 +119,22 @@ Router.route(
   }
 );
 
+Router.route(
+  "/my_orders",
+  function () {
+    if (!Meteor.userId()) {
+      Router.go("home");
+    } else 
+      this.render("UserOrders");
+  },
+  {
+    name: "orders_page",
+  }
+);
+
+
+
+
 
 
 Router.route(

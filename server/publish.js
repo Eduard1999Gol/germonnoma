@@ -3,6 +3,38 @@ Meteor.publish('products', function () {
     return Products.find();
   });
 
+Meteor.publish('users', function () {
+  return Meteor.users.find();
+  
+});
+
+Meteor.publish('user_orders', function () {
+  if(this.userId){
+    return Orders.find({
+      user_id: this.userId
+    });
+  }else{
+    return this.ready();
+  }
+});
+
+
+Meteor.publish('store_orders', function (store_id) {
+  if(this.userId){
+    return Orders.find({
+      store_id: store_id
+    })
+  }else{
+    return this.ready();
+  }
+});
+
+Meteor.publish('user_stores', function () {
+  return Stores.find();
+})
+
+
+
 Meteor.publish('basket_products', function () {
     var products = [];
     var user = Meteor.users.findOne({_id: this.userId});

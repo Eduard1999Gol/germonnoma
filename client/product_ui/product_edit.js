@@ -1,4 +1,3 @@
-import Toast from '../lib/costumFunctions/toast';
 
 Template.EditProductPage.onCreated(function(){
     Session.set('selectedFile', "");

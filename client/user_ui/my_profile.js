@@ -13,6 +13,11 @@ Template.MyProfile.events({
         $( ".dropdown_user" ).show();
     },
 
+    'click button#cart':function (event) {
+        event.preventDefault();
+        Router.go('basket_page');
+    },
+
     'submit form.profile': function (event) {
         event.preventDefault();
         var language = event.currentTarget.selectLanguage.value;

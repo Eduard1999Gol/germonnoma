@@ -3,7 +3,17 @@ import "./user_basket.html"
 Template.UserBasket.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("basket_products");
+        Meteor.subscribe("users");
        })
+});
+
+
+Template.UserBasket.events({
+  'click button#buyButton': function (event) {
+    event.preventDefault();
+    var orders = Meteor.user().profile.basket;
+    Meteor.call("createOrders", orders);
+  }
 })
 
 Template.UserBasket.helpers({
@@ -22,7 +32,7 @@ Template.UserBasket.helpers({
             product["image"] = image.image;
           }
           sum+=product.sum;
-            basket_products.push(product);
+          basket_products.push(product);
           });
         }
   

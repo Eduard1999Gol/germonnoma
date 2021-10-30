@@ -1,17 +1,24 @@
 
-Template.Layout.onCreated(function(){
-
-});
-
-Template.Layout.onRendered(function(){
-    
-});
 
 Template.Layout.events({
-    'click button#basket':function (event) {
+    'click a.dropdown-trigger': function (event) {
+        var instance = $('.dropdown-trigger').dropdown();
+        var dropdown = M.Dropdown.getInstance(instance);
+        dropdown.open();
+    },
+
+    'click a#basket':function (event) {
         event.preventDefault();
         Router.go("basket_page");
     },
+    
+
+    'click a#myOrders':function (event) {
+        event.preventDefault();
+        Router.go("orders_page");
+    },
+
+  
 
     'click a#Home': function (event) {
         event.preventDefault();
@@ -30,8 +37,9 @@ Template.Layout.events({
             }
         })
     },
+   
 
-    'click a#loginButton': function (event) {
+    'click button#loginButton': function (event) {
         event.preventDefault();
         Router.go('login');
     },
