@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 
+
 Template.Register.onCreated(function(){
 });
 
@@ -31,12 +32,12 @@ Template.Register.events({
                     email: event.currentTarget.email.value,
                     password: event.currentTarget.password.value,
                     profile:{
-                        store_name: event.currentTarget.checkbox.value,
                         language: event.currentTarget.selectLanguage.value,
-                        basket: list,
-                        orders: list2
+                        basket: [],
+                        orders: []
                     }
                 }
+                Meteor.call("registerStore", user, event.currentTarget.store_name.value);
             }else{
                 var user = {
                     username: event.currentTarget.username.value,
@@ -44,19 +45,20 @@ Template.Register.events({
                     password: event.currentTarget.password.value,
                     profile:{
                         language: event.currentTarget.selectLanguage.value,
-                        basket: list,
-                        orders: list2
+                        basket: [],
+                        orders: []
                     }
                 }
+                Meteor.call("register", user, function (err, res) {
+                    if (!err) {
+                        Router.go("after_register");
+                    } else {
+                        console.log(err);
+                    }
+                    
+                })
             }
-            Meteor.call("register", user, function (err, res) {
-                if (!err) {
-                    Router.go("after_register");
-                } else {
-                    console.log(err);
-                }
-                
-            })} else {
+        } else {
             alert("passwords  are not same");
         }
     }

@@ -5,6 +5,15 @@ Template.UserBasket.onCreated(function () {
         Meteor.subscribe("basket_products");
         Meteor.subscribe("users");
        })
+});
+
+
+Template.UserBasket.events({
+  'click button#buyButton': function (event) {
+    event.preventDefault();
+    var orders = Meteor.user().profile.basket;
+    Meteor.call("createOrders", orders);
+  }
 })
 
 Template.UserBasket.helpers({

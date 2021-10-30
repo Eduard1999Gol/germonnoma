@@ -45,3 +45,5 @@ import "./user_ui/user_orders.js"
 /* Collections */
 Products = new Mongo.Collection("products");
 ProductImages = new Mongo.Collection("ProductImages");
+Orders = new Mongo.Collection("orders");
+Stores = new Mongo.Collection("stores");
