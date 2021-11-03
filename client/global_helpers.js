@@ -1,6 +1,6 @@
 import moment from 'moment';
 import category from './product_ui/product_category.js';
-
+  
 Template.registerHelper("getCategories", function () {
     var codes = [];
     for (var k in category) {
@@ -11,8 +11,18 @@ Template.registerHelper("getCategories", function () {
     return codes;
 });
 
+
 Template.registerHelper("getCategoryName", function (key) {
     return category[key]
+});
+
+
+
+Template.registerHelper("isVerkäüfer", function () {
+    var shops = Stores.findOne({user_id: Meteor.userId()});
+    if (shops) {
+        return true
+    }
 });
 
 
@@ -30,14 +40,7 @@ Template.registerHelper("language", function () {
     if (Meteor.user().profile) {
         TAPi18n.setLanguage(Meteor.user().profile.language);
     }
-    
 })
-
-
-Template.registerHelper("getStoreName", function (user_id) {
-    const user = Meteor.users.findOne({_id: user_id});
-    return user.profile.store_name
-});
 
 
 Template.registerHelper("formatDateTime", function (date) {

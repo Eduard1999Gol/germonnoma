@@ -66,38 +66,7 @@ Meteor.methods({
         }
     },
 
-    addProductToOrders: function (product_id) {
-        check(product_id, String);
-        if (this.userId) {
-            var product = Products.findOne({_id: product_id});
-            if (product) {
-                var exist = Meteor.users.findOne({_id: this.userId, "profile.orders._id": product_id});
-                if (exist) {
-                    return Meteor.users.update({
-                        _id: this.userId, 
-                        "profile.orders._id": product_id
-                    },{
-                        $inc:{"profile.orders.$.count":1}
-                    })
-                } else {
-                    return Meteor.users.update({_id: this.userId},{$push:{
-                        "profile.orders": {_id: product_id, count: 1}
-                    }})
-                }
-                
-            }
-        } else {
-            throw new Meteor.Error(402)
-        }
-    },
-
-    updateCount: function (product_id) {
-        return Products.update({
-            _id: product_id,
-        },{
-            $inc:{ count: -1}
-        })
-    },
+  
 
     removeProductFromBasket: function (product_id) {
         check(product_id, String);
@@ -145,6 +114,7 @@ Meteor.methods({
     
     createProduct: function(product) {
         var created_at = new Date();
+        var  store_id = Stores.findOne({user_id: Meteor.user()._id})
         return Products.insert(product = {
             count: product.count,
             category: product.category,
@@ -152,7 +122,8 @@ Meteor.methods({
             price: product.price,
             description: product.description,
             created_at: created_at,
-            user_id: Meteor.user()._id
+            user_id: Meteor.user()._id,
+            store_id: store_id
         });
     },
     
@@ -208,28 +179,43 @@ Meteor.methods({
 
     createOrders: function (orders) {
         check(orders, Array);
-        orders.forEach(element => {
-            var  product = Products.findOne({
-                _id: element._id
-            })
-            var order = {
+        if (orders.length==1) {
+            var product = Products.findOne({_id: orders[0]._id});
+            var order =  {
                 user_id: this.userId,
                 ordered_at: new Date(),
                 product: product,
-                store_id: product.user_id,
-                count: parseInt(element.count),
-                status: "payed"
+                count: 1,
+                status: "paied"
             }
             Orders.insert(order);
-        });
-        Meteor.users.update({
-            _id: this.userId
-        },{
-            $set: {
-                "profile.basket": []
-            }
-        })
-
-        
+            Products.update({
+                _id: orders[0]._id,
+            },{
+                $inc:{ count: -1}
+            })
+        } else {
+            orders.forEach(element => {
+                var  product = Products.findOne({
+                    _id: element._id
+                })
+                var order = {
+                    user_id: this.userId,
+                    ordered_at: new Date(),
+                    product: product,
+                    store_id: product.user_id,
+                    count: parseInt(element.count),
+                    status: "angefragt"
+                }
+                Orders.insert(order);
+            });
+            Meteor.users.update({
+                _id: this.userId
+            },{
+                $set: {
+                    "profile.basket": []
+                }
+            })
+        }
     }
 });

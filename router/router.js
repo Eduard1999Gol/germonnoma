@@ -132,6 +132,19 @@ Router.route(
   }
 );
 
+Router.route(
+  "/my_store_orders",
+  function () {
+    if (!Meteor.userId()) {
+      Router.go("home");
+    } else 
+      this.render("StoreOrders");
+  },
+  {
+    name: "store_orders_page",
+  }
+);
+
 
 
 

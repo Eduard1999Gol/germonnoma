@@ -14,7 +14,6 @@
     </div>
     {{language}}
 </template>
-
 <template name="Navbar" >
   <nav class="bg-gradient-to-br flex from-pink-500 to-rose-500">
     <div class="nav-wrapper">
@@ -22,17 +21,20 @@
       <ul class="right hide-on-med-and-down">
         {{#if currentUser}}
         <li><a id="basket" href="#"><ul><li><i class="material-icons">shopping_cart </i></li><li class="">{{berechneMenge currentUser.profile.basket}}</li></ul></a></li>
-        {{#if currentUser.profile.store_name}}
+        {{#if isVerkäüfer}}
         <li><a href="{{ pathFor route='addProduct'}}" id="addProduct"> <ul><li><i class="material-icons">handyman</i></li><li>{{_ "add_product"}}</li></ul></a></li>
         {{/if}}
         <li><a class="dropdown-trigger"  data-target="dropdown1">{{currentUser.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
         {{else}}
-        <li><button id="loginButton"  class="w-20 h-10 text-xl mt-3 mr-3 bg-green-500 border  text-white rounded-xl text-base font-medium" >Login</button></li>
+        <li><button id="loginButton"  class="w-20 h-10 text-xl mt-3 mr-3 bg-green-500 border  text-white rounded-xl text-base font-medium" > Login</button></li>
         {{/if}}
       </ul>
       <ul id='dropdown1' class='dropdown-content'>
         <li><a  id="myProfile" href="#!"><i class="material-icons">account_circle</i>Profile</a></li>
-        <li><a  id="myOrders" href="#!"><i class="material-icons">local_mall</i>Orders</a></li>
+        <li><a  id="myOrders" href="#!"><i class="material-icons">local_mall</i>MyOrders</a></li>
+        {{#if isVerkäüfer}}
+        <li><a  id="myStoreOrders" href="#!"><i class="material-icons">shop</i>StoreOrders</a></li>
+        {{/if}}
         <li class="divider" tabindex="-1"></li>
         <li><a  id="logout" href="#!"><i class="material-icons">logout</i>logout</a></li>
       </ul>

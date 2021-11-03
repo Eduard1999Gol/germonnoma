@@ -1,4 +1,4 @@
-import "./user_basket.html"
+import "./user_basket.html";
 
 Template.UserBasket.onCreated(function () {
     Tracker.autorun(function(){

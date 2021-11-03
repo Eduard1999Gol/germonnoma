@@ -1,3 +1,12 @@
+Template.Layout.onCreated(function () {
+    Tracker.autorun(function(){
+        Meteor.subscribe("products");
+        Meteor.subscribe("productImages");
+        Meteor.subscribe("users");
+        Meteor.subscribe("user_stores");
+        Meteor.subscribe("user_orders");
+       })
+})
 
 
 Template.Layout.events({
@@ -6,7 +15,6 @@ Template.Layout.events({
         var dropdown = M.Dropdown.getInstance(instance);
         dropdown.open();
     },
-
     'click a#basket':function (event) {
         event.preventDefault();
         Router.go("basket_page");
@@ -18,8 +26,12 @@ Template.Layout.events({
         Router.go("orders_page");
     },
 
-  
+    'click a#myStoreOrders':function (event) {
+        event.preventDefault();
+        Router.go("store_orders_page");
+    },
 
+    
     'click a#Home': function (event) {
         event.preventDefault();
         Router.go('/');

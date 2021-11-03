@@ -3,6 +3,7 @@ Template.Home.onCreated(function () {
         Meteor.subscribe("products");
         Meteor.subscribe("productImages")
         Meteor.subscribe("users")
+        Meteor.subscribe("user_stores")
        })
 })
 

@@ -38,7 +38,9 @@ import "./user_ui/user_basket.html";
 import "./product_ui/product_basket.html"
 import "./product_ui/product_basket.js";
 import "./user_ui/user_orders.html";
-import "./user_ui/user_orders.js"
+import "./user_ui/user_orders.js";
+import "./user_ui/user_store_orders.js";
+import "./user_ui/user_store_orders.html";
 
 
 
