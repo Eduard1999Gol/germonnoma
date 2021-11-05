@@ -21,7 +21,6 @@ Template.EditProductPage.events({
                 description: event.currentTarget.product_description.value,
                 image: image
             }
-            console.log(product)
             Meteor.call('updateProduct', Router.current().params._id, product, function (err, res) {
                 if (!err) {
                     Toast({

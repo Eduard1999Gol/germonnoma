@@ -59,7 +59,6 @@ Template.Layout.events({
     'click a#myProfile': function (event) {
         event.preventDefault();
         Router.go('MyProfile',{_id:Meteor.userId()});
-        $( ".dropdown_user" ).hide();
     },
 
    

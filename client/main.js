@@ -4,8 +4,8 @@ import "./main.css";
 
 /* Pages */
 import "../router/router.js";
-import "./layout.html"
-import "./layout.js"
+import "./layout.html";
+import "./layout.js";
 import "./home.html";
 import "./home.js";
 import "./product_ui/product.html";

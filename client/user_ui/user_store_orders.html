@@ -1,13 +1,10 @@
 <template name="StoreOrders">
     <h1 class="text-center m-2"><strong>My Products</strong> </h1>
-    <button class="btn" style="">Click Me</button>
-
     <div class="flex mx-5 border-2 border-gray-200 rounded-2xl p-3 mt-2 shadow-2xl bg-gray-100">
         <table class="table-fixed">
             <thead>
               <tr class="text-3xl">
                 <th class="w-1/2 ">Products</th>
-
                 <th class="w-1/4"><i
                   class="material-icons" style="font-size: 35px;">store</i>Store</th>
                 <th class="w-1/4">Status</th> 
@@ -18,17 +15,21 @@
                 <td>
                   <div class="grid grid-cols-3">
                     <div class=""><img src="{{this.image}}"  class=" w-8/12 rounded-2xl" alt=""></div>
-                    <div class="col-span-2"><h4>product_name</h4><h5 class="text-gray-500">Menge: count</h5></div>
+                    <div class="col-span-2"><h4>{{this.product.name}}</h4><h5 class="text-gray-500">Menge: count</h5></div>
                 </div>
               </td>
                 <td class="text-3xl text-red-500">store / <a href="#">du</a></td>
-                <td> <button class="btn rounded-lg" id="confirm">confirm</button>
-                    <select class="form-select block mt-2 ml-5 w-11/12" name="selectLanguage" style="display: none;">
-                    <option value="" disabled selected>Choose the language</option>
-                    <option value="en">English</option>
-                    <option value="de">Deutsch</option>
-                    <option value="ru">Русский</option>
-                  </select></td>
+                <td>
+                    <form id="confirm">
+                     <button type="submit" class="btn rounded-lg" style="color: black;">confirm</button>
+                    <select id="status" class="form-select block mt-2 ml-5 w-11/12" name="order_status" style="display: none;">
+                    <option value="" disabled selected>Choose the status</option>
+                    <option value="1">Gesendet</option>
+                    <option value="2">on the way</option>
+                    <option value="3">dilevered</option>
+                  </select>
+                </form>
+            </td>
               </tr>
             </tbody>
           </table>

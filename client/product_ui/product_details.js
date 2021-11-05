@@ -18,29 +18,21 @@ Template.ProductDetails.events({
             Meteor.call("deleteProduct", id, function (err, res) {
                 if (!err) { 
                     Router.go('/');
-
-                    Toast({
-                        text: "Product is deleted", 
-                        duration: 3000, 
-                        color: "success"
-                    });
+                    M.toast({html: 'The Product was succesfuly deleted', classes: 'rounded'});
                     Router.go('/');
                 }else{
-                    Toast({
-                        text: "Product is not deleted", 
-                        duration: 3000, 
-                        color: "danger"
-                    });
+                    M.toast({html: 'The Product was NOT deleted!', classes: 'rounded'});
                 }
                 
             })
         } else {
-            Toast({
-                text: "Product is not deleted", 
-                duration: 3000, 
-                color: "danger"
-            });
+            M.toast({html: 'the Product was NOT deleted!', classes: 'rounded'});
         }
+    },
+
+    'click a#myProfile': function (event) {
+        event.preventDefault();
+        Router.go('MyProfile',{_id:Meteor.userId()});
     },
     
     'click button#editPage': function (event){
@@ -59,13 +51,17 @@ Template.ProductDetails.helpers({
     "getProductDetails": function () {
         var product = Products.findOne({ _id: Router.current().params._id });
         if (product) {
-            var images = ProductImages.find({
+            var image = ProductImages.findOne({
                 product_id: product._id,
             });
         }
-        if (product && images) {
-            product["images"] = images;
-            return product;
+        if (product && image) {
+            product["image"] = image;
+            var user = Meteor.users.findOne({_id: product.user_id});
+            return {
+                product: product,
+                user: user,
+            }
         }
     }
 });

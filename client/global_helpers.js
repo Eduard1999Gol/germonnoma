@@ -1,15 +1,16 @@
 import moment from 'moment';
 import category from './product_ui/product_category.js';
   
-Template.registerHelper("getCategories", function () {
+Template.registerHelper("getCategories", function (category) {
     var codes = [];
     for (var k in category) {
         if (k) {
-            codes.push({ value: k, display: category[k] });
+            codes.push({ value: k, display: category[k]});
         }
     }
     return codes;
 });
+
 
 
 Template.registerHelper("getCategoryName", function (key) {
