@@ -1,10 +1,16 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';
 
+Template.Layout.onRendered(function () {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instance = M.Dropdown.init(elems, {
+        coverTrigger: false
+    });
+})
+
+
 Template.Layout.onCreated(function () {
     Tracker.autorun(function(){
-        Meteor.subscribe("products");
-        Meteor.subscribe("productImages");
         Meteor.subscribe("users");
         Meteor.subscribe("user_stores");
         Meteor.subscribe("user_orders");
@@ -14,11 +20,6 @@ Template.Layout.onCreated(function () {
 
 
 Template.Layout.events({
-    'click a.dropdown-trigger': function (event) {
-        var instance = $('.dropdown-trigger').dropdown();
-        var dropdown = M.Dropdown.getInstance(instance);
-        dropdown.open();
-    },
     'click a#basket':function (event) {
         event.preventDefault();
         Router.go("basket_page");

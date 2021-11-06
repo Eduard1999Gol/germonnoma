@@ -48,6 +48,14 @@ Template.AddProduct.helpers({
           return "choose_picture";
         }
     },
+    
+    'isSelected': function (a, b) {
+        if (a === b) {
+            return 'selected';
+        } else {
+            return '';
+        }
+    }
   });
 
 
