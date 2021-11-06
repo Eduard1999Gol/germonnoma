@@ -4,11 +4,42 @@ Template.ProductDetails.onCreated(function () {
         Meteor.subscribe("products", Router.current().params._id);
         Meteor.subscribe("productImageById", Router.current().params._id);
         Meteor.subscribe("users");
+        Meteor.subscribe("stores");
        })
 })   
    
 
 Template.ProductDetails.events({
+    'click button#userBasket': function (event) {
+        event.preventDefault();
+        var product_id = event.currentTarget.dataset.id;
+        Meteor.call("addProductToBasket", product_id, function (err, res) {
+            if (!err) {
+                M.toast({html: 'to cart added', classes: 'rounded'});
+            } else {
+                return err
+            }
+        })
+    },
+
+    'click button#userOrders': function (event) {
+        event.preventDefault();
+        var product_id = event.target.dataset.id;
+        var product = {
+            _id: product_id,
+            count: 1
+        }
+        var orders = [];
+        orders.push(product)
+        Meteor.call("createOrders", orders, function (err, res) {
+            if (!err) {
+                M.toast({html: 'Das Product wurde bestellt', classes: 'rounded'});
+            } else {
+                return err
+            }
+        })
+    },
+    
     'click button#delete-product': function (event) {
         event.preventDefault();
         var id = event.target.dataset.id;
@@ -48,6 +79,12 @@ Template.ProductDetails.events({
 });
 
 Template.ProductDetails.helpers({
+    "isYourProduct": function (user_id) {
+        if (user_id===Meteor.userId()) {
+            return true
+        }
+    },
+
     "getProductDetails": function () {
         var product = Products.findOne({ _id: Router.current().params._id });
         if (product) {

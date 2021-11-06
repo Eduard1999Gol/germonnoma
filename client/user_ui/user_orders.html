@@ -5,8 +5,16 @@
             <thead>
               <tr class="text-3xl">
                 <th class="w-1/2 ">Products</th>
-                <th class="w-1/4"><i
-                  class="material-icons" style="font-size: 35px;">store</i>Store</th>
+                <th class="w-1/4">
+                  <div class="flex">
+                    <div class="flex">
+                      <i class="material-icons" style="font-size: 30px;">store</i>
+                    </div>
+                    <div class="flex">
+                      Store
+                    </div>
+                  </div>
+                 </th>
                 <th class="w-1/4">Status</th> 
               </tr>
             </thead>
@@ -15,7 +23,7 @@
               <tr>
                 <td>
                   <div class="grid grid-cols-3">
-                    <div class=""><img src="{{this.image}}"  class=" w-8/12 rounded-2xl" alt=""></div>
+                    <div class=""><img src="{{this.image.image}}" class=" w-8/12 rounded-2xl" alt=""></div>
                     <div class="col-span-2"><h4>{{this.product.name}}</h4><h5 class="text-gray-500">Menge: {{this.count}}</h5></div>
                 </div>
               </td>

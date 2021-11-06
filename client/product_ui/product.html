@@ -11,8 +11,11 @@
           <div>
           <p class="text-xl truncate">{{this.name}}</p>
           </div>
-          <div>
-            <p class="text-xl text-red-500"><i class="material-icons">store</i>{{this.store_id.store_name}}</p>
+          <div class="text-xl text-red-500 flex">
+            <div class="flex"> <i class="material-icons">store</i></div>
+            <div class="flex">
+           <p >{{this.store_id.store_name}}</p>
+            </div>
           </div>
         </div>
         <div class="my-2 flex">

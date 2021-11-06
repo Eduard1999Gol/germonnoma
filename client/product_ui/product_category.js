@@ -5,3 +5,11 @@ module.exports = {
     "004": TAPi18n.__('toys'),
     "005": TAPi18n.__('books')
 }
+
+/* Collections:
+    Products
+    Orders
+    Stores
+    Users
+    ProductImages
+    ProductCategories */

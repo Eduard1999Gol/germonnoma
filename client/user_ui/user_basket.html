@@ -1,15 +1,18 @@
 <template name="UserBasket">
-    <div class="row">
-        <div class="col"><h1>Buy Now!</h1></div>
-        <div class="col"><h1>total price: {{getAmount data.sum}}</h1></div>
+    <div class="flex">
+        <div class="flex w-1/2 ml-4  text-red-500 "><h1 class="font-extralight">Total price: {{getAmount data.sum}}</h1></div>
+        <div class="flex w-1/2">
+            <h1>Buy Now!</h1>
+            <button 
+            id="buyButton"
+            href="{{ pathFor route='home'}}" class=" w-1/4 my-5 ml-7 text-2xl  border-2 border-white bg-gradient-to-br from-yellow-400 to-yellow-700 text-white rounded-3xl ">
+             <i class="material-icons w-full" style="font-size: 30px;">monetization_on</i>
+            bestellen
+          </button>
+        </div>
     </div>
 <hr style="color: aliceblue;">
-<button id="buyButton" class="btn">bestellen</button>
-<div class="row">
     {{#each data.basket_products}}
-    <div class="col-5">
         {{> ProductBasket}}
-    </div>
     {{/each}}
-</div>
 </template>

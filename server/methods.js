@@ -181,18 +181,29 @@ Meteor.methods({
         check(orders, Array);
         if (orders.length==1) {
             var product = Products.findOne({_id: orders[0]._id});
+            var image = ProductImages.findOne({
+                product_id: orders[0]._id,
+            });
             var order =  {
                 user_id: this.userId,
+                image: image,
                 ordered_at: new Date(),
                 product: product,
                 count: 1,
-                status: "paied"
+                status: "angefragt"
             }
             Orders.insert(order);
             Products.update({
                 _id: orders[0]._id,
             },{
                 $inc:{ count: -1}
+            })
+            Meteor.users.update({
+                _id: this.userId
+            },{
+                $pull: {"profile.basket": {
+                    _id: orders[0]._id,
+                }}
             })
         } else {
             orders.forEach(element => {

@@ -6,13 +6,14 @@
     </div>
     <div class="w-1/2 p-1">
           <h1 class="mb-2">{{getProductDetails.product.name}}</h1>
-          <div class="font-extralight text-red-500">
+          <div class="font-extralight text-gray-500">
             <h4 class="m-0">{{_ "price"}}: {{getAmount  getProductDetails.product.price}}</h4>
             <h4 class="m-0"> {{_ "category"}}: {{getCategoryName getProductDetails.product.category}}</h4>
           </div>
           <div class="text-gray-500 mt-2 text-lg">
             added: {{formatDateTime getProductDetails.product.created_at}} by
-            {{#if isVerkäüfer}} <a href="#" class="text-2xl" id="myProfile">You</a>
+            {{#if isYourProduct getProductDetails.product.user_id}}
+             <a href="#" class="text-2xl" id="myProfile">You</a>
             {{else}}
             <a href="#">{{getProductDetails.user.username}}</a>
             {{/if}}
@@ -25,7 +26,7 @@
       </div>
   </div>
   <div class="grid grid-cols-3 ">
-  {{#if isVerkäüfer}}
+  {{#if isYourProduct getProductDetails.product.user_id}}
     <div>
       <button id="delete-product"
       data-name="{{getProductDetails.product.name}}"
@@ -41,8 +42,24 @@
        {{_ "edit"}}
      </button>
     </div>
-{{/if}}
+{{else}}
 
+<div>
+  <button id="userOrders"
+  data-name="{{getProductDetails.product.name}}"
+  data-id="{{getProductDetails.product._id}}" class="w-11/12 text-2xl border-2 border-white bg-gradient-to-br from-red-900 to-red-400 text-white rounded-xl text-base font-medium mb-2 ml-3">
+    <i class="material-icons w-full" style="font-size: 30px;">shopping_bag</i>
+    buy now
+  </button>
+</div>
+<div>
+  <button id="userBasket"
+  data-id="{{getProductDetails.product._id}}" class="w-11/12  text-2xl  border-2 border-white bg-gradient-to-br from-green-300 to-green-600 text-white rounded-xl text-base font-medium mb-2  ml-3">
+    <i class="material-icons w-full" style="font-size: 30px;">add_shopping_cart</i>
+    add to cart
+ </button>
+</div>
+{{/if}}
     <div>
       <button 
       id="return"
