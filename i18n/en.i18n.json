@@ -2,12 +2,9 @@
     "add_product": "Create product",
     "product_name": "Product name",
     "product_description": "describe the product",
-    "choose_picture": "add pictures",
     "save": "Save",
     "back": "Back",
     "product_created": "Product created",
-    "edit": "edit",
-    "delete": "delete",
     "description": "Description",
     "price": "Price",
     "name": "Name",
@@ -20,9 +17,6 @@
     "cancel": "Cancel",
     "choose_picture": "Choose a picture",
     "edit_product": "Edit product",
-    "price": "Price",
-    "description": "Description",
-    "category": "Category",
     "Users Profile": "Users profile",
     "Change your Profile": "Change your Profile",
     "Username": "Username",
@@ -34,6 +28,12 @@
     "City": "City",
     "Post code": "Post code",
     "Street": "Street",
-    "Haus number": "Haus number"
+    "Haus number": "Haus number",
+    "food": "Food",
+    "garden": "Garden",
+    "toys": "Toys",
+    "books": "Books",
+    "choose_category": "choose category",
+    "count": "count"
 
 }

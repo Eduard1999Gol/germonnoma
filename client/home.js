@@ -1,7 +1,6 @@
 Template.Home.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("products");
-        Meteor.subscribe("productImages")
         Meteor.subscribe("users")
         Meteor.subscribe("user_stores")
        })
@@ -21,12 +20,6 @@ Template.Home.events({
 Template.Home.helpers({
     data: function () {
         var products = Products.find().fetch();
-        products.forEach(product => {
-          var image = ProductImages.findOne({ product_id: product._id });
-          if (image) {
-            product["image"] = image.image;
-          }
-        });
         return {
           products: products,
         };

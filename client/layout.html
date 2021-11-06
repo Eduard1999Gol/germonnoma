@@ -3,11 +3,8 @@
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/d576f4c65a.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css" rel="stylesheet">
     {{> Navbar}}
     <div>
         {{> yield}}
@@ -20,7 +17,7 @@
       <a href="#" id="Home" class="navbar-brand  text-light mx-4" style="font-size: 30px;"><strong>Web-Shop</strong></a>
       <ul class="right hide-on-med-and-down">
         {{#if currentUser}}
-        <li><a id="basket" href="#"><ul><li><i class="material-icons">shopping_cart </i></li><li class="">{{berechneMenge currentUser.profile.basket}}</li></ul></a></li>
+        <li><a id="basket" href="#"><ul><li><i class="material-icons">shopping_cart </i></li><li class=""></li></ul></a></li>
         {{#if isVerkäüfer}}
         <li><a href="{{ pathFor route='addProduct'}}" id="addProduct"> <ul><li><i class="material-icons">handyman</i></li><li>{{_ "add_product"}}</li></ul></a></li>
         {{/if}}

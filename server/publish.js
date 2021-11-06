@@ -5,7 +5,6 @@ Meteor.publish('products', function () {
 
 Meteor.publish('users', function () {
   return Meteor.users.find();
-  
 });
 
 Meteor.publish('user_orders', function () {
@@ -70,6 +69,10 @@ Meteor.publish('searchedProducts', function (searchTerm) {
 ];
 });
 
-
-
-
+Meteor.publish('categories', function() {
+  if (this.userId) {
+    return Categories.find();
+  } else {
+    return this.ready();
+  }
+});

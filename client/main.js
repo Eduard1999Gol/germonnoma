@@ -49,3 +49,4 @@ Products = new Mongo.Collection("products");
 ProductImages = new Mongo.Collection("ProductImages");
 Orders = new Mongo.Collection("orders");
 Stores = new Mongo.Collection("stores");
+Categories = new Mongo.Collection("categories");

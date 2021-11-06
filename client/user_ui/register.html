@@ -4,16 +4,16 @@
       <form id="register">
         <h1 class="mt-4 text-gray-700 text-center"><strong>{{_ "Register"}}</strong> </h1>
         <label class="block mx-5">
-          <input type="email"  name="email" placeholder="E-mail">
+          <input type="email"  name="email" placeholder="E-mail" required>
         </label>
         <label class="block mx-5">
-          <input type="text"  name="username" placeholder="Username">
+          <input type="text"  name="username" placeholder="Username" required>
         </label>
         <label class="block mx-5">
-          <input type="password" name="password"  placeholder="Password">
+          <input type="password" name="password"  placeholder="Password" required>
         </label>
         <label class="block mx-5">
-          <input type="password" name="password_2" placeholder="Repeat Password">
+          <input type="password" name="password_2" placeholder="Repeat Password" required>
         </label>
         <div class="ml-5 mt-1">
           <label>
@@ -22,9 +22,12 @@
           </label>
         </div>
         <label class="block mx-5">
-          <input id="store" type="text" name="store_name" placeholder="Type Your Storename" disabled>
+          <input id="store" type="text" name="store_name" placeholder="Type Your Storename">
         </label>
-        <select class="form-select block mt-2 ml-5 w-11/12" name="selectLanguage">
+        <label class="block mx-5">
+          <input id="store" type="text" name="store_address" placeholder="Type Your Store address">
+        </label>
+        <select class="form-select block mt-2 ml-5 w-11/12" name="selectLanguage" required>
           <option value="" disabled selected>Choose the language</option>
           <option value="en">English</option>
           <option value="de">Deutsch</option>

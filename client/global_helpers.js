@@ -1,17 +1,10 @@
 import moment from 'moment';
 import category from './product_ui/product_category.js';
   
-Template.registerHelper("getCategories", function (category) {
-    var codes = [];
-    for (var k in category) {
-        if (k) {
-            codes.push({ value: k, display: category[k]});
-        }
-    }
-    return codes;
+Template.registerHelper("getCategories", function () {
+    console.log(Categories.find().fetch());
+    return Categories.find().fetch();
 });
-
-
 
 Template.registerHelper("getCategoryName", function (key) {
     return category[key]
@@ -38,9 +31,9 @@ Template.registerHelper("berechneMenge", function (wagen) {
 });
 
 Template.registerHelper("language", function () {
-    if (Meteor.user().profile) {
+     if (Meteor.user().profile) {
         TAPi18n.setLanguage(Meteor.user().profile.language);
-    }
+    } 
 })
 
 

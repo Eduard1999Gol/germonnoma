@@ -16,14 +16,16 @@ Meteor.methods({
         }
     },
 
-    registerStore: function (user, store) {
+    registerStore: function (user, store_name, store_address) {
         check(user, Object);
-        check(store, String);
+        check(store_name, String);
+        check(store_address, String);
         var userId = Accounts.createUser(user);
         if (userId) {
             Accounts.sendVerificationEmail(userId);
             var store_id = Stores.insert({
-                store_name: store,
+                store_name: store_name,
+                store_address: store_address,
                 user_id: userId
             })
         }
@@ -115,16 +117,8 @@ Meteor.methods({
     createProduct: function(product) {
         var created_at = new Date();
         var  store_id = Stores.findOne({user_id: Meteor.user()._id})
-        return Products.insert(product = {
-            count: product.count,
-            category: product.category,
-            name: product.name,
-            price: product.price,
-            description: product.description,
-            created_at: created_at,
-            user_id: Meteor.user()._id,
-            store_id: store_id
-        });
+        product["store_id"] = store_id;
+        return Products.insert(product);
     },
     
     insertImage: function (product_id, image) {
@@ -181,12 +175,9 @@ Meteor.methods({
         check(orders, Array);
         if (orders.length==1) {
             var product = Products.findOne({_id: orders[0]._id});
-            var image = ProductImages.findOne({
-                product_id: orders[0]._id,
-            });
             var order =  {
                 user_id: this.userId,
-                image: image,
+                image: product.image,
                 ordered_at: new Date(),
                 product: product,
                 count: 1,

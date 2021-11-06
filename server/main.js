@@ -54,7 +54,13 @@ Meteor.startup(() => {
   };
 
   process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
-
+  var countCats = Categories.find().count();
+  var cats = ["electronics", "food", "garden", "toys", "books"];
+  if (countCats == 0) {
+    cats.forEach(cat => {
+      Categories.insert({name: cat});
+    });
+  }
 });
 
 
@@ -65,3 +71,4 @@ Products = new Mongo.Collection('products');
 ProductImages = new Mongo.Collection('ProductImages');
 Orders = new Mongo.Collection('orders');
 Stores = new Mongo.Collection("stores");
+Categories = new Mongo.Collection("categories");

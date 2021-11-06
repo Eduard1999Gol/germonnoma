@@ -1,3 +1,6 @@
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min.js';
+
 Template.Layout.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("products");
@@ -5,7 +8,8 @@ Template.Layout.onCreated(function () {
         Meteor.subscribe("users");
         Meteor.subscribe("user_stores");
         Meteor.subscribe("user_orders");
-       })
+        Meteor.subscribe("categories");
+    })
 })
 
 

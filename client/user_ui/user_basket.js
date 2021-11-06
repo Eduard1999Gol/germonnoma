@@ -28,10 +28,6 @@ Template.UserBasket.helpers({
             var product = Products.findOne({_id: element._id});
             product["count"] = element.count;
             product["sum"] = element.count*product.price;
-            var image = ProductImages.findOne({ product_id: product._id });
-            if (image) {
-            product["image"] = image.image;
-          }
           sum+=product.sum;
           basket_products.push(product);
           });

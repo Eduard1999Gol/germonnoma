@@ -88,12 +88,6 @@ Template.ProductDetails.helpers({
     "getProductDetails": function () {
         var product = Products.findOne({ _id: Router.current().params._id });
         if (product) {
-            var image = ProductImages.findOne({
-                product_id: product._id,
-            });
-        }
-        if (product && image) {
-            product["image"] = image;
             var user = Meteor.users.findOne({_id: product.user_id});
             return {
                 product: product,
