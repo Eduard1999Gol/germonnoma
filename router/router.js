@@ -251,8 +251,6 @@ Router.route(
 Router.route(
   "/products/:_id/edit_product",
   function () {
-    this.subscribe("publishProductId", this.params._id);
-    this.subscribe("productImageById", this.params._id);
     if (this.ready()) {
       this.render("EditProductPage");
     } else {

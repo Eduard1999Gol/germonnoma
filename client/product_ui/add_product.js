@@ -11,7 +11,6 @@ Template.AddProduct.events({
 
     'submit form#addProductForm':function (event) {
         event.preventDefault();
-        console.log(event);
         var reader = new FileReader();
         reader.onload = function (e) {
             var product = {
@@ -41,21 +40,7 @@ Template.AddProduct.helpers({
     'categories': function () {
         return Categories.find().fetch();
     },
-    'selectedFile':function () {
-        if (Session.get('selectedFile')) {
-            return Session.get('selectedFile');
-        } else {
-          return "choose_picture";
-        }
-    },
     
-    'isSelected': function (a, b) {
-        if (a === b) {
-            return 'selected';
-        } else {
-            return '';
-        }
-    }
   });
 
 

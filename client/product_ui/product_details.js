@@ -42,7 +42,7 @@ Template.ProductDetails.events({
     
     'click button#delete-product': function (event) {
         event.preventDefault();
-        var id = event.target.dataset.id;
+        var id = event.currentTarget.dataset.id;
         var name = event.target.dataset.name;
         var prove = window.confirm(TAPi18n.__('Are you really sure to delete the product  ')+ name + "?" );
         if (prove) {
@@ -68,7 +68,7 @@ Template.ProductDetails.events({
     
     'click button#editPage': function (event){
         event.preventDefault();
-        Router.go('productEdit', {_id: event.target.dataset.id});
+        Router.go('productEdit', {_id: event.currentTarget.dataset.id});
     },
 
     'click button#return': function (event){
@@ -88,7 +88,7 @@ Template.ProductDetails.helpers({
     "getProductDetails": function () {
         var product = Products.findOne({ _id: Router.current().params._id });
         if (product) {
-            var user = Meteor.users.findOne({_id: product.user_id});
+            var user = Meteor.users.findOne({_id: product.store_id.user_id});
             return {
                 product: product,
                 user: user,

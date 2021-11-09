@@ -11,10 +11,7 @@ Template.UserOrders.onCreated(function () {
 Template.UserOrders.helpers({
     "getOrders": function () {
         if (Meteor.user()) {
-          var orders = Orders.find().fetch();
-          orders.forEach(element => {
-            var user = Meteor.users.findOne({_id: element.product.store_id.user_id})
-          });
+          var orders = Orders.find({user_id: Meteor.userId()}).fetch();
           return{
             orders: orders,
           }

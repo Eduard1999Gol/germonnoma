@@ -1,18 +1,12 @@
 import moment from 'moment';
-import category from './product_ui/product_category.js';
   
-Template.registerHelper("getCategories", function () {
-    console.log(Categories.find().fetch());
-    return Categories.find().fetch();
-});
-
-Template.registerHelper("getCategoryName", function (key) {
-    return category[key]
+Template.registerHelper("getCategorie", function (category_id) {
+    var  category = Categories.findOne({_id: category});
+    return category
 });
 
 
-
-Template.registerHelper("isVerkäüfer", function () {
+Template.registerHelper("isVerkaufer", function () {
     var shops = Stores.findOne({user_id: Meteor.userId()});
     if (shops) {
         return true

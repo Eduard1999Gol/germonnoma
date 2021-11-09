@@ -8,7 +8,7 @@
           <div class="col s6">
             <div class="input-field pt-2">
               <select name="product_category" id="product_category_select">
-                <option value="" disabled selected>{{_ "choose_category"}}</option>
+                <option value="" disabled>{{_ "choose_category"}}</option>
                 {{#each categories}}
                 <option value="{{this._id}}">{{_ this.name}}</option>
                 {{/each}}

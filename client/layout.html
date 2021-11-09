@@ -17,16 +17,22 @@
       <a href="#" id="Home" class="navbar-brand  text-light mx-4" style="font-size: 30px;"><strong>Web-Shop</strong></a>
       <ul class="right hide-on-med-and-down">
         <li><a id="basket" href="#"><ul><li><i class="material-icons">shopping_cart </i></li><li class=""></li></ul></a></li>
+        {{#if isVerkaufer}}
         <li><a href="{{ pathFor route='addProduct'}}" id="addProduct"> <ul><li><i class="material-icons">handyman</i></li><li>{{_ "add_product"}}</li></ul></a></li>
+        {{/if}}
         <li><a class="dropdown-trigger"  data-target="dropdown1">{{currentUser.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><button id="loginButton"  class="w-20 h-10 text-xl mt-3 mr-3 bg-green-500 border  text-white rounded-xl text-base font-medium" > Login</button></li>
       </ul>
       <ul id='dropdown1' class='dropdown-content'>
         <li><a  id="myProfile" href="#!"><i class="material-icons">account_circle</i>Profile</a></li>
         <li><a  id="myOrders" href="#!"><i class="material-icons">local_mall</i>MyOrders</a></li>
+        {{#if isVerkaufer}}
         <li><a  id="myStoreOrders" href="#!"><i class="material-icons">shop</i>StoreOrders</a></li>
+        {{/if}}
         <li class="divider" tabindex="-1"></li>
         <li><a  id="logout" href="#!"><i class="material-icons">logout</i>logout</a></li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+      <li><button id="loginButton"  class="w-20 h-10 text-xl mt-3 mr-3 bg-green-500 border  text-white rounded-xl text-base font-medium" > Login</button></li>
       </ul>
     </div>
   </nav>

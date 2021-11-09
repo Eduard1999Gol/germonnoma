@@ -120,13 +120,6 @@ Meteor.methods({
         product["store_id"] = store_id;
         return Products.insert(product);
     },
-    
-    insertImage: function (product_id, image) {
-        return ProductImages.insert({
-            image: image,
-            product_id: product_id
-        });
-    },
 
     deleteProduct: function (id) {
         Products.remove({_id: id});
@@ -134,24 +127,23 @@ Meteor.methods({
 
 
     updateProduct: function (id, product) {
-        product["edited_at"] = new Date();
+        var  store_id = Stores.findOne({user_id: Meteor.user()._id})
         Products.update({
             _id: id
         }, 
-        {
+     {
             $set: {
+                count: product.count,
                 category: product.category,
                 name: product.name,
                 price: product.price,
                 description: product.description,
-            }
-        });
-        return ProductImages.update({product_id: id},{
-            $set:{
-                image: product.image
+                image: product.image,
+                store_id: store_id
             }
         });
     },
+
     /* 
     selectedProduct: function (id, selected) {
         return Products.update({

@@ -5,32 +5,31 @@
             <thead>
               <tr class="text-3xl">
                 <th class="w-1/2 ">Products</th>
-                <th class="w-1/4"><i
-                  class="material-icons" style="font-size: 35px;">store</i>Store</th>
+                <th class="w-1/4"><i class="material-icons" style="font-size: 35px;">store</i>Store</th>
                 <th class="w-1/4">Status</th> 
               </tr>
             </thead>
             <tbody>
+            {{#each getOrders.orders}}
               <tr>
                 <td>
                   <div class="grid grid-cols-3">
-                    <div class=""><img src="{{this.image}}"  class=" w-8/12 rounded-2xl" alt=""></div>
-                    <div class="col-span-2"><h4>{{this.product.name}}</h4><h5 class="text-gray-500">Menge: count</h5></div>
+                    <div class=""><img src="{{this.product.image}}"  class=" w-8/12 rounded-2xl" alt=""></div>
+                    <div class="col-span-2"><h4>{{this.product.name}}</h4><h5 class="text-gray-500">Menge: {{this.count}}</h5></div>
                 </div>
               </td>
-                <td class="text-3xl text-red-500">store / <a href="#">du</a></td>
+                <td class="text-3xl text-red-500">store / <a href="#">verkäufer</a></td>
                 <td>
-                    <form id="confirm">
-                     <button type="submit" class="btn rounded-lg" style="color: black;">confirm</button>
-                    <select id="status" class="form-select block mt-2 ml-5 w-11/12" name="order_status" style="display: none;">
+                  <label class="form-label">Status</label>
+                  <select id="Status" class="block " name="order_status">
                     <option value="" disabled selected>Choose the status</option>
                     <option value="1">Gesendet</option>
                     <option value="2">on the way</option>
-                    <option value="3">dilevered</option>
+                    <option value="2">dilevered</option>
                   </select>
-                </form>
             </td>
               </tr>
+             {{/each}}
             </tbody>
           </table>
     </div>
