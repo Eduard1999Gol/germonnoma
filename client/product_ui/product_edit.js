@@ -43,6 +43,7 @@ Template.EditProductPage.helpers({
     'categories': function () {
         return Categories.find().fetch();
     },
+    
     'isSelected': function (a, b) {
         if (a === b) {
             return 'selected';
