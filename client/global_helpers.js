@@ -13,6 +13,19 @@ Template.registerHelper("isVerkaufer", function () {
     }
 });
 
+Template.registerHelper("isYourProduct", function (user_id) {
+    if (user_id===Meteor.userId()) {
+        return true
+    }
+}),
+
+
+Template.registerHelper("getUserStore", function () {
+    var store = Stores.findOne({user_id: Meteor.userId()});
+    return store
+})
+
+
 
 Template.registerHelper("berechneMenge", function (wagen) {
     var count = 0;
@@ -28,6 +41,12 @@ Template.registerHelper("language", function () {
      if (Meteor.user().profile) {
         TAPi18n.setLanguage(Meteor.user().profile.language);
     } 
+})
+
+Template.registerHelper("getCount", function () {
+    if (Meteor.user().profile) {
+       return Meteor.user().profile.basket.length;
+   } 
 })
 
 

@@ -9,14 +9,14 @@
     <div class="flex w-full">
       <button id="delete-product"
       data-name="{{getProductDetails.product.name}}"
-      data-id="{{getProductDetails.product._id}}" class="m-1  border-2 border-white bg-red-500 text-white rounded-xl text-base font-medium ">
+      data-id="{{getProductDetails.product._id}}" class="m-1 p-1  border-2 border-white bg-red-500 text-white rounded-xl text-base font-medium ">
         <i class="material-icons w-full" style="font-size: 30px;">delete_forever</i>
         {{_ "delete"}}
       </button>
     </div>
     <div class="flex w-full">
       <button id="editPage"
-      data-id="{{getProductDetails.product._id}}" class=" m-1  border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium">
+      data-id="{{getProductDetails.product._id}}" class=" m-1 p-1 border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium">
         <i class="material-icons w-full" style="font-size: 30px;">edit</i>
        {{_ "edit"}}
      </button>
@@ -25,23 +25,23 @@
     <div class="flex w-full">
       <button id="userOrders"
       data-name="{{getProductDetails.product.name}}"
-      data-id="{{getProductDetails.product._id}}" class="m-1  border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium ">
+      data-id="{{getProductDetails.product._id}}" class="m-1 p-1 border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium ">
         <i class="material-icons w-full" style="font-size: 30px;">shopping_bag</i>
-        buy now
+        {{_ "buy_now"}}
       </button>
     </div>
     <div class="flex w-full">
       <button id="userBasket"
-      data-id="{{getProductDetails.product._id}}" class="m-1  border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium">
+      data-id="{{getProductDetails.product._id}}" class="m-1 p-1 border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium">
         <i class="material-icons w-full" style="font-size: 30px;">add_shopping_cart</i>
-        add to cart
+        {{_ "add_to_cart"}}
      </button>
     </div>
     {{/if}}
     <div class="flex w-full">
       <button 
       id="return"
-      href="{{ pathFor route='home'}}" class="m-1 border-2 border-white bg-gray-400 text-white rounded-xl text-base font-medium ">
+      href="{{ pathFor route='home'}}" class="m-1 p-1 border-2 border-white bg-gray-400 text-white rounded-xl text-base font-medium ">
        <i class="material-icons w-full" style="font-size: 30px;">arrow_back</i>
       {{_ "back"}}
     </button>

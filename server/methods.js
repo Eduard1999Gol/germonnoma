@@ -156,12 +156,6 @@ Meteor.methods({
         });
     }, */
 
-    removeImage: function (id) {
-        ProductImages.remove({
-            _id: id
-        });
-        Products.update({_id: id});
-    },
 
     createOrders: function (orders) {
         check(orders, Array);
@@ -211,5 +205,17 @@ Meteor.methods({
                 }
             })
         }
+    },
+
+    updateStatus: function (id,status) {
+        Orders.update({
+            _id: id
+        },{
+            $set: {
+                status: status,
+            }
+        }
+        )
+        
     }
 });

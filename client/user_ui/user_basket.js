@@ -32,10 +32,9 @@ Template.UserBasket.helpers({
           basket_products.push(product);
           });
         }
-  
         return{
           basket_products: basket_products,
-          sum: sum
+          sum: sum,
         }
       }, 
 });

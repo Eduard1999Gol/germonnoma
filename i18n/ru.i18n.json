@@ -16,7 +16,7 @@
     "edit_product": "Редактировать продукт",
     "price": "Цена",
     "description": "Описание",
-    "Search": "Искать", 
+    "Search": "Поиск", 
     "Users Profile": "Профиль пользователя",
     "Change your Profile": "Измени свой профиль",
     "Username": "Имя пользователя",
@@ -35,5 +35,12 @@
     "toys": "Игрушки",
     "books": "Книги",
     "choose_category":"выбрать категорию",
-    "count": "количество"
+    "count": "Kоличество",
+    "This_Product_is_from_you": "Это твой продукт",
+    "Buy_now": "Купить",
+    "Total_price": "Общая цена",
+    "add_to_cart": "в тележку",
+    "cart":  "Тележка",
+    "ordered_by": "Заказал",
+    "Products": "Продукты"
 }

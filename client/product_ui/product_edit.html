@@ -10,7 +10,7 @@
             <select name="product_category" id="product_category_select">
               <option value="" disabled selected>{{_ "change_category"}}</option>
               {{#each categories}}
-              <option value="{{this._id}}" {{isSelected this.name getProduct.category}}>{{this.name}}</option>
+              <option value="{{this._id}}" {{isSelected this.name getProduct.category}}>{{this.name}} </option>
               {{/each}}
             </select>
             <label>{{_ "choose_category"}}</label>

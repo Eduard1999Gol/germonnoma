@@ -1,7 +1,5 @@
 import "./user_store_orders.html"
 
-
-
 Template.StoreOrders.onCreated(function () {
     Tracker.autorun(function(){
         Meteor.subscribe("products");
@@ -15,15 +13,12 @@ Template.StoreOrders.onCreated(function () {
 
 
 Template.StoreOrders.events({
-    'submit form#confirm': function (event) {
+    'change select#Status': function (event) {
         event.preventDefault();
-        //var button = document.getElementById('dummy');
-        //button.parentNode.removeChild(elem);
-
-
-        var button = event.currentTarget[0];
-        button.parentNode.removeChild(button);
-        
+        var status_nummer =  parseInt(event.currentTarget.value);
+        var array = ["Sent", "On_the_way", "Dilevered"];
+        var status = array[status_nummer - 1];
+        Meteor.call('updateStatus',event.currentTarget.dataset.id,status);
     },
 });
 
@@ -31,7 +26,10 @@ Template.StoreOrders.helpers({
     "getOrders": function () {
         if (Meteor.user()) {
           var orders = Orders.find({"product.store_id.user_id": Meteor.userId()}).fetch();
-          console.log(orders)
+          orders.forEach(element => {
+              user = Meteor.users.findOne({_id: element.user_id})
+              element["user_name"] = user.username;
+          });
           return{
             orders: orders,
           }
