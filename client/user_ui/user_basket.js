@@ -12,8 +12,13 @@ Template.UserBasket.events({
   'click button#buyButton': function (event) {
     event.preventDefault();
     var orders = Meteor.user().profile.basket;
-    console.log(orders)
-    Meteor.call("createOrders", orders);
+    Meteor.call("createOrders", orders, function (err, res) {
+      if (!err) {
+        M.toast({html: 'The Product was ordered', classes: 'rounded'});
+      } else {
+        console.log(err)
+      }
+    });
   }
 })
 

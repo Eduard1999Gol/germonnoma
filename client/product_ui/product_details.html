@@ -1,82 +1,78 @@
 <template name="ProductDetails">
-  <div class="flex">
-    <div class="flex w-1/2">
-  <h1 class=" mt-0 mb-0 ml-6">Product Details:</h1>
-      </div>
-  <div class="flex w-1/2">
-  <div class="flex">
-  {{#if isYourProduct getProductDetails.product.store_id.user_id}}
-    <div class="flex w-full">
-      <button id="delete-product"
-      data-name="{{getProductDetails.product.name}}"
-      data-id="{{getProductDetails.product._id}}" class="m-1 p-1  border-2 border-white bg-red-500 text-white rounded-xl text-base font-medium ">
-        <i class="material-icons w-full" style="font-size: 30px;">delete_forever</i>
-        {{_ "delete"}}
-      </button>
-    </div>
-    <div class="flex w-full">
-      <button id="editPage"
-      data-id="{{getProductDetails.product._id}}" class=" m-1 p-1 border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium">
-        <i class="material-icons w-full" style="font-size: 30px;">edit</i>
-       {{_ "edit"}}
-     </button>
-    </div>
-    {{else}}
-    <div class="flex w-full">
-      <button id="userOrders"
-      data-name="{{getProductDetails.product.name}}"
-      data-id="{{getProductDetails.product._id}}" class="m-1 p-1 border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium ">
-        <i class="material-icons w-full" style="font-size: 30px;">shopping_bag</i>
-        {{_ "buy_now"}}
-      </button>
-    </div>
-    <div class="flex w-full">
-      <button id="userBasket"
-      data-id="{{getProductDetails.product._id}}" class="m-1 p-1 border-2 border-white bg-green-600 text-white rounded-xl text-base font-medium">
-        <i class="material-icons w-full" style="font-size: 30px;">add_shopping_cart</i>
-        {{_ "add_to_cart"}}
-     </button>
-    </div>
-    {{/if}}
-    <div class="flex w-full">
-      <button 
-      id="return"
-      href="{{ pathFor route='home'}}" class="m-1 p-1 border-2 border-white bg-gray-400 text-white rounded-xl text-base font-medium ">
-       <i class="material-icons w-full" style="font-size: 30px;">arrow_back</i>
-      {{_ "back"}}
-    </button>
-    </div>
-  </div>
-  </div>
-  </div>
-  <div class="flex m-4 border-2 border-gray-300 rounded-2xl">
-    <div  class="w-1/2 ">
-    <img class="rounded-xl w-9/12 border-4" src="{{getProductDetails.product.image}}" >
-    </div>
-    <div class="w-1/2 p-1">
-          <h1 class="mb-2">{{getProductDetails.product.name}}</h1>
-          <div class="font-extralight text-gray-500">
-            <h4 class="m-0">{{_ "price"}}: {{getAmount  getProductDetails.product.price}}</h4>
-            <h4 class="m-0"> {{_ "category"}}: {{ getCategorie getProductDetails.product.category}}</h4>
-          </div>
-          <div class="text-gray-500 mt-2 text-lg">
-            added: {{formatDateTime getProductDetails.product.created_at}} by
-            {{#if isYourProduct getProductDetails.product.store_id.user_id}}
-             <a href="#" class="text-2xl" id="myProfile">You</a>
-            {{else}}
-            <a href="#">{{getProductDetails.user.username}}</a>
-            {{/if}}
-          </div>
-        <blockquote>
-          <p class="text-lg font-semibold">
-            {{getProductDetails.product.description}}
-          </p>
-        </blockquote>
-      </div>
-  </div>
  
-  
-       
-      
-      
+  <div class="flex mt-4 mx-24 relative">
+    <div  class="w-2/3 border-gray-300 border-b-2 border-l-2 border-t-2 grid justify-items-center rounded-l-xl">
+      <div>
+    <img class="" src="{{getProductDetails.product.image}}" style="max-width:600px;width:100%">
+      </div>
+    </div>
+    <div class="w-1/3 p-8 rounded-r-xl border-2 border-gray-300">
+      <div class="flex space-x-6">
+        <div class="flex w-1/2">
+          <p class="text-5xl">{{getProductDetails.product.name}}</p>
+      </div>
+      <div class="flex w-1/2 items-center">
+          <i class="material-icons small text-red-500">store</i>
+          <p class="text-xl">
+            {{getProductDetails.store.store_name}}
+          </p>
+      </div>
+      </div>
+      <div class="mt-12">
+        <p class="text-4xl "><b>{{getAmount  getProductDetails.product.price}}</b></p>
+      </div>
+      {{#if isYourProduct getProductDetails.product.store_id.user_id}}
+      <div class="mt-10">
+        <button id="delete-product"
+        data-name="{{getProductDetails.product.name}}"
+        data-id="{{getProductDetails.product._id}}" class="w-full py-2 my-2 border-white bg-red-500 text-white rounded-xl text-base font-medium ">
+          {{_ "delete"}}
+        </button>
+        <button id="editPage"
+        data-id="{{getProductDetails.product._id}}" class="w-full py-2  border-white bg-black text-white rounded-xl text-base font-medium">
+         {{_ "edit"}}
+       </button>
+      </div>
+      {{else}}
+      <div class="mt-10">
+        <button id="userOrders"
+        data-name="{{getProductDetails.product.name}}"
+        data-id="{{getProductDetails.product._id}}" class="w-full p-3 my-2 border-white bg-red-400 text-white rounded-xl  ">
+          {{_ "buy_now"}}
+        </button>
+        <button id="userBasket"
+        data-id="{{getProductDetails.product._id}}"  class="w-full p-2 border-white bg-black text-white rounded-xl text-base">
+          {{_ "add_to_cart"}}
+       </button>
+      </div>
+      {{/if}}
+      <div class="row mt-10">
+        <p class="text-black text-center leading-none mb-1"><b>{{_ "description"}}</b></p>
+        <p class="">
+          {{getProductDetails.product.description}}
+        </p>
+      </div>
+      <footer class="">
+        <div class="flex my-1">
+          <div class="bg-gray-400 py-1 px-3">
+            <p class="text-lg"> {{getCategorie getProductDetails.product.category}}</p>
+           </div>
+      </div>
+          <div class="flex">
+            <p class=" text-gray-500">
+            {{_ "added"}}: {{formatDateTime getProductDetails.product.created_at}}
+            </p>
+          </div>
+      </footer>
+    </div>
+
+  </div>
+  <div class="absolute right-10">
+    <button 
+    id="return"
+    href="{{ pathFor route='home'}}" class="m-1 p-1 border-2 border-white bg-gray-400 text-white rounded-xl text-base font-medium ">
+     <i class="material-icons w-full" style="font-size: 30px;">arrow_back</i>
+    {{_ "back"}}
+  </button>
+  </div>
 </template>

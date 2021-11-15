@@ -7,22 +7,14 @@
       </a>
       </div>
       <div class="w-2/3 flex flex-col p-2">
-        <div class="grid grid-cols-2" >
-          <div>
+        <div>
           <p class="text-xl truncate">{{this.name}}</p>
-          </div>
-          <div class="text-xl text-red-500 flex">
-            <div class="flex"> <i class="material-icons">store</i></div>
-            <div class="flex">
-           <p >{{this.store_id.store_name}}</p>
-            </div>
-          </div>
         </div>
         <div class="my-2 flex">
           <p class="text-lg">{{getAmount this.price}}</p>
         </div>
         <div class="flex">
-          <p class="text-sm text-gray-500 truncate">{{this.description}}</p>
+          <p class="line-clamp-2 text-sm text-gray-500 ">{{this.description}}</p>
         </div>
         <p></p>
         <div class="flex-auto flex space-x-3">

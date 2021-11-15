@@ -88,10 +88,11 @@ Template.ProductDetails.helpers({
     "getProductDetails": function () {
         var product = Products.findOne({ _id: Router.current().params._id });
         if (product) {
-            var user = Meteor.users.findOne({_id: product.store_id.user_id});
+            var store = Stores.findOne({_id: product.store_id._id});
+            console.log(store.store_name)
             return {
                 product: product,
-                user: user,
+                store: store,
             }
         }
     }

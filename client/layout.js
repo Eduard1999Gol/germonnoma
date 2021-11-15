@@ -33,7 +33,8 @@ Template.Layout.events({
 
     'click a#myStoreOrders':function (event) {
         event.preventDefault();
-        Router.go("store_orders_page");
+        var store = Stores.findOne({user_id: Meteor.userId()})
+        Router.go("store_orders_page", {store_id: store._id});
     },
 
     

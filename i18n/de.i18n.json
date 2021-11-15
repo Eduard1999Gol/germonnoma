@@ -36,11 +36,12 @@
     "choose_category": "wähle Categorie",
     "count": "Menge",
     "This_Product_is_from_you": "Das Produkt ist von dir",
-    "Buy_now": "Kaufen",
+    "buy_now": "Kaufen",
     "Total_price": "Gesamtsumme",
-    "add_to_cart": "add to cart",
+    "add_to_cart": "in den Warenkorb",
     "cart": "Wagen",
     "ordered_by": "bestellt von",
-    "Products": "Produkte"
+    "Products": "Produkte",
+    "added": "hinzugefügt am"
     
 }

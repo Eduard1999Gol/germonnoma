@@ -1,8 +1,8 @@
 import moment from 'moment';
   
 Template.registerHelper("getCategorie", function (category_id) {
-    var  category = Categories.findOne({_id: category});
-    return category
+    var  category = Categories.findOne({_id: category_id});
+    return category.name
 });
 
 

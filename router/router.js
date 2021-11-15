@@ -133,7 +133,7 @@ Router.route(
 );
 
 Router.route(
-  "/my_store_orders",
+  "/my_store_orders/:store_id",
   function () {
     if (!Meteor.userId()) {
       Router.go("home");

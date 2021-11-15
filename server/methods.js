@@ -118,6 +118,7 @@ Meteor.methods({
         var created_at = new Date();
         var  store_id = Stores.findOne({user_id: Meteor.user()._id})
         product["store_id"] = store_id;
+        product["created_at"] = created_at;
         return Products.insert(product);
     },
 
@@ -166,14 +167,14 @@ Meteor.methods({
                 image: product.image,
                 ordered_at: new Date(),
                 product: product,
-                count: 1,
-                status: "angefragt"
+                count: orders[0].count,
+                status: "ordered"
             }
             Orders.insert(order);
             Products.update({
                 _id: orders[0]._id,
             },{
-                $inc:{ count: -1}
+                $inc:{ count: -orders[0].count}
             })
             Meteor.users.update({
                 _id: this.userId
@@ -193,7 +194,7 @@ Meteor.methods({
                     product: product,
                     store_id: product.user_id,
                     count: parseInt(element.count),
-                    status: "angefragt"
+                    status: "ordered"
                 }
                 Orders.insert(order);
             });

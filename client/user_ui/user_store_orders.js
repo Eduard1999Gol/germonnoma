@@ -25,11 +25,13 @@ Template.StoreOrders.events({
 Template.StoreOrders.helpers({
     "getOrders": function () {
         if (Meteor.user()) {
-          var orders = Orders.find({"product.store_id.user_id": Meteor.userId()}).fetch();
+          var orders = Orders.find({"product.store_id._id": Router.current().params.store_id},{ sort: { ordered_at: -1 }}).fetch();
+          console.log(orders)
           orders.forEach(element => {
               user = Meteor.users.findOne({_id: element.user_id})
               element["user_name"] = user.username;
           });
+
           return{
             orders: orders,
           }

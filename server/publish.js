@@ -29,7 +29,11 @@ Meteor.publish('store_orders', function (store_id) {
 });
 
 Meteor.publish('user_stores', function () {
-  return Stores.find();
+  if (this.userId) {
+    return Stores.find();
+  }else{
+    this.ready();
+  }
 })
 
 
@@ -49,10 +53,6 @@ Meteor.publish('basket_products', function () {
 
 Meteor.publish('publishProductId', function (id) {
   return Products.find({_id: id});
-});
-
-Meteor.publish('productImageById', function (id) {
-  return ProductImages.find({product_id: id});
 });
 
 Meteor.publish('productImages', function () {

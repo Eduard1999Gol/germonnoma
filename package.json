@@ -11,6 +11,7 @@
     "@babel/runtime": "^7.15.4",
     "@sweetalert2/theme-material-ui": "^4.0.1",
     "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/line-clamp": "^0.2.2",
     "autoprefixer": "^10.3.7",
     "babel-runtime": "^6.26.0",
     "bcrypt": "^5.0.1",
