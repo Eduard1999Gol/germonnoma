@@ -36,12 +36,13 @@
     "choose_category": "choose category",
     "count": "count",
     "This_Product_is_from_you":  "This Product is from you",
-    "Buy_now": "Buy now",
+    "buy_now": "Buy now",
     "Total_price": "Total price",
     "add_to_cart": "Add to cart",
     "cart": "cart",
     "ordered_by": "ordered by",
     "Products": "Products",
-    "added": "Added at"
+    "added": "Added at",
+    "datum": "Datum"
 
 }

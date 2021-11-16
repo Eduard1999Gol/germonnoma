@@ -4,20 +4,18 @@
         <table class="table-fixed">
             <thead>
               <tr class="text-3xl">
-                <th class="w-1/2 ">{{_"Products"}}</th>
-                <th class="w-1/4">
-                  <div class="flex">
-                    <div class="flex">
-                      <i class="material-icons" style="font-size: 33px;">person</i>
-                    </div>
-                    <div class="flex">
-                      <p class="text-3xl">
-                        {{_ "ordered_by"}}
-                      </p>
-                    </div>
-                  </div>
+                <th class="w-1/3 ">{{_"Products"}}</th>
+                <th>{{_ "count"}}</th>
+                <th class="">
+                  <div class="flex items-center">
+                    <i class="material-icons small text-red-500">person</i>
+                    <p>
+                      {{_ "ordered_by"}}
+                    </p>
+                </div>
                   </th>
-                <th class="w-1/4">Status</th> 
+                <th>{{_ "datum"}}</th>
+                <th class="">Status</th> 
               </tr>
             </thead>
             <tbody>
@@ -29,16 +27,15 @@
                     <div class="col-span-2"><h4>{{this.product.name}}</h4><h5 class="text-gray-500">Menge: {{this.count}}</h5></div>
                 </div>
               </td>
+              <td><p class="text-2xl">{{this.count}}</p></td>
                 <td class=" text-gray-500">
                   <div class="flex">
-                    <div class="flex text-3xl">
+                    <div class="flex text-2xl">
                       <a href="#">{{this.user_name}}</a>
-                    </div>
-                    <div class="flex ml-2 mt-2">
-                         <p>at {{formatDateTime this.ordered_at}}</p> 
                     </div>
                   </div>
                 </td>
+                <td><p class="text-2xl">{{formatDateTime this.ordered_at}}</p></td>
                 <td>
                   <label class="text-gray-900">{{_  "Choose_Status"}}</label>
                   <select id="Status" class="block " name="order_status" data-id="{{this._id}}">

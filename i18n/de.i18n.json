@@ -42,6 +42,7 @@
     "cart": "Wagen",
     "ordered_by": "bestellt von",
     "Products": "Produkte",
-    "added": "hinzugefügt am"
+    "added": "hinzugefügt am",
+    "datum": "Datum"
     
 }
