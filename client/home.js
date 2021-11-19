@@ -13,7 +13,10 @@ Template.Home.events({
         if (event.currentTarget.search.value) {
             Router.go("searchedProducts", {searchTerm: event.currentTarget.search.value});
         }  
-    }
+    },
+  
+
+   
 })
 
 

@@ -1,10 +1,9 @@
 <template name="SearchProducts">
-    <h1 class="ml-3"> {{_ "Search"}}: {{data.searchTerm}} </h1>
-    <div class="row">
+    <p class="m-3 text-4xl"> <b>{{_ "Search"}}:</b> {{data.searchTerm}} </p>
+    <hr>
+    <div class="flex flex-wrap">
         {{#each data.products}}
-        <div class="col-5">
             {{> Product}}
-        </div>
         {{/each}}
     </div>
 </template>

@@ -38,11 +38,14 @@
     "count": "Kоличество",
     "This_Product_is_from_you": "Это твой продукт",
     "buy_now": "Купить",
-    "Total_price": "Общая цена",
+    "Total_price": "Cумма",
     "add_to_cart": "в тележку",
     "cart":  "Тележка",
     "ordered_by": "Заказал",
     "Products": "Продукты",
     "added": "Добавлено",
-    "datum": "Дата"
+    "datum": "Дата",
+    "shopping_cart": "Тележка покупок",
+    "Articel": "Товаров",
+    "Details": "Детали продукта"
 }

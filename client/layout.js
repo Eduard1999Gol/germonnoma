@@ -55,6 +55,12 @@ Template.Layout.events({
             }
         })
     },
+
+    'click button#menu-btn': function () {
+        dropdown.classList.toggle('hidden')
+        dropdown.classList.toggle('flex')
+        
+    },
    
 
     'click button#loginButton': function (event) {
@@ -66,7 +72,6 @@ Template.Layout.events({
         event.preventDefault();
         Router.go('MyProfile',{_id:Meteor.userId()});
     },
-
    
 });
 

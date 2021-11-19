@@ -37,12 +37,15 @@
     "count": "Menge",
     "This_Product_is_from_you": "Das Produkt ist von dir",
     "buy_now": "Kaufen",
-    "Total_price": "Gesamtsumme",
+    "Total_price": "Summe",
     "add_to_cart": "in den Warenkorb",
     "cart": "Wagen",
     "ordered_by": "bestellt von",
     "Products": "Produkte",
     "added": "hinzugefügt am",
-    "datum": "Datum"
+    "datum": "Datum",
+    "shopping_cart": "Einkaufswagen",
+    "Articel": "Artikel",
+    "Details": "Angaben"
     
 }
