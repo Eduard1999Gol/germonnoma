@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+nav div ul div div{
+    display: none;
+}
+
+nav div ul div:hover div{
+    display: block;
+}
+
+
+

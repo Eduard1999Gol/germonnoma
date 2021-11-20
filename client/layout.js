@@ -1,3 +1,4 @@
+import { event } from 'jquery';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';
 
@@ -56,11 +57,14 @@ Template.Layout.events({
         })
     },
 
-    'click button#menu-btn': function () {
-        dropdown.classList.toggle('hidden')
-        dropdown.classList.toggle('flex')
+    'mouseover a#menu-btn': function (event) {
+        event.preventDefault();
+        event.target.style.removeProperty("display")
+        console.log(event.target.style)
         
     },
+
+   
    
 
     'click button#loginButton': function (event) {
