@@ -1,5 +1,5 @@
 <template name="MyProfile">
-  <h1 class="text-center">{{_ "Users Profile"}}</h1>
+  <p class="ml-10 mt-2 text-4xl">{{_ "Users Profile"}}:</p>
   {{#with currentUser}}
   {{this.profile.store_name}}
   <div class="grid grid-cols-5 ">
@@ -45,18 +45,18 @@
     </div>
     <div >
       <figure class=" bg-gray-100 ml-0 shadow-xl h-72 rounded-xl pt-4">
-          <button class="edit w-56 h-20 text-2xl border-2 border-white bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-xl text-base font-medium mb-2 ml-3">
+          <button class="edit w-56 h-20 text-2xl border-2 border-white bg-black text-white rounded-xl text-base font-medium mb-2 ml-3">
             <i class="material-icons w-full" style="font-size: 30px;">edit</i>
             {{_ "edit"}}
           </button>
-          <button class="w-56 h-20 text-2xl  border-2 border-white bg-gradient-to-br from-green-300 to-green-600 text-white rounded-xl text-base font-medium mb-2  ml-3" id="return">
-            <i class="material-icons w-full" style="font-size: 30px;">arrow_back</i>
-           {{_ "back"}}
-         </button>
-         <button class="w-56 h-20 text-2xl  border-2 border-white bg-gradient-to-br from-yellow-400 to-yellow-700 text-white rounded-xl text-base font-medium  ml-3" id="cart">
+         <button class="w-56 h-20 text-2xl  border-2 border-white bg-gradient-to-br from-green-300 to-green-600 text-white rounded-xl text-base font-medium mb-2  ml-3" id="cart">
           <i class="material-icons w-full" style="font-size: 30px;">shopping_bag</i>
-         {{_ "Cart"}}
+         {{_ "cart"}}
        </button>
+       <button class="w-56 h-20 text-2xl  border-2 border-white bg-gradient-to-br  bg-gray-400 text-white rounded-xl text-base font-medium   ml-3" id="return">
+        <i class="material-icons w-full" style="font-size: 30px;">arrow_back</i>
+       {{_ "back"}}
+     </button>
       </figure>
     </div>
   </div>
@@ -107,7 +107,7 @@
             <input class="input profile form-control m-1" type="text" name="city" placeholder="city" value="{{currentUser.profile.city}}"  ><br>
           </div>
         </div>
-        <button type="submit" class="save w-full h-16 text-2xl border-2 border-white bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-xl text-base font-medium mb-2 ml-3">
+        <button type="submit" class="save w-full h-16 text-2xl border-2 border-white bg-gradient-to-br from-green-400 to-green-600 text-white rounded-xl text-base font-medium mb-2 ml-3">
           <i  class=" material-icons w-full" style="font-size: 20px;">save</i>
           {{_ "save"}}
         </button>

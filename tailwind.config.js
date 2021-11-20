@@ -9,12 +9,13 @@ module.exports = {
       extend: {},
     },
     variants: {
-      extend: {},
+      extend: {
+      },
     },
     plugins: [
       require('tailwindcss'),
       require('autoprefixer'),
       require('@tailwindcss/forms'),
+      require('@tailwindcss/line-clamp')
     ]
-  
   }

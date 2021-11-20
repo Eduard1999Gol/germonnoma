@@ -1,12 +1,26 @@
+import { event } from 'jquery';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min.js';
+
+Template.Layout.onRendered(function () {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instance = M.Dropdown.init(elems, {
+        coverTrigger: false
+    });
+})
+
+
+Template.Layout.onCreated(function () {
+    Tracker.autorun(function(){
+        Meteor.subscribe("users");
+        Meteor.subscribe("user_stores");
+        Meteor.subscribe("user_orders");
+        Meteor.subscribe("categories");
+    })
+})
 
 
 Template.Layout.events({
-    'click a.dropdown-trigger': function (event) {
-        var instance = $('.dropdown-trigger').dropdown();
-        var dropdown = M.Dropdown.getInstance(instance);
-        dropdown.open();
-    },
-
     'click a#basket':function (event) {
         event.preventDefault();
         Router.go("basket_page");
@@ -18,8 +32,13 @@ Template.Layout.events({
         Router.go("orders_page");
     },
 
-  
+    'click a#myStoreOrders':function (event) {
+        event.preventDefault();
+        var store = Stores.findOne({user_id: Meteor.userId()})
+        Router.go("store_orders_page", {store_id: store._id});
+    },
 
+    
     'click a#Home': function (event) {
         event.preventDefault();
         Router.go('/');
@@ -37,6 +56,15 @@ Template.Layout.events({
             }
         })
     },
+
+    'mouseover a#menu-btn': function (event) {
+        event.preventDefault();
+        event.target.style.removeProperty("display")
+        console.log(event.target.style)
+        
+    },
+
+   
    
 
     'click button#loginButton': function (event) {
@@ -47,11 +75,11 @@ Template.Layout.events({
     'click a#myProfile': function (event) {
         event.preventDefault();
         Router.go('MyProfile',{_id:Meteor.userId()});
-        $( ".dropdown_user" ).hide();
     },
-
    
 });
+
+
 
 
 

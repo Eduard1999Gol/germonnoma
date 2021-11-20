@@ -1,47 +1,71 @@
 <template name="EditProductPage">
-
-
-
-  <div class="row">
-    <div class="col text-white">
-      <h1 class="title is-1">{{_ "edit_product"}}</h1>
-      <form id="editProductForm">
-        <div class="select is-fullwidth">
-          <label for="exampleFormControlInput1" class="form-label">Choose Category</label>
-          <select name="product_category" id="product_category_select" class="form-select mb-3"
-            aria-label=".form-select-lg example">
-            {{#each getCategories}}
-            <option value="{{getProductDetails.category}}">{{this.display}}</option>
-            {{/each}}
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Name</label>
-          <input name="product_name" id="product_name_input" class="form-control" placeholder="{{_ " product_name"}}"
-            value="{{getProductDetails.name}}" required>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Prise</label>
-          <input class="input form-control" id="product_price_input" type="number" min="0" name="product_price"
-            value="{{getProductDetails.price}}" placeholder="{{_ " product_price"}}" required>
-        </div>
-        <div class="mb-6">
-          <label for="exampleFormControlTextarea1" class="form-label">Product Description</label>
-          <textarea class="textarea form-control" name="product_description" placeholder="{{_ " product_description"}}"
-            id="product_description_textarea" rows="3" required>{{getProductDetails.description}}</textarea>
-        </div>
-        <div class="file is-primary my-2">
-          <label class="file-label">
-            <input class="file-input" type="file" name="product_image" accept="image/png, image/jpeg, image/jpg" required>
-          </label>
-        </div>
-        <div>
-          <div class="my-1">
-            <button id="editProductForm" type="submit" class="btn btn-success padding-5">{{_ "save"}}</button>
-            <button id="returnToProducts" type="button" class="btn btn-light close-modal padding-5">{{_"back"}}</button>
+  <form id="editProductForm" class="flex justify-center">
+    <div class="rounded-xl mt-7 p-3 shadow-xl bg-gray-50 border-2 border-gray-100">
+      <div class="row">
+        <h2 class="mt-4 text-center">{{_ "edit_product"}}</h2>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <div class="input-field pt-2">
+            <select name="product_category" id="product_category_select">
+              <option value="" disabled selected>{{_ "change_category"}}</option>
+              {{#each categories}}
+              <option value="{{this._id}}" {{isSelected this.name getProduct.category}}>{{this.name}} </option>
+              {{/each}}
+            </select>
+            <label>{{_ "choose_category"}}</label>
           </div>
         </div>
-      </form>
+        <div class="col s6">
+          <label >{{_ "count"}}</label>
+          <input  id="product_count" type="number" min="0" name="product_count" value="{{getProduct.product.count}}" placeholder="{{getProduct.product.count}}" required >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <label >{{_ "name"}}</label>
+          <input name="product_name" id="product_name_input" class="mb-2" value="{{getProduct.product.name}}"  placeholder="{{getProduct.product.name}}" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <label for="exampleFormControlInput1" class="form-label">{{_ "price"}}</label>
+          <input  id="product_price_input" type="number" min="1" name="product_price" value="{{getProduct.product.price}}"  placeholder="{{getProduct.product.price}}" required >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+            <label for="textarea1">{{_ "description"}}</label>
+            <textarea id="textarea1" name="product_description" value="{{getProduct.product.description}}" placeholder="{{getProduct.product.description}}" class="materialize-textarea" required></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>{{_ "choose_picture"}}</span>
+                <input type="file" name="product_image" srs="{{getProduct.product.image}}">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" srs="{{getProduct.product.image}}" placeholder="{{_ "change_image"}}">
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <button type="submit" id="editProductForm" class="text-2xl p-2 flex items-center border-2 border-white bg-gradient-to-br  from-green-300 to-green-600  text-white rounded-xl text-base font-medium ">
+            <i class="material-icons mr-2" style="font-size: 25px;">save</i>
+            {{_ "save"}}
+          </button>
+        </div>
+        <div class="col s6">
+          <button id="returnToProducts"  class="text-2xl p-2 flex items-center right border-2 border-white bg-gradient-to-br from-gray-400 to-gray-600 text-white rounded-xl text-base font-medium">
+            <i class="material-icons mr-2" style="font-size: 25px;">arrow_back</i>
+           {{_ "back"}}
+         </button>
+        </div>
+      </div>
     </div>
-  </div>
+</form>
 </template>

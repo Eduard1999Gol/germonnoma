@@ -3,25 +3,18 @@ Template.UserOrders.onCreated(function () {
         Meteor.subscribe("products");
         Meteor.subscribe("productImages");
         Meteor.subscribe("users");
+        Meteor.subscribe("stores");
+        Meteor.subscribe("user_orders");
        })
 })
 
 Template.UserOrders.helpers({
     "getOrders": function () {
-        var orders = [];
-        var user = Meteor.user();
-        if (user) {
-          var wagen = user.profile.orders;
-          wagen.forEach(element => {
-            var product = Products.findOne({_id: element._id});
-            product["count"] = element.count;
-            var verkäufer = Meteor.users.findOne({_id: product.user_id});
-            product["verkäufer"] = verkäufer.username;
-            var image = ProductImages.findOne({ product_id: product._id });
-            if (image) {
-            product["image"] = image.image;
-          }
-          orders.push(product);
+        if (Meteor.user()) {
+          var orders = Orders.find({user_id: Meteor.userId()},{ sort: { ordered_at: -1 }}).fetch();
+          orders.forEach(element => {
+              var user = Meteor.users.findOne({_id: element.product.store_id.user_id});
+              element["username"]=user.username;
           });
         }
         return{

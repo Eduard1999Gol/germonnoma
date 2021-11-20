@@ -132,6 +132,19 @@ Router.route(
   }
 );
 
+Router.route(
+  "/my_store_orders/:store_id",
+  function () {
+    if (!Meteor.userId()) {
+      Router.go("home");
+    } else 
+      this.render("StoreOrders");
+  },
+  {
+    name: "store_orders_page",
+  }
+);
+
 
 
 
@@ -238,8 +251,6 @@ Router.route(
 Router.route(
   "/products/:_id/edit_product",
   function () {
-    this.subscribe("publishProductId", this.params._id);
-    this.subscribe("productImageById", this.params._id);
     if (this.ready()) {
       this.render("EditProductPage");
     } else {

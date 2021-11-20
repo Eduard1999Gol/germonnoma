@@ -1,60 +1,71 @@
 <template name="AddProduct">
-  <div class="flex justify-center ">
-    <form id="addProductForm" class="rounded-xl mt-7 p-3 shadow-2xl bg-gray-50 border-2 border-red-400">
-    <h1 class="mt-4 text-center text-pink-500">{{_ "add_product"}}</h1>
-    <div class="grid grid-cols-2">
-      <div>
-        <label >Choose Category</label>
-        <select name="product_category" id="product_category_select" class="w-11/12 form-select block mt-2 mr-2" >
-          {{#each getCategories}}
-          <option value="{{this.value}}">{{this.display}}</option>
-          {{/each}}
-        </select>
-      </div>
-      <div>
-        <label >enter count</label>
-        <input  id="product_count" type="number" min="0" name="product_count"  placeholder="{{_ "count"}}" required >
-      </div>
-    </div>
-        <label >Name</label>
-        <input name="product_name" id="product_name_input" class="mb-2"  placeholder="{{_ "product_name"}}"   required>
-        <label for="exampleFormControlInput1" class="form-label" >Prise</label>
-        <input  id="product_price_input" type="number" min="1" name="product_price"  placeholder="{{_ "product_price"}}" required >
-        <label >Product Description</label>
-        <textarea class="mt-2" name="product_description" placeholder="{{_ "product_description"}}"  id="product_description_textarea" required></textarea>
-      <div class="file is-primary mt-2 mb-5">
-        <div class="mt-1 flex justify-center px-6 pt-3 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-          <div class="space-y-1 text-center">
-            <svg class="mx-auto h-6 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <div class="flex text-sm text-gray-600">
-              <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                <span style="font-size: x-large;">Upload a file</span>
-                <input class="sr-only"  type="file" name="product_image" multiple accept="image/png, image/jpeg"  id="file-upload" required>
-              </label>
-              <p class="pl-1">or drag and drop</p>
+    <form id="addProductForm" class="flex justify-center">
+      <div class="rounded-xl mt-7 p-3 shadow-xl bg-gray-50 border-2 border-gray-100">
+        <div class="row">
+          <h4 class="mt-4 text-center">{{_ "add_product"}}</h4>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <div class="input-field pt-2">
+              <select name="product_category" id="product_category_select">
+                <option value="" disabled>{{_ "choose_category"}}</option>
+                {{#each categories}}
+                <option value="{{this._id}}">{{_ this.name}}</option>
+                {{/each}}
+              </select>
+              <label>{{_ "choose_category"}}</label>
             </div>
-            <p class="text-xs text-gray-500">
-              PNG or JPG
-            </p>
+          </div>
+          <div class="col s6">
+            <label >{{_ "count"}}</label>
+            <input  id="product_count" type="number" min="0" name="product_count"  placeholder="{{_ "count"}}" required >
           </div>
         </div>
-    </div>
-      <div class="grid grid-cols-2 ">
-        <div>
-          <button id="addProductForm" type="submit" class=" w-11/12 ml-4 h-16 text-2xl border-2 border-white bg-gradient-to-br from-pink-400 to-red-600 text-white rounded-xl text-base font-medium ">
-            <i class="material-icons " style="font-size: 25px;">save</i>
-            {{_ "save"}}
-          </button>
+        <div class="row">
+          <div class="col s12">
+            <label >{{_ "name"}}</label>
+            <input name="product_name" id="product_name_input" class="mb-2"  placeholder="{{_ "product_name"}}"   required>
+          </div>
         </div>
-        <div>
-          <button id="returnToProducts"  class="w-11/12 h-16 ml-4 text-2xl  border-2 border-white bg-gradient-to-br from-green-300 to-green-600 text-white rounded-xl text-base font-medium">
-            <i class="material-icons " style="font-size: 25px;">arrow_back</i>
-           {{_ "back"}}
-         </button>
+        <div class="row">
+          <div class="col s12">
+            <label for="exampleFormControlInput1" class="form-label">{{_ "price"}}</label>
+            <input  id="product_price_input" type="number" min="1" name="product_price"  placeholder="{{_ "product_price"}}" required >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+              <label for="textarea1">{{_ "description"}}</label>
+              <textarea id="textarea1" name="product_description" placeholder="{{_ "product_description"}}" class="materialize-textarea" required></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>{{_ "choose_picture"}}</span>
+                  <input type="file" name="product_image">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="{{_ "choose_picture"}}">
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <button type="submit" class="text-2xl p-2 flex items-center border-2 border-white bg-gradient-to-br  from-green-300 to-green-600  text-white rounded-xl text-base font-medium ">
+              <i class="material-icons mr-2" style="font-size: 25px;">save</i>
+              {{_ "save"}}
+            </button>
+          </div>
+          <div class="col s6">
+            <button id="returnToProducts"  class="text-2xl p-2 flex items-center right border-2 border-white bg-gradient-to-br from-gray-400 to-gray-600 text-white rounded-xl text-base font-medium">
+              <i class="material-icons mr-2" style="font-size: 25px;">arrow_back</i>
+             {{_ "back"}}
+           </button>
+          </div>
         </div>
       </div>
   </form>
-  </div>
 </template>

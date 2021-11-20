@@ -4,7 +4,7 @@ Template.Product.onCreated(function(){
 Template.Product.events({
     'click button#userBasket': function (event) {
         event.preventDefault();
-        var product_id = event.target.dataset.id;
+        var product_id = event.currentTarget.dataset.id;
         Meteor.call("addProductToBasket", product_id, function (err, res) {
             if (!err) {
                 M.toast({html: 'to cart added', classes: 'rounded'});
@@ -17,8 +17,13 @@ Template.Product.events({
     'click button#userOrders': function (event) {
         event.preventDefault();
         var product_id = event.target.dataset.id;
-        Meteor.call("updateCount", product_id);
-        Meteor.call("addProductToOrders", product_id, function (err, res) {
+        var product = {
+            _id: product_id,
+            count: 1
+        }
+        var orders = [];
+        orders.push(product)
+        Meteor.call("createOrders", orders, function (err, res) {
             if (!err) {
                 M.toast({html: 'Das Product wurde bestellt', classes: 'rounded'});
             } else {
@@ -29,6 +34,6 @@ Template.Product.events({
     
     'click a#goToProduct': function (event) {
         event.preventDefault();
-        Router.go('/productDetails', {_id: event.target.dataset.id});
+        Router.go('/productDetails', {_id: event.currentTarget.dataset.id});
     },
 });

@@ -1,15 +1,33 @@
 <template name="UserBasket">
-    <div class="row">
-        <div class="col"><h1>Buy Now!</h1></div>
-        <div class="col"><h1>total price: {{getAmount data.sum}}</h1></div>
+    <p class="text-4xl m-4"><b>{{_ "shopping_cart"}}</b></p>
+    <hr style="color: aliceblue;">
+
+    <div class="flex">
+        <div class="w-1/2">
+            {{#each data.basket_products}}
+            {{> ProductBasket}}
+        {{/each}}
     </div>
-<hr style="color: aliceblue;">
-<button id="buyButton" class="btn">bestellen</button>
-<div class="row">
-    {{#each data.basket_products}}
-    <div class="col-5">
-        {{> ProductBasket}}
+    <div class="w-1/4 m-3 " id="navigation">
+        <div class="shadow-xl p-2 rounded-xl">
+            <div class="text-xl m-3">
+                <p >
+                {{_ "Total_price"}}: {{getAmount data.sum}}
+                </p>
+                <p class="">
+                ({{_ "Articel"}}: {{data.articel_count}} )
+                </p>
+            </div>
+            <button class="bg-black text-white p-2 w-full rounded-xl" id="buyButton" href="{{ pathFor route='home'}}" >{{_ "buy_now"}}</button>
+        </div>
     </div>
-    {{/each}}
-</div>
+    </div>
+   
+
+
+
+
+
+
+   
 </template>

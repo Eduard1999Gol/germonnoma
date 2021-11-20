@@ -1,3 +1,7 @@
+Template.EditProductPage.onRendered(function () {
+    $('select').formSelect();
+    M.textareaAutoResize($('#textarea1'));
+}); 
 
 Template.EditProductPage.onCreated(function(){
     Session.set('selectedFile', "");
@@ -13,48 +17,55 @@ Template.EditProductPage.events({
         event.preventDefault();
         var reader = new FileReader();
         reader.onload = function (e) {
-            var image = e.target.result;
             var product = {
+                count: parseInt(event.currentTarget.product_count.value),
                 category: event.currentTarget.product_category.value,
                 name: event.currentTarget.product_name.value,
                 price: parseInt(event.currentTarget.product_price.value),
                 description: event.currentTarget.product_description.value,
-                image: image
+                image: e.target.result
             }
-            console.log(product)
-            Meteor.call('updateProduct', Router.current().params._id, product, function (err, res) {
+            Meteor.call('updateProduct',Router.current().params._id, product, function (err, res) {
                 if (!err) {
-                    Toast({
-                        text: "Product is edited", 
-                        duration: 3000, 
-                        color: "success"
-                    });
-    
-                }
-                 else {
-                    Toast({
-                        text: "Product is not edited", 
-                        duration: 3000, 
-                        color: "danger"
-                    });
+                    M.toast({html: 'The Product is edited', classes: 'rounded'});
+                    Router.go('/');
+                }else{
+                    M.toast({html: 'The Product is not edited', classes: 'rounded'});
                     
                 }
-    
-            })
+            });
         };
         reader.readAsDataURL(event.currentTarget.product_image.files[0]);
     },
 });
 
 Template.EditProductPage.helpers({
-    'selectedFile':function () {
-        if (Session.get('selectedFile')) {
-            return Session.get('selectedFile');
+    'categories': function () {
+        return Categories.find().fetch();
+    },
+    
+    'isSelected': function (a, b) {
+        if (a === b) {
+            return 'selected';
         } else {
-          return "choose_picture";
+            return '';
         }
     },
+ 
+    "getProduct": function () {
+        var product = Products.findOne({ _id: Router.current().params._id });
+        var category = Categories.findOne({_id: product.category})
+        if (product) {
+            return {
+                product: product,
+                category: category.name,
+            }
+        }
+    }
   });
+
+
+    
 
 
 

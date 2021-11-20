@@ -5,7 +5,6 @@ Meteor.publish('products', function () {
 
 Meteor.publish('users', function () {
   return Meteor.users.find();
-  
 });
 
 Meteor.publish('user_orders', function () {
@@ -30,7 +29,11 @@ Meteor.publish('store_orders', function (store_id) {
 });
 
 Meteor.publish('user_stores', function () {
-  return Stores.find();
+  if (this.userId) {
+    return Stores.find();
+  }else{
+    this.ready();
+  }
 })
 
 
@@ -52,10 +55,6 @@ Meteor.publish('publishProductId', function (id) {
   return Products.find({_id: id});
 });
 
-Meteor.publish('productImageById', function (id) {
-  return ProductImages.find({product_id: id});
-});
-
 Meteor.publish('productImages', function () {
   return ProductImages.find({});
 });
@@ -70,6 +69,10 @@ Meteor.publish('searchedProducts', function (searchTerm) {
 ];
 });
 
-
-
-
+Meteor.publish('categories', function() {
+  if (this.userId) {
+    return Categories.find();
+  } else {
+    return this.ready();
+  }
+});

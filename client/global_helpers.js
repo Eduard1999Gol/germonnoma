@@ -1,19 +1,30 @@
 import moment from 'moment';
-import category from './product_ui/product_category.js';
+  
+Template.registerHelper("getCategorie", function (category_id) {
+    var  category = Categories.findOne({_id: category_id});
+    return category.name
+});
 
-Template.registerHelper("getCategories", function () {
-    var codes = [];
-    for (var k in category) {
-        if (k) {
-            codes.push({ value: k, display: category[k] });
-        }
+
+Template.registerHelper("isVerkaufer", function () {
+    var shops = Stores.findOne({user_id: Meteor.userId()});
+    if (shops) {
+        return true
     }
-    return codes;
 });
 
-Template.registerHelper("getCategoryName", function (key) {
-    return category[key]
-});
+Template.registerHelper("isYourProduct", function (user_id) {
+    if (user_id===Meteor.userId()) {
+        return true
+    }
+}),
+
+
+Template.registerHelper("getUserStore", function () {
+    var store = Stores.findOne({user_id: Meteor.userId()});
+    return store
+})
+
 
 
 Template.registerHelper("berechneMenge", function (wagen) {
@@ -27,17 +38,16 @@ Template.registerHelper("berechneMenge", function (wagen) {
 });
 
 Template.registerHelper("language", function () {
-    if (Meteor.user().profile) {
+     if (Meteor.user().profile) {
         TAPi18n.setLanguage(Meteor.user().profile.language);
-    }
-    
+    } 
 })
 
-
-Template.registerHelper("getStoreName", function (user_id) {
-    const user = Meteor.users.findOne({_id: user_id});
-    return user.profile.store_name
-});
+Template.registerHelper("getCount", function () {
+    if (Meteor.user().profile) {
+       return Meteor.user().profile.basket.length;
+   } 
+})
 
 
 Template.registerHelper("formatDateTime", function (date) {
