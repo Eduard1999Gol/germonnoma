@@ -46,14 +46,14 @@ Meteor.startup(() => {
     });
 
   /* Email Server Config */
-  smtp = {
+  /* smtp = {
     username: Meteor.settings.smtp.username,
     password: Meteor.settings.smtp.password,
     server: Meteor.settings.smtp.server,
     port: Meteor.settings.smtp.port
   };
-
   process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+  console.log(process.env.MAIL_URL); */
   var countCats = Categories.find().count();
   var cats = ["electronics", "food", "garden", "toys", "books"];
   if (countCats == 0) {
