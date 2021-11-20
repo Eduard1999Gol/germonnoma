@@ -30,17 +30,6 @@ Meteor.methods({
             })
         }
     },
-    
-
-    sendResetEmail: function (email) {
-        var user = Meteor.users.findOne({"emails": { $elemMatch:{"address": email}}});
-        if(user){
-            return Accounts.sendResetPasswordEmail(user._id)
-        }else{
-            throw new Meteor.Error("Email_doesnt_exist")
-        }
-        
-    },
 
 
     addProductToBasket: function (product_id) {

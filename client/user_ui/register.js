@@ -34,7 +34,13 @@ Template.Register.events({
                         basket: [],
                     }
                 }
-                Meteor.call("registerStore", user, event.currentTarget.store_name.value, event.currentTarget.store_address.value);
+                Meteor.call("registerStore", user, event.currentTarget.store_name.value, event.currentTarget.store_address.value, function (err, res) {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        Router.go("after_register");
+                    }
+                });
             }else{
                 var user = {
                     username: event.currentTarget.username.value,
