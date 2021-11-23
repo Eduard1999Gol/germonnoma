@@ -1,9 +1,4 @@
 {
-    "google_auth": {
-        "client_id": "222300588510-5rdipb91sppk6og6ivfmh7nh4au77hqp.apps.googleusercontent.com",
-        "secret": "egJqIwk7ju2E8jla6UHSRCB5"
-    },
-    
     "smtp": {
         "username": "goleduard7@gmail.com",
         "password": "Maxalasa1999",

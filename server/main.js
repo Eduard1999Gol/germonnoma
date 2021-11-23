@@ -10,8 +10,8 @@ Accounts.config({
   sendVerificationEmail: true
 });
 
-Accounts.emailTemplates.from = 'info@germonnoma.org';
-Accounts.emailTemplates.siteName = 'Germonnoma';
+Accounts.emailTemplates.from = Meteor.settings.smtp.username;
+Accounts.emailTemplates.siteName = 'WebShop Eduard';
 
 
 
@@ -36,15 +36,6 @@ Accounts.validateLoginAttempt(function (options) {
 });
 
 Meteor.startup(() => {
-  ServiceConfiguration.configurations.remove({
-    service: 'google'
-    });
-    ServiceConfiguration.configurations.insert({
-    service: 'google',
-    clientId: Meteor.settings.google_auth.clientId,
-    secret: Meteor.settings.google_auth.secret
-    });
-
   /* Email Server Config */
   smtp = {
     username: Meteor.settings.smtp.username,
